@@ -10,54 +10,60 @@
       "https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?w=800&q=80"
     ],
     "openHours": "4:00 PM – 2:00 AM",
-    "features": ["Rooftop Views", "Craft Cocktails", "Live Music (Fri & Sat)", "Private Booths", "Happy Hour 4–7 PM"],
+    "features": [
+      "Rooftop Views",
+      "Craft Cocktails",
+      "Live Music (Fri & Sat)",
+      "Private Booths",
+      "Happy Hour 4–7 PM"
+    ],
     "menu": [
       {
         "name": "Azure Sunset",
         "description": "Tequila, passion fruit, lime juice, and a hint of chili",
-        "price": 18,
+        "price": 20000,
         "category": "Signature Cocktails"
       },
       {
         "name": "Pandin Mule",
         "description": "Premium vodka, ginger beer, fresh mint, lime",
-        "price": 16,
+        "price": 20000,
         "category": "Signature Cocktails"
       },
       {
         "name": "Blue Lagoon Spritz",
         "description": "Blue curaçao, prosecco, elderflower, soda",
-        "price": 20,
+        "price": 20000,
         "category": "Signature Cocktails"
       },
       {
         "name": "Old Fashioned",
         "description": "Bourbon, Angostura bitters, sugar, orange zest",
-        "price": 22,
+        "price": 20000,
         "category": "Classic Cocktails"
       },
       {
         "name": "Craft IPA",
         "description": "Local craft Indian Pale Ale on tap",
-        "price": 10,
+        "price": 20000,
         "category": "Beers & Ciders"
       },
       {
         "name": "Premium Wine Selection",
         "description": "Curated selection of red, white, and rosé wines by the glass",
-        "price": 15,
+        "price": 20000,
         "category": "Wines"
       },
       {
         "name": "Cheese & Charcuterie Board",
         "description": "Artisan cheeses, cured meats, crackers, and condiments",
-        "price": 35,
+        "price": 20000,
         "category": "Bar Bites"
       },
       {
         "name": "Truffle Fries",
         "description": "Crispy fries tossed in truffle oil and parmesan",
-        "price": 14,
+        "price": 20000,
         "category": "Bar Bites"
       }
     ],
@@ -74,42 +80,48 @@
       "https://images.unsplash.com/photo-1551024506-0bccd828d307?w=800&q=80"
     ],
     "openHours": "6:00 PM – 12:00 AM",
-    "features": ["Whisky Library", "Cigar Lounge", "Jazz Music Nightly", "Private Seating", "Sommelier Available"],
+    "features": [
+      "Whisky Library",
+      "Cigar Lounge",
+      "Jazz Music Nightly",
+      "Private Seating",
+      "Sommelier Available"
+    ],
     "menu": [
       {
         "name": "Aged Macallan 18yr",
         "description": "Single malt scotch whisky, neat or on the rocks",
-        "price": 45,
+        "price": 20000,
         "category": "Premium Whisky"
       },
       {
         "name": "Hennessy VSOP",
         "description": "Classic cognac served neat",
-        "price": 28,
+        "price": 20000,
         "category": "Cognac & Brandy"
       },
       {
         "name": "Espresso Martini",
         "description": "Vodka, fresh espresso, coffee liqueur",
-        "price": 19,
+        "price": 20000,
         "category": "Cocktails"
       },
       {
         "name": "Negroni",
         "description": "Gin, sweet vermouth, Campari, orange peel",
-        "price": 18,
+        "price": 20000,
         "category": "Cocktails"
       },
       {
         "name": "Smoked Salmon Blinis",
         "description": "Mini buckwheat blinis with cream cheese and smoked salmon",
-        "price": 24,
+        "price": 20000,
         "category": "Bites"
       },
       {
         "name": "Oysters (6 pcs)",
         "description": "Fresh oysters with mignonette and lemon",
-        "price": 32,
+        "price": 20000,
         "category": "Bites"
       }
     ],
@@ -125,36 +137,42 @@
       "https://images.unsplash.com/photo-1551024506-0bccd828d307?w=800&q=80"
     ],
     "openHours": "9:00 AM – 7:00 PM",
-    "features": ["Poolside Service", "Frozen Drinks", "Healthy Options", "Sun Lounger Service", "Smoothies & Juices"],
+    "features": [
+      "Poolside Service",
+      "Frozen Drinks",
+      "Healthy Options",
+      "Sun Lounger Service",
+      "Smoothies & Juices"
+    ],
     "menu": [
       {
         "name": "Piña Colada",
         "description": "Rum, coconut cream, pineapple juice, served frozen",
-        "price": 16,
+        "price": 20000,
         "category": "Frozen Cocktails"
       },
       {
         "name": "Frozen Margarita",
         "description": "Tequila, triple sec, lime juice, frozen blend",
-        "price": 15,
+        "price": 20000,
         "category": "Frozen Cocktails"
       },
       {
         "name": "Tropical Green Smoothie",
         "description": "Spinach, mango, banana, coconut water, ginger",
-        "price": 12,
+        "price": 20000,
         "category": "Healthy Drinks"
       },
       {
         "name": "Club Sandwich",
         "description": "Triple-decker with chicken, bacon, lettuce, tomato",
-        "price": 18,
+        "price": 20000,
         "category": "Light Bites"
       },
       {
         "name": "Fresh Fruit Platter",
         "description": "Seasonal tropical fruits with yogurt dip",
-        "price": 14,
+        "price": 20000,
         "category": "Light Bites"
       }
     ],

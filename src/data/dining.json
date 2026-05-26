@@ -7,32 +7,82 @@
     "openHours": "Breakfast: 6:30–10:30 AM | Lunch: 12:00–3:00 PM | Dinner: 6:00–11:00 PM",
     "cuisine": "Continental & West African Fusion",
     "priceRange": "₦₦₦₦",
-    "features": ["Dress Code: Smart Casual", "Reservations Required", "Private Dining Room", "Sommelier Available", "Chef's Table Experience"],
+    "features": [
+      "Dress Code: Smart Casual",
+      "Reservations Required",
+      "Private Dining Room",
+      "Sommelier Available",
+      "Chef's Table Experience"
+    ],
     "menu": [
       {
         "section": "Starters",
         "items": [
-          { "name": "Suya-Spiced Prawns", "description": "Tiger prawns with suya spice, mango salsa, and herb oil", "price": 28 },
-          { "name": "Crab & Avocado Tower", "description": "Fresh crab meat, ripe avocado, citrus vinaigrette, micro herbs", "price": 32 },
-          { "name": "Palm Nut Bisque", "description": "Creamy palm nut soup, smoked crayfish oil, crispy plantain", "price": 18 },
-          { "name": "Beef Carpaccio", "description": "Thinly sliced Wagyu beef, truffle aioli, capers, rocket", "price": 35 }
+          {
+            "name": "Suya-Spiced Prawns",
+            "description": "Tiger prawns with suya spice, mango salsa, and herb oil",
+            "price": 20000
+          },
+          {
+            "name": "Crab & Avocado Tower",
+            "description": "Fresh crab meat, ripe avocado, citrus vinaigrette, micro herbs",
+            "price": 20000
+          },
+          {
+            "name": "Palm Nut Bisque",
+            "description": "Creamy palm nut soup, smoked crayfish oil, crispy plantain",
+            "price": 20000
+          },
+          {
+            "name": "Beef Carpaccio",
+            "description": "Thinly sliced Wagyu beef, truffle aioli, capers, rocket",
+            "price": 20000
+          }
         ]
       },
       {
         "section": "Main Courses",
         "items": [
-          { "name": "Grilled Sea Bass", "description": "Atlantic sea bass, jollof-spiced risotto, sautéed greens, lemon beurre blanc", "price": 65 },
-          { "name": "Lamb Rack", "description": "French-trimmed lamb rack, egusi crust, roasted root vegetables, red wine jus", "price": 78 },
-          { "name": "Ofe Akwu Chicken", "description": "Free-range chicken breast, palm butter sauce, plantain gratin, steamed vegetables", "price": 55 },
-          { "name": "Mushroom & Truffle Risotto", "description": "Wild mushroom medley, truffle oil, parmesan, crispy sage (V)", "price": 42 }
+          {
+            "name": "Grilled Sea Bass",
+            "description": "Atlantic sea bass, jollof-spiced risotto, sautéed greens, lemon beurre blanc",
+            "price": 20000
+          },
+          {
+            "name": "Lamb Rack",
+            "description": "French-trimmed lamb rack, egusi crust, roasted root vegetables, red wine jus",
+            "price": 20000
+          },
+          {
+            "name": "Ofe Akwu Chicken",
+            "description": "Free-range chicken breast, palm butter sauce, plantain gratin, steamed vegetables",
+            "price": 20000
+          },
+          {
+            "name": "Mushroom & Truffle Risotto",
+            "description": "Wild mushroom medley, truffle oil, parmesan, crispy sage (V)",
+            "price": 20000
+          }
         ]
       },
       {
         "section": "Desserts",
         "items": [
-          { "name": "Chocolate Fondant", "description": "Dark chocolate fondant, vanilla bean ice cream, salted caramel", "price": 18 },
-          { "name": "Tropical Pavlova", "description": "Crisp meringue, passion fruit curd, fresh mango, toasted coconut", "price": 16 },
-          { "name": "Cheese Selection", "description": "Artisan cheese board, quince paste, walnut crackers, fruit", "price": 24 }
+          {
+            "name": "Chocolate Fondant",
+            "description": "Dark chocolate fondant, vanilla bean ice cream, salted caramel",
+            "price": 20000
+          },
+          {
+            "name": "Tropical Pavlova",
+            "description": "Crisp meringue, passion fruit curd, fresh mango, toasted coconut",
+            "price": 20000
+          },
+          {
+            "name": "Cheese Selection",
+            "description": "Artisan cheese board, quince paste, walnut crackers, fruit",
+            "price": 20000
+          }
         ]
       }
     ]
@@ -45,30 +95,72 @@
     "openHours": "6:00 AM – 10:00 PM",
     "cuisine": "International & Café",
     "priceRange": "₦₦",
-    "features": ["Terrace Seating", "All-Day Menu", "Specialty Coffee", "Vegan Options", "Takeaway Available"],
+    "features": [
+      "Terrace Seating",
+      "All-Day Menu",
+      "Specialty Coffee",
+      "Vegan Options",
+      "Takeaway Available"
+    ],
     "menu": [
       {
         "section": "Breakfast",
         "items": [
-          { "name": "Full English Breakfast", "description": "Eggs, bacon, sausage, beans, toast, grilled tomato, mushrooms", "price": 22 },
-          { "name": "Avocado Toast", "description": "Sourdough, smashed avocado, poached eggs, chilli flakes, lemon", "price": 18 },
-          { "name": "Acai Bowl", "description": "Blended acai, granola, fresh berries, honey, chia seeds", "price": 16 }
+          {
+            "name": "Full English Breakfast",
+            "description": "Eggs, bacon, sausage, beans, toast, grilled tomato, mushrooms",
+            "price": 20000
+          },
+          {
+            "name": "Avocado Toast",
+            "description": "Sourdough, smashed avocado, poached eggs, chilli flakes, lemon",
+            "price": 20000
+          },
+          {
+            "name": "Acai Bowl",
+            "description": "Blended acai, granola, fresh berries, honey, chia seeds",
+            "price": 20000
+          }
         ]
       },
       {
         "section": "All-Day Menu",
         "items": [
-          { "name": "Grilled Chicken Caesar Salad", "description": "Romaine, parmesan, croutons, classic Caesar dressing", "price": 24 },
-          { "name": "Pandin Burger", "description": "Prime beef patty, cheddar, lettuce, tomato, special sauce, fries", "price": 28 },
-          { "name": "Pasta Arrabiata", "description": "Penne, spicy tomato sauce, garlic, fresh basil, parmesan (V)", "price": 20 }
+          {
+            "name": "Grilled Chicken Caesar Salad",
+            "description": "Romaine, parmesan, croutons, classic Caesar dressing",
+            "price": 20000
+          },
+          {
+            "name": "Pandin Burger",
+            "description": "Prime beef patty, cheddar, lettuce, tomato, special sauce, fries",
+            "price": 20000
+          },
+          {
+            "name": "Pasta Arrabiata",
+            "description": "Penne, spicy tomato sauce, garlic, fresh basil, parmesan (V)",
+            "price": 20000
+          }
         ]
       },
       {
         "section": "Coffee & Drinks",
         "items": [
-          { "name": "Specialty Coffee", "description": "Single origin espresso, flat white, cortado, pour-over", "price": 8 },
-          { "name": "Fresh Pressed Juices", "description": "Daily selection of cold-pressed juices", "price": 9 },
-          { "name": "Artisan Smoothies", "description": "Seasonal fruit and vegetable blends", "price": 11 }
+          {
+            "name": "Specialty Coffee",
+            "description": "Single origin espresso, flat white, cortado, pour-over",
+            "price": 20000
+          },
+          {
+            "name": "Fresh Pressed Juices",
+            "description": "Daily selection of cold-pressed juices",
+            "price": 20000
+          },
+          {
+            "name": "Artisan Smoothies",
+            "description": "Seasonal fruit and vegetable blends",
+            "price": 20000
+          }
         ]
       }
     ]
@@ -81,21 +173,47 @@
     "openHours": "10:00 AM – 6:00 PM",
     "cuisine": "Grill & Tropical",
     "priceRange": "₦₦₦",
-    "features": ["Poolside Location", "Live Grill Station", "Cocktail Service", "Family Friendly", "Sunlounger Dining"],
+    "features": [
+      "Poolside Location",
+      "Live Grill Station",
+      "Cocktail Service",
+      "Family Friendly",
+      "Sunlounger Dining"
+    ],
     "menu": [
       {
         "section": "From the Grill",
         "items": [
-          { "name": "BBQ Spare Ribs", "description": "Slow-cooked pork ribs, house BBQ glaze, coleslaw, corn", "price": 35 },
-          { "name": "Grilled Snapper", "description": "Whole grilled red snapper, jerk seasoning, tropical salsa, rice", "price": 40 },
-          { "name": "Mixed Grill Platter", "description": "Chicken skewers, beef kebab, lamb chop, grilled vegetables", "price": 55 }
+          {
+            "name": "BBQ Spare Ribs",
+            "description": "Slow-cooked pork ribs, house BBQ glaze, coleslaw, corn",
+            "price": 20000
+          },
+          {
+            "name": "Grilled Snapper",
+            "description": "Whole grilled red snapper, jerk seasoning, tropical salsa, rice",
+            "price": 20000
+          },
+          {
+            "name": "Mixed Grill Platter",
+            "description": "Chicken skewers, beef kebab, lamb chop, grilled vegetables",
+            "price": 20000
+          }
         ]
       },
       {
         "section": "Light Bites",
         "items": [
-          { "name": "Nachos Supreme", "description": "Tortilla chips, guacamole, salsa, cheese, jalapeños, sour cream", "price": 18 },
-          { "name": "Fish & Chips", "description": "Beer-battered fish, thick cut chips, tartar sauce, mushy peas", "price": 26 }
+          {
+            "name": "Nachos Supreme",
+            "description": "Tortilla chips, guacamole, salsa, cheese, jalapeños, sour cream",
+            "price": 20000
+          },
+          {
+            "name": "Fish & Chips",
+            "description": "Beer-battered fish, thick cut chips, tartar sauce, mushy peas",
+            "price": 20000
+          }
         ]
       }
     ]

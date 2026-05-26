@@ -69,7 +69,7 @@ export default function RoomCard({ room, basePath }: RoomCardProps) {
 
         <div className="flex items-center justify-between pt-4 border-t border-slate-100">
           <div>
-            <span className="text-2xl font-bold text-sky-700">${room.price}</span>
+            <span className="text-2xl font-bold text-sky-700">₦{room.price.toLocaleString()}</span>
             <span className="text-sm text-slate-400 ml-1">/ night</span>
           </div>
           <Link

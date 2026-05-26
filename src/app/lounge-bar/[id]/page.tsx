@@ -80,7 +80,7 @@ export default async function LoungeDetailPage(props: PageProps<"/lounge-bar/[id
                               <h4 className="font-semibold text-slate-800">{item.name}</h4>
                               <p className="text-sm text-slate-500 mt-0.5">{item.description}</p>
                             </div>
-                            <span className="text-sky-700 font-bold text-lg shrink-0">${item.price}</span>
+                            <span className="text-sky-700 font-bold text-lg shrink-0">₦{item.price.toLocaleString()}</span>
                           </div>
                         ))}
                     </div>

@@ -9,7 +9,6 @@ const navLinks = [
   { label: "Apartments", href: "/apartments" },
   { label: "Event Hall", href: "/event-hall" },
   { label: "Lounge & Bar", href: "/lounge-bar" },
-  { label: "Dining", href: "/dining" },
   { label: "Gallery", href: "/gallery" },
   { label: "About", href: "/about" },
   { label: "Contact", href: "/contact" },

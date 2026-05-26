@@ -60,7 +60,7 @@ export default async function EventHallDetailPage(props: PageProps<"/event-hall/
               {[
                 { label: "Max Capacity", value: `${hall.capacity} guests`, icon: "👥" },
                 { label: "Floor Space", value: `${hall.size} m²`, icon: "📐" },
-                { label: "Price", value: `$${hall.price.toLocaleString()}/day`, icon: "💰" },
+                { label: "Price", value: `₦${hall.price.toLocaleString()}/day`, icon: "💰" },
               ].map((d) => (
                 <div key={d.label} className="bg-slate-50 rounded-xl p-4 text-center">
                   <div className="text-2xl mb-1">{d.icon}</div>
@@ -111,7 +111,7 @@ export default async function EventHallDetailPage(props: PageProps<"/event-hall/
           <div className="lg:col-span-1">
             <div className="sticky top-24 bg-white rounded-2xl shadow-lg border border-slate-100 p-6">
               <div className="text-center mb-6">
-                <span className="text-4xl font-bold text-sky-700">${hall.price.toLocaleString()}</span>
+                <span className="text-4xl font-bold text-sky-700">₦{hall.price.toLocaleString()}</span>
                 <span className="text-slate-400 ml-2 text-sm">/ day</span>
               </div>
               <div className="space-y-3 mb-6">

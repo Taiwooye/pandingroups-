@@ -3,7 +3,7 @@
     "id": "studio-apartment",
     "name": "Studio Apartment",
     "description": "A chic, fully-furnished studio apartment ideal for solo travelers or couples. Features an open-plan living space with kitchenette and all modern conveniences.",
-    "price": 85,
+    "price": 20000,
     "priceUnit": "per night",
     "image": "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=800&q=80",
     "gallery": [
@@ -13,8 +13,20 @@
     "bedrooms": 0,
     "bathrooms": 1,
     "size": 35,
-    "features": ["Open Plan Living", "Kitchenette", "City View", "Free WiFi", "Smart TV"],
-    "amenities": ["Fully Equipped Kitchen", "Washing Machine", "Air Conditioning", "Work Desk", "In-room Safe"],
+    "features": [
+      "Open Plan Living",
+      "Kitchenette",
+      "City View",
+      "Free WiFi",
+      "Smart TV"
+    ],
+    "amenities": [
+      "Fully Equipped Kitchen",
+      "Washing Machine",
+      "Air Conditioning",
+      "Work Desk",
+      "In-room Safe"
+    ],
     "available": true,
     "type": "studio"
   },
@@ -22,7 +34,7 @@
     "id": "one-bedroom-apartment",
     "name": "1-Bedroom Apartment",
     "description": "A spacious one-bedroom apartment offering the comforts of home with hotel-grade services. Perfect for extended stays or family visits.",
-    "price": 145,
+    "price": 20000,
     "priceUnit": "per night",
     "image": "https://images.unsplash.com/photo-1493809842364-78817add7ffb?w=800&q=80",
     "gallery": [
@@ -33,8 +45,22 @@
     "bedrooms": 1,
     "bathrooms": 1,
     "size": 58,
-    "features": ["Separate Bedroom", "Full Kitchen", "Living Room", "Balcony", "Free WiFi"],
-    "amenities": ["Full Kitchen", "Washing Machine", "Dishwasher", "Air Conditioning", "Smart TV", "Work Desk", "Storage"],
+    "features": [
+      "Separate Bedroom",
+      "Full Kitchen",
+      "Living Room",
+      "Balcony",
+      "Free WiFi"
+    ],
+    "amenities": [
+      "Full Kitchen",
+      "Washing Machine",
+      "Dishwasher",
+      "Air Conditioning",
+      "Smart TV",
+      "Work Desk",
+      "Storage"
+    ],
     "available": true,
     "type": "1-bedroom"
   },
@@ -42,7 +68,7 @@
     "id": "two-bedroom-apartment",
     "name": "2-Bedroom Apartment",
     "description": "Our popular two-bedroom apartment provides ample space for families or groups, combining comfortable living with premium hotel amenities.",
-    "price": 220,
+    "price": 20000,
     "priceUnit": "per night",
     "image": "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=800&q=80",
     "gallery": [
@@ -53,8 +79,22 @@
     "bedrooms": 2,
     "bathrooms": 2,
     "size": 90,
-    "features": ["2 Master Bedrooms", "Full Kitchen", "Dining Area", "2 Bathrooms", "Panoramic Views"],
-    "amenities": ["Full Kitchen", "Washing Machine", "Dishwasher", "2 Smart TVs", "Air Conditioning", "In-room Safe", "Storage"],
+    "features": [
+      "2 Master Bedrooms",
+      "Full Kitchen",
+      "Dining Area",
+      "2 Bathrooms",
+      "Panoramic Views"
+    ],
+    "amenities": [
+      "Full Kitchen",
+      "Washing Machine",
+      "Dishwasher",
+      "2 Smart TVs",
+      "Air Conditioning",
+      "In-room Safe",
+      "Storage"
+    ],
     "available": true,
     "type": "2-bedroom"
   },
@@ -62,7 +102,7 @@
     "id": "three-bedroom-apartment",
     "name": "3-Bedroom Family Apartment",
     "description": "A luxurious three-bedroom apartment designed for families or corporate groups seeking a home-away-from-home with full hotel services.",
-    "price": 350,
+    "price": 20000,
     "priceUnit": "per night",
     "image": "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=800&q=80",
     "gallery": [
@@ -73,8 +113,23 @@
     "bedrooms": 3,
     "bathrooms": 3,
     "size": 140,
-    "features": ["3 Bedrooms", "Full Kitchen", "Dining Room", "Living Room", "3 Bathrooms", "Large Balcony"],
-    "amenities": ["Full Kitchen", "2 Washing Machines", "Dishwasher", "3 Smart TVs", "Air Conditioning", "Daily Housekeeping", "Concierge"],
+    "features": [
+      "3 Bedrooms",
+      "Full Kitchen",
+      "Dining Room",
+      "Living Room",
+      "3 Bathrooms",
+      "Large Balcony"
+    ],
+    "amenities": [
+      "Full Kitchen",
+      "2 Washing Machines",
+      "Dishwasher",
+      "3 Smart TVs",
+      "Air Conditioning",
+      "Daily Housekeeping",
+      "Concierge"
+    ],
     "available": true,
     "type": "3-bedroom"
   },
@@ -82,7 +137,7 @@
     "id": "penthouse-apartment",
     "name": "Penthouse Apartment",
     "description": "An exclusive rooftop penthouse apartment with breathtaking 360-degree views, a private terrace, and uncompromising luxury for the most discerning guests.",
-    "price": 750,
+    "price": 20000,
     "priceUnit": "per night",
     "image": "https://images.unsplash.com/photo-1629140727571-9b5c6f6267b4?w=800&q=80",
     "gallery": [
@@ -92,8 +147,22 @@
     "bedrooms": 4,
     "bathrooms": 4,
     "size": 280,
-    "features": ["4 Bedrooms", "Private Rooftop Terrace", "360° Views", "Chef's Kitchen", "Entertainment Room"],
-    "amenities": ["Gourmet Kitchen", "Smart Home System", "Home Theatre", "Jacuzzi", "Sauna", "Private Gym", "Butler Service"],
+    "features": [
+      "4 Bedrooms",
+      "Private Rooftop Terrace",
+      "360° Views",
+      "Chef's Kitchen",
+      "Entertainment Room"
+    ],
+    "amenities": [
+      "Gourmet Kitchen",
+      "Smart Home System",
+      "Home Theatre",
+      "Jacuzzi",
+      "Sauna",
+      "Private Gym",
+      "Butler Service"
+    ],
     "available": false,
     "type": "penthouse"
   }

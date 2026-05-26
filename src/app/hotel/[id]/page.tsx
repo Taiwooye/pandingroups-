@@ -126,7 +126,7 @@ export default async function HotelRoomPage(props: PageProps<"/hotel/[id]">) {
           <div className="lg:col-span-1">
             <div className="sticky top-24 bg-white rounded-2xl shadow-lg border border-slate-100 p-6">
               <div className="text-center mb-6">
-                <span className="text-4xl font-bold text-sky-700">${room.price}</span>
+                <span className="text-4xl font-bold text-sky-700">₦{room.price.toLocaleString()}</span>
                 <span className="text-slate-400 ml-2 text-sm">/ night</span>
               </div>
 
@@ -198,7 +198,7 @@ export default async function HotelRoomPage(props: PageProps<"/hotel/[id]">) {
                 <div className="p-4">
                   <h3 className="font-bold text-slate-800 mb-1">{r.name}</h3>
                   <div className="flex items-center justify-between">
-                    <span className="text-sky-700 font-bold">${r.price}<span className="text-slate-400 text-xs font-normal">/night</span></span>
+                    <span className="text-sky-700 font-bold">₦{r.price.toLocaleString()}<span className="text-slate-400 text-xs font-normal">/night</span></span>
                     <Link href={`/hotel/${r.id}`} className="text-sky-600 text-sm font-semibold hover:text-sky-700">View →</Link>
                   </div>
                 </div>

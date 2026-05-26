@@ -73,7 +73,7 @@ export default function DiningPage() {
                                   <span className="font-medium text-slate-700">{item.name}</span>
                                   <span className="text-slate-400 text-xs ml-2">— {item.description.slice(0, 50)}{item.description.length > 50 ? "..." : ""}</span>
                                 </div>
-                                <span className="text-sky-700 font-bold shrink-0">${item.price}</span>
+                                <span className="text-sky-700 font-bold shrink-0">₦{item.price.toLocaleString()}</span>
                               </div>
                             ))}
                           </div>

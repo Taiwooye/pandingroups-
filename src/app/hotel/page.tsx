@@ -1,17 +1,21 @@
-import type { Metadata } from "next";
+"use client";
+
+import { useState } from "react";
 import PageHero from "@/components/PageHero";
 import RoomCard from "@/components/RoomCard";
 import roomsData from "@/data/hotel-rooms.json";
 import { Room } from "@/types";
 
-export const metadata: Metadata = {
-  title: "Hotel Rooms & Suites",
-  description: "Explore our collection of luxury hotel rooms and suites at PandinGroups. From standard city view rooms to exclusive penthouse suites.",
-};
-
 const rooms = roomsData as Room[];
+const categories = ["All", "Standard", "Deluxe", "Suite", "Penthouse"] as const;
 
 export default function HotelPage() {
+  const [active, setActive] = useState("All");
+
+  const filtered = active === "All"
+    ? rooms
+    : rooms.filter((r) => r.category.toLowerCase() === active.toLowerCase());
+
   return (
     <div>
       <PageHero
@@ -27,26 +31,36 @@ export default function HotelPage() {
           {/* Filter bar */}
           <div className="flex flex-wrap items-center gap-3 mb-10 p-4 bg-slate-50 rounded-xl">
             <span className="text-sm font-semibold text-slate-600 mr-2">Filter by:</span>
-            {["All", "Standard", "Deluxe", "Suite", "Penthouse"].map((cat) => (
-              <span
+            {categories.map((cat) => (
+              <button
                 key={cat}
-                className={`px-4 py-1.5 rounded-full text-sm font-medium cursor-pointer transition-colors ${
-                  cat === "All"
+                onClick={() => setActive(cat)}
+                className={`px-4 py-1.5 rounded-full text-sm font-medium transition-colors ${
+                  active === cat
                     ? "bg-[#7B2D3A] text-white"
                     : "bg-white text-slate-600 border border-slate-200 hover:border-sky-300 hover:text-sky-600"
                 }`}
               >
                 {cat}
-              </span>
+              </button>
             ))}
-            <span className="ml-auto text-sm text-slate-500">{rooms.length} rooms found</span>
+            <span className="ml-auto text-sm text-slate-500">
+              {filtered.length} {filtered.length === 1 ? "room" : "rooms"} found
+            </span>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {rooms.map((room) => (
-              <RoomCard key={room.id} room={room} basePath="/hotel" />
-            ))}
-          </div>
+          {filtered.length === 0 ? (
+            <div className="text-center py-20 text-slate-400">
+              <div className="text-5xl mb-4">🛏️</div>
+              <p className="font-medium">No rooms in this category right now.</p>
+            </div>
+          ) : (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {filtered.map((room) => (
+                <RoomCard key={room.id} room={room} basePath="/hotel" />
+              ))}
+            </div>
+          )}
         </div>
       </section>
 

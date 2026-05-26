@@ -3,7 +3,7 @@
     "id": "standard-city-view",
     "name": "Standard City View",
     "description": "A comfortable room with stunning city panorama views, featuring modern furnishings and all essential amenities for a pleasant stay.",
-    "price": 120,
+    "price": 20000,
     "priceUnit": "per night",
     "image": "https://images.unsplash.com/photo-1611892440504-42a792e24d32?w=800&q=80",
     "gallery": [
@@ -13,8 +13,21 @@
     ],
     "capacity": 2,
     "size": 28,
-    "features": ["King Bed", "City View", "Free WiFi", "Air Conditioning", "En-suite Bathroom"],
-    "amenities": ["Smart TV", "Mini Fridge", "Coffee Maker", "In-room Safe", "Work Desk", "Wardrobe"],
+    "features": [
+      "King Bed",
+      "City View",
+      "Free WiFi",
+      "Air Conditioning",
+      "En-suite Bathroom"
+    ],
+    "amenities": [
+      "Smart TV",
+      "Mini Fridge",
+      "Coffee Maker",
+      "In-room Safe",
+      "Work Desk",
+      "Wardrobe"
+    ],
     "available": true,
     "category": "standard"
   },
@@ -22,7 +35,7 @@
     "id": "deluxe-pool-view",
     "name": "Deluxe Pool View",
     "description": "Spacious deluxe room overlooking our resort-style pool, furnished with premium bedding and stylish décor for an elevated experience.",
-    "price": 185,
+    "price": 20000,
     "priceUnit": "per night",
     "image": "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=800&q=80",
     "gallery": [
@@ -32,8 +45,21 @@
     ],
     "capacity": 2,
     "size": 38,
-    "features": ["King Bed", "Pool View", "Balcony", "Free WiFi", "Bathtub & Shower"],
-    "amenities": ["Smart TV", "Mini Bar", "Coffee Maker", "In-room Safe", "Seating Area", "Premium Toiletries"],
+    "features": [
+      "King Bed",
+      "Pool View",
+      "Balcony",
+      "Free WiFi",
+      "Bathtub & Shower"
+    ],
+    "amenities": [
+      "Smart TV",
+      "Mini Bar",
+      "Coffee Maker",
+      "In-room Safe",
+      "Seating Area",
+      "Premium Toiletries"
+    ],
     "available": true,
     "category": "deluxe"
   },
@@ -41,7 +67,7 @@
     "id": "junior-suite",
     "name": "Junior Suite",
     "description": "A beautifully appointed junior suite featuring a separate living area, premium furnishings, and sweeping views of the surrounding landscape.",
-    "price": 260,
+    "price": 20000,
     "priceUnit": "per night",
     "image": "https://images.unsplash.com/photo-1590490360182-c33d57733427?w=800&q=80",
     "gallery": [
@@ -51,8 +77,22 @@
     ],
     "capacity": 3,
     "size": 55,
-    "features": ["King Bed", "Separate Living Room", "Panoramic View", "Private Balcony", "Jacuzzi"],
-    "amenities": ["55\" Smart TV", "Full Mini Bar", "Espresso Machine", "In-room Safe", "Sofa Set", "Luxury Toiletries", "Bathrobes"],
+    "features": [
+      "King Bed",
+      "Separate Living Room",
+      "Panoramic View",
+      "Private Balcony",
+      "Jacuzzi"
+    ],
+    "amenities": [
+      "55\" Smart TV",
+      "Full Mini Bar",
+      "Espresso Machine",
+      "In-room Safe",
+      "Sofa Set",
+      "Luxury Toiletries",
+      "Bathrobes"
+    ],
     "available": true,
     "category": "suite"
   },
@@ -60,7 +100,7 @@
     "id": "executive-suite",
     "name": "Executive Suite",
     "description": "Our signature executive suite offers an unparalleled level of luxury with a spacious living room, private dining area, and exquisite finishes.",
-    "price": 420,
+    "price": 20000,
     "priceUnit": "per night",
     "image": "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=800&q=80",
     "gallery": [
@@ -70,8 +110,22 @@
     ],
     "capacity": 4,
     "size": 80,
-    "features": ["King Bed", "Living & Dining Area", "Panoramic Views", "Private Terrace", "Luxury Bathroom"],
-    "amenities": ["65\" Smart TV", "Full Mini Bar", "Premium Espresso Machine", "Walk-in Wardrobe", "Butler Service", "Luxury Toiletries", "Bathrobes & Slippers"],
+    "features": [
+      "King Bed",
+      "Living & Dining Area",
+      "Panoramic Views",
+      "Private Terrace",
+      "Luxury Bathroom"
+    ],
+    "amenities": [
+      "65\" Smart TV",
+      "Full Mini Bar",
+      "Premium Espresso Machine",
+      "Walk-in Wardrobe",
+      "Butler Service",
+      "Luxury Toiletries",
+      "Bathrobes & Slippers"
+    ],
     "available": true,
     "category": "suite"
   },
@@ -79,7 +133,7 @@
     "id": "standard-double",
     "name": "Standard Double Room",
     "description": "A well-appointed double room perfect for couples or solo travelers seeking comfort and value without compromising on quality.",
-    "price": 95,
+    "price": 20000,
     "priceUnit": "per night",
     "image": "https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=800&q=80",
     "gallery": [
@@ -88,8 +142,20 @@
     ],
     "capacity": 2,
     "size": 25,
-    "features": ["Double Bed", "Garden View", "Free WiFi", "Air Conditioning", "Private Bathroom"],
-    "amenities": ["TV", "Tea & Coffee Maker", "Hair Dryer", "In-room Safe", "Wardrobe"],
+    "features": [
+      "Double Bed",
+      "Garden View",
+      "Free WiFi",
+      "Air Conditioning",
+      "Private Bathroom"
+    ],
+    "amenities": [
+      "TV",
+      "Tea & Coffee Maker",
+      "Hair Dryer",
+      "In-room Safe",
+      "Wardrobe"
+    ],
     "available": true,
     "category": "standard"
   },
@@ -97,7 +163,7 @@
     "id": "penthouse-suite",
     "name": "Penthouse Suite",
     "description": "The crown jewel of PandinGroups — a two-floor penthouse suite with 360-degree views, a private pool, personal butler, and the ultimate in luxury living.",
-    "price": 1200,
+    "price": 20000,
     "priceUnit": "per night",
     "image": "https://images.unsplash.com/photo-1629140727571-9b5c6f6267b4?w=800&q=80",
     "gallery": [
@@ -107,8 +173,22 @@
     ],
     "capacity": 6,
     "size": 300,
-    "features": ["2 Master Bedrooms", "360° Views", "Private Rooftop Pool", "Personal Butler", "Private Chef Kitchen"],
-    "amenities": ["Home Theatre", "Full Bar", "Jacuzzi", "Private Gym", "Luxury Toiletries", "Champagne on Arrival", "Airport Transfer"],
+    "features": [
+      "2 Master Bedrooms",
+      "360° Views",
+      "Private Rooftop Pool",
+      "Personal Butler",
+      "Private Chef Kitchen"
+    ],
+    "amenities": [
+      "Home Theatre",
+      "Full Bar",
+      "Jacuzzi",
+      "Private Gym",
+      "Luxury Toiletries",
+      "Champagne on Arrival",
+      "Airport Transfer"
+    ],
     "available": false,
     "category": "penthouse"
   }

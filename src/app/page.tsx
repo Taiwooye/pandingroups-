@@ -104,14 +104,14 @@ export default function HomePage() {
               description="Luxurious rooms and suites with stunning views and premium amenities."
               image="https://images.unsplash.com/photo-1611892440504-42a792e24d32?w=800&q=80"
               href="/hotel"
-              badge="From $95/night"
+              badge="From ₦20,000/night"
             />
             <ServiceCard
               title="Apartments"
               description="Fully furnished serviced apartments for short and long-term stays."
               image="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=800&q=80"
               href="/apartments"
-              badge="From $85/night"
+              badge="From ₦20,000/night"
             />
             <ServiceCard
               title="Event Hall"
@@ -161,7 +161,7 @@ export default function HomePage() {
                   <p className="text-sm text-slate-500 line-clamp-2 mb-4">{room.description}</p>
                   <div className="flex items-center justify-between">
                     <div>
-                      <span className="text-xl font-bold text-sky-700">${room.price}</span>
+                      <span className="text-xl font-bold text-sky-700">₦{room.price.toLocaleString()}</span>
                       <span className="text-sm text-slate-400 ml-1">/ night</span>
                     </div>
                     <Link href={`/hotel/${room.id}`} className="px-4 py-2 bg-[#7B2D3A] text-white text-sm font-semibold rounded-lg hover:bg-[#5C1D28] transition-colors">
