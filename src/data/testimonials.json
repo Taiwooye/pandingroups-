@@ -1,0 +1,47 @@
+[
+  {
+    "id": "t1",
+    "name": "Sarah Thompson",
+    "role": "Business Traveler",
+    "avatar": "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=100&q=80",
+    "rating": 5,
+    "review": "PandinGroups exceeded every expectation. The executive suite was immaculate, and the staff's attention to detail was extraordinary. The rooftop bar is an absolute must-visit for sunset views.",
+    "date": "March 2025"
+  },
+  {
+    "id": "t2",
+    "name": "James & Emma Okafor",
+    "role": "Honeymooners",
+    "avatar": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&q=80",
+    "rating": 5,
+    "review": "We chose PandinGroups for our honeymoon and it was the best decision we made. The Junior Suite with pool view was breathtaking, and the team arranged special surprises throughout our stay.",
+    "date": "January 2025"
+  },
+  {
+    "id": "t3",
+    "name": "Dr. Adebayo Mensah",
+    "role": "Conference Delegate",
+    "avatar": "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&q=80",
+    "rating": 5,
+    "review": "We hosted our annual medical conference at the Executive Conference Center. The AV setup was flawless, catering was world-class, and the team's professionalism was unmatched.",
+    "date": "February 2025"
+  },
+  {
+    "id": "t4",
+    "name": "Chioma Nwosu",
+    "role": "Family Vacation",
+    "avatar": "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=100&q=80",
+    "rating": 5,
+    "review": "Our family of five had the most wonderful week in the 3-bedroom apartment. The kids loved the pool, and we appreciated having a full kitchen. The housekeeping team was incredibly thoughtful.",
+    "date": "April 2025"
+  },
+  {
+    "id": "t5",
+    "name": "Marcus Reinholt",
+    "role": "Solo Traveler",
+    "avatar": "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=100&q=80",
+    "rating": 5,
+    "review": "Stayed in the studio apartment for a two-week work trip. Felt completely at home. Fast WiFi, excellent coffee, and the Ocean Lounge became my evening ritual. Will definitely return.",
+    "date": "May 2025"
+  }
+]

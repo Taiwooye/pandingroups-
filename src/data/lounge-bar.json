@@ -1,0 +1,163 @@
+[
+  {
+    "id": "azure-sky-bar",
+    "name": "Azure Sky Bar",
+    "description": "Perched on the top floor with panoramic city views, Azure Sky Bar is the place to be for sunset cocktails, craft beers, and an upscale atmosphere that defines luxury.",
+    "image": "https://images.unsplash.com/photo-1572116469696-31de0f17cc34?w=800&q=80",
+    "gallery": [
+      "https://images.unsplash.com/photo-1572116469696-31de0f17cc34?w=800&q=80",
+      "https://images.unsplash.com/photo-1551024506-0bccd828d307?w=800&q=80",
+      "https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?w=800&q=80"
+    ],
+    "openHours": "4:00 PM – 2:00 AM",
+    "features": ["Rooftop Views", "Craft Cocktails", "Live Music (Fri & Sat)", "Private Booths", "Happy Hour 4–7 PM"],
+    "menu": [
+      {
+        "name": "Azure Sunset",
+        "description": "Tequila, passion fruit, lime juice, and a hint of chili",
+        "price": 18,
+        "category": "Signature Cocktails"
+      },
+      {
+        "name": "Pandin Mule",
+        "description": "Premium vodka, ginger beer, fresh mint, lime",
+        "price": 16,
+        "category": "Signature Cocktails"
+      },
+      {
+        "name": "Blue Lagoon Spritz",
+        "description": "Blue curaçao, prosecco, elderflower, soda",
+        "price": 20,
+        "category": "Signature Cocktails"
+      },
+      {
+        "name": "Old Fashioned",
+        "description": "Bourbon, Angostura bitters, sugar, orange zest",
+        "price": 22,
+        "category": "Classic Cocktails"
+      },
+      {
+        "name": "Craft IPA",
+        "description": "Local craft Indian Pale Ale on tap",
+        "price": 10,
+        "category": "Beers & Ciders"
+      },
+      {
+        "name": "Premium Wine Selection",
+        "description": "Curated selection of red, white, and rosé wines by the glass",
+        "price": 15,
+        "category": "Wines"
+      },
+      {
+        "name": "Cheese & Charcuterie Board",
+        "description": "Artisan cheeses, cured meats, crackers, and condiments",
+        "price": 35,
+        "category": "Bar Bites"
+      },
+      {
+        "name": "Truffle Fries",
+        "description": "Crispy fries tossed in truffle oil and parmesan",
+        "price": 14,
+        "category": "Bar Bites"
+      }
+    ],
+    "available": true
+  },
+  {
+    "id": "the-ocean-lounge",
+    "name": "The Ocean Lounge",
+    "description": "An intimate, sophisticated lounge on the ground floor exuding relaxed elegance. Perfect for after-dinner drinks, business conversations, or a quiet evening with a fine whisky.",
+    "image": "https://images.unsplash.com/photo-1470337458703-46ad1756a187?w=800&q=80",
+    "gallery": [
+      "https://images.unsplash.com/photo-1470337458703-46ad1756a187?w=800&q=80",
+      "https://images.unsplash.com/photo-1572116469696-31de0f17cc34?w=800&q=80",
+      "https://images.unsplash.com/photo-1551024506-0bccd828d307?w=800&q=80"
+    ],
+    "openHours": "6:00 PM – 12:00 AM",
+    "features": ["Whisky Library", "Cigar Lounge", "Jazz Music Nightly", "Private Seating", "Sommelier Available"],
+    "menu": [
+      {
+        "name": "Aged Macallan 18yr",
+        "description": "Single malt scotch whisky, neat or on the rocks",
+        "price": 45,
+        "category": "Premium Whisky"
+      },
+      {
+        "name": "Hennessy VSOP",
+        "description": "Classic cognac served neat",
+        "price": 28,
+        "category": "Cognac & Brandy"
+      },
+      {
+        "name": "Espresso Martini",
+        "description": "Vodka, fresh espresso, coffee liqueur",
+        "price": 19,
+        "category": "Cocktails"
+      },
+      {
+        "name": "Negroni",
+        "description": "Gin, sweet vermouth, Campari, orange peel",
+        "price": 18,
+        "category": "Cocktails"
+      },
+      {
+        "name": "Smoked Salmon Blinis",
+        "description": "Mini buckwheat blinis with cream cheese and smoked salmon",
+        "price": 24,
+        "category": "Bites"
+      },
+      {
+        "name": "Oysters (6 pcs)",
+        "description": "Fresh oysters with mignonette and lemon",
+        "price": 32,
+        "category": "Bites"
+      }
+    ],
+    "available": true
+  },
+  {
+    "id": "pool-bar",
+    "name": "Aqua Pool Bar",
+    "description": "Enjoy refreshing drinks and light bites right at the poolside. Whether you're taking a break from swimming or soaking up the sun, Aqua Pool Bar has the perfect refreshment.",
+    "image": "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=800&q=80",
+    "gallery": [
+      "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=800&q=80",
+      "https://images.unsplash.com/photo-1551024506-0bccd828d307?w=800&q=80"
+    ],
+    "openHours": "9:00 AM – 7:00 PM",
+    "features": ["Poolside Service", "Frozen Drinks", "Healthy Options", "Sun Lounger Service", "Smoothies & Juices"],
+    "menu": [
+      {
+        "name": "Piña Colada",
+        "description": "Rum, coconut cream, pineapple juice, served frozen",
+        "price": 16,
+        "category": "Frozen Cocktails"
+      },
+      {
+        "name": "Frozen Margarita",
+        "description": "Tequila, triple sec, lime juice, frozen blend",
+        "price": 15,
+        "category": "Frozen Cocktails"
+      },
+      {
+        "name": "Tropical Green Smoothie",
+        "description": "Spinach, mango, banana, coconut water, ginger",
+        "price": 12,
+        "category": "Healthy Drinks"
+      },
+      {
+        "name": "Club Sandwich",
+        "description": "Triple-decker with chicken, bacon, lettuce, tomato",
+        "price": 18,
+        "category": "Light Bites"
+      },
+      {
+        "name": "Fresh Fruit Platter",
+        "description": "Seasonal tropical fruits with yogurt dip",
+        "price": 14,
+        "category": "Light Bites"
+      }
+    ],
+    "available": true
+  }
+]

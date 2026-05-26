@@ -1,0 +1,70 @@
+import type { Metadata } from "next";
+import PageHero from "@/components/PageHero";
+import RoomCard from "@/components/RoomCard";
+import roomsData from "@/data/hotel-rooms.json";
+import { Room } from "@/types";
+
+export const metadata: Metadata = {
+  title: "Hotel Rooms & Suites",
+  description: "Explore our collection of luxury hotel rooms and suites at PandinGroups. From standard city view rooms to exclusive penthouse suites.",
+};
+
+const rooms = roomsData as Room[];
+
+export default function HotelPage() {
+  return (
+    <div>
+      <PageHero
+        title="Hotel Rooms & Suites"
+        subtitle="Discover our curated collection of luxurious accommodations, each designed to deliver comfort and elegance."
+        image="https://images.unsplash.com/photo-1611892440504-42a792e24d32?w=1600&q=80"
+        breadcrumbs={[{ label: "Home", href: "/" }, { label: "Hotel" }]}
+        height="md"
+      />
+
+      <section className="py-16 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          {/* Filter bar */}
+          <div className="flex flex-wrap items-center gap-3 mb-10 p-4 bg-slate-50 rounded-xl">
+            <span className="text-sm font-semibold text-slate-600 mr-2">Filter by:</span>
+            {["All", "Standard", "Deluxe", "Suite", "Penthouse"].map((cat) => (
+              <span
+                key={cat}
+                className={`px-4 py-1.5 rounded-full text-sm font-medium cursor-pointer transition-colors ${
+                  cat === "All"
+                    ? "bg-sky-600 text-white"
+                    : "bg-white text-slate-600 border border-slate-200 hover:border-sky-300 hover:text-sky-600"
+                }`}
+              >
+                {cat}
+              </span>
+            ))}
+            <span className="ml-auto text-sm text-slate-500">{rooms.length} rooms found</span>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {rooms.map((room) => (
+              <RoomCard key={room.id} room={room} basePath="/hotel" />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Info Banner */}
+      <section className="py-14 bg-sky-50">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h2 className="text-2xl font-bold text-slate-800 mb-3">Need Help Choosing?</h2>
+          <p className="text-slate-500 mb-6">Our hospitality team is available 24/7 to help you find the perfect room for your stay.</p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <a href="tel:+2341234567890" className="px-6 py-3 bg-sky-600 text-white font-semibold rounded-xl hover:bg-sky-700 transition-colors">
+              Call Us Now
+            </a>
+            <a href="/contact" className="px-6 py-3 bg-white text-sky-600 font-semibold rounded-xl border border-sky-200 hover:bg-sky-50 transition-colors">
+              Send an Enquiry
+            </a>
+          </div>
+        </div>
+      </section>
+    </div>
+  );
+}
