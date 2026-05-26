@@ -53,7 +53,7 @@ export default function ContactPage() {
                         </svg>
                       ),
                       title: "Our Location",
-                      detail: "14 Victoria Island Boulevard, Lagos, Nigeria",
+                      detail: "Iyana Church, Off Iwo Road, Ibadan, Oyo State 200108, Nigeria",
                     },
                     {
                       icon: (
@@ -112,7 +112,7 @@ export default function ContactPage() {
                       </svg>
                     </div>
                     <p className="text-xs font-semibold text-slate-700">PandinGroups Hotel</p>
-                    <p className="text-xs text-slate-500">Victoria Island, Lagos</p>
+                    <p className="text-xs text-slate-500">Iyana Church, Ibadan</p>
                   </div>
                 </div>
               </div>

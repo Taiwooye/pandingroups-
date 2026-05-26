@@ -41,7 +41,6 @@ export default function Footer() {
                 { label: "Apartments", href: "/apartments" },
                 { label: "Event Hall", href: "/event-hall" },
                 { label: "Lounge & Bar", href: "/lounge-bar" },
-                { label: "Dining", href: "/dining" },
               ].map((link) => (
                 <li key={link.href}>
                   <Link href={link.href} className="text-sm text-slate-400 hover:text-sky-400 transition-colors">
@@ -60,8 +59,7 @@ export default function Footer() {
                 { label: "About Us", href: "/about" },
                 { label: "Gallery", href: "/gallery" },
                 { label: "Contact Us", href: "/contact" },
-                { label: "Careers", href: "#" },
-                { label: "Privacy Policy", href: "#" },
+                { label: "Book Now", href: "/book" },
               ].map((link) => (
                 <li key={link.label}>
                   <Link href={link.href} className="text-sm text-slate-400 hover:text-sky-400 transition-colors">
@@ -81,7 +79,7 @@ export default function Footer() {
                   <path strokeLinecap="round" strokeLinejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                   <path strokeLinecap="round" strokeLinejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                 </svg>
-                <span className="text-sm text-slate-400">14 Victoria Island Boulevard, Lagos, Nigeria</span>
+                <span className="text-sm text-slate-400">Iyana Church, Off Iwo Road, Ibadan, Oyo State 200108, Nigeria</span>
               </li>
               <li className="flex items-center gap-3">
                 <svg className="w-4 h-4 text-sky-500 shrink-0" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">

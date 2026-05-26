@@ -43,12 +43,6 @@ export default async function LoungeDetailPage(props: PageProps<"/lounge-bar/[id
             <span className={`px-3 py-1 rounded-full text-xs font-semibold ${lounge.available ? "bg-green-500/80 text-white" : "bg-red-500/80 text-white"}`}>
               {lounge.available ? "Open" : "Closed"}
             </span>
-            <span className="text-white/80 text-sm flex items-center gap-1.5">
-              <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-              </svg>
-              {lounge.openHours}
-            </span>
           </div>
         </div>
       </div>
@@ -137,12 +131,6 @@ export default async function LoungeDetailPage(props: PageProps<"/lounge-bar/[id
                 Reserve a Table
               </Link>
               <div className="mt-5 pt-5 border-t border-slate-700 space-y-2">
-                <div className="flex items-center gap-2 text-sm text-slate-300">
-                  <svg className="w-4 h-4 text-sky-400" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                  </svg>
-                  {lounge.openHours}
-                </div>
                 <div className="flex items-center gap-2 text-sm text-slate-300">
                   <svg className="w-4 h-4 text-sky-400" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />

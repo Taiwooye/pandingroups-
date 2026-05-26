@@ -25,21 +25,11 @@ export default function EventHallPage() {
 
       <section className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          {/* Event types */}
-          <div className="flex flex-wrap items-center gap-3 mb-10 p-4 bg-slate-50 rounded-xl">
-            <span className="text-sm font-semibold text-slate-600 mr-2">Event type:</span>
-            {["All Events", "Weddings", "Corporate", "Conferences", "Parties", "Galas"].map((type) => (
-              <span
-                key={type}
-                className={`px-4 py-1.5 rounded-full text-sm font-medium cursor-pointer transition-colors ${
-                  type === "All Events"
-                    ? "bg-[#7B2D3A] text-white"
-                    : "bg-white text-slate-600 border border-slate-200 hover:border-sky-300 hover:text-sky-600"
-                }`}
-              >
-                {type}
-              </span>
-            ))}
+          <div className="flex items-center justify-between mb-8">
+            <div>
+              <h2 className="text-2xl font-bold text-slate-800">Available Venues</h2>
+              <p className="text-slate-500 text-sm mt-1">{halls.filter(h => h.available).length} of {halls.length} venues currently available</p>
+            </div>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">

@@ -111,8 +111,34 @@ export default function ApartmentsPage() {
         </div>
       </section>
 
-      {/* Benefits Banner */}
+      {/* Facilities */}
       <section className="py-14 bg-slate-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-10">
+            <span className="text-sky-600 text-sm font-semibold uppercase tracking-wider">Included With Your Stay</span>
+            <h2 className="text-2xl font-bold text-slate-800 mt-2">Apartment Facilities</h2>
+          </div>
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-5">
+            {[
+              { icon: "🏊", title: "Swimming Pool", desc: "Outdoor heated pool" },
+              { icon: "🎮", title: "Games Room", desc: "Pool, ping-pong & more" },
+              { icon: "🏋️", title: "Fitness Center", desc: "24-hour gym access" },
+              { icon: "🏠", title: "Full Kitchen", desc: "Fully equipped kitchen" },
+              { icon: "🛎️", title: "Concierge", desc: "24/7 personal service" },
+              { icon: "🔐", title: "Key-Card Access", desc: "Secure entry system" },
+            ].map((f) => (
+              <div key={f.title} className="bg-white rounded-2xl p-5 text-center shadow-sm hover:shadow-md transition-shadow">
+                <div className="text-3xl mb-2">{f.icon}</div>
+                <div className="font-bold text-slate-800 text-sm mb-0.5">{f.title}</div>
+                <div className="text-xs text-slate-500">{f.desc}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Benefits Banner */}
+      <section className="py-14 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
             {[

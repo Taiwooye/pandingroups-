@@ -50,8 +50,34 @@ export default function HotelPage() {
         </div>
       </section>
 
-      {/* Info Banner */}
+      {/* Facilities */}
       <section className="py-14 bg-slate-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-10">
+            <span className="text-sky-600 text-sm font-semibold uppercase tracking-wider">Included With Your Stay</span>
+            <h2 className="text-2xl font-bold text-slate-800 mt-2">Hotel Facilities</h2>
+          </div>
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-5">
+            {[
+              { icon: "🏊", title: "Swimming Pool", desc: "Outdoor heated pool" },
+              { icon: "🎮", title: "Games Room", desc: "Pool, ping-pong & more" },
+              { icon: "🏋️", title: "Fitness Center", desc: "24-hour gym access" },
+              { icon: "💆", title: "Spa & Sauna", desc: "Full-service wellness" },
+              { icon: "🍽️", title: "Restaurant", desc: "Fine dining on-site" },
+              { icon: "🚗", title: "Free Parking", desc: "Secure valet parking" },
+            ].map((f) => (
+              <div key={f.title} className="bg-white rounded-2xl p-5 text-center shadow-sm hover:shadow-md transition-shadow">
+                <div className="text-3xl mb-2">{f.icon}</div>
+                <div className="font-bold text-slate-800 text-sm mb-0.5">{f.title}</div>
+                <div className="text-xs text-slate-500">{f.desc}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Info Banner */}
+      <section className="py-14 bg-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-2xl font-bold text-slate-800 mb-3">Need Help Choosing?</h2>
           <p className="text-slate-500 mb-6">Our hospitality team is available 24/7 to help you find the perfect room for your stay.</p>

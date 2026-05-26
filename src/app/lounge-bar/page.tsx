@@ -45,13 +45,6 @@ export default function LoungeBarPage() {
                   <h2 className="text-2xl font-bold text-slate-800 mb-2">{lounge.name}</h2>
                   <p className="text-slate-500 text-sm mb-5 leading-relaxed">{lounge.description}</p>
 
-                  <div className="flex items-center gap-2 mb-4 text-sm text-slate-600">
-                    <svg className="w-4 h-4 text-sky-500" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                    </svg>
-                    <span className="font-medium">{lounge.openHours}</span>
-                  </div>
-
                   <div className="flex flex-wrap gap-2 mb-6">
                     {lounge.features.map((f) => (
                       <span key={f} className="px-3 py-1 bg-sky-50 text-sky-700 text-xs rounded-full font-medium">{f}</span>
