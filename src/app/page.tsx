@@ -58,7 +58,7 @@ export default function HomePage() {
                 Explore Rooms
               </Link>
               <Link
-                href="/contact"
+                href="/book"
                 className="px-6 py-3 bg-white/10 backdrop-blur-sm text-white font-semibold rounded-xl border border-white/30 hover:bg-white/20 transition-colors"
               >
                 Book Now
@@ -245,7 +245,7 @@ export default function HomePage() {
             Book your stay at PandinGroups today and enjoy exclusive rates, complimentary breakfast, and personalized service.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href="/contact" className="px-8 py-3.5 bg-[#7B2D3A] text-white font-semibold rounded-xl hover:bg-[#5C1D28] transition-colors shadow-lg">
+            <Link href="/book" className="px-8 py-3.5 bg-[#7B2D3A] text-white font-semibold rounded-xl hover:bg-[#5C1D28] transition-colors shadow-lg">
               Make a Reservation
             </Link>
             <Link href="/hotel" className="px-8 py-3.5 bg-white/10 text-white font-semibold rounded-xl border border-white/30 hover:bg-white/20 transition-colors">

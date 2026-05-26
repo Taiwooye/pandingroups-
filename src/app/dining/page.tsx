@@ -83,7 +83,7 @@ export default function DiningPage() {
                   </div>
 
                   <div className="mt-6 flex gap-3">
-                    <Link href="/contact" className="px-5 py-2.5 bg-[#7B2D3A] text-white text-sm font-semibold rounded-xl hover:bg-[#5C1D28] transition-colors">
+                    <Link href="/book" className="px-5 py-2.5 bg-[#7B2D3A] text-white text-sm font-semibold rounded-xl hover:bg-[#5C1D28] transition-colors">
                       Reserve a Table
                     </Link>
                     <a href="tel:+2341234567890" className="px-5 py-2.5 bg-white text-sky-600 text-sm font-semibold rounded-xl border border-sky-200 hover:bg-sky-50 transition-colors">
@@ -106,7 +106,7 @@ export default function DiningPage() {
           <p className="text-white/80 mb-6 text-sm">
             Planning a special occasion? Our private dining rooms can be reserved for intimate celebrations, business dinners, and unforgettable moments.
           </p>
-          <Link href="/contact" className="inline-block px-7 py-3 bg-white text-[#7B2D3A] font-semibold rounded-xl hover:bg-rose-50 transition-colors">
+          <Link href="/book" className="inline-block px-7 py-3 bg-white text-[#7B2D3A] font-semibold rounded-xl hover:bg-rose-50 transition-colors">
             Enquire About Private Dining
           </Link>
         </div>

@@ -150,7 +150,7 @@ export default async function HotelRoomPage(props: PageProps<"/hotel/[id]">) {
               </div>
 
               <Link
-                href="/contact"
+                href="/book"
                 className={`flex items-center justify-center w-full py-3 rounded-xl font-semibold text-sm transition-colors ${
                   room.available
                     ? "bg-[#7B2D3A] text-white hover:bg-[#5C1D28]"
