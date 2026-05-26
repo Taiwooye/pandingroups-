@@ -49,7 +49,7 @@ export default async function ApartmentDetailPage(props: PageProps<"/apartments/
               <span className={`px-3 py-1 rounded-full text-sm font-semibold ${apt.available ? "bg-green-100 text-green-700" : "bg-red-100 text-red-700"}`}>
                 {apt.available ? "✓ Available" : "✗ Currently Booked"}
               </span>
-              <span className="px-3 py-1 rounded-full text-sm font-semibold bg-sky-100 text-sky-700 capitalize">{apt.type.replace("-", " ")}</span>
+              <span className="px-3 py-1 rounded-full text-sm font-semibold bg-slate-100 text-slate-700 capitalize">{apt.type.replace("-", " ")}</span>
             </div>
 
             <div>
@@ -64,7 +64,7 @@ export default async function ApartmentDetailPage(props: PageProps<"/apartments/
                 { label: "Size", value: `${apt.size} m²`, icon: "📐" },
                 { label: "Type", value: apt.type.replace("-", " "), icon: "🏠" },
               ].map((d) => (
-                <div key={d.label} className="bg-sky-50 rounded-xl p-4 text-center">
+                <div key={d.label} className="bg-slate-50 rounded-xl p-4 text-center">
                   <div className="text-2xl mb-1">{d.icon}</div>
                   <div className="font-bold text-slate-800 capitalize text-sm">{d.value}</div>
                   <div className="text-xs text-slate-500 mt-0.5">{d.label}</div>
@@ -128,7 +128,7 @@ export default async function ApartmentDetailPage(props: PageProps<"/apartments/
               </div>
               <Link
                 href="/contact"
-                className={`flex items-center justify-center w-full py-3 rounded-xl font-semibold text-sm transition-colors ${apt.available ? "bg-sky-600 text-white hover:bg-sky-700" : "bg-slate-200 text-slate-500 pointer-events-none"}`}
+                className={`flex items-center justify-center w-full py-3 rounded-xl font-semibold text-sm transition-colors ${apt.available ? "bg-[#7B2D3A] text-white hover:bg-[#5C1D28]" : "bg-slate-200 text-slate-500 pointer-events-none"}`}
               >
                 {apt.available ? "Reserve Apartment" : "Not Available"}
               </Link>

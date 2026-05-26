@@ -71,7 +71,7 @@ export default function LoungeBarPage() {
                     </div>
                   </div>
 
-                  <Link href={`/lounge-bar/${lounge.id}`} className="inline-flex items-center gap-2 px-5 py-2.5 bg-sky-600 text-white text-sm font-semibold rounded-xl hover:bg-sky-700 transition-colors">
+                  <Link href={`/lounge-bar/${lounge.id}`} className="inline-flex items-center gap-2 px-5 py-2.5 bg-[#7B2D3A] text-white text-sm font-semibold rounded-xl hover:bg-[#5C1D28] transition-colors">
                     View Full Menu & Details
                     <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />

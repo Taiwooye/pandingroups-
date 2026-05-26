@@ -32,7 +32,7 @@ export default function GalleryPage() {
                 key={cat}
                 className={`px-4 py-2 rounded-full text-sm font-medium cursor-pointer capitalize transition-colors ${
                   cat === "all"
-                    ? "bg-sky-600 text-white"
+                    ? "bg-[#7B2D3A] text-white"
                     : "bg-white text-slate-600 border border-slate-200 hover:border-sky-300 hover:text-sky-600"
                 }`}
               >
@@ -59,7 +59,7 @@ export default function GalleryPage() {
                 <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-colors duration-300 flex items-center justify-center">
                   <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-center px-3">
                     <p className="text-white text-sm font-medium">{img.alt}</p>
-                    <span className="inline-block mt-1 px-2.5 py-0.5 bg-sky-600/80 text-white text-xs rounded-full capitalize">{img.category}</span>
+                    <span className="inline-block mt-1 px-2.5 py-0.5 bg-[#7B2D3A]/80 text-white text-xs rounded-full capitalize">{img.category}</span>
                   </div>
                 </div>
               </div>

@@ -12,6 +12,7 @@ const navLinks = [
   { label: "Dining", href: "/dining" },
   { label: "Gallery", href: "/gallery" },
   { label: "About", href: "/about" },
+  { label: "Contact", href: "/contact" },
 ];
 
 export default function Navbar() {
@@ -41,7 +42,7 @@ export default function Navbar() {
         <div className="flex items-center justify-between h-16 md:h-20">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2 group">
-            <div className="w-9 h-9 rounded-lg bg-sky-600 flex items-center justify-center">
+            <div className="w-9 h-9 rounded-lg bg-[#7B2D3A] flex items-center justify-center">
               <svg
                 viewBox="0 0 24 24"
                 fill="none"
@@ -57,7 +58,7 @@ export default function Navbar() {
               </svg>
             </div>
             <div className="leading-none">
-              <span className="text-lg font-bold text-sky-700 tracking-tight">
+              <span className="text-lg font-bold text-[#7B2D3A] tracking-tight">
                 Pandin
               </span>
               <span className="text-lg font-bold text-slate-700 tracking-tight">
@@ -86,8 +87,8 @@ export default function Navbar() {
           {/* CTA + Mobile Menu */}
           <div className="flex items-center gap-3">
             <Link
-              href="/contact"
-              className="hidden sm:inline-flex items-center px-4 py-2 rounded-lg bg-sky-600 text-white text-sm font-semibold hover:bg-sky-700 transition-colors shadow-sm"
+              href="/book"
+              className="hidden sm:inline-flex items-center px-4 py-2 rounded-lg bg-[#7B2D3A] text-white text-sm font-semibold hover:bg-[#5C1D28] transition-colors shadow-sm"
             >
               Book Now
             </Link>
@@ -127,8 +128,8 @@ export default function Navbar() {
             ))}
             <div className="px-4 pt-3 pb-1">
               <Link
-                href="/contact"
-                className="flex items-center justify-center w-full px-4 py-2.5 rounded-lg bg-sky-600 text-white text-sm font-semibold hover:bg-sky-700 transition-colors"
+                href="/book"
+                className="flex items-center justify-center w-full px-4 py-2.5 rounded-lg bg-[#7B2D3A] text-white text-sm font-semibold hover:bg-[#5C1D28] transition-colors"
               >
                 Book Now
               </Link>

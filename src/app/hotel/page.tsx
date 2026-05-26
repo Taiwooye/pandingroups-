@@ -32,7 +32,7 @@ export default function HotelPage() {
                 key={cat}
                 className={`px-4 py-1.5 rounded-full text-sm font-medium cursor-pointer transition-colors ${
                   cat === "All"
-                    ? "bg-sky-600 text-white"
+                    ? "bg-[#7B2D3A] text-white"
                     : "bg-white text-slate-600 border border-slate-200 hover:border-sky-300 hover:text-sky-600"
                 }`}
               >
@@ -51,12 +51,12 @@ export default function HotelPage() {
       </section>
 
       {/* Info Banner */}
-      <section className="py-14 bg-sky-50">
+      <section className="py-14 bg-slate-50">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-2xl font-bold text-slate-800 mb-3">Need Help Choosing?</h2>
           <p className="text-slate-500 mb-6">Our hospitality team is available 24/7 to help you find the perfect room for your stay.</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href="tel:+2341234567890" className="px-6 py-3 bg-sky-600 text-white font-semibold rounded-xl hover:bg-sky-700 transition-colors">
+            <a href="tel:+2341234567890" className="px-6 py-3 bg-[#7B2D3A] text-white font-semibold rounded-xl hover:bg-[#5C1D28] transition-colors">
               Call Us Now
             </a>
             <a href="/contact" className="px-6 py-3 bg-white text-sky-600 font-semibold rounded-xl border border-sky-200 hover:bg-sky-50 transition-colors">

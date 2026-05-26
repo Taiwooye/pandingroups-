@@ -74,7 +74,7 @@ export default function AboutPage() {
                 </p>
               </div>
               <div className="mt-8">
-                <Link href="/contact" className="px-6 py-3 bg-sky-600 text-white font-semibold rounded-xl hover:bg-sky-700 transition-colors inline-block">
+                <Link href="/contact" className="px-6 py-3 bg-[#7B2D3A] text-white font-semibold rounded-xl hover:bg-[#5C1D28] transition-colors inline-block">
                   Get in Touch
                 </Link>
               </div>
@@ -92,7 +92,7 @@ export default function AboutPage() {
       </section>
 
       {/* Values */}
-      <section className="py-16 bg-sky-50">
+      <section className="py-16 bg-slate-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <span className="text-sky-600 text-sm font-semibold uppercase tracking-wider">Our Values</span>
@@ -122,13 +122,13 @@ export default function AboutPage() {
             <h2 className="text-3xl font-bold text-slate-800 mt-2">Milestones</h2>
           </div>
           <div className="relative">
-            <div className="absolute left-4 md:left-1/2 top-0 bottom-0 w-0.5 bg-sky-100 -translate-x-1/2" />
+            <div className="absolute left-4 md:left-1/2 top-0 bottom-0 w-0.5 bg-slate-200 -translate-x-1/2" />
             <div className="space-y-8">
               {milestones.map((m, idx) => (
                 <div key={m.year} className={`relative flex items-start gap-6 ${idx % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"} md:gap-10`}>
-                  <div className="absolute left-4 md:left-1/2 -translate-x-1/2 w-3 h-3 rounded-full bg-sky-600 ring-4 ring-sky-100 mt-1" />
+                  <div className="absolute left-4 md:left-1/2 -translate-x-1/2 w-3 h-3 rounded-full bg-[#7B2D3A] ring-4 ring-rose-100 mt-1" />
                   <div className={`pl-10 md:pl-0 md:w-1/2 ${idx % 2 === 0 ? "md:text-right md:pr-10" : "md:pl-10"}`}>
-                    <span className="text-sky-600 font-bold text-lg">{m.year}</span>
+                    <span className="text-[#7B2D3A] font-bold text-lg">{m.year}</span>
                     <h3 className="font-bold text-slate-800 mt-0.5">{m.title}</h3>
                     <p className="text-slate-500 text-sm mt-1">{m.desc}</p>
                   </div>
@@ -154,7 +154,7 @@ export default function AboutPage() {
                 </div>
                 <div className="p-5">
                   <h3 className="font-bold text-slate-800">{member.name}</h3>
-                  <p className="text-sky-600 text-sm font-medium mb-2">{member.role}</p>
+                  <p className="text-[#7B2D3A] text-sm font-medium mb-2">{member.role}</p>
                   <p className="text-slate-500 text-xs leading-relaxed">{member.bio}</p>
                 </div>
               </div>

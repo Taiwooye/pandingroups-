@@ -76,7 +76,7 @@ export default async function LoungeDetailPage(props: PageProps<"/lounge-bar/[id
               <div className="space-y-8">
                 {menuCategories.map((category) => (
                   <div key={category}>
-                    <h3 className="text-base font-bold text-sky-700 mb-4 pb-2 border-b border-sky-100">{category}</h3>
+                    <h3 className="text-base font-bold text-[#7B2D3A] mb-4 pb-2 border-b border-rose-100">{category}</h3>
                     <div className="space-y-4">
                       {lounge.menu
                         .filter((item) => item.category === category)
@@ -133,7 +133,7 @@ export default async function LoungeDetailPage(props: PageProps<"/lounge-bar/[id
                   </select>
                 </div>
               </div>
-              <Link href="/contact" className="flex items-center justify-center w-full py-3 rounded-xl bg-sky-600 text-white font-semibold text-sm hover:bg-sky-500 transition-colors">
+              <Link href="/contact" className="flex items-center justify-center w-full py-3 rounded-xl bg-[#7B2D3A] text-white font-semibold text-sm hover:bg-[#5C1D28] transition-colors">
                 Reserve a Table
               </Link>
               <div className="mt-5 pt-5 border-t border-slate-700 space-y-2">

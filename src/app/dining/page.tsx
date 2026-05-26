@@ -32,7 +32,7 @@ export default function DiningPage() {
                 <div className="relative w-full lg:w-2/5 h-72 lg:h-96 rounded-2xl overflow-hidden shadow-lg shrink-0">
                   <Image src={restaurant.image} alt={restaurant.name} fill className="object-cover" />
                   <div className="absolute top-4 left-4">
-                    <span className="px-3 py-1.5 bg-sky-600/90 text-white text-xs font-semibold rounded-full">
+                    <span className="px-3 py-1.5 bg-[#7B2D3A]/90 text-white text-xs font-semibold rounded-full">
                       {restaurant.priceRange}
                     </span>
                   </div>
@@ -83,7 +83,7 @@ export default function DiningPage() {
                   </div>
 
                   <div className="mt-6 flex gap-3">
-                    <Link href="/contact" className="px-5 py-2.5 bg-sky-600 text-white text-sm font-semibold rounded-xl hover:bg-sky-700 transition-colors">
+                    <Link href="/contact" className="px-5 py-2.5 bg-[#7B2D3A] text-white text-sm font-semibold rounded-xl hover:bg-[#5C1D28] transition-colors">
                       Reserve a Table
                     </Link>
                     <a href="tel:+2341234567890" className="px-5 py-2.5 bg-white text-sky-600 text-sm font-semibold rounded-xl border border-sky-200 hover:bg-sky-50 transition-colors">
@@ -100,13 +100,13 @@ export default function DiningPage() {
       </section>
 
       {/* Dining Experience CTA */}
-      <section className="py-14 bg-sky-900">
+      <section className="py-14 bg-[#5C1D28]">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-2xl font-bold text-white mb-3">Private Dining Available</h2>
-          <p className="text-sky-200 mb-6 text-sm">
+          <p className="text-white/80 mb-6 text-sm">
             Planning a special occasion? Our private dining rooms can be reserved for intimate celebrations, business dinners, and unforgettable moments.
           </p>
-          <Link href="/contact" className="inline-block px-7 py-3 bg-white text-sky-700 font-semibold rounded-xl hover:bg-sky-50 transition-colors">
+          <Link href="/contact" className="inline-block px-7 py-3 bg-white text-[#7B2D3A] font-semibold rounded-xl hover:bg-rose-50 transition-colors">
             Enquire About Private Dining
           </Link>
         </div>

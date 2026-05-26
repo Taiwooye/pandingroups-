@@ -33,7 +33,7 @@ export default function ApartmentsPage() {
                 key={t}
                 className={`px-4 py-1.5 rounded-full text-sm font-medium cursor-pointer transition-colors ${
                   t === "All"
-                    ? "bg-sky-600 text-white"
+                    ? "bg-[#7B2D3A] text-white"
                     : "bg-white text-slate-600 border border-slate-200 hover:border-sky-300 hover:text-sky-600"
                 }`}
               >
@@ -54,7 +54,7 @@ export default function ApartmentsPage() {
                     </span>
                   </div>
                   <div className="absolute top-3 right-3">
-                    <span className="px-2.5 py-1 rounded-full text-xs font-semibold uppercase bg-sky-600/90 text-white capitalize">
+                    <span className="px-2.5 py-1 rounded-full text-xs font-semibold uppercase bg-[#7B2D3A]/90 text-white capitalize">
                       {apt.type.replace("-", " ")}
                     </span>
                   </div>
@@ -100,7 +100,7 @@ export default function ApartmentsPage() {
                       <span className="text-2xl font-bold text-sky-700">${apt.price}</span>
                       <span className="text-sm text-slate-400 ml-1">/ night</span>
                     </div>
-                    <Link href={`/apartments/${apt.id}`} className="px-4 py-2 bg-sky-600 text-white text-sm font-semibold rounded-lg hover:bg-sky-700 transition-colors">
+                    <Link href={`/apartments/${apt.id}`} className="px-4 py-2 bg-[#7B2D3A] text-white text-sm font-semibold rounded-lg hover:bg-[#5C1D28] transition-colors">
                       View Details
                     </Link>
                   </div>
@@ -112,7 +112,7 @@ export default function ApartmentsPage() {
       </section>
 
       {/* Benefits Banner */}
-      <section className="py-14 bg-sky-50">
+      <section className="py-14 bg-slate-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
             {[

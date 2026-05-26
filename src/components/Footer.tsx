@@ -8,7 +8,7 @@ export default function Footer() {
           {/* Brand */}
           <div className="lg:col-span-1">
             <div className="flex items-center gap-2 mb-4">
-              <div className="w-9 h-9 rounded-lg bg-sky-600 flex items-center justify-center">
+              <div className="w-9 h-9 rounded-lg bg-[#7B2D3A] flex items-center justify-center">
                 <svg viewBox="0 0 24 24" fill="none" className="w-5 h-5 text-white" stroke="currentColor" strokeWidth={2}>
                   <path strokeLinecap="round" strokeLinejoin="round" d="M3 21V7a2 2 0 012-2h14a2 2 0 012 2v14M9 21V12h6v9M3 10h18" />
                 </svg>
@@ -23,7 +23,7 @@ export default function Footer() {
                 <a
                   key={s}
                   href="#"
-                  className="w-8 h-8 rounded-full bg-slate-800 flex items-center justify-center hover:bg-sky-600 transition-colors"
+                  className="w-8 h-8 rounded-full bg-slate-800 flex items-center justify-center hover:bg-[#7B2D3A] transition-colors"
                   aria-label={s}
                 >
                   <span className="text-xs font-bold uppercase text-slate-400 hover:text-white">{s[0].toUpperCase()}</span>

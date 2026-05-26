@@ -33,7 +33,7 @@ export default function EventHallPage() {
                 key={type}
                 className={`px-4 py-1.5 rounded-full text-sm font-medium cursor-pointer transition-colors ${
                   type === "All Events"
-                    ? "bg-sky-600 text-white"
+                    ? "bg-[#7B2D3A] text-white"
                     : "bg-white text-slate-600 border border-slate-200 hover:border-sky-300 hover:text-sky-600"
                 }`}
               >
@@ -84,7 +84,7 @@ export default function EventHallPage() {
                       <span className="text-2xl font-bold text-sky-700">${hall.price.toLocaleString()}</span>
                       <span className="text-sm text-slate-400 ml-1">/ day</span>
                     </div>
-                    <Link href={`/event-hall/${hall.id}`} className="px-5 py-2 bg-sky-600 text-white text-sm font-semibold rounded-lg hover:bg-sky-700 transition-colors">
+                    <Link href={`/event-hall/${hall.id}`} className="px-5 py-2 bg-[#7B2D3A] text-white text-sm font-semibold rounded-lg hover:bg-[#5C1D28] transition-colors">
                       View Details
                     </Link>
                   </div>
@@ -96,7 +96,7 @@ export default function EventHallPage() {
       </section>
 
       {/* Why Choose Us */}
-      <section className="py-14 bg-sky-50">
+      <section className="py-14 bg-slate-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-10">
             <h2 className="text-2xl font-bold text-slate-800">Why Host Your Event With Us</h2>

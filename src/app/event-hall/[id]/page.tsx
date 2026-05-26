@@ -62,7 +62,7 @@ export default async function EventHallDetailPage(props: PageProps<"/event-hall/
                 { label: "Floor Space", value: `${hall.size} m²`, icon: "📐" },
                 { label: "Price", value: `$${hall.price.toLocaleString()}/day`, icon: "💰" },
               ].map((d) => (
-                <div key={d.label} className="bg-sky-50 rounded-xl p-4 text-center">
+                <div key={d.label} className="bg-slate-50 rounded-xl p-4 text-center">
                   <div className="text-2xl mb-1">{d.icon}</div>
                   <div className="font-bold text-slate-800 text-sm">{d.value}</div>
                   <div className="text-xs text-slate-500 mt-0.5">{d.label}</div>
@@ -130,7 +130,7 @@ export default async function EventHallDetailPage(props: PageProps<"/event-hall/
                   </select>
                 </div>
               </div>
-              <Link href="/contact" className={`flex items-center justify-center w-full py-3 rounded-xl font-semibold text-sm transition-colors ${hall.available ? "bg-sky-600 text-white hover:bg-sky-700" : "bg-slate-200 text-slate-500 pointer-events-none"}`}>
+              <Link href="/contact" className={`flex items-center justify-center w-full py-3 rounded-xl font-semibold text-sm transition-colors ${hall.available ? "bg-[#7B2D3A] text-white hover:bg-[#5C1D28]" : "bg-slate-200 text-slate-500 pointer-events-none"}`}>
                 {hall.available ? "Request a Quote" : "Not Available"}
               </Link>
               <p className="text-center text-xs text-slate-400 mt-3">Our team will respond within 2 hours</p>

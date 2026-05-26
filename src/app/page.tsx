@@ -40,7 +40,7 @@ export default function HomePage() {
 
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 w-full">
           <div className="max-w-2xl">
-            <span className="inline-block px-3 py-1 bg-sky-600/90 text-sky-100 text-sm font-semibold rounded-full mb-5 tracking-wide uppercase">
+            <span className="inline-block px-3 py-1 bg-[#7B2D3A]/90 text-white text-sm font-semibold rounded-full mb-5 tracking-wide uppercase">
               Welcome to PandinGroups
             </span>
             <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-white leading-tight mb-6">
@@ -53,7 +53,7 @@ export default function HomePage() {
             <div className="flex flex-wrap gap-4">
               <Link
                 href="/hotel"
-                className="px-6 py-3 bg-sky-600 text-white font-semibold rounded-xl hover:bg-sky-500 transition-colors shadow-lg shadow-sky-900/30"
+                className="px-6 py-3 bg-[#7B2D3A] text-white font-semibold rounded-xl hover:bg-[#5C1D28] transition-colors shadow-lg"
               >
                 Explore Rooms
               </Link>
@@ -74,13 +74,13 @@ export default function HomePage() {
       </section>
 
       {/* Stats */}
-      <section className="bg-sky-700 py-10">
+      <section className="bg-[#7B2D3A] py-10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             {stats.map((stat) => (
               <div key={stat.label} className="text-center">
                 <div className="text-3xl md:text-4xl font-bold text-white mb-1">{stat.value}</div>
-                <div className="text-sm text-sky-200">{stat.label}</div>
+                <div className="text-sm text-rose-100">{stat.label}</div>
               </div>
             ))}
           </div>
@@ -153,7 +153,7 @@ export default function HomePage() {
                 <div className="relative h-52 overflow-hidden">
                   <Image src={room.image} alt={room.name} fill className="object-cover group-hover:scale-105 transition-transform duration-500" />
                   <div className="absolute top-3 right-3">
-                    <span className="px-2.5 py-1 bg-sky-600/90 text-white text-xs font-semibold rounded-full uppercase">{room.category}</span>
+                    <span className="px-2.5 py-1 bg-[#7B2D3A]/90 text-white text-xs font-semibold rounded-full uppercase">{room.category}</span>
                   </div>
                 </div>
                 <div className="p-5">
@@ -164,7 +164,7 @@ export default function HomePage() {
                       <span className="text-xl font-bold text-sky-700">${room.price}</span>
                       <span className="text-sm text-slate-400 ml-1">/ night</span>
                     </div>
-                    <Link href={`/hotel/${room.id}`} className="px-4 py-2 bg-sky-600 text-white text-sm font-semibold rounded-lg hover:bg-sky-700 transition-colors">
+                    <Link href={`/hotel/${room.id}`} className="px-4 py-2 bg-[#7B2D3A] text-white text-sm font-semibold rounded-lg hover:bg-[#5C1D28] transition-colors">
                       View Details
                     </Link>
                   </div>
@@ -176,7 +176,7 @@ export default function HomePage() {
       </section>
 
       {/* Amenities */}
-      <section className="py-20 bg-sky-50">
+      <section className="py-20 bg-slate-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <span className="text-sky-600 text-sm font-semibold uppercase tracking-wider">World-Class Facilities</span>
@@ -236,16 +236,16 @@ export default function HomePage() {
           fill
           className="object-cover"
         />
-        <div className="absolute inset-0 bg-sky-900/80" />
+        <div className="absolute inset-0 bg-[#5C1D28]/80" />
         <div className="relative max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
             Ready for an Unforgettable Experience?
           </h2>
-          <p className="text-sky-200 text-lg mb-8">
+          <p className="text-white/80 text-lg mb-8">
             Book your stay at PandinGroups today and enjoy exclusive rates, complimentary breakfast, and personalized service.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href="/contact" className="px-8 py-3.5 bg-sky-500 text-white font-semibold rounded-xl hover:bg-sky-400 transition-colors shadow-lg">
+            <Link href="/contact" className="px-8 py-3.5 bg-[#7B2D3A] text-white font-semibold rounded-xl hover:bg-[#5C1D28] transition-colors shadow-lg">
               Make a Reservation
             </Link>
             <Link href="/hotel" className="px-8 py-3.5 bg-white/10 text-white font-semibold rounded-xl border border-white/30 hover:bg-white/20 transition-colors">
