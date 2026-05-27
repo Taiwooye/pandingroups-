@@ -127,7 +127,7 @@ export default async function LoungeDetailPage(props: PageProps<"/lounge-bar/[id
                   </select>
                 </div>
               </div>
-              <Link href="/book" className="flex items-center justify-center w-full py-3 rounded-xl bg-[#C41230] text-white font-semibold text-sm hover:bg-[#9C0E25] transition-colors">
+              <Link href={`/book?service=lounge-bar&room=${encodeURIComponent(lounge.name)}`} className="flex items-center justify-center w-full py-3 rounded-xl bg-[#C41230] text-white font-semibold text-sm hover:bg-[#9C0E25] transition-colors">
                 Reserve a Table
               </Link>
               <div className="mt-5 pt-5 border-t border-slate-700 space-y-2">

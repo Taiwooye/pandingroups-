@@ -130,7 +130,7 @@ export default async function EventHallDetailPage(props: PageProps<"/event-hall/
                   </select>
                 </div>
               </div>
-              <Link href="/book" className={`flex items-center justify-center w-full py-3 rounded-xl font-semibold text-sm transition-colors ${hall.available ? "bg-[#C41230] text-white hover:bg-[#9C0E25]" : "bg-slate-200 text-slate-500 pointer-events-none"}`}>
+              <Link href={`/book?service=event-hall&room=${encodeURIComponent(hall.name)}`} className={`flex items-center justify-center w-full py-3 rounded-xl font-semibold text-sm transition-colors ${hall.available ? "bg-[#C41230] text-white hover:bg-[#9C0E25]" : "bg-slate-200 text-slate-500 pointer-events-none"}`}>
                 {hall.available ? "Request a Quote" : "Not Available"}
               </Link>
               <p className="text-center text-xs text-slate-400 mt-3">Our team will respond within 2 hours</p>
