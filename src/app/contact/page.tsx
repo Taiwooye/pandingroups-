@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useState } from "react";
 import Image from "next/image";
@@ -80,7 +80,7 @@ export default function ContactPage() {
                         </svg>
                       ),
                       title: "Check-in / Check-out",
-                      detail: "Check-in: 2:00 PM · Check-out: 12:00 PM",
+                      detail: "Check-in: 2:00 PM Â· Check-out: 12:00 PM",
                     },
                   ].map((item) => (
                     <div key={item.title} className="flex items-start gap-4">
@@ -106,7 +106,7 @@ export default function ContactPage() {
                 />
                 <div className="absolute inset-0 flex items-center justify-center">
                   <div className="bg-white rounded-xl shadow-lg px-4 py-3 text-center">
-                    <div className="w-8 h-8 rounded-full bg-[#C41230] flex items-center justify-center mx-auto mb-1">
+                    <div className="w-8 h-8 rounded-full bg-[#5A0E24] flex items-center justify-center mx-auto mb-1">
                       <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 24 24">
                         <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5S10.62 6.5 12 6.5s2.5 1.12 2.5 2.5S13.38 11.5 12 11.5z" />
                       </svg>
@@ -248,11 +248,11 @@ export default function ContactPage() {
 
                   <button
                     type="submit"
-                    className="w-full py-3.5 bg-[#C41230] text-white font-semibold rounded-xl hover:bg-[#9C0E25] transition-colors shadow-md"
+                    className="w-full py-3.5 bg-[#5A0E24] text-white font-semibold rounded-xl hover:bg-[#921224] transition-colors shadow-md"
                   >
                     Send Enquiry
                   </button>
-                  <p className="text-xs text-slate-400 text-center">We respond within 2 hours during business hours (8 AM – 10 PM)</p>
+                  <p className="text-xs text-slate-400 text-center">We respond within 2 hours during business hours (8 AM â€“ 10 PM)</p>
                 </form>
               )}
             </div>

@@ -1,4 +1,4 @@
-import { NextRequest, NextResponse } from "next/server";
+﻿import { NextRequest, NextResponse } from "next/server";
 import nodemailer from "nodemailer";
 
 // Configure these in your .env.local file:
@@ -29,15 +29,15 @@ export async function POST(req: NextRequest) {
     };
     const serviceName = serviceMap[service] || service;
 
-    // ─── Email to client ─────────────────────────────────────────────────────
+    // â”€â”€â”€ Email to client â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
     const clientHtml = `
 <!DOCTYPE html>
 <html>
-<head><meta charset="utf-8"><title>Booking Receipt – PandinGroups</title></head>
+<head><meta charset="utf-8"><title>Booking Receipt â€“ PandinGroups</title></head>
 <body style="margin:0;padding:0;background:#f5f5f5;font-family:Arial,sans-serif;">
   <div style="max-width:580px;margin:32px auto;background:#ffffff;border-radius:12px;overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,0.08);">
     <!-- Header -->
-    <div style="background:#C41230;padding:32px 36px;text-align:center;">
+    <div style="background:#5A0E24;padding:32px 36px;text-align:center;">
       <h1 style="color:#fff;margin:0;font-size:22px;letter-spacing:0.5px;">PandinGroups</h1>
       <p style="color:rgba(255,255,255,0.8);margin:6px 0 0;font-size:14px;">Payment Receipt & Booking Confirmation</p>
     </div>
@@ -49,9 +49,9 @@ export async function POST(req: NextRequest) {
       </p>
 
       <!-- Reference box -->
-      <div style="background:#f5e6e8;border:1.5px solid #C41230;border-radius:10px;padding:16px 20px;margin-bottom:24px;text-align:center;">
-        <p style="color:#C41230;font-size:12px;font-weight:bold;letter-spacing:1px;text-transform:uppercase;margin:0 0 4px;">Booking Reference</p>
-        <p style="color:#C41230;font-size:26px;font-weight:bold;letter-spacing:3px;margin:0;">${bookingRef}</p>
+      <div style="background:#f5e6e8;border:1.5px solid #5A0E24;border-radius:10px;padding:16px 20px;margin-bottom:24px;text-align:center;">
+        <p style="color:#5A0E24;font-size:12px;font-weight:bold;letter-spacing:1px;text-transform:uppercase;margin:0 0 4px;">Booking Reference</p>
+        <p style="color:#5A0E24;font-size:26px;font-weight:bold;letter-spacing:3px;margin:0;">${bookingRef}</p>
       </div>
 
       <!-- Details table -->
@@ -72,34 +72,34 @@ export async function POST(req: NextRequest) {
       </div>
 
       <p style="color:#64748b;font-size:13px;line-height:1.6;margin:0;">
-        Check-in: <strong>2:00 PM</strong> &nbsp;·&nbsp; Check-out: <strong>12:00 PM</strong><br>
+        Check-in: <strong>2:00 PM</strong> &nbsp;Â·&nbsp; Check-out: <strong>12:00 PM</strong><br>
         <strong>Address:</strong> Iyana Church, Off Iwo Road, Ibadan, Oyo State 200108
       </p>
     </div>
     <!-- Footer -->
     <div style="background:#f8fafc;padding:20px 36px;text-align:center;border-top:1px solid #e2e8f0;">
-      <p style="color:#94a3b8;font-size:12px;margin:0;">PandinGroups Hotels · info@pandingroups.com · +234 (0) 705 442 2968</p>
+      <p style="color:#94a3b8;font-size:12px;margin:0;">PandinGroups Hotels Â· info@pandingroups.com Â· +234 (0) 705 442 2968</p>
     </div>
   </div>
 </body>
 </html>`;
 
-    // ─── Email to owner ───────────────────────────────────────────────────────
+    // â”€â”€â”€ Email to owner â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
     const ownerHtml = `
 <!DOCTYPE html>
 <html>
 <body style="font-family:Arial,sans-serif;background:#f5f5f5;padding:24px;">
   <div style="max-width:540px;margin:0 auto;background:#fff;border-radius:10px;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,0.08);">
-    <div style="background:#C41230;padding:24px 30px;">
-      <h2 style="color:#fff;margin:0;font-size:18px;">New Transfer Notification – ${bookingRef}</h2>
+    <div style="background:#5A0E24;padding:24px 30px;">
+      <h2 style="color:#fff;margin:0;font-size:18px;">New Transfer Notification â€“ ${bookingRef}</h2>
     </div>
     <div style="padding:28px 30px;font-size:14px;color:#334155;">
       <p style="margin:0 0 16px;">A guest has confirmed their bank transfer. Please verify and process the booking.</p>
       <table style="width:100%;border-collapse:collapse;">
-        <tr style="background:#f8fafc;"><td style="padding:9px 12px;color:#64748b;font-weight:600;border-bottom:1px solid #e2e8f0;width:38%;">Reference</td><td style="padding:9px 12px;color:#C41230;font-weight:bold;border-bottom:1px solid #e2e8f0;">${bookingRef}</td></tr>
+        <tr style="background:#f8fafc;"><td style="padding:9px 12px;color:#64748b;font-weight:600;border-bottom:1px solid #e2e8f0;width:38%;">Reference</td><td style="padding:9px 12px;color:#5A0E24;font-weight:bold;border-bottom:1px solid #e2e8f0;">${bookingRef}</td></tr>
         <tr><td style="padding:9px 12px;color:#64748b;font-weight:600;border-bottom:1px solid #e2e8f0;">Guest Name</td><td style="padding:9px 12px;color:#1e293b;border-bottom:1px solid #e2e8f0;">${name}</td></tr>
         <tr style="background:#f8fafc;"><td style="padding:9px 12px;color:#64748b;font-weight:600;border-bottom:1px solid #e2e8f0;">Email</td><td style="padding:9px 12px;color:#1e293b;border-bottom:1px solid #e2e8f0;">${email}</td></tr>
-        <tr><td style="padding:9px 12px;color:#64748b;font-weight:600;border-bottom:1px solid #e2e8f0;">Phone</td><td style="padding:9px 12px;color:#1e293b;border-bottom:1px solid #e2e8f0;">${phone || "—"}</td></tr>
+        <tr><td style="padding:9px 12px;color:#64748b;font-weight:600;border-bottom:1px solid #e2e8f0;">Phone</td><td style="padding:9px 12px;color:#1e293b;border-bottom:1px solid #e2e8f0;">${phone || "â€”"}</td></tr>
         <tr style="background:#f8fafc;"><td style="padding:9px 12px;color:#64748b;font-weight:600;border-bottom:1px solid #e2e8f0;">Service</td><td style="padding:9px 12px;color:#1e293b;border-bottom:1px solid #e2e8f0;">${serviceName}</td></tr>
         ${checkIn ? `<tr><td style="padding:9px 12px;color:#64748b;font-weight:600;border-bottom:1px solid #e2e8f0;">Check-in</td><td style="padding:9px 12px;color:#1e293b;border-bottom:1px solid #e2e8f0;">${checkIn}</td></tr>` : ""}
         ${checkOut ? `<tr style="background:#f8fafc;"><td style="padding:9px 12px;color:#64748b;font-weight:600;border-bottom:1px solid #e2e8f0;">Check-out</td><td style="padding:9px 12px;color:#1e293b;border-bottom:1px solid #e2e8f0;">${checkOut}</td></tr>` : ""}
@@ -115,14 +115,14 @@ export async function POST(req: NextRequest) {
     await transporter.sendMail({
       from: `"PandinGroups Bookings" <${process.env.EMAIL_USER}>`,
       to: email,
-      subject: `Booking Receipt – ${bookingRef} | PandinGroups`,
+      subject: `Booking Receipt â€“ ${bookingRef} | PandinGroups`,
       html: clientHtml,
     });
 
     await transporter.sendMail({
       from: `"PandinGroups Bookings" <${process.env.EMAIL_USER}>`,
       to: process.env.OWNER_EMAIL || process.env.EMAIL_USER,
-      subject: `[NEW TRANSFER] ${bookingRef} – ${name} · ${serviceName}`,
+      subject: `[NEW TRANSFER] ${bookingRef} â€“ ${name} Â· ${serviceName}`,
       html: ownerHtml,
     });
 

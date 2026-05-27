@@ -1,4 +1,4 @@
-import Image from "next/image";
+﻿import Image from "next/image";
 import Link from "next/link";
 
 interface ServiceCardProps {
@@ -21,7 +21,7 @@ export default function ServiceCard({ title, description, image, href, badge }: 
       <div className="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-slate-900/30 to-transparent" />
       {badge && (
         <div className="absolute top-4 right-4">
-          <span className="px-2.5 py-1 bg-[#C41230]/90 text-white text-xs font-semibold rounded-full uppercase tracking-wide">
+          <span className="px-2.5 py-1 bg-[#5A0E24]/90 text-white text-xs font-semibold rounded-full uppercase tracking-wide">
             {badge}
           </span>
         </div>

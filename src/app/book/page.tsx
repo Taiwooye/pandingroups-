@@ -130,10 +130,10 @@ function BookContent() {
                 <button
                   key={s.key}
                   onClick={() => handleSelectService(s.key)}
-                  className="bg-white rounded-2xl p-6 border-2 border-slate-100 hover:border-[#C41230] hover:shadow-lg transition-all duration-200 text-left group"
+                  className="bg-white rounded-2xl p-6 border-2 border-slate-100 hover:border-[#5A0E24] hover:shadow-lg transition-all duration-200 text-left group"
                 >
                   <div className="text-4xl mb-3">{s.icon}</div>
-                  <h3 className="font-bold text-slate-800 mb-1 group-hover:text-[#C41230] transition-colors">{s.title}</h3>
+                  <h3 className="font-bold text-slate-800 mb-1 group-hover:text-[#5A0E24] transition-colors">{s.title}</h3>
                   <p className="text-slate-500 text-sm mb-3">{s.desc}</p>
                   <span className="text-amber-600 font-semibold text-sm">{s.price}</span>
                 </button>
@@ -155,12 +155,12 @@ function BookContent() {
                       setStep("form");
                       window.scrollTo({ top: 0, behavior: "smooth" });
                     }}
-                    className="bg-white rounded-xl overflow-hidden border border-slate-100 hover:border-[#C41230] hover:shadow-md transition-all text-left group"
+                    className="bg-white rounded-xl overflow-hidden border border-slate-100 hover:border-[#5A0E24] hover:shadow-md transition-all text-left group"
                   >
                     <div className="relative h-36">
                       <Image src={room.image} alt={room.name} fill className="object-cover group-hover:scale-105 transition-transform duration-300" />
                       <div className="absolute top-2 right-2">
-                        <span className="bg-[#C41230]/90 text-white text-xs px-2 py-0.5 rounded-full font-semibold capitalize">{room.category}</span>
+                        <span className="bg-[#5A0E24]/90 text-white text-xs px-2 py-0.5 rounded-full font-semibold capitalize">{room.category}</span>
                       </div>
                     </div>
                     <div className="p-3">
@@ -184,7 +184,7 @@ function BookContent() {
                       setStep("form");
                       window.scrollTo({ top: 0, behavior: "smooth" });
                     }}
-                    className="bg-white rounded-xl overflow-hidden border border-slate-100 hover:border-[#C41230] hover:shadow-md transition-all text-left group"
+                    className="bg-white rounded-xl overflow-hidden border border-slate-100 hover:border-[#5A0E24] hover:shadow-md transition-all text-left group"
                   >
                     <div className="relative h-36">
                       <Image src={apt.image} alt={apt.name} fill className="object-cover group-hover:scale-105 transition-transform duration-300" />
@@ -210,7 +210,7 @@ function BookContent() {
   if (step === "payment" || step === "sending" || step === "done") {
     return (
       <div className="mt-16 md:mt-20">
-        <div className="bg-[#C41230] py-12 text-center">
+        <div className="bg-[#5A0E24] py-12 text-center">
           <div className="w-16 h-16 rounded-full bg-white/10 flex items-center justify-center mx-auto mb-4">
             <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
@@ -242,7 +242,7 @@ function BookContent() {
                   <div className="space-y-3 text-sm">
                     <div className="flex justify-between">
                       <span className="text-slate-500">Reference</span>
-                      <span className="font-bold text-[#C41230]">{bookingRef}</span>
+                      <span className="font-bold text-[#5A0E24]">{bookingRef}</span>
                     </div>
                     <div className="flex justify-between">
                       <span className="text-slate-500">Name</span>
@@ -289,9 +289,9 @@ function BookContent() {
                   <p className="text-slate-500 text-sm">Transfer the deposit to the account below, then click the button to confirm.</p>
                 </div>
 
-                <div className="bg-white rounded-2xl border-2 border-[#C41230]/20 p-6 shadow-sm">
+                <div className="bg-white rounded-2xl border-2 border-[#5A0E24]/20 p-6 shadow-sm">
                   <div className="flex items-center gap-3 mb-5">
-                    <div className="w-10 h-10 rounded-xl bg-[#C41230] flex items-center justify-center">
+                    <div className="w-10 h-10 rounded-xl bg-[#5A0E24] flex items-center justify-center">
                       <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" />
                       </svg>
@@ -313,9 +313,9 @@ function BookContent() {
                         <div className="font-bold text-slate-800 text-sm">{item.value}</div>
                       </div>
                     ))}
-                    <div className="sm:col-span-2 bg-[#C41230]/5 rounded-xl p-4 border border-[#C41230]/15">
-                      <div className="text-xs font-semibold text-[#C41230] uppercase tracking-wide mb-1">Payment Reference (Required)</div>
-                      <div className="font-bold text-[#C41230] text-lg tracking-widest">{bookingRef}</div>
+                    <div className="sm:col-span-2 bg-[#5A0E24]/5 rounded-xl p-4 border border-[#5A0E24]/15">
+                      <div className="text-xs font-semibold text-[#5A0E24] uppercase tracking-wide mb-1">Payment Reference (Required)</div>
+                      <div className="font-bold text-[#5A0E24] text-lg tracking-widest">{bookingRef}</div>
                       <div className="text-xs text-slate-500 mt-1">Include this in your transfer description so we can identify your payment.</div>
                     </div>
                   </div>
@@ -330,7 +330,7 @@ function BookContent() {
                       { step: "3", title: "We verify & confirm", desc: "Our team verifies your payment within 2 hours and sends your official booking voucher." },
                     ].map((s) => (
                       <div key={s.step} className="flex gap-4">
-                        <div className="w-8 h-8 rounded-full bg-[#C41230] text-white text-sm font-bold flex items-center justify-center shrink-0">{s.step}</div>
+                        <div className="w-8 h-8 rounded-full bg-[#5A0E24] text-white text-sm font-bold flex items-center justify-center shrink-0">{s.step}</div>
                         <div>
                           <div className="font-semibold text-slate-800 text-sm">{s.title}</div>
                           <div className="text-xs text-slate-500 mt-0.5 leading-relaxed">{s.desc}</div>
@@ -354,7 +354,7 @@ function BookContent() {
                 <button
                   onClick={handleTransferConfirm}
                   disabled={step === "sending"}
-                  className="w-full py-4 bg-[#C41230] text-white font-bold rounded-xl hover:bg-[#9C0E25] transition-colors shadow-md text-base disabled:opacity-60 disabled:cursor-not-allowed flex items-center justify-center gap-3"
+                  className="w-full py-4 bg-[#5A0E24] text-white font-bold rounded-xl hover:bg-[#921224] transition-colors shadow-md text-base disabled:opacity-60 disabled:cursor-not-allowed flex items-center justify-center gap-3"
                 >
                   {step === "sending" ? (
                     <>
@@ -511,7 +511,7 @@ function BookContent() {
             </div>
 
             <button type="submit"
-              className="w-full py-3.5 bg-[#C41230] text-white font-semibold rounded-xl hover:bg-[#9C0E25] transition-colors shadow-md text-sm">
+              className="w-full py-3.5 bg-[#5A0E24] text-white font-semibold rounded-xl hover:bg-[#921224] transition-colors shadow-md text-sm">
               Proceed to Payment →
             </button>
             <p className="text-xs text-slate-400 text-center">No charge until payment is confirmed · Booking held for 24 hours</p>
@@ -524,7 +524,7 @@ function BookContent() {
 
 export default function BookPage() {
   return (
-    <Suspense fallback={<div className="min-h-screen flex items-center justify-center"><div className="animate-spin w-8 h-8 border-4 border-[#C41230] border-t-transparent rounded-full" /></div>}>
+    <Suspense fallback={<div className="min-h-screen flex items-center justify-center"><div className="animate-spin w-8 h-8 border-4 border-[#5A0E24] border-t-transparent rounded-full" /></div>}>
       <BookContent />
     </Suspense>
   );

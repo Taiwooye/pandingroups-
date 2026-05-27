@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import PageHero from "@/components/PageHero";
@@ -7,7 +7,7 @@ import { DiningItem } from "@/types";
 
 export const metadata: Metadata = {
   title: "Dining & Restaurants",
-  description: "Savor extraordinary culinary experiences at PandinGroups — from signature fine dining to casual poolside grilling.",
+  description: "Savor extraordinary culinary experiences at PandinGroups â€” from signature fine dining to casual poolside grilling.",
 };
 
 const restaurants = diningData as DiningItem[];
@@ -17,7 +17,7 @@ export default function DiningPage() {
     <div>
       <PageHero
         title="Dining & Restaurants"
-        subtitle="From award-winning fine dining to relaxed poolside grilling — every meal at PandinGroups is a celebration."
+        subtitle="From award-winning fine dining to relaxed poolside grilling â€” every meal at PandinGroups is a celebration."
         image="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=1600&q=80"
         breadcrumbs={[{ label: "Home", href: "/" }, { label: "Dining" }]}
         height="md"
@@ -32,7 +32,7 @@ export default function DiningPage() {
                 <div className="relative w-full lg:w-2/5 h-72 lg:h-96 rounded-2xl overflow-hidden shadow-lg shrink-0">
                   <Image src={restaurant.image} alt={restaurant.name} fill className="object-cover" />
                   <div className="absolute top-4 left-4">
-                    <span className="px-3 py-1.5 bg-[#C41230]/90 text-white text-xs font-semibold rounded-full">
+                    <span className="px-3 py-1.5 bg-[#5A0E24]/90 text-white text-xs font-semibold rounded-full">
                       {restaurant.priceRange}
                     </span>
                   </div>
@@ -71,9 +71,9 @@ export default function DiningPage() {
                               <div key={item.name} className="flex items-center justify-between text-sm gap-4">
                                 <div>
                                   <span className="font-medium text-slate-700">{item.name}</span>
-                                  <span className="text-slate-400 text-xs ml-2">— {item.description.slice(0, 50)}{item.description.length > 50 ? "..." : ""}</span>
+                                  <span className="text-slate-400 text-xs ml-2">â€” {item.description.slice(0, 50)}{item.description.length > 50 ? "..." : ""}</span>
                                 </div>
-                                <span className="text-amber-700 font-bold shrink-0">₦{item.price.toLocaleString()}</span>
+                                <span className="text-amber-700 font-bold shrink-0">â‚¦{item.price.toLocaleString()}</span>
                               </div>
                             ))}
                           </div>
@@ -83,7 +83,7 @@ export default function DiningPage() {
                   </div>
 
                   <div className="mt-6 flex gap-3">
-                    <Link href="/book" className="px-5 py-2.5 bg-[#C41230] text-white text-sm font-semibold rounded-xl hover:bg-[#9C0E25] transition-colors">
+                    <Link href="/book" className="px-5 py-2.5 bg-[#5A0E24] text-white text-sm font-semibold rounded-xl hover:bg-[#921224] transition-colors">
                       Reserve a Table
                     </Link>
                     <a href="tel:+2341234567890" className="px-5 py-2.5 bg-white text-amber-600 text-sm font-semibold rounded-xl border border-amber-200 hover:bg-amber-50 transition-colors">
@@ -100,13 +100,13 @@ export default function DiningPage() {
       </section>
 
       {/* Dining Experience CTA */}
-      <section className="py-14 bg-[#9C0E25]">
+      <section className="py-14 bg-[#921224]">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-2xl font-bold text-white mb-3">Private Dining Available</h2>
           <p className="text-white/80 mb-6 text-sm">
             Planning a special occasion? Our private dining rooms can be reserved for intimate celebrations, business dinners, and unforgettable moments.
           </p>
-          <Link href="/book" className="inline-block px-7 py-3 bg-white text-[#C41230] font-semibold rounded-xl hover:bg-rose-50 transition-colors">
+          <Link href="/book" className="inline-block px-7 py-3 bg-white text-[#5A0E24] font-semibold rounded-xl hover:bg-rose-50 transition-colors">
             Enquire About Private Dining
           </Link>
         </div>

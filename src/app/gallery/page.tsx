@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useState, useEffect, useCallback } from "react";
 import Image from "next/image";
@@ -62,7 +62,7 @@ export default function GalleryPage() {
                 onClick={() => { setFilter(cat); setActive(null); }}
                 className={`px-4 py-2 rounded-full text-sm font-medium cursor-pointer capitalize transition-colors ${
                   filter === cat
-                    ? "bg-[#C41230] text-white"
+                    ? "bg-[#5A0E24] text-white"
                     : "bg-white text-slate-600 border border-slate-200 hover:border-amber-300 hover:text-amber-600"
                 }`}
               >
@@ -95,7 +95,7 @@ export default function GalleryPage() {
                       </svg>
                     </div>
                     <p className="text-white text-xs font-medium">{img.alt}</p>
-                    <span className="inline-block mt-1 px-2.5 py-0.5 bg-[#C41230]/80 text-white text-xs rounded-full capitalize">{img.category}</span>
+                    <span className="inline-block mt-1 px-2.5 py-0.5 bg-[#5A0E24]/80 text-white text-xs rounded-full capitalize">{img.category}</span>
                   </div>
                 </div>
               </div>

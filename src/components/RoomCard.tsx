@@ -1,4 +1,4 @@
-import Image from "next/image";
+﻿import Image from "next/image";
 import Link from "next/link";
 import { Room } from "@/types";
 
@@ -29,7 +29,7 @@ export default function RoomCard({ room, basePath }: RoomCardProps) {
           </span>
         </div>
         <div className="absolute top-3 right-3">
-          <span className="px-2.5 py-1 rounded-full text-xs font-semibold uppercase tracking-wide bg-[#C41230]/90 text-white capitalize">
+          <span className="px-2.5 py-1 rounded-full text-xs font-semibold uppercase tracking-wide bg-[#5A0E24]/90 text-white capitalize">
             {room.category}
           </span>
         </div>
@@ -50,7 +50,7 @@ export default function RoomCard({ room, basePath }: RoomCardProps) {
             <svg className="w-4 h-4 text-amber-500" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4" />
             </svg>
-            {room.size} m²
+            {room.size} mÂ²
           </span>
         </div>
 
@@ -69,12 +69,12 @@ export default function RoomCard({ room, basePath }: RoomCardProps) {
 
         <div className="flex items-center justify-between pt-4 border-t border-slate-100">
           <div>
-            <span className="text-2xl font-bold text-amber-700">₦{room.price.toLocaleString()}</span>
+            <span className="text-2xl font-bold text-amber-700">â‚¦{room.price.toLocaleString()}</span>
             <span className="text-sm text-slate-400 ml-1">/ night</span>
           </div>
           <Link
             href={`${basePath}/${room.id}`}
-            className="px-4 py-2 bg-[#C41230] text-white text-sm font-semibold rounded-lg hover:bg-[#9C0E25] transition-colors"
+            className="px-4 py-2 bg-[#5A0E24] text-white text-sm font-semibold rounded-lg hover:bg-[#921224] transition-colors"
           >
             View Details
           </Link>
