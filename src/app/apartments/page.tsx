@@ -104,7 +104,7 @@ export default function ApartmentsPage() {
 
                     <div className="flex items-center justify-between pt-4 border-t border-slate-100">
                       <div>
-                        <span className="text-2xl font-bold text-amber-700">â‚¦{apt.price.toLocaleString()}</span>
+                        <span className="text-2xl font-bold text-amber-700">₦{apt.price.toLocaleString()}</span>
                         <span className="text-sm text-slate-400 ml-1">/ night</span>
                       </div>
                       <Link href={`/apartments/${apt.id}`} className="px-4 py-2 bg-[#5A0E24] text-white text-sm font-semibold rounded-lg hover:bg-[#921224] transition-colors">

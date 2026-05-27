@@ -56,7 +56,7 @@ export default function LoungMenuPage() {
                               <p className="text-slate-400 text-xs mt-0.5 leading-relaxed">{item.description}</p>
                             </div>
                             <span className="text-amber-400 font-bold text-sm shrink-0">
-                              â‚¦{item.price.toLocaleString()}
+                              ₦{item.price.toLocaleString()}
                             </span>
                           </div>
                         ))}

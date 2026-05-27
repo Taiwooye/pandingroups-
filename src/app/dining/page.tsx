@@ -7,7 +7,7 @@ import { DiningItem } from "@/types";
 
 export const metadata: Metadata = {
   title: "Dining & Restaurants",
-  description: "Savor extraordinary culinary experiences at PandinGroups â€” from signature fine dining to casual poolside grilling.",
+  description: "Savor extraordinary culinary experiences at PandinGroups — from signature fine dining to casual poolside grilling.",
 };
 
 const restaurants = diningData as DiningItem[];
@@ -17,7 +17,7 @@ export default function DiningPage() {
     <div>
       <PageHero
         title="Dining & Restaurants"
-        subtitle="From award-winning fine dining to relaxed poolside grilling â€” every meal at PandinGroups is a celebration."
+        subtitle="From award-winning fine dining to relaxed poolside grilling — every meal at PandinGroups is a celebration."
         image="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=1600&q=80"
         breadcrumbs={[{ label: "Home", href: "/" }, { label: "Dining" }]}
         height="md"
@@ -71,9 +71,9 @@ export default function DiningPage() {
                               <div key={item.name} className="flex items-center justify-between text-sm gap-4">
                                 <div>
                                   <span className="font-medium text-slate-700">{item.name}</span>
-                                  <span className="text-slate-400 text-xs ml-2">â€” {item.description.slice(0, 50)}{item.description.length > 50 ? "..." : ""}</span>
+                                  <span className="text-slate-400 text-xs ml-2">— {item.description.slice(0, 50)}{item.description.length > 50 ? "..." : ""}</span>
                                 </div>
-                                <span className="text-amber-700 font-bold shrink-0">â‚¦{item.price.toLocaleString()}</span>
+                                <span className="text-amber-700 font-bold shrink-0">₦{item.price.toLocaleString()}</span>
                               </div>
                             ))}
                           </div>
