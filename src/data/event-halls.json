@@ -1,9 +1,9 @@
 [
   {
-    "id": "grand-ballroom",
-    "name": "Grand Ballroom",
-    "description": "Our majestic Grand Ballroom is the perfect venue for weddings, galas, and large-scale corporate events. Featuring crystal chandeliers, a polished dance floor, and state-of-the-art AV systems.",
-    "price": 20000,
+    "id": "nwandos-event-hall",
+    "name": "Nwando's Event Hall",
+    "description": "Welcome to Nwando's Event Hall, the perfect venue for your next gathering! Our hall features a stunning gallery space that adds an elegant touch to any event. With a capacity of 400 to 500 guests, our spacious hall is ideal for seminars, conferences, parties, and celebratory events. From formal meetings to joyous celebrations, the environment is welcoming and adaptable to your specific needs.",
+    "price": 400000,
     "priceUnit": "per day",
     "image": "https://images.unsplash.com/photo-1519167758481-83f550bb49b3?w=800&q=80",
     "gallery": [
@@ -14,106 +14,22 @@
     "capacity": 500,
     "size": 800,
     "features": [
-      "Crystal Chandeliers",
-      "Dance Floor",
-      "Stage",
-      "AV System",
-      "Bridal Suite",
-      "Pre-function Area"
+      "Chairs & Tables Provided",
+      "Flexible Seating Arrangements",
+      "Designated Stage / Presentation Area",
+      "Good Lighting",
+      "24/7 Electricity & Air Conditioning",
+      "Changing Rooms & Restroom Facilities",
+      "CCTV Surveillance for Security",
+      "Convenient Parking Access"
     ],
     "suitable": [
-      "Weddings",
-      "Galas",
-      "Award Ceremonies",
-      "Corporate Dinners",
-      "Product Launches"
-    ],
-    "available": true
-  },
-  {
-    "id": "conference-center",
-    "name": "Executive Conference Center",
-    "description": "A fully-equipped conference center designed for business meetings, seminars, and corporate training. Features the latest presentation technology and flexible seating arrangements.",
-    "price": 20000,
-    "priceUnit": "per day",
-    "image": "https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=800&q=80",
-    "gallery": [
-      "https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=800&q=80",
-      "https://images.unsplash.com/photo-1519167758481-83f550bb49b3?w=800&q=80"
-    ],
-    "capacity": 200,
-    "size": 350,
-    "features": [
-      "4K Projector",
-      "Video Conferencing",
-      "Breakout Rooms",
-      "High-speed WiFi",
-      "Catering Setup"
-    ],
-    "suitable": [
-      "Conferences",
       "Seminars",
-      "Training",
-      "Board Meetings",
-      "Workshops"
-    ],
-    "available": true
-  },
-  {
-    "id": "garden-pavilion",
-    "name": "Garden Pavilion",
-    "description": "An enchanting outdoor pavilion surrounded by lush gardens and fountains. Ideal for intimate weddings, cocktail parties, and outdoor celebrations under the open sky.",
-    "price": 20000,
-    "priceUnit": "per day",
-    "image": "https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?w=800&q=80",
-    "gallery": [
-      "https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?w=800&q=80",
-      "https://images.unsplash.com/photo-1519167758481-83f550bb49b3?w=800&q=80"
-    ],
-    "capacity": 250,
-    "size": 600,
-    "features": [
-      "Outdoor Setting",
-      "Garden Views",
-      "Fountain Backdrop",
-      "Covered Tent Option",
-      "Ambient Lighting"
-    ],
-    "suitable": [
-      "Garden Weddings",
-      "Cocktail Receptions",
+      "Conferences",
+      "Weddings",
       "Birthday Parties",
-      "Outdoor Galas",
-      "Charity Events"
-    ],
-    "available": true
-  },
-  {
-    "id": "skyline-rooftop",
-    "name": "Skyline Rooftop Event Space",
-    "description": "A breathtaking rooftop venue with 360-degree city views. Perfect for exclusive cocktail receptions, corporate gatherings, and unforgettable celebratory events.",
-    "price": 20000,
-    "priceUnit": "per day",
-    "image": "https://images.unsplash.com/photo-1511578314322-379afb476865?w=800&q=80",
-    "gallery": [
-      "https://images.unsplash.com/photo-1511578314322-379afb476865?w=800&q=80",
-      "https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?w=800&q=80"
-    ],
-    "capacity": 150,
-    "size": 400,
-    "features": [
-      "360° City Views",
-      "Open-air Terrace",
-      "Bar Setup",
-      "LED Lighting",
-      "DJ Booth"
-    ],
-    "suitable": [
-      "Cocktail Parties",
-      "Corporate Receptions",
-      "Engagement Parties",
-      "Product Launches",
-      "VIP Events"
+      "Corporate Events",
+      "Celebrations"
     ],
     "available": true
   }

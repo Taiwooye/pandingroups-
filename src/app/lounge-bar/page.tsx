@@ -47,7 +47,7 @@ export default function LoungeBarPage() {
 
                   <div className="flex flex-wrap gap-2 mb-6">
                     {lounge.features.map((f) => (
-                      <span key={f} className="px-3 py-1 bg-sky-50 text-sky-700 text-xs rounded-full font-medium">{f}</span>
+                      <span key={f} className="px-3 py-1 bg-amber-50 text-amber-700 text-xs rounded-full font-medium">{f}</span>
                     ))}
                   </div>
 
@@ -58,13 +58,13 @@ export default function LoungeBarPage() {
                       {lounge.menu.slice(0, 3).map((item) => (
                         <div key={item.name} className="flex items-center justify-between text-sm">
                           <span className="text-slate-700 font-medium">{item.name}</span>
-                          <span className="text-sky-600 font-bold">${item.price}</span>
+                          <span className="text-amber-600 font-bold">${item.price}</span>
                         </div>
                       ))}
                     </div>
                   </div>
 
-                  <Link href={`/lounge-bar/${lounge.id}`} className="inline-flex items-center gap-2 px-5 py-2.5 bg-[#7B2D3A] text-white text-sm font-semibold rounded-xl hover:bg-[#5C1D28] transition-colors">
+                  <Link href={`/lounge-bar/${lounge.id}`} className="inline-flex items-center gap-2 px-5 py-2.5 bg-[#C41230] text-white text-sm font-semibold rounded-xl hover:bg-[#9C0E25] transition-colors">
                     View Full Menu & Details
                     <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />

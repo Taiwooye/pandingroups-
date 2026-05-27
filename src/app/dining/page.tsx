@@ -32,7 +32,7 @@ export default function DiningPage() {
                 <div className="relative w-full lg:w-2/5 h-72 lg:h-96 rounded-2xl overflow-hidden shadow-lg shrink-0">
                   <Image src={restaurant.image} alt={restaurant.name} fill className="object-cover" />
                   <div className="absolute top-4 left-4">
-                    <span className="px-3 py-1.5 bg-[#7B2D3A]/90 text-white text-xs font-semibold rounded-full">
+                    <span className="px-3 py-1.5 bg-[#C41230]/90 text-white text-xs font-semibold rounded-full">
                       {restaurant.priceRange}
                     </span>
                   </div>
@@ -40,13 +40,13 @@ export default function DiningPage() {
 
                 {/* Details */}
                 <div className="flex-1">
-                  <span className="text-sky-600 text-xs font-semibold uppercase tracking-wider">{restaurant.cuisine}</span>
+                  <span className="text-amber-600 text-xs font-semibold uppercase tracking-wider">{restaurant.cuisine}</span>
                   <h2 className="text-2xl font-bold text-slate-800 mt-1 mb-3">{restaurant.name}</h2>
                   <p className="text-slate-500 leading-relaxed mb-5">{restaurant.description}</p>
 
                   <div className="flex flex-wrap gap-3 mb-5 text-sm">
                     <div className="flex items-center gap-1.5 text-slate-600">
-                      <svg className="w-4 h-4 text-sky-500" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+                      <svg className="w-4 h-4 text-amber-500" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                       </svg>
                       {restaurant.openHours}
@@ -55,7 +55,7 @@ export default function DiningPage() {
 
                   <div className="flex flex-wrap gap-2 mb-6">
                     {restaurant.features.map((f) => (
-                      <span key={f} className="px-3 py-1 bg-sky-50 text-sky-700 text-xs rounded-full font-medium">{f}</span>
+                      <span key={f} className="px-3 py-1 bg-amber-50 text-amber-700 text-xs rounded-full font-medium">{f}</span>
                     ))}
                   </div>
 
@@ -65,7 +65,7 @@ export default function DiningPage() {
                     <div className="space-y-5">
                       {restaurant.menu.slice(0, 2).map((section) => (
                         <div key={section.section}>
-                          <h4 className="text-xs font-bold text-sky-600 uppercase tracking-wide mb-2">{section.section}</h4>
+                          <h4 className="text-xs font-bold text-amber-600 uppercase tracking-wide mb-2">{section.section}</h4>
                           <div className="space-y-2">
                             {section.items.slice(0, 2).map((item) => (
                               <div key={item.name} className="flex items-center justify-between text-sm gap-4">
@@ -73,7 +73,7 @@ export default function DiningPage() {
                                   <span className="font-medium text-slate-700">{item.name}</span>
                                   <span className="text-slate-400 text-xs ml-2">— {item.description.slice(0, 50)}{item.description.length > 50 ? "..." : ""}</span>
                                 </div>
-                                <span className="text-sky-700 font-bold shrink-0">₦{item.price.toLocaleString()}</span>
+                                <span className="text-amber-700 font-bold shrink-0">₦{item.price.toLocaleString()}</span>
                               </div>
                             ))}
                           </div>
@@ -83,10 +83,10 @@ export default function DiningPage() {
                   </div>
 
                   <div className="mt-6 flex gap-3">
-                    <Link href="/book" className="px-5 py-2.5 bg-[#7B2D3A] text-white text-sm font-semibold rounded-xl hover:bg-[#5C1D28] transition-colors">
+                    <Link href="/book" className="px-5 py-2.5 bg-[#C41230] text-white text-sm font-semibold rounded-xl hover:bg-[#9C0E25] transition-colors">
                       Reserve a Table
                     </Link>
-                    <a href="tel:+2341234567890" className="px-5 py-2.5 bg-white text-sky-600 text-sm font-semibold rounded-xl border border-sky-200 hover:bg-sky-50 transition-colors">
+                    <a href="tel:+2341234567890" className="px-5 py-2.5 bg-white text-amber-600 text-sm font-semibold rounded-xl border border-amber-200 hover:bg-amber-50 transition-colors">
                       Call for Enquiries
                     </a>
                   </div>
@@ -100,13 +100,13 @@ export default function DiningPage() {
       </section>
 
       {/* Dining Experience CTA */}
-      <section className="py-14 bg-[#5C1D28]">
+      <section className="py-14 bg-[#9C0E25]">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-2xl font-bold text-white mb-3">Private Dining Available</h2>
           <p className="text-white/80 mb-6 text-sm">
             Planning a special occasion? Our private dining rooms can be reserved for intimate celebrations, business dinners, and unforgettable moments.
           </p>
-          <Link href="/book" className="inline-block px-7 py-3 bg-white text-[#7B2D3A] font-semibold rounded-xl hover:bg-rose-50 transition-colors">
+          <Link href="/book" className="inline-block px-7 py-3 bg-white text-[#C41230] font-semibold rounded-xl hover:bg-rose-50 transition-colors">
             Enquire About Private Dining
           </Link>
         </div>

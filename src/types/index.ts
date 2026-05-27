@@ -28,7 +28,7 @@ export interface Apartment {
   features: string[];
   amenities: string[];
   available: boolean;
-  type: "studio" | "1-bedroom" | "2-bedroom" | "3-bedroom" | "penthouse";
+  type: "1-bedroom" | "2-bedroom" | "3-bedroom" | "4-bedroom";
 }
 
 export interface EventHall {

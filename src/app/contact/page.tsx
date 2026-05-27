@@ -47,7 +47,7 @@ export default function ContactPage() {
                   {[
                     {
                       icon: (
-                        <svg className="w-5 h-5 text-sky-500" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+                        <svg className="w-5 h-5 text-amber-500" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                           <path strokeLinecap="round" strokeLinejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                         </svg>
@@ -57,25 +57,25 @@ export default function ContactPage() {
                     },
                     {
                       icon: (
-                        <svg className="w-5 h-5 text-sky-500" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+                        <svg className="w-5 h-5 text-amber-500" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                         </svg>
                       ),
                       title: "Phone",
-                      detail: "+234 (0) 123 456 7890",
+                      detail: "+234 (0) 705 442 2968",
                     },
                     {
                       icon: (
-                        <svg className="w-5 h-5 text-sky-500" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+                        <svg className="w-5 h-5 text-amber-500" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                         </svg>
                       ),
                       title: "Email",
-                      detail: "info@pandingroups.com",
+                      detail: "pandinhotels@gmail.com",
                     },
                     {
                       icon: (
-                        <svg className="w-5 h-5 text-sky-500" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+                        <svg className="w-5 h-5 text-amber-500" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                         </svg>
                       ),
@@ -84,7 +84,7 @@ export default function ContactPage() {
                     },
                   ].map((item) => (
                     <div key={item.title} className="flex items-start gap-4">
-                      <div className="w-10 h-10 rounded-lg bg-sky-50 flex items-center justify-center shrink-0">
+                      <div className="w-10 h-10 rounded-lg bg-amber-50 flex items-center justify-center shrink-0">
                         {item.icon}
                       </div>
                       <div>
@@ -97,7 +97,7 @@ export default function ContactPage() {
               </div>
 
               {/* Map placeholder */}
-              <div className="relative h-52 rounded-xl overflow-hidden bg-sky-50">
+              <div className="relative h-52 rounded-xl overflow-hidden bg-amber-50">
                 <Image
                   src="https://images.unsplash.com/photo-1557804506-669a67965ba0?w=600&q=80"
                   alt="Map location"
@@ -106,7 +106,7 @@ export default function ContactPage() {
                 />
                 <div className="absolute inset-0 flex items-center justify-center">
                   <div className="bg-white rounded-xl shadow-lg px-4 py-3 text-center">
-                    <div className="w-8 h-8 rounded-full bg-[#7B2D3A] flex items-center justify-center mx-auto mb-1">
+                    <div className="w-8 h-8 rounded-full bg-[#C41230] flex items-center justify-center mx-auto mb-1">
                       <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 24 24">
                         <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5S10.62 6.5 12 6.5s2.5 1.12 2.5 2.5S13.38 11.5 12 11.5z" />
                       </svg>
@@ -149,7 +149,7 @@ export default function ContactPage() {
                         onChange={handleChange}
                         required
                         placeholder="John Doe"
-                        className="w-full px-4 py-3 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-sky-300 placeholder-slate-400"
+                        className="w-full px-4 py-3 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-amber-300 placeholder-slate-400"
                       />
                     </div>
                     <div>
@@ -161,7 +161,7 @@ export default function ContactPage() {
                         onChange={handleChange}
                         required
                         placeholder="john@example.com"
-                        className="w-full px-4 py-3 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-sky-300 placeholder-slate-400"
+                        className="w-full px-4 py-3 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-amber-300 placeholder-slate-400"
                       />
                     </div>
                   </div>
@@ -175,7 +175,7 @@ export default function ContactPage() {
                         value={form.phone}
                         onChange={handleChange}
                         placeholder="+234 800 000 0000"
-                        className="w-full px-4 py-3 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-sky-300 placeholder-slate-400"
+                        className="w-full px-4 py-3 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-amber-300 placeholder-slate-400"
                       />
                     </div>
                     <div>
@@ -185,7 +185,7 @@ export default function ContactPage() {
                         value={form.service}
                         onChange={handleChange}
                         required
-                        className="w-full px-4 py-3 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-sky-300 bg-white text-slate-700"
+                        className="w-full px-4 py-3 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-amber-300 bg-white text-slate-700"
                       >
                         <option value="">Select a service</option>
                         <option value="hotel">Hotel Room</option>
@@ -206,7 +206,7 @@ export default function ContactPage() {
                         name="checkIn"
                         value={form.checkIn}
                         onChange={handleChange}
-                        className="w-full px-4 py-3 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-sky-300"
+                        className="w-full px-4 py-3 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-amber-300"
                       />
                     </div>
                     <div>
@@ -216,7 +216,7 @@ export default function ContactPage() {
                         name="checkOut"
                         value={form.checkOut}
                         onChange={handleChange}
-                        className="w-full px-4 py-3 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-sky-300"
+                        className="w-full px-4 py-3 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-amber-300"
                       />
                     </div>
                     <div>
@@ -225,7 +225,7 @@ export default function ContactPage() {
                         name="guests"
                         value={form.guests}
                         onChange={handleChange}
-                        className="w-full px-4 py-3 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-sky-300 bg-white"
+                        className="w-full px-4 py-3 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-amber-300 bg-white"
                       >
                         <option value="">Select</option>
                         {[1,2,3,4,5,6,7,8].map((n) => <option key={n} value={n}>{n} {n === 1 ? "guest" : "guests"}</option>)}
@@ -242,13 +242,13 @@ export default function ContactPage() {
                       onChange={handleChange}
                       rows={4}
                       placeholder="Tell us about any special requests, dietary requirements, or questions..."
-                      className="w-full px-4 py-3 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-sky-300 resize-none placeholder-slate-400"
+                      className="w-full px-4 py-3 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-amber-300 resize-none placeholder-slate-400"
                     />
                   </div>
 
                   <button
                     type="submit"
-                    className="w-full py-3.5 bg-[#7B2D3A] text-white font-semibold rounded-xl hover:bg-[#5C1D28] transition-colors shadow-md"
+                    className="w-full py-3.5 bg-[#C41230] text-white font-semibold rounded-xl hover:bg-[#9C0E25] transition-colors shadow-md"
                   >
                     Send Enquiry
                   </button>

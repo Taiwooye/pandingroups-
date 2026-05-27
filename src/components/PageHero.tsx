@@ -44,7 +44,7 @@ export default function PageHero({
               <span key={i} className="flex items-center gap-2">
                 {i > 0 && <span className="text-white/40">/</span>}
                 {crumb.href ? (
-                  <Link href={crumb.href} className="text-sky-300 hover:text-sky-200 transition-colors">
+                  <Link href={crumb.href} className="text-amber-300 hover:text-amber-200 transition-colors">
                     {crumb.label}
                   </Link>
                 ) : (

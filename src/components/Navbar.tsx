@@ -8,7 +8,9 @@ const navLinks = [
   { label: "Hotel", href: "/hotel" },
   { label: "Apartments", href: "/apartments" },
   { label: "Event Hall", href: "/event-hall" },
-  { label: "Lounge & Bar", href: "/lounge-bar" },
+  { label: "DarNis Lounge", href: "/lounge-bar" },
+  { label: "Recreation", href: "/recreation" },
+  { label: "Foundation", href: "/foundation" },
   { label: "Gallery", href: "/gallery" },
   { label: "About", href: "/about" },
   { label: "Contact", href: "/contact" },
@@ -41,7 +43,7 @@ export default function Navbar() {
         <div className="flex items-center justify-between h-16 md:h-20">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2 group">
-            <div className="w-9 h-9 rounded-lg bg-[#7B2D3A] flex items-center justify-center">
+            <div className="w-9 h-9 rounded-lg bg-[#C41230] flex items-center justify-center">
               <svg
                 viewBox="0 0 24 24"
                 fill="none"
@@ -57,11 +59,11 @@ export default function Navbar() {
               </svg>
             </div>
             <div className="leading-none">
-              <span className="text-lg font-bold text-[#7B2D3A] tracking-tight">
-                Pandin
+              <span className="text-lg font-bold text-[#C41230] tracking-tight">
+                PaNDiN
               </span>
               <span className="text-lg font-bold text-slate-700 tracking-tight">
-                Groups
+                {" "}Group
               </span>
             </div>
           </Link>
@@ -74,8 +76,8 @@ export default function Navbar() {
                 href={link.href}
                 className={`px-3 py-2 rounded-md text-sm font-medium transition-colors ${
                   pathname === link.href || pathname.startsWith(link.href + "/")
-                    ? "text-sky-600 bg-sky-50"
-                    : "text-slate-600 hover:text-sky-600 hover:bg-sky-50"
+                    ? "text-amber-600 bg-amber-50"
+                    : "text-slate-600 hover:text-amber-600 hover:bg-amber-50"
                 }`}
               >
                 {link.label}
@@ -87,13 +89,13 @@ export default function Navbar() {
           <div className="flex items-center gap-3">
             <Link
               href="/book"
-              className="hidden sm:inline-flex items-center px-4 py-2 rounded-lg bg-[#7B2D3A] text-white text-sm font-semibold hover:bg-[#5C1D28] transition-colors shadow-sm"
+              className="hidden sm:inline-flex items-center px-4 py-2 rounded-lg bg-[#C41230] text-white text-sm font-semibold hover:bg-[#9C0E25] transition-colors shadow-sm"
             >
               Book Now
             </Link>
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="lg:hidden p-2 rounded-md text-slate-600 hover:text-sky-600 hover:bg-sky-50 transition-colors"
+              className="lg:hidden p-2 rounded-md text-slate-600 hover:text-amber-600 hover:bg-amber-50 transition-colors"
               aria-label="Toggle menu"
             >
               {isOpen ? (
@@ -118,8 +120,8 @@ export default function Navbar() {
                 href={link.href}
                 className={`flex items-center px-4 py-3 text-sm font-medium rounded-md mx-1 transition-colors ${
                   pathname === link.href || pathname.startsWith(link.href + "/")
-                    ? "text-sky-600 bg-sky-50"
-                    : "text-slate-600 hover:text-sky-600 hover:bg-sky-50"
+                    ? "text-amber-600 bg-amber-50"
+                    : "text-slate-600 hover:text-amber-600 hover:bg-amber-50"
                 }`}
               >
                 {link.label}
@@ -128,7 +130,7 @@ export default function Navbar() {
             <div className="px-4 pt-3 pb-1">
               <Link
                 href="/book"
-                className="flex items-center justify-center w-full px-4 py-2.5 rounded-lg bg-[#7B2D3A] text-white text-sm font-semibold hover:bg-[#5C1D28] transition-colors"
+                className="flex items-center justify-center w-full px-4 py-2.5 rounded-lg bg-[#C41230] text-white text-sm font-semibold hover:bg-[#9C0E25] transition-colors"
               >
                 Book Now
               </Link>

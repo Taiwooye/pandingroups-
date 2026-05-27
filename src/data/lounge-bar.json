@@ -1,179 +1,135 @@
 [
   {
-    "id": "azure-sky-bar",
-    "name": "Azure Sky Bar",
-    "description": "Perched on the top floor with panoramic city views, Azure Sky Bar is the place to be for sunset cocktails, craft beers, and an upscale atmosphere that defines luxury.",
+    "id": "darnis-lounge",
+    "name": "DarNis Lounge",
+    "description": "Our indoor DarNis Lounge offers the perfect blend of comfort and sophistication. Enjoy a selection of fine wines, premium liquors, and expertly crafted cocktails in a stylish and cozy setting. With plush seating, ambient lighting, and smooth music creating the perfect atmosphere, it's the ideal spot to unwind, socialize, and indulge in a refined experience.",
     "image": "https://images.unsplash.com/photo-1572116469696-31de0f17cc34?w=800&q=80",
     "gallery": [
       "https://images.unsplash.com/photo-1572116469696-31de0f17cc34?w=800&q=80",
       "https://images.unsplash.com/photo-1551024506-0bccd828d307?w=800&q=80",
       "https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?w=800&q=80"
     ],
-    "openHours": "4:00 PM – 2:00 AM",
+    "openHours": "6:00 PM – 2:00 AM",
     "features": [
-      "Rooftop Views",
-      "Craft Cocktails",
-      "Live Music (Fri & Sat)",
-      "Private Booths",
-      "Happy Hour 4–7 PM"
+      "Music & Entertainment",
+      "Quality Sound System",
+      "Bar Counter",
+      "Event Hosting",
+      "Comfortable Seating",
+      "24/7 Air Conditioning & Electricity",
+      "Professional Bar Attendance",
+      "Television Screens"
     ],
     "menu": [
       {
-        "name": "Azure Sunset",
-        "description": "Tequila, passion fruit, lime juice, and a hint of chili",
-        "price": 20000,
-        "category": "Signature Cocktails"
+        "name": "Signature Cocktail",
+        "description": "Premium spirits blended with fresh tropical fruits and house-made syrups",
+        "price": 5000,
+        "category": "Cocktails"
       },
       {
-        "name": "Pandin Mule",
-        "description": "Premium vodka, ginger beer, fresh mint, lime",
-        "price": 20000,
-        "category": "Signature Cocktails"
+        "name": "Classic Old Fashioned",
+        "description": "Bourbon whiskey, Angostura bitters, sugar, orange peel",
+        "price": 6000,
+        "category": "Cocktails"
       },
       {
-        "name": "Blue Lagoon Spritz",
-        "description": "Blue curaçao, prosecco, elderflower, soda",
-        "price": 20000,
-        "category": "Signature Cocktails"
+        "name": "Mojito",
+        "description": "White rum, fresh mint, lime juice, sugar, soda water",
+        "price": 4500,
+        "category": "Cocktails"
       },
       {
-        "name": "Old Fashioned",
-        "description": "Bourbon, Angostura bitters, sugar, orange zest",
-        "price": 20000,
-        "category": "Classic Cocktails"
-      },
-      {
-        "name": "Craft IPA",
-        "description": "Local craft Indian Pale Ale on tap",
-        "price": 20000,
-        "category": "Beers & Ciders"
-      },
-      {
-        "name": "Premium Wine Selection",
-        "description": "Curated selection of red, white, and rosé wines by the glass",
-        "price": 20000,
+        "name": "Premium Red Wine",
+        "description": "Carefully selected premium red wine by the glass",
+        "price": 7000,
         "category": "Wines"
       },
       {
-        "name": "Cheese & Charcuterie Board",
-        "description": "Artisan cheeses, cured meats, crackers, and condiments",
-        "price": 20000,
-        "category": "Bar Bites"
+        "name": "Premium White Wine",
+        "description": "Chilled premium white wine by the glass",
+        "price": 7000,
+        "category": "Wines"
       },
       {
-        "name": "Truffle Fries",
-        "description": "Crispy fries tossed in truffle oil and parmesan",
-        "price": 20000,
-        "category": "Bar Bites"
+        "name": "Craft Beer",
+        "description": "Cold refreshing craft beer selection",
+        "price": 3000,
+        "category": "Beers"
+      },
+      {
+        "name": "Premium Spirits",
+        "description": "Fine whisky, cognac, vodka, gin — served neat or on the rocks",
+        "price": 8000,
+        "category": "Spirits"
+      },
+      {
+        "name": "Soft Drinks & Mocktails",
+        "description": "Refreshing non-alcoholic options for all guests",
+        "price": 1500,
+        "category": "Non-Alcoholic"
       }
     ],
     "available": true
   },
   {
-    "id": "the-ocean-lounge",
-    "name": "The Ocean Lounge",
-    "description": "An intimate, sophisticated lounge on the ground floor exuding relaxed elegance. Perfect for after-dinner drinks, business conversations, or a quiet evening with a fine whisky.",
-    "image": "https://images.unsplash.com/photo-1470337458703-46ad1756a187?w=800&q=80",
+    "id": "pool-side-bar",
+    "name": "Pool Side Bar",
+    "description": "Our Pool Side Bar is the perfect spot to relax and refresh. Enjoy a selection of soft drinks, chilled beers, and premium liquor by the pool. With a vibrant atmosphere, comfortable seating, and great music setting the mood, it's the ideal place to unwind, socialize, and soak up the sunny vibes.",
+    "image": "https://images.unsplash.com/photo-1551024506-0bccd828d307?w=800&q=80",
     "gallery": [
-      "https://images.unsplash.com/photo-1470337458703-46ad1756a187?w=800&q=80",
-      "https://images.unsplash.com/photo-1572116469696-31de0f17cc34?w=800&q=80",
-      "https://images.unsplash.com/photo-1551024506-0bccd828d307?w=800&q=80"
+      "https://images.unsplash.com/photo-1551024506-0bccd828d307?w=800&q=80",
+      "https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?w=800&q=80",
+      "https://images.unsplash.com/photo-1572116469696-31de0f17cc34?w=800&q=80"
     ],
-    "openHours": "6:00 PM – 12:00 AM",
+    "openHours": "10:00 AM – 10:00 PM",
     "features": [
-      "Whisky Library",
-      "Cigar Lounge",
-      "Jazz Music Nightly",
-      "Private Seating",
-      "Sommelier Available"
+      "Pool Area Access",
+      "Music & Entertainment",
+      "Television Screens",
+      "Poolside Services",
+      "Floating Toys & Inflatables",
+      "Clean Towels & Swimwear Rental",
+      "Event Hosting",
+      "Pool Party Facilities",
+      "Shower & Changing Room"
     ],
     "menu": [
       {
-        "name": "Aged Macallan 18yr",
-        "description": "Single malt scotch whisky, neat or on the rocks",
-        "price": 20000,
-        "category": "Premium Whisky"
+        "name": "Chilled Beer",
+        "description": "Ice-cold beer served poolside — perfect for hot sunny days",
+        "price": 2500,
+        "category": "Beers"
       },
       {
-        "name": "Hennessy VSOP",
-        "description": "Classic cognac served neat",
-        "price": 20000,
-        "category": "Cognac & Brandy"
-      },
-      {
-        "name": "Espresso Martini",
-        "description": "Vodka, fresh espresso, coffee liqueur",
-        "price": 20000,
+        "name": "Frozen Cocktail",
+        "description": "Blended frozen fruit cocktail to keep you cool",
+        "price": 4000,
         "category": "Cocktails"
       },
       {
-        "name": "Negroni",
-        "description": "Gin, sweet vermouth, Campari, orange peel",
-        "price": 20000,
-        "category": "Cocktails"
+        "name": "Soft Drinks",
+        "description": "Cold soft drinks and fresh juices served at the pool",
+        "price": 1000,
+        "category": "Non-Alcoholic"
       },
       {
-        "name": "Smoked Salmon Blinis",
-        "description": "Mini buckwheat blinis with cream cheese and smoked salmon",
-        "price": 20000,
-        "category": "Bites"
+        "name": "Premium Liquor",
+        "description": "Fine spirits and premium liquor served by the pool",
+        "price": 7000,
+        "category": "Spirits"
       },
       {
-        "name": "Oysters (6 pcs)",
-        "description": "Fresh oysters with mignonette and lemon",
-        "price": 20000,
-        "category": "Bites"
-      }
-    ],
-    "available": true
-  },
-  {
-    "id": "pool-bar",
-    "name": "Aqua Pool Bar",
-    "description": "Enjoy refreshing drinks and light bites right at the poolside. Whether you're taking a break from swimming or soaking up the sun, Aqua Pool Bar has the perfect refreshment.",
-    "image": "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=800&q=80",
-    "gallery": [
-      "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=800&q=80",
-      "https://images.unsplash.com/photo-1551024506-0bccd828d307?w=800&q=80"
-    ],
-    "openHours": "9:00 AM – 7:00 PM",
-    "features": [
-      "Poolside Service",
-      "Frozen Drinks",
-      "Healthy Options",
-      "Sun Lounger Service",
-      "Smoothies & Juices"
-    ],
-    "menu": [
-      {
-        "name": "Piña Colada",
-        "description": "Rum, coconut cream, pineapple juice, served frozen",
-        "price": 20000,
-        "category": "Frozen Cocktails"
+        "name": "Light Snacks",
+        "description": "Chips, peanuts, and light bites to enjoy by the water",
+        "price": 2000,
+        "category": "Snacks"
       },
       {
-        "name": "Frozen Margarita",
-        "description": "Tequila, triple sec, lime juice, frozen blend",
-        "price": 20000,
-        "category": "Frozen Cocktails"
-      },
-      {
-        "name": "Tropical Green Smoothie",
-        "description": "Spinach, mango, banana, coconut water, ginger",
-        "price": 20000,
-        "category": "Healthy Drinks"
-      },
-      {
-        "name": "Club Sandwich",
-        "description": "Triple-decker with chicken, bacon, lettuce, tomato",
-        "price": 20000,
-        "category": "Light Bites"
-      },
-      {
-        "name": "Fresh Fruit Platter",
-        "description": "Seasonal tropical fruits with yogurt dip",
-        "price": 20000,
-        "category": "Light Bites"
+        "name": "Water & Juices",
+        "description": "Bottled water and fresh squeezed juices",
+        "price": 800,
+        "category": "Non-Alcoholic"
       }
     ],
     "available": true

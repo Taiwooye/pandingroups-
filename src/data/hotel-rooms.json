@@ -1,195 +1,138 @@
 [
   {
-    "id": "standard-city-view",
-    "name": "Standard City View",
-    "description": "A comfortable room with stunning city panorama views, featuring modern furnishings and all essential amenities for a pleasant stay.",
-    "price": 20000,
+    "id": "nkrumah-basic-room",
+    "name": "Nkrumah Basic Room",
+    "description": "Experience comfort and affordability in our Nkrumah Basic Room, a cozy haven designed for up to 2 guests. Ideal for solo travelers or couples, this inviting space offers a relaxing retreat after a day of exploration or business.",
+    "price": 23000,
     "priceUnit": "per night",
-    "image": "https://images.unsplash.com/photo-1611892440504-42a792e24d32?w=800&q=80",
+    "image": "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=800&q=80",
     "gallery": [
-      "https://images.unsplash.com/photo-1611892440504-42a792e24d32?w=800&q=80",
       "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=800&q=80",
-      "https://images.unsplash.com/photo-1590490360182-c33d57733427?w=800&q=80"
+      "https://images.unsplash.com/photo-1611892440504-42a792e24d32?w=800&q=80"
     ],
     "capacity": 2,
-    "size": 28,
+    "size": 20,
     "features": [
-      "King Bed",
-      "City View",
-      "Free WiFi",
-      "Air Conditioning",
-      "En-suite Bathroom"
+      "Plush Single Bed",
+      "Workspace with Desk & Chair",
+      "Cooling Fan",
+      "Flat-Screen TV",
+      "24/7 Air Conditioning & Electricity"
     ],
     "amenities": [
-      "Smart TV",
-      "Mini Fridge",
-      "Coffee Maker",
-      "In-room Safe",
-      "Work Desk",
-      "Wardrobe"
+      "Quality Toiletries (towels, dental kit, body wash)",
+      "24/7 Room Service",
+      "Daily Housekeeping",
+      "Free Swimming Pool Access",
+      "Free Game Center Access",
+      "Serene Environment",
+      "24/7 Security"
     ],
     "available": true,
     "category": "standard"
   },
   {
-    "id": "deluxe-pool-view",
-    "name": "Deluxe Pool View",
-    "description": "Spacious deluxe room overlooking our resort-style pool, furnished with premium bedding and stylish décor for an elevated experience.",
-    "price": 20000,
-    "priceUnit": "per night",
-    "image": "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=800&q=80",
-    "gallery": [
-      "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=800&q=80",
-      "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=800&q=80",
-      "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=800&q=80"
-    ],
-    "capacity": 2,
-    "size": 38,
-    "features": [
-      "King Bed",
-      "Pool View",
-      "Balcony",
-      "Free WiFi",
-      "Bathtub & Shower"
-    ],
-    "amenities": [
-      "Smart TV",
-      "Mini Bar",
-      "Coffee Maker",
-      "In-room Safe",
-      "Seating Area",
-      "Premium Toiletries"
-    ],
-    "available": true,
-    "category": "deluxe"
-  },
-  {
-    "id": "junior-suite",
-    "name": "Junior Suite",
-    "description": "A beautifully appointed junior suite featuring a separate living area, premium furnishings, and sweeping views of the surrounding landscape.",
-    "price": 20000,
+    "id": "fela-standard-room",
+    "name": "Fela Standard Room",
+    "description": "Discover the Fela Room, an exceptional retreat that redefines spacious luxury and comfort, designed for up to 2 guests. This room offers a more expansive layout and an array of thoughtfully curated amenities that cater to your every need.",
+    "price": 28000,
     "priceUnit": "per night",
     "image": "https://images.unsplash.com/photo-1590490360182-c33d57733427?w=800&q=80",
     "gallery": [
       "https://images.unsplash.com/photo-1590490360182-c33d57733427?w=800&q=80",
-      "https://images.unsplash.com/photo-1611892440504-42a792e24d32?w=800&q=80",
-      "https://images.unsplash.com/photo-1629140727571-9b5c6f6267b4?w=800&q=80"
-    ],
-    "capacity": 3,
-    "size": 55,
-    "features": [
-      "King Bed",
-      "Separate Living Room",
-      "Panoramic View",
-      "Private Balcony",
-      "Jacuzzi"
-    ],
-    "amenities": [
-      "55\" Smart TV",
-      "Full Mini Bar",
-      "Espresso Machine",
-      "In-room Safe",
-      "Sofa Set",
-      "Luxury Toiletries",
-      "Bathrobes"
-    ],
-    "available": true,
-    "category": "suite"
-  },
-  {
-    "id": "executive-suite",
-    "name": "Executive Suite",
-    "description": "Our signature executive suite offers an unparalleled level of luxury with a spacious living room, private dining area, and exquisite finishes.",
-    "price": 20000,
-    "priceUnit": "per night",
-    "image": "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=800&q=80",
-    "gallery": [
-      "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=800&q=80",
-      "https://images.unsplash.com/photo-1590490360182-c33d57733427?w=800&q=80",
-      "https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=800&q=80"
-    ],
-    "capacity": 4,
-    "size": 80,
-    "features": [
-      "King Bed",
-      "Living & Dining Area",
-      "Panoramic Views",
-      "Private Terrace",
-      "Luxury Bathroom"
-    ],
-    "amenities": [
-      "65\" Smart TV",
-      "Full Mini Bar",
-      "Premium Espresso Machine",
-      "Walk-in Wardrobe",
-      "Butler Service",
-      "Luxury Toiletries",
-      "Bathrobes & Slippers"
-    ],
-    "available": true,
-    "category": "suite"
-  },
-  {
-    "id": "standard-double",
-    "name": "Standard Double Room",
-    "description": "A well-appointed double room perfect for couples or solo travelers seeking comfort and value without compromising on quality.",
-    "price": 20000,
-    "priceUnit": "per night",
-    "image": "https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=800&q=80",
-    "gallery": [
-      "https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=800&q=80",
       "https://images.unsplash.com/photo-1611892440504-42a792e24d32?w=800&q=80"
     ],
     "capacity": 2,
     "size": 25,
     "features": [
-      "Double Bed",
-      "Garden View",
-      "Free WiFi",
-      "Air Conditioning",
-      "Private Bathroom"
+      "Plush Double Bed",
+      "Spacious & Comfortable Bedroom",
+      "Workspace with Desk & Chair",
+      "Cooling Fan",
+      "Water Heating System"
     ],
     "amenities": [
-      "TV",
-      "Tea & Coffee Maker",
-      "Hair Dryer",
-      "In-room Safe",
-      "Wardrobe"
+      "Flat-Screen TV",
+      "Quality Toiletries (towels, dental kit, body wash)",
+      "24/7 Air Conditioning & Electricity",
+      "24/7 Room Service",
+      "Daily Housekeeping",
+      "Free Swimming Pool Access",
+      "Free Game Center Access",
+      "24/7 Security",
+      "Serene Environment"
     ],
     "available": true,
     "category": "standard"
   },
   {
-    "id": "penthouse-suite",
-    "name": "Penthouse Suite",
-    "description": "The crown jewel of PandinGroups — a two-floor penthouse suite with 360-degree views, a private pool, personal butler, and the ultimate in luxury living.",
-    "price": 20000,
+    "id": "zik-standard-plus-room",
+    "name": "Zik Standard Plus Room",
+    "description": "Welcome to the Zik Room, a standard plus spacious retreat designed to accommodate up to 3 guests in ultimate comfort. Experience the blend of comfort and spaciousness that makes the Zik Room a true home away from home.",
+    "price": 33000,
+    "priceUnit": "per night",
+    "image": "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=800&q=80",
+    "gallery": [
+      "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=800&q=80",
+      "https://images.unsplash.com/photo-1590490360182-c33d57733427?w=800&q=80"
+    ],
+    "capacity": 3,
+    "size": 32,
+    "features": [
+      "Queen-Sized Bed",
+      "Mini Fridge",
+      "In-Room Electric Kettle with Tea Essentials",
+      "Water Heating System",
+      "HDTV with Netflix, Amazon Prime & DSTV"
+    ],
+    "amenities": [
+      "Tea Essentials (cups, spoons, milk, sugar)",
+      "Quality Toiletries (towels, dental kit, body wash)",
+      "24/7 Air Conditioning & Electricity",
+      "24/7 Room Service",
+      "Daily Housekeeping",
+      "Free Swimming Pool Access",
+      "Free Game Center Access",
+      "Serene Environment",
+      "24/7 Security"
+    ],
+    "available": true,
+    "category": "deluxe"
+  },
+  {
+    "id": "mandela-suite",
+    "name": "Mandela Suite",
+    "description": "Welcome to the Mandela Suite, an expansive and luxurious accommodation designed for families and larger groups. Features a king-sized bed, a cozy sitting room with convertible sofa bed, and an en-suite bathroom — a true home away from home.",
+    "price": 55000,
     "priceUnit": "per night",
     "image": "https://images.unsplash.com/photo-1629140727571-9b5c6f6267b4?w=800&q=80",
     "gallery": [
       "https://images.unsplash.com/photo-1629140727571-9b5c6f6267b4?w=800&q=80",
-      "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=800&q=80",
-      "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=800&q=80"
+      "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=800&q=80",
+      "https://images.unsplash.com/photo-1590490360182-c33d57733427?w=800&q=80"
     ],
-    "capacity": 6,
-    "size": 300,
+    "capacity": 4,
+    "size": 65,
     "features": [
-      "2 Master Bedrooms",
-      "360° Views",
-      "Private Rooftop Pool",
-      "Personal Butler",
-      "Private Chef Kitchen"
+      "King-Sized Bed",
+      "En-suite Living Room with Convertible Sofa Bed",
+      "Workspace with Desk & Chair",
+      "HDTV with Netflix, Amazon Prime & DSTV",
+      "Mini Fridge"
     ],
     "amenities": [
-      "Home Theatre",
-      "Full Bar",
-      "Jacuzzi",
-      "Private Gym",
-      "Luxury Toiletries",
-      "Champagne on Arrival",
-      "Airport Transfer"
+      "In-Room Electric Kettle with Tea Essentials",
+      "Water Heating System",
+      "24/7 Air Conditioning & Electricity",
+      "Quality Toiletries (towels, dental kit, body wash)",
+      "24/7 Room Service",
+      "Daily Housekeeping",
+      "Free Swimming Pool Access",
+      "Free Game Center Access",
+      "Serene Environment",
+      "24/7 Security"
     ],
-    "available": false,
-    "category": "penthouse"
+    "available": true,
+    "category": "suite"
   }
 ]

@@ -1,110 +1,100 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import PageHero from "@/components/PageHero";
 
 export const metadata: Metadata = {
-  title: "About Us",
-  description: "Learn about PandinGroups — our story, mission, values, and the passionate team behind your luxury experience.",
+  title: "About Us | PaNDiN Group",
+  description: "Learn about The PaNDiN Group — the business and philanthropic endeavors of Paul, Nwando, Darius, and Nissi Olayiwola.",
 };
 
-const team = [
-  {
-    name: "Chukwuemeka Pandin",
-    role: "Founder & CEO",
-    image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=300&q=80",
-    bio: "Visionary hospitality leader with 20+ years crafting world-class guest experiences across Africa and Europe.",
-  },
-  {
-    name: "Adaeze Nwosu",
-    role: "General Manager",
-    image: "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=300&q=80",
-    bio: "Passionate about delivering flawless operations and personalized service to every guest at PandinGroups.",
-  },
-  {
-    name: "James Okonkwo",
-    role: "Executive Chef",
-    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&q=80",
-    bio: "Award-winning chef blending continental techniques with West African flavors to create truly unique menus.",
-  },
-  {
-    name: "Fatima Al-Hassan",
-    role: "Head of Events",
-    image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=300&q=80",
-    bio: "Event maestro who has orchestrated over 500 spectacular weddings, galas, and corporate events.",
-  },
+const values = [
+  { icon: "⭐", title: "Excellence", desc: "We set the highest standards in every aspect of our service — from room presentation to event hosting." },
+  { icon: "🤝", title: "Community", desc: "Every guest, every neighbor, every partner matters. Genuine care and personal attention define every interaction." },
+  { icon: "🌱", title: "Growth", desc: "We believe everyone should work hard to achieve their God-given potential. We create spaces and programs that help people be their best." },
 ];
 
-const milestones = [
-  { year: "2010", title: "Founded", desc: "PandinGroups opens its first hotel with 50 rooms in Lagos." },
-  { year: "2013", title: "Expansion", desc: "Added serviced apartments and the first event hall." },
-  { year: "2017", title: "Award", desc: "Voted Best Luxury Hotel in West Africa by TravelAward." },
-  { year: "2020", title: "Renovation", desc: "Complete redesign of all facilities to a five-star standard." },
-  { year: "2023", title: "Growth", desc: "Expanded to 200+ rooms, opened Azure Sky Bar and The Ocean Lounge." },
-  { year: "2025", title: "Today", desc: "PandinGroups stands as Lagos' premier hospitality destination." },
+const offerings = [
+  { icon: "🏨", title: "Hotel", desc: "23-room hotel with Pool Side Bar, DarNis Lounge, and swimming pool rentals." },
+  { icon: "🏠", title: "Luxury Apartments", desc: "Fully serviced short-term stay apartments — 1BR, 2BR, 3BR & 4BR — with private pool." },
+  { icon: "🎉", title: "Event Hall", desc: "Nwando's Event Hall accommodating 400–500 guests for any occasion." },
+  { icon: "🍹", title: "DarNis Lounge", desc: "Indoor lounge with fine wines, premium liquors, and expertly crafted cocktails." },
+  { icon: "🏊", title: "Recreation & Wellness", desc: "Swimming pool, basketball, billiards, table tennis, snooker, and gym facilities." },
+  { icon: "❤️", title: "PaNDiN Foundation", desc: "Charitable programs, Food is Life program, and That Next Step Africa Scholarship." },
 ];
 
 export default function AboutPage() {
   return (
     <div>
       <PageHero
-        title="About PandinGroups"
-        subtitle="15 years of exceptional hospitality, passion, and commitment to creating unforgettable experiences."
+        title="About PaNDiN Group"
+        subtitle="A conglomerate of business and philanthropic endeavors of the Olayiwola family — you, but better!"
         image="https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=1600&q=80"
         breadcrumbs={[{ label: "Home", href: "/" }, { label: "About Us" }]}
         height="md"
       />
 
-      {/* Story */}
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-14 items-center">
             <div>
-              <span className="text-sky-600 text-sm font-semibold uppercase tracking-wider">Our Story</span>
-              <h2 className="text-3xl md:text-4xl font-bold text-slate-800 mt-2 mb-6">Born from a Passion for Hospitality</h2>
+              <span className="text-amber-600 text-sm font-semibold uppercase tracking-wider">Our Story</span>
+              <h2 className="text-3xl md:text-4xl font-bold text-slate-800 mt-2 mb-6">Who We Are</h2>
               <div className="space-y-4 text-slate-600 leading-relaxed">
                 <p>
-                  PandinGroups was founded in 2010 with a simple but powerful vision: to create a hospitality experience that combines the warmth of African culture with the highest international standards of luxury and service.
+                  The PaNDiN Group is a conglomerate of business and philanthropic endeavors of <strong>Paul, Nwando, Darius, and Nissi (PaNDiN) Olayiwola</strong>. Our name is a tribute to the family behind it all.
                 </p>
                 <p>
-                  What began as a boutique hotel in the heart of Lagos has grown into a complete hospitality destination — home to luxury hotel rooms, serviced apartments, stunning event venues, fine dining restaurants, and exclusive bars.
+                  We believe everyone should enjoy life, live to the fullest, and work hard to achieve their God-given potential. That vision shapes everything we do — from our world-class hotel and luxury apartments to our community programs and wellness facilities.
                 </p>
                 <p>
-                  Today, with over 15 years of experience and 50,000+ satisfied guests from around the world, PandinGroups continues to set the benchmark for luxury hospitality in West Africa.
+                  Experience our full-service hotel, short-term stay luxury apartments, lounge, event space, and fitness and swimming facilities. Be part of our community and charitable services, or participate in our sports and wellness activities.
                 </p>
+                <p className="text-[#C41230] font-semibold text-lg">Be the best version of yourself with PaNDiN — you, but better!</p>
               </div>
-              <div className="mt-8">
-                <Link href="/contact" className="px-6 py-3 bg-[#7B2D3A] text-white font-semibold rounded-xl hover:bg-[#5C1D28] transition-colors inline-block">
+              <div className="mt-8 flex gap-3 flex-wrap">
+                <Link href="/contact" className="px-6 py-3 bg-[#C41230] text-white font-semibold rounded-xl hover:bg-[#9C0E25] transition-colors inline-block">
                   Get in Touch
+                </Link>
+                <Link href="/book" className="px-6 py-3 bg-amber-50 text-amber-700 font-semibold rounded-xl border border-amber-200 hover:bg-amber-100 transition-colors inline-block">
+                  Book Your Stay
                 </Link>
               </div>
             </div>
             <div className="relative h-96 rounded-2xl overflow-hidden shadow-xl">
-              <Image
-                src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=800&q=80"
-                alt="PandinGroups interior"
-                fill
-                className="object-cover"
-              />
+              <Image src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=800&q=80" alt="PaNDiN Group" fill className="object-cover" />
             </div>
           </div>
         </div>
       </section>
 
-      {/* Values */}
       <section className="py-16 bg-slate-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <span className="text-sky-600 text-sm font-semibold uppercase tracking-wider">Our Values</span>
+            <span className="text-amber-600 text-sm font-semibold uppercase tracking-wider">Everything Under One Roof</span>
+            <h2 className="text-3xl font-bold text-slate-800 mt-2">What PaNDiN Group Offers</h2>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {offerings.map((o) => (
+              <div key={o.title} className="bg-white rounded-2xl p-7 shadow-sm">
+                <div className="text-4xl mb-4">{o.icon}</div>
+                <h3 className="text-lg font-bold text-slate-800 mb-2">{o.title}</h3>
+                <p className="text-slate-500 text-sm leading-relaxed">{o.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="py-16 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <span className="text-amber-600 text-sm font-semibold uppercase tracking-wider">Our Values</span>
             <h2 className="text-3xl font-bold text-slate-800 mt-2">What We Stand For</h2>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {[
-              { icon: "⭐", title: "Excellence", desc: "We set the highest standards in every aspect of our service, from room presentation to culinary arts." },
-              { icon: "🤝", title: "Warmth", desc: "Every guest is treated like family. Genuine care and personal attention define every interaction." },
-              { icon: "🌿", title: "Sustainability", desc: "We are committed to responsible hospitality — minimizing our environmental footprint and supporting local communities." },
-            ].map((v) => (
-              <div key={v.title} className="bg-white rounded-2xl p-7 shadow-sm text-center">
+            {values.map((v) => (
+              <div key={v.title} className="bg-slate-50 rounded-2xl p-7 shadow-sm text-center">
                 <div className="text-4xl mb-4">{v.icon}</div>
                 <h3 className="text-xl font-bold text-slate-800 mb-3">{v.title}</h3>
                 <p className="text-slate-500 text-sm leading-relaxed">{v.desc}</p>
@@ -114,51 +104,27 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Timeline */}
-      <section className="py-20 bg-white">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <span className="text-sky-600 text-sm font-semibold uppercase tracking-wider">Our Journey</span>
-            <h2 className="text-3xl font-bold text-slate-800 mt-2">Milestones</h2>
-          </div>
-          <div className="relative">
-            <div className="absolute left-4 md:left-1/2 top-0 bottom-0 w-0.5 bg-slate-200 -translate-x-1/2" />
-            <div className="space-y-8">
-              {milestones.map((m, idx) => (
-                <div key={m.year} className={`relative flex items-start gap-6 ${idx % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"} md:gap-10`}>
-                  <div className="absolute left-4 md:left-1/2 -translate-x-1/2 w-3 h-3 rounded-full bg-[#7B2D3A] ring-4 ring-rose-100 mt-1" />
-                  <div className={`pl-10 md:pl-0 md:w-1/2 ${idx % 2 === 0 ? "md:text-right md:pr-10" : "md:pl-10"}`}>
-                    <span className="text-[#7B2D3A] font-bold text-lg">{m.year}</span>
-                    <h3 className="font-bold text-slate-800 mt-0.5">{m.title}</h3>
-                    <p className="text-slate-500 text-sm mt-1">{m.desc}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Team */}
-      <section className="py-16 bg-slate-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <span className="text-sky-600 text-sm font-semibold uppercase tracking-wider">The People Behind PandinGroups</span>
-            <h2 className="text-3xl font-bold text-slate-800 mt-2">Our Leadership Team</h2>
-          </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {team.map((member) => (
-              <div key={member.name} className="bg-white rounded-2xl overflow-hidden shadow-sm text-center group hover:shadow-md transition-shadow">
-                <div className="relative h-56 overflow-hidden">
-                  <Image src={member.image} alt={member.name} fill className="object-cover group-hover:scale-105 transition-transform duration-500" />
-                </div>
-                <div className="p-5">
-                  <h3 className="font-bold text-slate-800">{member.name}</h3>
-                  <p className="text-[#7B2D3A] text-sm font-medium mb-2">{member.role}</p>
-                  <p className="text-slate-500 text-xs leading-relaxed">{member.bio}</p>
-                </div>
+      <section className="py-16 bg-[#C41230]">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <span className="text-amber-300 text-sm font-semibold uppercase tracking-wider">Limited Time Offers</span>
+          <h2 className="text-3xl font-bold text-white mt-2 mb-8">Special Promotions</h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+            {[
+              { icon: "🍽️", title: "Dine Free", desc: "Book 2 nights hotel or apartment and get 2 free dinner or breakfast meals" },
+              { icon: "🏋️", title: "Gym Bonus", desc: "Book 5 to 7 days apartment and get 1 free week of gym use when it opens" },
+              { icon: "💸", title: "10% Off", desc: "10% off any stay or event booked online — contact us for current active deals" },
+            ].map((p) => (
+              <div key={p.title} className="bg-white/10 rounded-2xl p-6 text-white text-center border border-white/20">
+                <div className="text-3xl mb-3">{p.icon}</div>
+                <h3 className="font-bold mb-2">{p.title}</h3>
+                <p className="text-white/80 text-sm leading-relaxed">{p.desc}</p>
               </div>
             ))}
+          </div>
+          <div className="mt-8">
+            <Link href="/book" className="inline-block px-7 py-3 bg-white text-[#C41230] font-semibold rounded-xl hover:bg-amber-50 transition-colors">
+              Book Now
+            </Link>
           </div>
         </div>
       </section>

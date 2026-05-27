@@ -37,9 +37,9 @@ export default async function HotelRoomPage(props: PageProps<"/hotel/[id]">) {
         <div className="absolute inset-0 bg-gradient-to-t from-slate-900/70 to-transparent" />
         <div className="absolute bottom-0 left-0 right-0 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-8">
           <nav className="flex items-center gap-2 mb-3 text-sm">
-            <Link href="/" className="text-sky-300 hover:text-sky-200">Home</Link>
+            <Link href="/" className="text-amber-300 hover:text-amber-200">Home</Link>
             <span className="text-white/40">/</span>
-            <Link href="/hotel" className="text-sky-300 hover:text-sky-200">Hotel</Link>
+            <Link href="/hotel" className="text-amber-300 hover:text-amber-200">Hotel</Link>
             <span className="text-white/40">/</span>
             <span className="text-white/70">{room.name}</span>
           </nav>
@@ -86,7 +86,7 @@ export default async function HotelRoomPage(props: PageProps<"/hotel/[id]">) {
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
                 {room.features.map((f) => (
                   <div key={f} className="flex items-center gap-2.5 text-sm text-slate-700">
-                    <svg className="w-4 h-4 text-sky-500 shrink-0" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24">
+                    <svg className="w-4 h-4 text-amber-500 shrink-0" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
                     </svg>
                     {f}
@@ -126,22 +126,22 @@ export default async function HotelRoomPage(props: PageProps<"/hotel/[id]">) {
           <div className="lg:col-span-1">
             <div className="sticky top-24 bg-white rounded-2xl shadow-lg border border-slate-100 p-6">
               <div className="text-center mb-6">
-                <span className="text-4xl font-bold text-sky-700">₦{room.price.toLocaleString()}</span>
+                <span className="text-4xl font-bold text-amber-700">₦{room.price.toLocaleString()}</span>
                 <span className="text-slate-400 ml-2 text-sm">/ night</span>
               </div>
 
               <div className="space-y-3 mb-6">
                 <div>
                   <label className="text-xs font-semibold text-slate-500 uppercase tracking-wide block mb-1">Check-in</label>
-                  <input type="date" className="w-full px-3 py-2.5 border border-slate-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-sky-300" />
+                  <input type="date" className="w-full px-3 py-2.5 border border-slate-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-amber-300" />
                 </div>
                 <div>
                   <label className="text-xs font-semibold text-slate-500 uppercase tracking-wide block mb-1">Check-out</label>
-                  <input type="date" className="w-full px-3 py-2.5 border border-slate-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-sky-300" />
+                  <input type="date" className="w-full px-3 py-2.5 border border-slate-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-amber-300" />
                 </div>
                 <div>
                   <label className="text-xs font-semibold text-slate-500 uppercase tracking-wide block mb-1">Guests</label>
-                  <select className="w-full px-3 py-2.5 border border-slate-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-sky-300 bg-white">
+                  <select className="w-full px-3 py-2.5 border border-slate-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-amber-300 bg-white">
                     {Array.from({ length: room.capacity }, (_, i) => (
                       <option key={i + 1} value={i + 1}>{i + 1} {i === 0 ? "Guest" : "Guests"}</option>
                     ))}
@@ -153,7 +153,7 @@ export default async function HotelRoomPage(props: PageProps<"/hotel/[id]">) {
                 href="/book"
                 className={`flex items-center justify-center w-full py-3 rounded-xl font-semibold text-sm transition-colors ${
                   room.available
-                    ? "bg-[#7B2D3A] text-white hover:bg-[#5C1D28]"
+                    ? "bg-[#C41230] text-white hover:bg-[#9C0E25]"
                     : "bg-slate-200 text-slate-500 cursor-not-allowed pointer-events-none"
                 }`}
               >
@@ -164,19 +164,19 @@ export default async function HotelRoomPage(props: PageProps<"/hotel/[id]">) {
 
               <div className="mt-6 pt-6 border-t border-slate-100 space-y-2">
                 <div className="flex items-center gap-2 text-sm text-slate-600">
-                  <svg className="w-4 h-4 text-sky-500" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+                  <svg className="w-4 h-4 text-amber-500" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                   </svg>
                   Free cancellation up to 24h
                 </div>
                 <div className="flex items-center gap-2 text-sm text-slate-600">
-                  <svg className="w-4 h-4 text-sky-500" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+                  <svg className="w-4 h-4 text-amber-500" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                   </svg>
                   Complimentary breakfast
                 </div>
                 <div className="flex items-center gap-2 text-sm text-slate-600">
-                  <svg className="w-4 h-4 text-sky-500" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+                  <svg className="w-4 h-4 text-amber-500" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                   </svg>
                   24/7 room service
@@ -198,8 +198,8 @@ export default async function HotelRoomPage(props: PageProps<"/hotel/[id]">) {
                 <div className="p-4">
                   <h3 className="font-bold text-slate-800 mb-1">{r.name}</h3>
                   <div className="flex items-center justify-between">
-                    <span className="text-sky-700 font-bold">₦{r.price.toLocaleString()}<span className="text-slate-400 text-xs font-normal">/night</span></span>
-                    <Link href={`/hotel/${r.id}`} className="text-sky-600 text-sm font-semibold hover:text-sky-700">View →</Link>
+                    <span className="text-amber-700 font-bold">₦{r.price.toLocaleString()}<span className="text-slate-400 text-xs font-normal">/night</span></span>
+                    <Link href={`/hotel/${r.id}`} className="text-amber-600 text-sm font-semibold hover:text-amber-700">View →</Link>
                   </div>
                 </div>
               </div>

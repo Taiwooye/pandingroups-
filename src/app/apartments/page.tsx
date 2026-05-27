@@ -8,7 +8,7 @@ import apartmentsData from "@/data/apartments.json";
 import { Apartment } from "@/types";
 
 const apartments = apartmentsData as Apartment[];
-const types = ["All", "Studio", "1-Bedroom", "2-Bedroom", "3-Bedroom", "Penthouse"] as const;
+const types = ["All", "1-Bedroom", "2-Bedroom", "3-Bedroom", "4-Bedroom"] as const;
 
 export default function ApartmentsPage() {
   const [active, setActive] = useState("All");
@@ -38,8 +38,8 @@ export default function ApartmentsPage() {
                 onClick={() => setActive(t)}
                 className={`px-4 py-1.5 rounded-full text-sm font-medium transition-colors ${
                   active === t
-                    ? "bg-[#7B2D3A] text-white"
-                    : "bg-white text-slate-600 border border-slate-200 hover:border-sky-300 hover:text-sky-600"
+                    ? "bg-[#C41230] text-white"
+                    : "bg-white text-slate-600 border border-slate-200 hover:border-amber-300 hover:text-amber-600"
                 }`}
               >
                 {t}
@@ -67,7 +67,7 @@ export default function ApartmentsPage() {
                       </span>
                     </div>
                     <div className="absolute top-3 right-3">
-                      <span className="px-2.5 py-1 rounded-full text-xs font-semibold uppercase bg-[#7B2D3A]/90 text-white capitalize">
+                      <span className="px-2.5 py-1 rounded-full text-xs font-semibold uppercase bg-[#C41230]/90 text-white capitalize">
                         {apt.type.replace(/-/g, " ")}
                       </span>
                     </div>
@@ -79,14 +79,14 @@ export default function ApartmentsPage() {
                     <div className="flex items-center gap-4 mb-4 text-sm text-slate-600">
                       {apt.bedrooms > 0 && (
                         <span className="flex items-center gap-1.5">
-                          <svg className="w-4 h-4 text-sky-500" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+                          <svg className="w-4 h-4 text-amber-500" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" d="M3 7v11a2 2 0 002 2h14a2 2 0 002-2V7M3 7V5a2 2 0 012-2h14a2 2 0 012 2v2M3 7h18" />
                           </svg>
                           {apt.bedrooms} {apt.bedrooms === 1 ? "Bedroom" : "Bedrooms"}
                         </span>
                       )}
                       <span className="flex items-center gap-1.5">
-                        <svg className="w-4 h-4 text-sky-500" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+                        <svg className="w-4 h-4 text-amber-500" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4" />
                         </svg>
                         {apt.size} m²
@@ -95,7 +95,7 @@ export default function ApartmentsPage() {
 
                     <div className="flex flex-wrap gap-1.5 mb-4">
                       {apt.features.slice(0, 3).map((f) => (
-                        <span key={f} className="px-2 py-0.5 bg-sky-50 text-sky-700 text-xs rounded-full font-medium">{f}</span>
+                        <span key={f} className="px-2 py-0.5 bg-amber-50 text-amber-700 text-xs rounded-full font-medium">{f}</span>
                       ))}
                       {apt.features.length > 3 && (
                         <span className="px-2 py-0.5 bg-slate-100 text-slate-500 text-xs rounded-full font-medium">+{apt.features.length - 3} more</span>
@@ -104,10 +104,10 @@ export default function ApartmentsPage() {
 
                     <div className="flex items-center justify-between pt-4 border-t border-slate-100">
                       <div>
-                        <span className="text-2xl font-bold text-sky-700">₦{apt.price.toLocaleString()}</span>
+                        <span className="text-2xl font-bold text-amber-700">₦{apt.price.toLocaleString()}</span>
                         <span className="text-sm text-slate-400 ml-1">/ night</span>
                       </div>
-                      <Link href={`/apartments/${apt.id}`} className="px-4 py-2 bg-[#7B2D3A] text-white text-sm font-semibold rounded-lg hover:bg-[#5C1D28] transition-colors">
+                      <Link href={`/apartments/${apt.id}`} className="px-4 py-2 bg-[#C41230] text-white text-sm font-semibold rounded-lg hover:bg-[#9C0E25] transition-colors">
                         View Details
                       </Link>
                     </div>
@@ -123,7 +123,7 @@ export default function ApartmentsPage() {
       <section className="py-14 bg-slate-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-10">
-            <span className="text-sky-600 text-sm font-semibold uppercase tracking-wider">Included With Your Stay</span>
+            <span className="text-amber-600 text-sm font-semibold uppercase tracking-wider">Included With Your Stay</span>
             <h2 className="text-2xl font-bold text-slate-800 mt-2">Apartment Facilities</h2>
           </div>
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-5">

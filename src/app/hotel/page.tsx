@@ -7,7 +7,7 @@ import roomsData from "@/data/hotel-rooms.json";
 import { Room } from "@/types";
 
 const rooms = roomsData as Room[];
-const categories = ["All", "Standard", "Deluxe", "Suite", "Penthouse"] as const;
+const categories = ["All", "Standard", "Deluxe", "Suite"] as const;
 
 export default function HotelPage() {
   const [active, setActive] = useState("All");
@@ -37,8 +37,8 @@ export default function HotelPage() {
                 onClick={() => setActive(cat)}
                 className={`px-4 py-1.5 rounded-full text-sm font-medium transition-colors ${
                   active === cat
-                    ? "bg-[#7B2D3A] text-white"
-                    : "bg-white text-slate-600 border border-slate-200 hover:border-sky-300 hover:text-sky-600"
+                    ? "bg-[#C41230] text-white"
+                    : "bg-white text-slate-600 border border-slate-200 hover:border-amber-300 hover:text-amber-600"
                 }`}
               >
                 {cat}
@@ -68,7 +68,7 @@ export default function HotelPage() {
       <section className="py-14 bg-slate-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-10">
-            <span className="text-sky-600 text-sm font-semibold uppercase tracking-wider">Included With Your Stay</span>
+            <span className="text-amber-600 text-sm font-semibold uppercase tracking-wider">Included With Your Stay</span>
             <h2 className="text-2xl font-bold text-slate-800 mt-2">Hotel Facilities</h2>
           </div>
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-5">
@@ -96,10 +96,10 @@ export default function HotelPage() {
           <h2 className="text-2xl font-bold text-slate-800 mb-3">Need Help Choosing?</h2>
           <p className="text-slate-500 mb-6">Our hospitality team is available 24/7 to help you find the perfect room for your stay.</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href="tel:+2341234567890" className="px-6 py-3 bg-[#7B2D3A] text-white font-semibold rounded-xl hover:bg-[#5C1D28] transition-colors">
+            <a href="tel:+2341234567890" className="px-6 py-3 bg-[#C41230] text-white font-semibold rounded-xl hover:bg-[#9C0E25] transition-colors">
               Call Us Now
             </a>
-            <a href="/contact" className="px-6 py-3 bg-white text-sky-600 font-semibold rounded-xl border border-sky-200 hover:bg-sky-50 transition-colors">
+            <a href="/contact" className="px-6 py-3 bg-white text-amber-600 font-semibold rounded-xl border border-amber-200 hover:bg-amber-50 transition-colors">
               Send an Enquiry
             </a>
           </div>

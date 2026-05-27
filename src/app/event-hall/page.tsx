@@ -49,32 +49,32 @@ export default function EventHallPage() {
                   <p className="text-sm text-slate-500 mb-5 leading-relaxed">{hall.description}</p>
 
                   <div className="grid grid-cols-3 gap-3 mb-5">
-                    <div className="bg-sky-50 rounded-lg p-3 text-center">
-                      <div className="text-lg font-bold text-sky-700">{hall.capacity}</div>
+                    <div className="bg-amber-50 rounded-lg p-3 text-center">
+                      <div className="text-lg font-bold text-amber-700">{hall.capacity}</div>
                       <div className="text-xs text-slate-500">Max Guests</div>
                     </div>
-                    <div className="bg-sky-50 rounded-lg p-3 text-center">
-                      <div className="text-lg font-bold text-sky-700">{hall.size}m²</div>
+                    <div className="bg-amber-50 rounded-lg p-3 text-center">
+                      <div className="text-lg font-bold text-amber-700">{hall.size}m²</div>
                       <div className="text-xs text-slate-500">Floor Space</div>
                     </div>
-                    <div className="bg-sky-50 rounded-lg p-3 text-center">
-                      <div className="text-lg font-bold text-sky-700">₦{(hall.price / 1000).toFixed(0)}k</div>
+                    <div className="bg-amber-50 rounded-lg p-3 text-center">
+                      <div className="text-lg font-bold text-amber-700">₦{(hall.price / 1000).toFixed(0)}k</div>
                       <div className="text-xs text-slate-500">Per Day</div>
                     </div>
                   </div>
 
                   <div className="flex flex-wrap gap-1.5 mb-5">
                     {hall.suitable.map((s) => (
-                      <span key={s} className="px-2.5 py-1 bg-sky-50 text-sky-700 text-xs rounded-full font-medium">{s}</span>
+                      <span key={s} className="px-2.5 py-1 bg-amber-50 text-amber-700 text-xs rounded-full font-medium">{s}</span>
                     ))}
                   </div>
 
                   <div className="flex items-center justify-between pt-4 border-t border-slate-100">
                     <div>
-                      <span className="text-2xl font-bold text-sky-700">₦{hall.price.toLocaleString()}</span>
+                      <span className="text-2xl font-bold text-amber-700">₦{hall.price.toLocaleString()}</span>
                       <span className="text-sm text-slate-400 ml-1">/ day</span>
                     </div>
-                    <Link href={`/event-hall/${hall.id}`} className="px-5 py-2 bg-[#7B2D3A] text-white text-sm font-semibold rounded-lg hover:bg-[#5C1D28] transition-colors">
+                    <Link href={`/event-hall/${hall.id}`} className="px-5 py-2 bg-[#C41230] text-white text-sm font-semibold rounded-lg hover:bg-[#9C0E25] transition-colors">
                       View Details
                     </Link>
                   </div>

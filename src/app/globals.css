@@ -3,12 +3,12 @@
 :root {
   --background: #ffffff;
   --foreground: #0f172a;
-  --primary: #0284c7;
-  --primary-dark: #0369a1;
-  --primary-light: #e0f2fe;
-  --wine: #7B2D3A;
-  --wine-dark: #5C1D28;
-  --wine-light: #f5e6e8;
+  --primary: #C41230;
+  --primary-dark: #9C0E25;
+  --primary-light: #fef2f2;
+  --accent: #F59E0B;
+  --accent-dark: #D97706;
+  --accent-light: #fffbeb;
 }
 
 @theme inline {
