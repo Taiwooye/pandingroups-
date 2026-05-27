@@ -48,7 +48,7 @@ export default function HomePage() {
               <span className="block text-amber-400">Meets Comfort</span>
             </h1>
             <p className="text-lg text-white/80 mb-8 leading-relaxed">
-              Experience an unparalleled level of hospitality in our world-class hotel, serviced apartments, and exclusive event spaces in the heart of Lagos.
+              Experience an unparalleled level of hospitality in our world-class hotel, serviced apartments, and exclusive event spaces in the heart of Ibadan.
             </p>
             <div className="flex flex-wrap gap-4">
               <Link
