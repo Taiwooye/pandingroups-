@@ -16,12 +16,15 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: {
-    default: "PandinGroups – Luxury Hotel & Hospitality",
-    template: "%s | PandinGroups",
+    default: "PaNDiN Group – Luxury Hotel & Hospitality",
+    template: "%s | PaNDiN Group",
   },
   description:
-    "Experience world-class luxury at PandinGroups. Hotel rooms, serviced apartments, event halls, fine dining, and premium lounge & bar services.",
-  keywords: ["hotel", "luxury", "apartments", "event hall", "Lagos", "Nigeria", "PandinGroups"],
+    "Experience world-class luxury at PaNDiN Group. Hotel rooms, serviced apartments, event halls, lounge & bar, recreation, and more — Ibadan, Nigeria.",
+  keywords: ["hotel", "luxury", "apartments", "event hall", "Ibadan", "Nigeria", "PaNDiN Group"],
+  icons: {
+    icon: "/icon.svg",
+  },
 };
 
 export default function RootLayout({
