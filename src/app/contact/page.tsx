@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import { useState } from "react";
 import Image from "next/image";
@@ -80,7 +80,7 @@ export default function ContactPage() {
                         </svg>
                       ),
                       title: "Check-in / Check-out",
-                      detail: "Check-in: 2:00 PM Â· Check-out: 12:00 PM",
+                      detail: "Check-in: 2:00 PM · Check-out: 12:00 PM",
                     },
                   ].map((item) => (
                     <div key={item.title} className="flex items-start gap-4">

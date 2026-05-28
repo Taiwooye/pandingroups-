@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import QRCode from "react-qr-code";
 import { useState } from "react";
@@ -7,7 +7,7 @@ const QR_TARGETS = [
   {
     label: "DarNis Lounge & Pool Bar Menu",
     path: "/lounge-menu",
-    desc: "Full drink menu â€” print and place on lounge tables",
+    desc: "Full drink menu — print and place on lounge tables",
   },
   {
     label: "Book Now",
@@ -17,7 +17,7 @@ const QR_TARGETS = [
   {
     label: "Main Website",
     path: "/",
-    desc: "Homepage â€” general purpose QR code",
+    desc: "Homepage — general purpose QR code",
   },
 ];
 

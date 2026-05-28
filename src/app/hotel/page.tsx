@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import { useState } from "react";
 import PageHero from "@/components/PageHero";
@@ -51,7 +51,7 @@ export default function HotelPage() {
 
           {filtered.length === 0 ? (
             <div className="text-center py-20 text-slate-400">
-              <div className="text-5xl mb-4">ðŸ›ï¸</div>
+              <div className="text-5xl mb-4">🛏️</div>
               <p className="font-medium">No rooms in this category right now.</p>
             </div>
           ) : (
@@ -73,12 +73,12 @@ export default function HotelPage() {
           </div>
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-5">
             {[
-              { icon: "ðŸŠ", title: "Swimming Pool", desc: "Outdoor heated pool" },
-              { icon: "ðŸŽ®", title: "Games Room", desc: "Pool, ping-pong & more" },
-              { icon: "ðŸ‹ï¸", title: "Fitness Center", desc: "24-hour gym access" },
-              { icon: "ðŸ’†", title: "Spa & Sauna", desc: "Full-service wellness" },
-              { icon: "ðŸ½ï¸", title: "Restaurant", desc: "Fine dining on-site" },
-              { icon: "ðŸš—", title: "Free Parking", desc: "Secure valet parking" },
+              { icon: "🏊", title: "Swimming Pool", desc: "Outdoor heated pool" },
+              { icon: "🎮", title: "Games Room", desc: "Pool, ping-pong & more" },
+              { icon: "🏋️", title: "Fitness Center", desc: "24-hour gym access" },
+              { icon: "💆", title: "Spa & Sauna", desc: "Full-service wellness" },
+              { icon: "🍽️", title: "Restaurant", desc: "Fine dining on-site" },
+              { icon: "🚗", title: "Free Parking", desc: "Secure valet parking" },
             ].map((f) => (
               <div key={f.title} className="bg-white rounded-2xl p-5 text-center shadow-sm hover:shadow-md transition-shadow">
                 <div className="text-3xl mb-2">{f.icon}</div>

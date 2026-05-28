@@ -1,4 +1,4 @@
-﻿import type { Metadata } from "next";
+import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import PageHero from "@/components/PageHero";
@@ -93,9 +93,9 @@ export default function EventHallPage() {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {[
-              { icon: "ðŸŽ¯", title: "Event Planning Team", desc: "Our dedicated event planners handle every detail from concept to execution." },
-              { icon: "ðŸ½ï¸", title: "In-house Catering", desc: "Award-winning chefs craft menus tailored to your event and preferences." },
-              { icon: "ðŸŽ¤", title: "AV & Tech Support", desc: "State-of-the-art audio-visual equipment with full technical support." },
+              { icon: "🎯", title: "Event Planning Team", desc: "Our dedicated event planners handle every detail from concept to execution." },
+              { icon: "🍽️", title: "In-house Catering", desc: "Award-winning chefs craft menus tailored to your event and preferences." },
+              { icon: "🎤", title: "AV & Tech Support", desc: "State-of-the-art audio-visual equipment with full technical support." },
             ].map((item) => (
               <div key={item.title} className="bg-white rounded-xl p-6 shadow-sm text-center">
                 <div className="text-3xl mb-3">{item.icon}</div>

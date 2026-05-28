@@ -1,9 +1,9 @@
-﻿import type { Metadata } from "next";
+import type { Metadata } from "next";
 import loungeData from "@/data/lounge-bar.json";
 import { LoungeBar } from "@/types";
 
 export const metadata: Metadata = {
-  title: "DarNis Lounge & Pool Bar â€” Menu",
+  title: "DarNis Lounge & Pool Bar — Menu",
   description: "Full drinks & bar menu for DarNis Lounge and Pool Side Bar at PaNDiN Group, Ibadan.",
 };
 
@@ -75,7 +75,7 @@ export default function LoungMenuPage() {
         <a href="tel:+2347054422968" className="text-amber-400 font-semibold text-sm mt-1 block">
           +234 705 442 2968
         </a>
-        <p className="text-slate-600 text-xs mt-3">Â© PaNDiN Group Â· Ibadan, Nigeria</p>
+        <p className="text-slate-600 text-xs mt-3">© PaNDiN Group · Ibadan, Nigeria</p>
       </div>
     </div>
   );

@@ -1,4 +1,4 @@
-﻿import Link from "next/link";
+import Link from "next/link";
 
 export default function Footer() {
   return (
@@ -16,7 +16,7 @@ export default function Footer() {
               <span className="text-lg font-bold text-white tracking-tight">PaNDiN Group</span>
             </div>
             <p className="text-sm text-slate-400 leading-relaxed mb-4">
-              The PaNDiN Group â€” business &amp; philanthropic endeavors of Paul, Nwando, Darius &amp; Nissi Olayiwola. You, but better!
+              The PaNDiN Group — business &amp; philanthropic endeavors of Paul, Nwando, Darius &amp; Nissi Olayiwola. You, but better!
             </p>
             <div className="flex gap-3">
               {["facebook", "instagram", "twitter", "linkedin"].map((s) => (
@@ -101,7 +101,7 @@ export default function Footer() {
 
         <div className="mt-12 pt-8 border-t border-slate-800 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-sm text-slate-500">
-            Â© {new Date().getFullYear()} PaNDiN Group. All rights reserved.
+            © {new Date().getFullYear()} PaNDiN Group. All rights reserved.
           </p>
           <p className="text-sm text-slate-500">
             Crafted with care for exceptional hospitality

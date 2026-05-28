@@ -1,10 +1,10 @@
-﻿import type { Metadata } from "next";
+import type { Metadata } from "next";
 import Link from "next/link";
 import PageHero from "@/components/PageHero";
 
 export const metadata: Metadata = {
   title: "PaNDiN Foundation",
-  description: "At PaNDiN Foundation, we are committed to making a difference through impactful community initiatives â€” education, healthcare, and empowerment.",
+  description: "At PaNDiN Foundation, we are committed to making a difference through impactful community initiatives — education, healthcare, and empowerment.",
 };
 
 export default function FoundationPage() {
@@ -12,7 +12,7 @@ export default function FoundationPage() {
     <div>
       <PageHero
         title="PaNDiN Foundation"
-        subtitle="Committed to making a difference through impactful community initiatives â€” empowering lives, one step at a time."
+        subtitle="Committed to making a difference through impactful community initiatives — empowering lives, one step at a time."
         image="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=1600&q=80"
         breadcrumbs={[{ label: "Home", href: "/" }, { label: "Foundation" }]}
         height="md"
@@ -24,7 +24,7 @@ export default function FoundationPage() {
           <span className="text-amber-600 text-sm font-semibold uppercase tracking-wider">Our Mission</span>
           <h2 className="text-3xl md:text-4xl font-bold text-slate-800 mt-2 mb-6">Making a Difference</h2>
           <p className="text-slate-600 leading-relaxed text-lg">
-            At the PaNDiN Foundation, we are committed to making a difference through impactful community initiatives. From educational programs, skill development, and healthcare support to social empowerment programs and philanthropic initiatives that foster growth, talent development, and upward mobility â€” we strive to create a better future for all.
+            At the PaNDiN Foundation, we are committed to making a difference through impactful community initiatives. From educational programs, skill development, and healthcare support to social empowerment programs and philanthropic initiatives that foster growth, talent development, and upward mobility — we strive to create a better future for all.
           </p>
         </div>
       </section>
@@ -39,21 +39,21 @@ export default function FoundationPage() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
               {
-                icon: "ðŸŽ“",
+                icon: "🎓",
                 title: "That Next Step Africa Scholarship",
-                desc: "Empowering young Africans with educational scholarships to pursue their dreams and achieve their God-given potential. We believe talent is universal â€” opportunity is not.",
+                desc: "Empowering young Africans with educational scholarships to pursue their dreams and achieve their God-given potential. We believe talent is universal — opportunity is not.",
                 link: "https://thatnextstepafrica.com",
-                linkLabel: "Visit thatnextstepafrica.com â†’",
+                linkLabel: "Visit thatnextstepafrica.com →",
               },
               {
-                icon: "ðŸ²",
+                icon: "🍲",
                 title: "Food is Life Program",
                 desc: "Addressing food insecurity in our community by providing meals and nutritional support to those in need. Because everyone deserves to eat well.",
                 link: null,
                 linkLabel: null,
               },
               {
-                icon: "â¤ï¸",
+                icon: "❤️",
                 title: "Charitable Programs",
                 desc: "A wide range of community-driven charitable initiatives supporting healthcare, skill development, social empowerment, and upliftment for individuals and families in need.",
                 link: null,
@@ -80,7 +80,7 @@ export default function FoundationPage() {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl font-bold text-white mb-4">Get Involved</h2>
           <p className="text-white/80 text-lg mb-8">
-            Whether you want to donate, volunteer, or learn more about our programs â€” we would love to hear from you. Together we can create a better future.
+            Whether you want to donate, volunteer, or learn more about our programs — we would love to hear from you. Together we can create a better future.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
