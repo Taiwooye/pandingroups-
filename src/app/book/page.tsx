@@ -31,7 +31,7 @@ const serviceLabels: Record<string, string> = {
   hotel: "Hotel Room",
   apartment: "Luxury Apartment",
   "event-hall": "Event Hall (Nwando's)",
-  "lounge-bar": "DarNis Lounge / Pool Bar",
+  "lounge-bar": "Lounge & Bar",
   recreation: "Recreation & Wellness",
   other: "General Enquiry",
 };
@@ -123,7 +123,7 @@ function BookContent() {
                 { key: "hotel", icon: "🏨", title: "Hotel Room", desc: "Nkrumah, Fela, Zik, Mandela Suite", price: "From ₦23,000/night" },
                 { key: "apartment", icon: "🏠", title: "Luxury Apartment", desc: "1BR, 2BR, 3BR & 4BR apartments", price: "From ₦100,000/night" },
                 { key: "event-hall", icon: "🎉", title: "Event Hall", desc: "Nwando's Event Hall — up to 500 guests", price: "₦400,000/day" },
-                { key: "lounge-bar", icon: "🍹", title: "DarNis Lounge / Pool Bar", desc: "Reserve a table at our lounge or pool bar", price: "Reservation only" },
+                { key: "lounge-bar", icon: "🍹", title: "Lounge & Bar", desc: "Reserve a table at our lounge or pool bar", price: "Reservation only" },
                 { key: "recreation", icon: "🏊", title: "Recreation & Wellness", desc: "Pool, gym, sports & activities", price: "Ask for rates" },
                 { key: "other", icon: "💬", title: "General Enquiry", desc: "Not sure? We will help you choose", price: "Contact us" },
               ].map((s) => (
@@ -441,7 +441,7 @@ function BookContent() {
                   <option value="hotel">Hotel Room</option>
                   <option value="apartment">Luxury Apartment</option>
                   <option value="event-hall">Event Hall</option>
-                  <option value="lounge-bar">DarNis Lounge / Pool Bar</option>
+                  <option value="lounge-bar">Lounge & Bar</option>
                   <option value="recreation">Recreation & Wellness</option>
                   <option value="other">Other / General Enquiry</option>
                 </select>

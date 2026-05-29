@@ -18,7 +18,7 @@ const offerings = [
   { icon: "🏨", title: "Hotel", desc: "23-room hotel with Pool Side Bar, DarNis Lounge, and swimming pool rentals." },
   { icon: "🏠", title: "Luxury Apartments", desc: "Fully serviced short-term stay apartments — 1BR, 2BR, 3BR & 4BR — with private pool." },
   { icon: "🎉", title: "Event Hall", desc: "Nwando's Event Hall accommodating 400–500 guests for any occasion." },
-  { icon: "🍹", title: "DarNis Lounge", desc: "Indoor lounge with fine wines, premium liquors, and expertly crafted cocktails." },
+  { icon: "🍹", title: "Lounge & Bar", desc: "Indoor lounge with fine wines, premium liquors, and expertly crafted cocktails." },
   { icon: "🏊", title: "Recreation & Wellness", desc: "Swimming pool, basketball, billiards, table tennis, snooker, and gym facilities." },
   { icon: "❤️", title: "PaNDiN Foundation", desc: "Charitable programs, Food is Life program, and That Next Step Africa Scholarship." },
 ];

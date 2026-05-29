@@ -5,7 +5,7 @@ import testimonials from "@/data/testimonials.json";
 import rooms from "@/data/hotel-rooms.json";
 
 const stats = [
-  { value: "15+", label: "Years of Excellence" },
+  { value: "3+", label: "Years of Excellence" },
   { value: "200+", label: "Luxury Rooms & Suites" },
   { value: "50K+", label: "Happy Guests" },
   { value: "12", label: "Industry Awards" },

@@ -40,7 +40,7 @@ export default function Footer() {
                 { label: "Hotel Rooms", href: "/hotel" },
                 { label: "Apartments", href: "/apartments" },
                 { label: "Event Hall", href: "/event-hall" },
-                { label: "DarNis Lounge", href: "/lounge-bar" },
+                { label: "Lounge & Bar", href: "/lounge-bar" },
                 { label: "Recreation & Wellness", href: "/recreation" },
                 { label: "PaNDiN Foundation", href: "/foundation" },
               ].map((link) => (

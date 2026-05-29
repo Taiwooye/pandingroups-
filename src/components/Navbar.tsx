@@ -8,7 +8,7 @@ const navLinks = [
   { label: "Hotel", href: "/hotel" },
   { label: "Apartments", href: "/apartments" },
   { label: "Event Hall", href: "/event-hall" },
-  { label: "DarNis Lounge", href: "/lounge-bar" },
+  { label: "Lounge & Bar", href: "/lounge-bar" },
   { label: "Recreation", href: "/recreation" },
   { label: "Foundation", href: "/foundation" },
   { label: "Gallery", href: "/gallery" },
