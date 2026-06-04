@@ -497,10 +497,9 @@ function BookContent() {
                 className="w-full px-4 py-3 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-amber-300 resize-none placeholder-slate-400" />
             </div>
 
-            <div className="grid grid-cols-3 gap-4 py-4 border-y border-slate-100">
+            <div className="grid grid-cols-2 gap-4 py-4 border-y border-slate-100">
               {[
                 { icon: "🔒", text: "Secure Booking" },
-                { icon: "✅", text: "Free Cancellation" },
                 { icon: "⚡", text: "Confirmed in 2hrs" },
               ].map((t) => (
                 <div key={t.text} className="flex flex-col items-center text-center gap-1">
