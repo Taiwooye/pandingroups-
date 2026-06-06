@@ -48,8 +48,7 @@ export default async function LoungeDetailPage(props: PageProps<"/lounge-bar/[id
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
-          <div className="lg:col-span-2 space-y-8">
+        <div className="max-w-3xl space-y-8">
             <div>
               <h2 className="text-xl font-bold text-slate-800 mb-3">About {lounge.name}</h2>
               <p className="text-slate-600 leading-relaxed">{lounge.description}</p>
@@ -102,44 +101,6 @@ export default async function LoungeDetailPage(props: PageProps<"/lounge-bar/[id
                 </div>
               </div>
             )}
-          </div>
-
-          {/* Sidebar */}
-          <div className="lg:col-span-1">
-            <div className="sticky top-24 bg-slate-900 text-white rounded-2xl p-6">
-              <h3 className="text-lg font-bold mb-4">Make a Reservation</h3>
-              <div className="space-y-3 mb-5">
-                <div>
-                  <label className="text-xs font-semibold text-slate-400 uppercase tracking-wide block mb-1">Date</label>
-                  <input type="date" className="w-full px-3 py-2.5 bg-slate-800 border border-slate-700 rounded-lg text-sm text-white focus:outline-none focus:ring-2 focus:ring-amber-500" />
-                </div>
-                <div>
-                  <label className="text-xs font-semibold text-slate-400 uppercase tracking-wide block mb-1">Time</label>
-                  <select className="w-full px-3 py-2.5 bg-slate-800 border border-slate-700 rounded-lg text-sm text-white focus:outline-none focus:ring-2 focus:ring-amber-500">
-                    <option>6:00 PM</option><option>7:00 PM</option><option>8:00 PM</option>
-                    <option>9:00 PM</option><option>10:00 PM</option>
-                  </select>
-                </div>
-                <div>
-                  <label className="text-xs font-semibold text-slate-400 uppercase tracking-wide block mb-1">Guests</label>
-                  <select className="w-full px-3 py-2.5 bg-slate-800 border border-slate-700 rounded-lg text-sm text-white focus:outline-none focus:ring-2 focus:ring-amber-500">
-                    {[1,2,3,4,5,6,7,8].map((n) => <option key={n}>{n} {n === 1 ? "guest" : "guests"}</option>)}
-                  </select>
-                </div>
-              </div>
-              <Link href={`/book?service=lounge-bar&room=${encodeURIComponent(lounge.name)}`} className="flex items-center justify-center w-full py-3 rounded-xl bg-[#C41230] text-white font-semibold text-sm hover:bg-[#9C0E25] transition-colors">
-                Reserve a Table
-              </Link>
-              <div className="mt-5 pt-5 border-t border-slate-700 space-y-2">
-                <div className="flex items-center gap-2 text-sm text-slate-300">
-                  <svg className="w-4 h-4 text-amber-400" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-                  </svg>
-                  +234 (0) 705 442 2968
-                </div>
-              </div>
-            </div>
-          </div>
         </div>
       </div>
     </div>

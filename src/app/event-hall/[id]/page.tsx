@@ -107,31 +107,18 @@ export default async function EventHallDetailPage(props: PageProps<"/event-hall/
             )}
           </div>
 
-          {/* Inquiry Sidebar */}
+          {/* Booking Sidebar */}
           <div className="lg:col-span-1">
             <div className="sticky top-24 bg-white rounded-2xl shadow-lg border border-slate-100 p-6">
               <div className="text-center mb-6">
                 <span className="text-4xl font-bold text-amber-700">₦{hall.price.toLocaleString()}</span>
                 <span className="text-slate-400 ml-2 text-sm">/ day</span>
               </div>
-              <div className="space-y-3 mb-6">
-                <div>
-                  <label className="text-xs font-semibold text-slate-500 uppercase tracking-wide block mb-1">Event Date</label>
-                  <input type="date" className="w-full px-3 py-2.5 border border-slate-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-amber-300" />
-                </div>
-                <div>
-                  <label className="text-xs font-semibold text-slate-500 uppercase tracking-wide block mb-1">Expected Guests</label>
-                  <input type="number" placeholder="e.g. 200" max={hall.capacity} className="w-full px-3 py-2.5 border border-slate-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-amber-300" />
-                </div>
-                <div>
-                  <label className="text-xs font-semibold text-slate-500 uppercase tracking-wide block mb-1">Event Type</label>
-                  <select className="w-full px-3 py-2.5 border border-slate-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-amber-300 bg-white">
-                    {hall.suitable.map((s) => <option key={s}>{s}</option>)}
-                  </select>
-                </div>
-              </div>
-              <Link href={`/book?service=event-hall&room=${encodeURIComponent(hall.name)}`} className={`flex items-center justify-center w-full py-3 rounded-xl font-semibold text-sm transition-colors ${hall.available ? "bg-[#C41230] text-white hover:bg-[#9C0E25]" : "bg-slate-200 text-slate-500 pointer-events-none"}`}>
-                {hall.available ? "Request a Quote" : "Not Available"}
+              <Link
+                href={`/book?service=event-hall&room=${encodeURIComponent(hall.name)}`}
+                className={`flex items-center justify-center w-full py-3.5 rounded-xl font-semibold text-sm transition-colors ${hall.available ? "bg-[#C41230] text-white hover:bg-[#9C0E25]" : "bg-slate-200 text-slate-500 pointer-events-none"}`}
+              >
+                {hall.available ? "Book Now" : "Not Available"}
               </Link>
               <p className="text-center text-xs text-slate-400 mt-3">Our team will respond within 2 hours</p>
             </div>
