@@ -1,4 +1,4 @@
-﻿import type { Metadata } from "next";
+import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import PageHero from "@/components/PageHero";
@@ -6,8 +6,8 @@ import loungeData from "@/data/lounge-bar.json";
 import { LoungeBar } from "@/types";
 
 export const metadata: Metadata = {
-  title: "Lounge & Bar",
-  description: "Experience PandinGroups' exclusive bars and lounges. Craft cocktails, premium spirits, live music, and stunning ambiance.",
+  title: "The PaNDiN Lounge Collection | PaNDiN Group",
+  description: "Discover the PaNDiN Lounge Collection — Main Bar & Lounge, Poolside Bar, and DarNis Private Lounge. Where luxury meets lifestyle.",
 };
 
 const lounges = loungeData as LoungeBar[];
@@ -16,12 +16,28 @@ export default function LoungeBarPage() {
   return (
     <div>
       <PageHero
-        title="Lounge & Bar"
-        subtitle="Unwind with signature cocktails, live music, and breathtaking views in our exclusive bars and lounges."
+        title="The PaNDiN Lounge Collection"
+        subtitle="Where Luxury Meets Lifestyle. From premium drinks and exceptional cuisine to unforgettable experiences — every visit promises comfort, style, and outstanding hospitality."
         image="https://images.unsplash.com/photo-1572116469696-31de0f17cc34?w=1600&q=80"
         breadcrumbs={[{ label: "Home", href: "/" }, { label: "Lounge & Bar" }]}
         height="md"
       />
+
+      {/* Intro */}
+      <section className="py-12 bg-white border-b border-slate-100">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <p className="text-slate-600 leading-relaxed text-base">
+            Discover a world of relaxation, entertainment, and luxury through The PaNDiN Lounge Collection. Whether you&apos;re seeking a vibrant social atmosphere, a refreshing poolside escape, or an exclusive private setting, PaNDiN offers carefully curated spaces designed to suit every occasion.
+          </p>
+          <div className="flex flex-wrap justify-center gap-4 mt-6">
+            {["Main Bar & Lounge", "Poolside Bar", "DarNis Private Lounge"].map((name) => (
+              <span key={name} className="px-4 py-2 bg-[#5A0E24]/8 text-[#5A0E24] text-sm font-semibold rounded-full border border-[#5A0E24]/20">
+                {name}
+              </span>
+            ))}
+          </div>
+        </div>
+      </section>
 
       <section className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -29,9 +45,9 @@ export default function LoungeBarPage() {
             {lounges.map((lounge, idx) => (
               <div
                 key={lounge.id}
-                className={`flex flex-col ${idx % 2 === 1 ? "lg:flex-row-reverse" : "lg:flex-row"} gap-8 items-center bg-white rounded-3xl overflow-hidden shadow-sm border border-slate-100 p-0`}
+                className={`flex flex-col ${idx % 2 === 1 ? "lg:flex-row-reverse" : "lg:flex-row"} gap-8 items-center bg-white rounded-3xl overflow-hidden shadow-sm border border-slate-100`}
               >
-                <div className="relative w-full lg:w-1/2 h-72 lg:h-96 shrink-0 overflow-hidden lg:rounded-l-3xl">
+                <div className="relative w-full lg:w-1/2 h-72 lg:h-96 shrink-0 overflow-hidden">
                   <Image src={lounge.image} alt={lounge.name} fill className="object-cover hover:scale-105 transition-transform duration-500" />
                   <div className="absolute inset-0 bg-gradient-to-t from-slate-900/40 to-transparent" />
                   <div className="absolute top-4 left-4">
@@ -58,13 +74,13 @@ export default function LoungeBarPage() {
                       {lounge.menu.slice(0, 3).map((item) => (
                         <div key={item.name} className="flex items-center justify-between text-sm">
                           <span className="text-slate-700 font-medium">{item.name}</span>
-                          <span className="text-amber-600 font-bold">${item.price}</span>
+                          <span className="text-amber-600 font-bold">&#8358;{item.price.toLocaleString()}</span>
                         </div>
                       ))}
                     </div>
                   </div>
 
-                  <Link href={`/lounge-bar/${lounge.id}`} className="inline-flex items-center gap-2 px-5 py-2.5 bg-[#C41230] text-white text-sm font-semibold rounded-xl hover:bg-[#921224] transition-colors">
+                  <Link href={`/lounge-bar/${lounge.id}`} className="inline-flex items-center gap-2 px-5 py-2.5 bg-[#5A0E24] text-white text-sm font-semibold rounded-xl hover:bg-[#921224] transition-colors">
                     View Full Menu & Details
                     <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
@@ -82,9 +98,9 @@ export default function LoungeBarPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
             {[
-              { icon: "ðŸ¹", title: "50+ Cocktails", desc: "Signature and classic cocktails crafted by award-winning mixologists" },
-              { icon: "ðŸŽµ", title: "Live Music", desc: "Jazz, Afrobeats, and R&B performances every Friday and Saturday night" },
-              { icon: "ðŸ¥ƒ", title: "Rare Spirits", desc: "An unparalleled selection of aged whiskies, cognacs, and fine wines" },
+              { icon: "🍹", title: "Signature Cocktails", desc: "Premium spirits, signature cocktails, and a wide selection of fine wines and local cuisine" },
+              { icon: "🎵", title: "Live Entertainment", desc: "Live music, special events, and a vibrant social atmosphere to elevate every visit" },
+              { icon: "🥃", title: "Exclusive Lounges", desc: "Three distinct lounge experiences — from social bar to serene poolside to private retreat" },
             ].map((item) => (
               <div key={item.title} className="text-white">
                 <div className="text-4xl mb-3">{item.icon}</div>

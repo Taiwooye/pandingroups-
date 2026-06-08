@@ -15,11 +15,12 @@ const values = [
 ];
 
 const offerings = [
-  { icon: "🏨", title: "Hotel", desc: "23-room hotel with Pool Side Bar, DarNis Lounge, and swimming pool rentals." },
+  { icon: "🏨", title: "Hotel", desc: "30-room hotel with Main Bar & Lounge, DarNis Private Lounge, and swimming pool." },
   { icon: "🏠", title: "Luxury Apartments", desc: "Fully serviced short-term stay apartments — 1BR, 2BR, 3BR & 4BR — with private pool." },
   { icon: "🎉", title: "Event Hall", desc: "Nwando's Event Hall accommodating 400–500 guests for any occasion." },
   { icon: "🍹", title: "Lounge & Bar", desc: "Indoor lounge with fine wines, premium liquors, and expertly crafted cocktails." },
   { icon: "🏊", title: "Recreation & Wellness", desc: "Swimming pool, basketball, billiards, table tennis, snooker, and gym facilities." },
+  { icon: "🎬", title: "Mall & Cinema", desc: "PaNDiN Mall & Cinema — a world-class retail, dining, and entertainment destination. Coming soon." },
   { icon: "❤️", title: "PaNDiN Foundation", desc: "Charitable programs, Food is Life program, and That Next Step Africa Scholarship." },
 ];
 
@@ -50,10 +51,10 @@ export default function AboutPage() {
                 <p>
                   Experience our full-service hotel, short-term stay luxury apartments, lounge, event space, and fitness and swimming facilities. Be part of our community and charitable services, or participate in our sports and wellness activities.
                 </p>
-                <p className="text-[#C41230] font-semibold text-lg">Be the best version of yourself with PaNDiN — you, but better!</p>
+                <p className="text-[#5A0E24] font-semibold text-lg">Be the best version of yourself with PaNDiN — you, but better!</p>
               </div>
               <div className="mt-8 flex gap-3 flex-wrap">
-                <Link href="/contact" className="px-6 py-3 bg-[#C41230] text-white font-semibold rounded-xl hover:bg-[#921224] transition-colors inline-block">
+                <Link href="/contact" className="px-6 py-3 bg-[#5A0E24] text-white font-semibold rounded-xl hover:bg-[#921224] transition-colors inline-block">
                   Get in Touch
                 </Link>
                 <Link href="/book" className="px-6 py-3 bg-amber-50 text-amber-700 font-semibold rounded-xl border border-amber-200 hover:bg-amber-100 transition-colors inline-block">
@@ -104,7 +105,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="py-16 bg-[#C41230]">
+      <section className="py-16 bg-[#5A0E24]">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <span className="text-amber-300 text-sm font-semibold uppercase tracking-wider">Limited Time Offers</span>
           <h2 className="text-3xl font-bold text-white mt-2 mb-8">Special Promotions</h2>
@@ -122,7 +123,7 @@ export default function AboutPage() {
             ))}
           </div>
           <div className="mt-8">
-            <Link href="/book" className="inline-block px-7 py-3 bg-white text-[#C41230] font-semibold rounded-xl hover:bg-amber-50 transition-colors">
+            <Link href="/book" className="inline-block px-7 py-3 bg-white text-[#5A0E24] font-semibold rounded-xl hover:bg-amber-50 transition-colors">
               Book Now
             </Link>
           </div>

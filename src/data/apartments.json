@@ -150,6 +150,49 @@
     "type": "3-bedroom"
   },
   {
+    "id": "three-bedroom-serviced-apartment",
+    "name": "3-Bedroom Serviced Apartment",
+    "description": "Our 3-Bedroom Serviced Apartment is designed for comfort and style with a premium finish. Featuring three spacious bedrooms, an elegant living and dining area, a fully equipped kitchen, and comprehensive serviced apartment amenities. Ideal for families, extended stays, and guests who want the comfort of home with the service of a hotel. Accommodates up to 8 guests.",
+    "price": 180000,
+    "priceUnit": "per night",
+    "image": "https://images.unsplash.com/photo-1629140727571-9b5c6f6267b4?w=800&q=80",
+    "gallery": [
+      "https://images.unsplash.com/photo-1629140727571-9b5c6f6267b4?w=800&q=80",
+      "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=800&q=80",
+      "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=800&q=80"
+    ],
+    "bedrooms": 3,
+    "bathrooms": 3,
+    "size": 175,
+    "features": [
+      "Three Spacious Bedrooms",
+      "Elegant Living & Dining Area",
+      "Fully Equipped Kitchen",
+      "Smart TV & High-Speed Wi-Fi",
+      "Air Conditioning",
+      "Housekeeping Included",
+      "24-Hour Security",
+      "Ample Parking"
+    ],
+    "amenities": [
+      "Modern Appliances (cooker, fridge, microwave)",
+      "Cookware & Utensils",
+      "Dining Essentials (plates, glasses, cutlery)",
+      "Smart TV (Netflix, Amazon Prime & Premium Cable)",
+      "High-Speed Wi-Fi",
+      "Water Heating System",
+      "24/7 Air Conditioning & Electricity",
+      "Quality Toiletries",
+      "Daily Housekeeping",
+      "Free Swimming Pool Access",
+      "Ample Parking",
+      "24-Hour Security",
+      "Secure Building Access"
+    ],
+    "available": true,
+    "type": "3-bedroom"
+  },
+  {
     "id": "four-bedroom-apartment",
     "name": "4-Bedroom Apartment",
     "description": "Welcome to our spacious four-bedroom apartment designed for both relaxation and entertainment. Features an open-concept layout, modern kitchen perfect for family gatherings, a dedicated game center with table tennis and snooker tables, and a balcony with serene views. Accommodates up to 10 guests.",

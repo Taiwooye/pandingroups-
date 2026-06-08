@@ -8,7 +8,7 @@ export default function Footer() {
           {/* Brand */}
           <div className="lg:col-span-1">
             <div className="flex items-center gap-2 mb-4">
-              <div className="w-9 h-9 rounded-lg bg-[#C41230] flex items-center justify-center">
+              <div className="w-9 h-9 rounded-lg bg-[#5A0E24] flex items-center justify-center">
                 <svg viewBox="0 0 24 24" fill="none" className="w-5 h-5 text-white" stroke="currentColor" strokeWidth={2}>
                   <path strokeLinecap="round" strokeLinejoin="round" d="M3 21V7a2 2 0 012-2h14a2 2 0 012 2v14M9 21V12h6v9M3 10h18" />
                 </svg>
@@ -16,14 +16,14 @@ export default function Footer() {
               <span className="text-lg font-bold text-white tracking-tight">PaNDiN Group</span>
             </div>
             <p className="text-sm text-slate-400 leading-relaxed mb-4">
-              The PaNDiN Group â€” business &amp; philanthropic endeavors of Paul, Nwando, Darius &amp; Nissi Olayiwola. You, but better!
+              The PaNDiN Group — business &amp; philanthropic endeavors of Paul, Nwando, Darius &amp; Nissi Olayiwola. You, but better!
             </p>
             <div className="flex gap-3">
               {["facebook", "instagram", "twitter", "linkedin"].map((s) => (
                 <a
                   key={s}
                   href="#"
-                  className="w-8 h-8 rounded-full bg-slate-800 flex items-center justify-center hover:bg-[#C41230] transition-colors"
+                  className="w-8 h-8 rounded-full bg-slate-800 flex items-center justify-center hover:bg-[#5A0E24] transition-colors"
                   aria-label={s}
                 >
                   <span className="text-xs font-bold uppercase text-slate-400 hover:text-white">{s[0].toUpperCase()}</span>
@@ -42,6 +42,7 @@ export default function Footer() {
                 { label: "Event Hall", href: "/event-hall" },
                 { label: "Lounge & Bar", href: "/lounge-bar" },
                 { label: "Recreation & Wellness", href: "/recreation" },
+                { label: "Mall & Cinema", href: "/mall" },
                 { label: "PaNDiN Foundation", href: "/foundation" },
               ].map((link) => (
                 <li key={link.href}>
@@ -102,7 +103,7 @@ export default function Footer() {
 
         <div className="mt-12 pt-8 border-t border-slate-800 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-sm text-slate-500">
-            Â© {new Date().getFullYear()} PaNDiN Group. All rights reserved.
+            &copy; {new Date().getFullYear()} PaNDiN Group. All rights reserved.
           </p>
           <p className="text-sm text-slate-500">
             Crafted with care for exceptional hospitality
