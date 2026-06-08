@@ -60,7 +60,6 @@ export default function Footer() {
             <ul className="space-y-2.5">
               {[
                 { label: "About Us", href: "/about" },
-                { label: "Gallery", href: "/gallery" },
                 { label: "Guest Policies", href: "/policies" },
                 { label: "Contact Us", href: "/contact" },
                 { label: "Book Now", href: "/book" },

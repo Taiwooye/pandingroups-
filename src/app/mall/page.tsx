@@ -69,10 +69,7 @@ export default function MallPage() {
           </div>
         </div>
 
-        <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <Link href="/contact" className="px-8 py-3.5 bg-[#5A0E24] text-white font-semibold rounded-xl hover:bg-[#921224] transition-colors shadow-lg shadow-[#5A0E24]/30">
-            Get Notified When We Open
-          </Link>
+        <div className="flex justify-center">
           <Link href="/" className="px-8 py-3.5 bg-white/10 border border-white/20 text-white font-semibold rounded-xl hover:bg-white/15 transition-colors backdrop-blur-sm">
             Back to Home
           </Link>
