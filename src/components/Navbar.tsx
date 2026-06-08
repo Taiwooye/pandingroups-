@@ -41,7 +41,7 @@ export default function Navbar() {
         <div className="flex items-center justify-between h-16 md:h-20">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2 group">
-            <div className="w-9 h-9 rounded-lg bg-[#5A0E24] flex items-center justify-center">
+            <div className="w-9 h-9 rounded-lg bg-[#C41230] flex items-center justify-center">
               <svg
                 viewBox="0 0 24 24"
                 fill="none"
@@ -57,7 +57,7 @@ export default function Navbar() {
               </svg>
             </div>
             <div className="leading-none">
-              <span className="text-lg font-bold text-[#5A0E24] tracking-tight">
+              <span className="text-lg font-bold text-[#C41230] tracking-tight">
                 PaNDiN
               </span>
               <span className="text-lg font-bold text-slate-700 tracking-tight">
@@ -87,7 +87,7 @@ export default function Navbar() {
           <div className="flex items-center gap-3">
             <Link
               href="/book"
-              className="hidden sm:inline-flex items-center px-4 py-2 rounded-lg bg-[#5A0E24] text-white text-sm font-semibold hover:bg-[#921224] transition-colors shadow-sm"
+              className="hidden sm:inline-flex items-center px-4 py-2 rounded-lg bg-[#C41230] text-white text-sm font-semibold hover:bg-[#921224] transition-colors shadow-sm"
             >
               Book Now
             </Link>
@@ -128,7 +128,7 @@ export default function Navbar() {
             <div className="px-4 pt-3 pb-1">
               <Link
                 href="/book"
-                className="flex items-center justify-center w-full px-4 py-2.5 rounded-lg bg-[#5A0E24] text-white text-sm font-semibold hover:bg-[#921224] transition-colors"
+                className="flex items-center justify-center w-full px-4 py-2.5 rounded-lg bg-[#C41230] text-white text-sm font-semibold hover:bg-[#921224] transition-colors"
               >
                 Book Now
               </Link>

@@ -1,9 +1,9 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import loungeData from "@/data/lounge-bar.json";
 import { LoungeBar } from "@/types";
 
 export const metadata: Metadata = {
-  title: "DarNis Lounge & Pool Bar — Menu",
+  title: "DarNis Lounge & Pool Bar â€” Menu",
   description: "Full drinks & bar menu for DarNis Lounge and Pool Side Bar at PaNDiN Group, Ibadan.",
 };
 
@@ -13,7 +13,7 @@ export default function LoungMenuPage() {
   return (
     <div className="min-h-screen bg-[#494B67] text-white">
       {/* Header */}
-      <div className="bg-[#5A0E24] px-6 py-8 text-center">
+      <div className="bg-[#C41230] px-6 py-8 text-center">
         <div className="w-12 h-12 rounded-xl bg-white/20 flex items-center justify-center mx-auto mb-3">
           <svg viewBox="0 0 24 24" fill="none" className="w-7 h-7 text-white" stroke="currentColor" strokeWidth={2}>
             <path strokeLinecap="round" strokeLinejoin="round" d="M3 21V7a2 2 0 012-2h14a2 2 0 012 2v14M9 21V12h6v9M3 10h18" />
@@ -43,7 +43,7 @@ export default function LoungMenuPage() {
               <div className="space-y-6">
                 {categories.map((category) => (
                   <div key={category}>
-                    <h3 className="text-xs font-bold uppercase tracking-widest text-[#5A0E24] mb-3 pb-2 border-b border-slate-700">
+                    <h3 className="text-xs font-bold uppercase tracking-widest text-[#C41230] mb-3 pb-2 border-b border-slate-700">
                       {category}
                     </h3>
                     <div className="space-y-3">
@@ -56,7 +56,7 @@ export default function LoungMenuPage() {
                               <p className="text-slate-400 text-xs mt-0.5 leading-relaxed">{item.description}</p>
                             </div>
                             <span className="text-amber-400 font-bold text-sm shrink-0">
-                              ₦{item.price.toLocaleString()}
+                              â‚¦{item.price.toLocaleString()}
                             </span>
                           </div>
                         ))}
@@ -75,7 +75,7 @@ export default function LoungMenuPage() {
         <a href="tel:+2347054422968" className="text-amber-400 font-semibold text-sm mt-1 block">
           +234 705 442 2968
         </a>
-        <p className="text-slate-600 text-xs mt-3">© PaNDiN Group · Ibadan, Nigeria</p>
+        <p className="text-slate-600 text-xs mt-3">Â© PaNDiN Group Â· Ibadan, Nigeria</p>
       </div>
     </div>
   );

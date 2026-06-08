@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import QRCode from "react-qr-code";
 import { useState } from "react";
@@ -7,7 +7,7 @@ const QR_TARGETS = [
   {
     label: "DarNis Lounge & Pool Bar Menu",
     path: "/lounge-menu",
-    desc: "Full drink menu — print and place on lounge tables",
+    desc: "Full drink menu â€” print and place on lounge tables",
   },
   {
     label: "Book Now",
@@ -17,7 +17,7 @@ const QR_TARGETS = [
   {
     label: "Main Website",
     path: "/",
-    desc: "Homepage — general purpose QR code",
+    desc: "Homepage â€” general purpose QR code",
   },
 ];
 
@@ -55,7 +55,7 @@ export default function QRCodePage() {
               onClick={() => setSelected(i)}
               className={`w-full text-left px-4 py-3 rounded-xl border transition-colors ${
                 selected === i
-                  ? "border-[#5A0E24] bg-red-50 text-[#5A0E24]"
+                  ? "border-[#C41230] bg-red-50 text-[#C41230]"
                   : "border-slate-200 bg-white text-slate-700 hover:border-amber-300"
               }`}
             >
@@ -73,7 +73,7 @@ export default function QRCodePage() {
           <p className="text-xs text-slate-400 font-mono break-all mb-4">{fullUrl}</p>
           <button
             onClick={() => window.print()}
-            className="px-6 py-2.5 bg-[#5A0E24] text-white text-sm font-semibold rounded-xl hover:bg-[#921224] transition-colors"
+            className="px-6 py-2.5 bg-[#C41230] text-white text-sm font-semibold rounded-xl hover:bg-[#921224] transition-colors"
           >
             Print QR Code
           </button>

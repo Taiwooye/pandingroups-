@@ -107,6 +107,25 @@ export default async function HotelRoomPage(props: PageProps<"/hotel/[id]">) {
               </div>
             </div>
 
+            {/* Policies */}
+            <div className="bg-slate-50 rounded-2xl p-6 space-y-4">
+              <h2 className="text-xl font-bold text-slate-800">Guest Policies</h2>
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                <div className="bg-white rounded-xl p-4 border border-slate-100">
+                  <p className="font-semibold text-[#C41230] text-sm mb-1">Cancellation</p>
+                  <p className="text-xs text-slate-500 leading-relaxed">25% cancellation fee applies. Refund within 72 hours via original payment method.</p>
+                </div>
+                <div className="bg-white rounded-xl p-4 border border-slate-100">
+                  <p className="font-semibold text-amber-600 text-sm mb-1">Refund</p>
+                  <p className="text-xs text-slate-500 leading-relaxed">Processed via original payment method. Allow 48–72 hours to reflect.</p>
+                </div>
+                <div className="bg-white rounded-xl p-4 border border-slate-100">
+                  <p className="font-semibold text-slate-700 text-sm mb-1">Damage</p>
+                  <p className="text-xs text-slate-500 leading-relaxed">Charges apply for damage to linen, key cards, remotes, and walls. <Link href="/policies" className="text-[#C41230] hover:underline">View full schedule</Link>.</p>
+                </div>
+              </div>
+            </div>
+
             {/* Gallery */}
             {room.gallery.length > 1 && (
               <div>
@@ -167,7 +186,7 @@ export default async function HotelRoomPage(props: PageProps<"/hotel/[id]">) {
                   <svg className="w-4 h-4 text-amber-500" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                   </svg>
-                  Free cancellation up to 24h
+                  25% cancellation fee applies
                 </div>
                 <div className="flex items-center gap-2 text-sm text-slate-600">
                   <svg className="w-4 h-4 text-amber-500" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">

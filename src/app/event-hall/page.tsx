@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import PageHero from "@/components/PageHero";
@@ -54,11 +54,11 @@ export default function EventHallPage() {
                       <div className="text-xs text-slate-500">Max Guests</div>
                     </div>
                     <div className="bg-amber-50 rounded-lg p-3 text-center">
-                      <div className="text-lg font-bold text-amber-700">{hall.size}m²</div>
+                      <div className="text-lg font-bold text-amber-700">{hall.size}mÂ²</div>
                       <div className="text-xs text-slate-500">Floor Space</div>
                     </div>
                     <div className="bg-amber-50 rounded-lg p-3 text-center">
-                      <div className="text-lg font-bold text-amber-700">₦{(hall.price / 1000).toFixed(0)}k</div>
+                      <div className="text-lg font-bold text-amber-700">â‚¦{(hall.price / 1000).toFixed(0)}k</div>
                       <div className="text-xs text-slate-500">Per Day</div>
                     </div>
                   </div>
@@ -71,10 +71,10 @@ export default function EventHallPage() {
 
                   <div className="flex items-center justify-between pt-4 border-t border-slate-100">
                     <div>
-                      <span className="text-2xl font-bold text-amber-700">₦{hall.price.toLocaleString()}</span>
+                      <span className="text-2xl font-bold text-amber-700">â‚¦{hall.price.toLocaleString()}</span>
                       <span className="text-sm text-slate-400 ml-1">/ day</span>
                     </div>
-                    <Link href={`/event-hall/${hall.id}`} className="px-5 py-2 bg-[#5A0E24] text-white text-sm font-semibold rounded-lg hover:bg-[#921224] transition-colors">
+                    <Link href={`/event-hall/${hall.id}`} className="px-5 py-2 bg-[#C41230] text-white text-sm font-semibold rounded-lg hover:bg-[#921224] transition-colors">
                       View Details
                     </Link>
                   </div>
@@ -93,9 +93,9 @@ export default function EventHallPage() {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {[
-              { icon: "🎯", title: "Event Planning Team", desc: "Our dedicated event planners handle every detail from concept to execution." },
-              { icon: "🍽️", title: "In-house Catering", desc: "Award-winning chefs craft menus tailored to your event and preferences." },
-              { icon: "🎤", title: "AV & Tech Support", desc: "State-of-the-art audio-visual equipment with full technical support." },
+              { icon: "ðŸŽ¯", title: "Event Planning Team", desc: "Our dedicated event planners handle every detail from concept to execution." },
+              { icon: "ðŸ½ï¸", title: "In-house Catering", desc: "Award-winning chefs craft menus tailored to your event and preferences." },
+              { icon: "ðŸŽ¤", title: "AV & Tech Support", desc: "State-of-the-art audio-visual equipment with full technical support." },
             ].map((item) => (
               <div key={item.title} className="bg-white rounded-xl p-6 shadow-sm text-center">
                 <div className="text-3xl mb-3">{item.icon}</div>

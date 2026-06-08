@@ -3,7 +3,7 @@
     "id": "nkrumah-basic-room",
     "name": "Nkrumah Basic Room",
     "description": "Experience comfort and affordability in our Nkrumah Basic Room, a cozy haven designed for up to 2 guests. Ideal for solo travelers or couples, this inviting space offers a relaxing retreat after a day of exploration or business.",
-    "price": 23000,
+    "price": 28000,
     "priceUnit": "per night",
     "image": "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=800&q=80",
     "gallery": [
@@ -13,10 +13,10 @@
     "capacity": 2,
     "size": 20,
     "features": [
-      "Plush Single Bed",
+      "Plush Single-Sized Bed",
       "Workspace with Desk & Chair",
       "Cooling Fan",
-      "Flat-Screen TV",
+      "TV",
       "24/7 Air Conditioning & Electricity"
     ],
     "amenities": [
@@ -29,13 +29,13 @@
       "24/7 Security"
     ],
     "available": true,
-    "category": "standard"
+    "category": "basic"
   },
   {
     "id": "fela-standard-room",
     "name": "Fela Standard Room",
     "description": "Discover the Fela Room, an exceptional retreat that redefines spacious luxury and comfort, designed for up to 2 guests. This room offers a more expansive layout and an array of thoughtfully curated amenities that cater to your every need.",
-    "price": 28000,
+    "price": 33000,
     "priceUnit": "per night",
     "image": "https://images.unsplash.com/photo-1590490360182-c33d57733427?w=800&q=80",
     "gallery": [
@@ -45,14 +45,14 @@
     "capacity": 2,
     "size": 25,
     "features": [
-      "Plush Double Bed",
-      "Spacious & Comfortable Bedroom",
-      "Workspace with Desk & Chair",
+      "Plush Double-Sized Bed",
+      "Comfortable & Spacious Bedroom",
+      "Spacious Workspace with Desk & Chair",
       "Cooling Fan",
-      "Water Heating System"
+      "Water Heating System",
+      "Flat-Screen TV"
     ],
     "amenities": [
-      "Flat-Screen TV",
       "Quality Toiletries (towels, dental kit, body wash)",
       "24/7 Air Conditioning & Electricity",
       "24/7 Room Service",
@@ -69,7 +69,7 @@
     "id": "zik-standard-plus-room",
     "name": "Zik Standard Plus Room",
     "description": "Welcome to the Zik Room, a standard plus spacious retreat designed to accommodate up to 3 guests in ultimate comfort. Experience the blend of comfort and spaciousness that makes the Zik Room a true home away from home.",
-    "price": 33000,
+    "price": 38000,
     "priceUnit": "per night",
     "image": "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=800&q=80",
     "gallery": [
@@ -80,7 +80,10 @@
     "size": 32,
     "features": [
       "Queen-Sized Bed",
+      "Comfortable Bedroom",
+      "Spacious Workspace with Desk & Chair",
       "Mini Fridge",
+      "Cooling Fan",
       "In-Room Electric Kettle with Tea Essentials",
       "Water Heating System",
       "HDTV with Netflix, Amazon Prime & DSTV"
@@ -97,13 +100,85 @@
       "24/7 Security"
     ],
     "available": true,
+    "category": "standard"
+  },
+  {
+    "id": "sankara-deluxe-room",
+    "name": "Sankara Deluxe Room",
+    "description": "The Sankara Room offers refined comfort and elevated luxury for discerning travelers. Designed with premium finishes and enhanced amenities, it provides the ideal balance between sophistication and relaxation.",
+    "price": 45000,
+    "priceUnit": "per night",
+    "image": "https://images.unsplash.com/photo-1618773928121-c32242e63f39?w=800&q=80",
+    "gallery": [
+      "https://images.unsplash.com/photo-1618773928121-c32242e63f39?w=800&q=80",
+      "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=800&q=80"
+    ],
+    "capacity": 2,
+    "size": 38,
+    "features": [
+      "Spacious Deluxe Room",
+      "Single Bed (Sleeps 2 Guests)",
+      "Premium Lighting",
+      "Refrigerator",
+      "Smart TV",
+      "Water Heating System",
+      "Complimentary Wi-Fi"
+    ],
+    "amenities": [
+      "24-Hour Electricity",
+      "24-Hour Air Conditioning",
+      "Quality Toiletries (towels, dental kit, body wash)",
+      "24/7 Room Service",
+      "Daily Housekeeping",
+      "Free Swimming Pool Access",
+      "Free Game Center Access",
+      "Serene Environment",
+      "24/7 Security"
+    ],
+    "available": true,
     "category": "deluxe"
+  },
+  {
+    "id": "awo-deluxe-suite",
+    "name": "Awo Deluxe Suite",
+    "description": "The Awo Suite is a luxurious accommodation created for guests who desire extra space, comfort, and exclusivity. Featuring a plush King-Sized Bed and a dedicated relaxation area, this suite provides a premium hospitality experience ideal for executives, honeymooners, and extended-stay guests.",
+    "price": 60000,
+    "priceUnit": "per night",
+    "image": "https://images.unsplash.com/photo-1578683010236-d716f9a3f461?w=800&q=80",
+    "gallery": [
+      "https://images.unsplash.com/photo-1578683010236-d716f9a3f461?w=800&q=80",
+      "https://images.unsplash.com/photo-1618773928121-c32242e63f39?w=800&q=80"
+    ],
+    "capacity": 3,
+    "size": 55,
+    "features": [
+      "King-Sized Bed",
+      "Accommodates Up to 3 Guests",
+      "Relaxation Area with Mini Couch",
+      "Refrigerator",
+      "Premium Lighting",
+      "Smart TV",
+      "Water Heating System"
+    ],
+    "amenities": [
+      "24-Hour Electricity",
+      "24-Hour Air Conditioning",
+      "Quality Toiletries (towels, dental kit, body wash)",
+      "24/7 Room Service",
+      "Daily Housekeeping",
+      "Free Swimming Pool Access",
+      "Free Game Center Access",
+      "Serene Environment",
+      "24/7 Security"
+    ],
+    "available": true,
+    "category": "suite"
   },
   {
     "id": "mandela-suite",
     "name": "Mandela Suite",
-    "description": "Welcome to the Mandela Suite, an expansive and luxurious accommodation designed for families and larger groups. Features a king-sized bed, a cozy sitting room with convertible sofa bed, and an en-suite bathroom — a true home away from home.",
-    "price": 55000,
+    "description": "Welcome to the Mandela Suite, an expansive and luxurious accommodation designed for families and larger groups. This beautifully appointed suite features a king-sized bed, an additional queen-sized bed, a cozy sitting room, and an en-suite bathroom — a true home away from home.",
+    "price": 60000,
     "priceUnit": "per night",
     "image": "https://images.unsplash.com/photo-1629140727571-9b5c6f6267b4?w=800&q=80",
     "gallery": [
@@ -114,15 +189,18 @@
     "capacity": 4,
     "size": 65,
     "features": [
-      "King-Sized Bed",
-      "En-suite Living Room with Convertible Sofa Bed",
-      "Workspace with Desk & Chair",
+      "Two Comfortable & Spacious Bedrooms",
+      "One King-Sized Bed",
+      "One Queen-Sized Bed",
+      "En-Suite Bathroom",
+      "Spacious Workspace with Desk & Chair",
       "HDTV with Netflix, Amazon Prime & DSTV",
-      "Mini Fridge"
-    ],
-    "amenities": [
+      "Mini Fridge",
       "In-Room Electric Kettle with Tea Essentials",
       "Water Heating System",
+      "Cooling Fan"
+    ],
+    "amenities": [
       "24/7 Air Conditioning & Electricity",
       "Quality Toiletries (towels, dental kit, body wash)",
       "24/7 Room Service",

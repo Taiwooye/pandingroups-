@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useState } from "react";
 import PageHero from "@/components/PageHero";
@@ -7,7 +7,7 @@ import roomsData from "@/data/hotel-rooms.json";
 import { Room } from "@/types";
 
 const rooms = roomsData as Room[];
-const categories = ["All", "Standard", "Deluxe", "Suite"] as const;
+const categories = ["All", "Basic", "Standard", "Deluxe", "Suite"] as const;
 
 export default function HotelPage() {
   const [active, setActive] = useState("All");
@@ -37,7 +37,7 @@ export default function HotelPage() {
                 onClick={() => setActive(cat)}
                 className={`px-4 py-1.5 rounded-full text-sm font-medium transition-colors ${
                   active === cat
-                    ? "bg-[#5A0E24] text-white"
+                    ? "bg-[#C41230] text-white"
                     : "bg-white text-slate-600 border border-slate-200 hover:border-amber-300 hover:text-amber-600"
                 }`}
               >
@@ -51,7 +51,7 @@ export default function HotelPage() {
 
           {filtered.length === 0 ? (
             <div className="text-center py-20 text-slate-400">
-              <div className="text-5xl mb-4">🛏️</div>
+              <div className="text-5xl mb-4">ðŸ›ï¸</div>
               <p className="font-medium">No rooms in this category right now.</p>
             </div>
           ) : (
@@ -73,12 +73,12 @@ export default function HotelPage() {
           </div>
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-5">
             {[
-              { icon: "🏊", title: "Swimming Pool", desc: "Outdoor heated pool" },
-              { icon: "🎮", title: "Games Room", desc: "Pool, ping-pong & more" },
-              { icon: "🏋️", title: "Fitness Center", desc: "24-hour gym access" },
-              { icon: "💆", title: "Spa & Sauna", desc: "Full-service wellness" },
-              { icon: "🍽️", title: "Restaurant", desc: "Fine dining on-site" },
-              { icon: "🚗", title: "Free Parking", desc: "Secure valet parking" },
+              { icon: "ðŸŠ", title: "Swimming Pool", desc: "Outdoor heated pool" },
+              { icon: "ðŸŽ®", title: "Games Room", desc: "Pool, ping-pong & more" },
+              { icon: "ðŸ‹ï¸", title: "Fitness Center", desc: "24-hour gym access" },
+              { icon: "ðŸ’†", title: "Spa & Sauna", desc: "Full-service wellness" },
+              { icon: "ðŸ½ï¸", title: "Restaurant", desc: "Fine dining on-site" },
+              { icon: "ðŸš—", title: "Free Parking", desc: "Secure valet parking" },
             ].map((f) => (
               <div key={f.title} className="bg-white rounded-2xl p-5 text-center shadow-sm hover:shadow-md transition-shadow">
                 <div className="text-3xl mb-2">{f.icon}</div>
@@ -90,16 +90,46 @@ export default function HotelPage() {
         </div>
       </section>
 
-      {/* Info Banner */}
+      {/* Perfect for */}
       <section className="py-14 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-10">
+            <span className="text-amber-600 text-sm font-semibold uppercase tracking-wider">Who We Welcome</span>
+            <h2 className="text-2xl font-bold text-slate-800 mt-2">Our Rooms Are Perfect For</h2>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+            {[
+              { icon: "💼", title: "Business Travelers", desc: "Comfortable workspaces and extra space for meetings or relaxation after a busy day." },
+              { icon: "💑", title: "Couples", desc: "Romantic and luxurious getaways with the added benefit of a separate sitting area." },
+              { icon: "👨‍👩‍👧‍👦", title: "Families", desc: "Spacious accommodations for families to comfortably enjoy quality time together." },
+              { icon: "🧳", title: "Extended Stays", desc: "All the comforts of home with the luxury of hotel amenities for longer visits." },
+              { icon: "🧍", title: "Solo Travelers", desc: "Comfort and affordability in a safe, serene environment tailored for individuals." },
+              { icon: "👫", title: "Friends", desc: "A comfortable and inviting shared space with everything you need to unwind." },
+              { icon: "🌍", title: "Travelers with Children", desc: "A safe, spacious environment that provides the perfect setting for family bonding." },
+              { icon: "🌿", title: "Wellness Seekers", desc: "Tranquil atmosphere, pool access, and modern comforts to help you recharge." },
+            ].map((item) => (
+              <div key={item.title} className="flex gap-4 p-5 bg-slate-50 rounded-2xl hover:bg-amber-50 transition-colors group">
+                <span className="text-2xl shrink-0">{item.icon}</span>
+                <div>
+                  <h3 className="font-bold text-slate-800 text-sm mb-1">{item.title}</h3>
+                  <p className="text-xs text-slate-500 leading-relaxed">{item.desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Banner */}
+      <section className="py-14 bg-[#C41230]">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-2xl font-bold text-slate-800 mb-3">Need Help Choosing?</h2>
-          <p className="text-slate-500 mb-6">Our hospitality team is available 24/7 to help you find the perfect room for your stay.</p>
+          <h2 className="text-2xl font-bold text-white mb-3">Book Your Stay Today</h2>
+          <p className="text-red-100 mb-6">Experience a blend of luxury and comfort that will make your visit truly memorable.</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href="tel:+2341234567890" className="px-6 py-3 bg-[#5A0E24] text-white font-semibold rounded-xl hover:bg-[#921224] transition-colors">
-              Call Us Now
+            <a href="/book?service=hotel" className="px-6 py-3 bg-white text-[#C41230] font-semibold rounded-xl hover:bg-red-50 transition-colors">
+              Book Now
             </a>
-            <a href="/contact" className="px-6 py-3 bg-white text-amber-600 font-semibold rounded-xl border border-amber-200 hover:bg-amber-50 transition-colors">
+            <a href="/contact" className="px-6 py-3 bg-transparent text-white font-semibold rounded-xl border border-white/40 hover:bg-white/10 transition-colors">
               Send an Enquiry
             </a>
           </div>

@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import PageHero from "@/components/PageHero";
@@ -64,7 +64,7 @@ export default function LoungeBarPage() {
                     </div>
                   </div>
 
-                  <Link href={`/lounge-bar/${lounge.id}`} className="inline-flex items-center gap-2 px-5 py-2.5 bg-[#5A0E24] text-white text-sm font-semibold rounded-xl hover:bg-[#921224] transition-colors">
+                  <Link href={`/lounge-bar/${lounge.id}`} className="inline-flex items-center gap-2 px-5 py-2.5 bg-[#C41230] text-white text-sm font-semibold rounded-xl hover:bg-[#921224] transition-colors">
                     View Full Menu & Details
                     <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
@@ -82,9 +82,9 @@ export default function LoungeBarPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
             {[
-              { icon: "🍹", title: "50+ Cocktails", desc: "Signature and classic cocktails crafted by award-winning mixologists" },
-              { icon: "🎵", title: "Live Music", desc: "Jazz, Afrobeats, and R&B performances every Friday and Saturday night" },
-              { icon: "🥃", title: "Rare Spirits", desc: "An unparalleled selection of aged whiskies, cognacs, and fine wines" },
+              { icon: "ðŸ¹", title: "50+ Cocktails", desc: "Signature and classic cocktails crafted by award-winning mixologists" },
+              { icon: "ðŸŽµ", title: "Live Music", desc: "Jazz, Afrobeats, and R&B performances every Friday and Saturday night" },
+              { icon: "ðŸ¥ƒ", title: "Rare Spirits", desc: "An unparalleled selection of aged whiskies, cognacs, and fine wines" },
             ].map((item) => (
               <div key={item.title} className="text-white">
                 <div className="text-4xl mb-3">{item.icon}</div>

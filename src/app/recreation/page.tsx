@@ -1,41 +1,41 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import Link from "next/link";
 import PageHero from "@/components/PageHero";
 
 export const metadata: Metadata = {
   title: "Recreation & Wellness",
-  description: "Experience the perfect balance of fitness and relaxation at PaNDiN Recreation & Wellness — swimming, basketball, billiards, table tennis, snooker, and gym facilities.",
+  description: "Experience the perfect balance of fitness and relaxation at PaNDiN Recreation & Wellness â€” swimming, basketball, billiards, table tennis, snooker, and gym facilities.",
 };
 
 const activities = [
   {
-    icon: "🏊",
+    icon: "ðŸŠ",
     title: "Swimming Pool",
-    desc: "Enjoy our beautiful swimming pool — available for recreational swimming, lessons, and pool parties. Equipment, floaties, and clean towels provided.",
+    desc: "Enjoy our beautiful swimming pool â€” available for recreational swimming, lessons, and pool parties. Equipment, floaties, and clean towels provided.",
     highlights: ["Swimming lessons available", "Pool party packages", "Towel & swimwear rental", "Lifeguard on duty"],
   },
   {
-    icon: "🏀",
+    icon: "ðŸ€",
     title: "Basketball",
     desc: "Take your game to the next level with our basketball clinics and camps. Suitable for beginners to advanced players, coached by experienced professionals.",
     highlights: ["Clinics & camps", "All skill levels welcome", "Youth programs available", "Team tournaments"],
   },
   {
-    icon: "🎱",
+    icon: "ðŸŽ±",
     title: "Billiards & Snooker",
     desc: "Challenge yourself or compete with friends in our billiards and snooker area. Lessons and tournaments available for all skill levels.",
     highlights: ["Snooker tables", "Pool/billiard tables", "Beginner lessons", "Tournaments & competitions"],
   },
   {
-    icon: "🏓",
+    icon: "ðŸ“",
     title: "Table Tennis",
-    desc: "Fast, fun, and competitive — our table tennis facility is perfect for casual play or structured training. Lessons and tournaments held regularly.",
+    desc: "Fast, fun, and competitive â€” our table tennis facility is perfect for casual play or structured training. Lessons and tournaments held regularly.",
     highlights: ["Professional tables", "Coaching available", "Regular tournaments", "Equipment provided"],
   },
   {
-    icon: "🏋️",
+    icon: "ðŸ‹ï¸",
     title: "Gym Facilities",
-    desc: "Our gym is coming soon — packed with modern equipment for cardio, strength training, and functional fitness. Stay tuned for the grand opening!",
+    desc: "Our gym is coming soon â€” packed with modern equipment for cardio, strength training, and functional fitness. Stay tuned for the grand opening!",
     highlights: ["Modern equipment", "Cardio & strength training", "Professional trainers", "Coming Soon"],
   },
 ];
@@ -45,7 +45,7 @@ export default function RecreationPage() {
     <div>
       <PageHero
         title="Recreation & Wellness"
-        subtitle="Experience the perfect balance of fitness and relaxation. From the pool to the court — we offer something for everyone."
+        subtitle="Experience the perfect balance of fitness and relaxation. From the pool to the court â€” we offer something for everyone."
         image="https://images.unsplash.com/photo-1571902943202-507ec2618e8f?w=1600&q=80"
         breadcrumbs={[{ label: "Home", href: "/" }, { label: "Recreation" }]}
         height="md"
@@ -57,7 +57,7 @@ export default function RecreationPage() {
           <span className="text-amber-600 text-sm font-semibold uppercase tracking-wider">Active Living</span>
           <h2 className="text-3xl font-bold text-slate-800 mt-2 mb-4">Stay Active. Stay Well.</h2>
           <p className="text-slate-600 leading-relaxed">
-            Whether you are looking to stay active, unwind, or enjoy friendly competition, our Recreation & Wellness facilities provide the ideal setting for both leisure and performance. From invigorating workouts to engaging sports and refreshing poolside moments — we offer something for everyone seeking a well-rounded lifestyle.
+            Whether you are looking to stay active, unwind, or enjoy friendly competition, our Recreation & Wellness facilities provide the ideal setting for both leisure and performance. From invigorating workouts to engaging sports and refreshing poolside moments â€” we offer something for everyone seeking a well-rounded lifestyle.
           </p>
         </div>
       </section>
@@ -85,14 +85,14 @@ export default function RecreationPage() {
       </section>
 
       {/* Sign Up CTA */}
-      <section className="py-16 bg-[#5A0E24]">
+      <section className="py-16 bg-[#C41230]">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl font-bold text-white mb-4">Ready to Get Started?</h2>
           <p className="text-white/80 text-lg mb-8">
             Sign up for swimming lessons, book a court, or enquire about our sports programs. Our team is ready to help you get active.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href="/contact" className="px-7 py-3 bg-white text-[#5A0E24] font-semibold rounded-xl hover:bg-amber-50 transition-colors">
+            <Link href="/contact" className="px-7 py-3 bg-white text-[#C41230] font-semibold rounded-xl hover:bg-amber-50 transition-colors">
               Sign Up / Enquire
             </Link>
             <a href="tel:+2347054422968" className="px-7 py-3 bg-white/10 border border-white/30 text-white font-semibold rounded-xl hover:bg-white/20 transition-colors">

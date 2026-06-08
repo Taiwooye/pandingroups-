@@ -1,4 +1,4 @@
-import Image from "next/image";
+﻿import Image from "next/image";
 import Link from "next/link";
 import ServiceCard from "@/components/ServiceCard";
 import testimonials from "@/data/testimonials.json";
@@ -12,14 +12,14 @@ const stats = [
 ];
 
 const amenities = [
-  { icon: "🏊", title: "Infinity Pool", desc: "Resort-style outdoor pool with city views" },
-  { icon: "🏋️", title: "Fitness Center", desc: "State-of-the-art gym open 24 hours" },
-  { icon: "💆", title: "Spa & Wellness", desc: "Full-service spa with steam room & sauna" },
-  { icon: "🍽️", title: "Fine Dining", desc: "Three signature restaurants on-site" },
-  { icon: "🛎️", title: "24/7 Concierge", desc: "Personal concierge at your service always" },
-  { icon: "🚗", title: "Valet Parking", desc: "Complimentary valet for all guests" },
-  { icon: "✈️", title: "Airport Transfer", desc: "Seamless private airport transfers" },
-  { icon: "📶", title: "High-Speed WiFi", desc: "Complimentary gigabit WiFi throughout" },
+  { icon: "ðŸŠ", title: "Infinity Pool", desc: "Resort-style outdoor pool with city views" },
+  { icon: "ðŸ‹ï¸", title: "Fitness Center", desc: "State-of-the-art gym open 24 hours" },
+  { icon: "ðŸ’†", title: "Spa & Wellness", desc: "Full-service spa with steam room & sauna" },
+  { icon: "ðŸ½ï¸", title: "Fine Dining", desc: "Three signature restaurants on-site" },
+  { icon: "ðŸ›Žï¸", title: "24/7 Concierge", desc: "Personal concierge at your service always" },
+  { icon: "ðŸš—", title: "Valet Parking", desc: "Complimentary valet for all guests" },
+  { icon: "âœˆï¸", title: "Airport Transfer", desc: "Seamless private airport transfers" },
+  { icon: "ðŸ“¶", title: "High-Speed WiFi", desc: "Complimentary gigabit WiFi throughout" },
 ];
 
 export default function HomePage() {
@@ -40,7 +40,7 @@ export default function HomePage() {
 
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 w-full">
           <div className="max-w-2xl">
-            <span className="inline-block px-3 py-1 bg-[#5A0E24]/90 text-white text-sm font-semibold rounded-full mb-5 tracking-wide uppercase">
+            <span className="inline-block px-3 py-1 bg-[#C41230]/90 text-white text-sm font-semibold rounded-full mb-5 tracking-wide uppercase">
               Welcome to PandinGroups
             </span>
             <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-white leading-tight mb-6">
@@ -53,7 +53,7 @@ export default function HomePage() {
             <div className="flex flex-wrap gap-4">
               <Link
                 href="/hotel"
-                className="px-6 py-3 bg-[#5A0E24] text-white font-semibold rounded-xl hover:bg-[#921224] transition-colors shadow-lg"
+                className="px-6 py-3 bg-[#C41230] text-white font-semibold rounded-xl hover:bg-[#921224] transition-colors shadow-lg"
               >
                 Explore Rooms
               </Link>
@@ -74,7 +74,7 @@ export default function HomePage() {
       </section>
 
       {/* Stats */}
-      <section className="bg-[#5A0E24] py-10">
+      <section className="bg-[#C41230] py-10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             {stats.map((stat) => (
@@ -94,7 +94,7 @@ export default function HomePage() {
             <span className="text-amber-600 text-sm font-semibold uppercase tracking-wider">Our Offerings</span>
             <h2 className="text-3xl md:text-4xl font-bold text-slate-800 mt-2">Everything You Need</h2>
             <p className="text-slate-500 mt-3 max-w-xl mx-auto">
-              From luxurious rooms to spectacular event spaces — PandinGroups has it all under one roof.
+              From luxurious rooms to spectacular event spaces â€” PandinGroups has it all under one roof.
             </p>
           </div>
 
@@ -104,14 +104,14 @@ export default function HomePage() {
               description="Luxurious rooms and suites with stunning views and premium amenities."
               image="https://images.unsplash.com/photo-1611892440504-42a792e24d32?w=800&q=80"
               href="/hotel"
-              badge="From ₦20,000/night"
+              badge="From â‚¦20,000/night"
             />
             <ServiceCard
               title="Apartments"
               description="Fully furnished serviced apartments for short and long-term stays."
               image="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=800&q=80"
               href="/apartments"
-              badge="From ₦20,000/night"
+              badge="From â‚¦20,000/night"
             />
             <ServiceCard
               title="Event Hall"
@@ -153,7 +153,7 @@ export default function HomePage() {
                 <div className="relative h-52 overflow-hidden">
                   <Image src={room.image} alt={room.name} fill className="object-cover group-hover:scale-105 transition-transform duration-500" />
                   <div className="absolute top-3 right-3">
-                    <span className="px-2.5 py-1 bg-[#5A0E24]/90 text-white text-xs font-semibold rounded-full uppercase">{room.category}</span>
+                    <span className="px-2.5 py-1 bg-[#C41230]/90 text-white text-xs font-semibold rounded-full uppercase">{room.category}</span>
                   </div>
                 </div>
                 <div className="p-5">
@@ -161,10 +161,10 @@ export default function HomePage() {
                   <p className="text-sm text-slate-500 line-clamp-2 mb-4">{room.description}</p>
                   <div className="flex items-center justify-between">
                     <div>
-                      <span className="text-xl font-bold text-amber-700">₦{room.price.toLocaleString()}</span>
+                      <span className="text-xl font-bold text-amber-700">â‚¦{room.price.toLocaleString()}</span>
                       <span className="text-sm text-slate-400 ml-1">/ night</span>
                     </div>
-                    <Link href={`/hotel/${room.id}`} className="px-4 py-2 bg-[#5A0E24] text-white text-sm font-semibold rounded-lg hover:bg-[#921224] transition-colors">
+                    <Link href={`/hotel/${room.id}`} className="px-4 py-2 bg-[#C41230] text-white text-sm font-semibold rounded-lg hover:bg-[#921224] transition-colors">
                       View Details
                     </Link>
                   </div>
@@ -219,7 +219,7 @@ export default function HomePage() {
                   <Image src={t.avatar} alt={t.name} width={40} height={40} className="rounded-full object-cover" />
                   <div>
                     <div className="font-semibold text-slate-800 text-sm">{t.name}</div>
-                    <div className="text-xs text-slate-500">{t.role} · {t.date}</div>
+                    <div className="text-xs text-slate-500">{t.role} Â· {t.date}</div>
                   </div>
                 </div>
               </div>
@@ -245,7 +245,7 @@ export default function HomePage() {
             Book your stay at PandinGroups today and enjoy exclusive rates, complimentary breakfast, and personalized service.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href="/book" className="px-8 py-3.5 bg-[#5A0E24] text-white font-semibold rounded-xl hover:bg-[#921224] transition-colors shadow-lg">
+            <Link href="/book" className="px-8 py-3.5 bg-[#C41230] text-white font-semibold rounded-xl hover:bg-[#921224] transition-colors shadow-lg">
               Make a Reservation
             </Link>
             <Link href="/hotel" className="px-8 py-3.5 bg-white/10 text-white font-semibold rounded-xl border border-white/30 hover:bg-white/20 transition-colors">
