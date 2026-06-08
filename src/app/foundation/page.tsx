@@ -42,8 +42,8 @@ export default function FoundationPage() {
                 icon: "🎓",
                 title: "That Next Step Africa Scholarship",
                 desc: "Empowering young Africans with educational scholarships to pursue their dreams and achieve their God-given potential. We believe talent is universal — opportunity is not.",
-                link: "https://thatnextstepafrica.com",
-                linkLabel: "Visit thatnextstepafrica.com →",
+                link: null,
+                linkLabel: null,
               },
               {
                 icon: "🍲",
@@ -82,16 +82,8 @@ export default function FoundationPage() {
           <p className="text-white/80 text-lg mb-8">
             Whether you want to donate, volunteer, or learn more about our programs — we would love to hear from you. Together we can create a better future.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a
-              href="https://thatnextstepafrica.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="px-7 py-3 bg-white text-[#5A0E24] font-semibold rounded-xl hover:bg-amber-50 transition-colors"
-            >
-              That Next Step Africa
-            </a>
-            <Link href="/contact" className="px-7 py-3 bg-white/10 border border-white/30 text-white font-semibold rounded-xl hover:bg-white/20 transition-colors">
+          <div className="flex justify-center">
+            <Link href="/contact" className="px-7 py-3 bg-white text-[#5A0E24] font-semibold rounded-xl hover:bg-amber-50 transition-colors">
               Contact Us
             </Link>
           </div>
