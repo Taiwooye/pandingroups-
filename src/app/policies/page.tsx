@@ -20,7 +20,7 @@ export default function PoliciesPage() {
   return (
     <div className="mt-16 md:mt-20">
       {/* Hero */}
-      <div className="bg-[#C41230] py-14">
+      <div className="bg-[#5A0E24] py-14">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <nav className="flex items-center gap-2 mb-4 text-sm">
             <Link href="/" className="text-red-200 hover:text-white">Home</Link>
@@ -40,7 +40,7 @@ export default function PoliciesPage() {
         <section>
           <div className="flex items-center gap-3 mb-6">
             <div className="w-10 h-10 rounded-xl bg-red-50 flex items-center justify-center">
-              <svg className="w-5 h-5 text-[#C41230]" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+              <svg className="w-5 h-5 text-[#5A0E24]" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
               </svg>
             </div>
@@ -61,7 +61,7 @@ export default function PoliciesPage() {
                 {DAMAGE_CHARGES.map((row) => (
                   <tr key={row.item} className="hover:bg-slate-50">
                     <td className="px-5 py-3.5 text-slate-700">{row.item}</td>
-                    <td className="px-5 py-3.5 text-right font-bold text-[#C41230]">{row.amount}</td>
+                    <td className="px-5 py-3.5 text-right font-bold text-[#5A0E24]">{row.amount}</td>
                   </tr>
                 ))}
               </tbody>
@@ -137,7 +137,7 @@ export default function PoliciesPage() {
             <p className="text-sm text-slate-500 mt-0.5">Our team is available 24/7 to help.</p>
           </div>
           <div className="flex gap-3 shrink-0">
-            <a href="tel:+2347054422968" className="px-5 py-2.5 bg-[#C41230] text-white text-sm font-semibold rounded-xl hover:bg-[#9C0E25] transition-colors">
+            <a href="tel:+2347054422968" className="px-5 py-2.5 bg-[#5A0E24] text-white text-sm font-semibold rounded-xl hover:bg-[#921224] transition-colors">
               Call Us
             </a>
             <Link href="/contact" className="px-5 py-2.5 bg-white text-slate-700 text-sm font-semibold rounded-xl border border-slate-200 hover:bg-slate-50 transition-colors">

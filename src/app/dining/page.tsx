@@ -32,7 +32,7 @@ export default function DiningPage() {
                 <div className="relative w-full lg:w-2/5 h-72 lg:h-96 rounded-2xl overflow-hidden shadow-lg shrink-0">
                   <Image src={restaurant.image} alt={restaurant.name} fill className="object-cover" />
                   <div className="absolute top-4 left-4">
-                    <span className="px-3 py-1.5 bg-[#C41230]/90 text-white text-xs font-semibold rounded-full">
+                    <span className="px-3 py-1.5 bg-[#5A0E24]/90 text-white text-xs font-semibold rounded-full">
                       {restaurant.priceRange}
                     </span>
                   </div>
@@ -83,7 +83,7 @@ export default function DiningPage() {
                   </div>
 
                   <div className="mt-6 flex gap-3">
-                    <Link href="/book" className="px-5 py-2.5 bg-[#C41230] text-white text-sm font-semibold rounded-xl hover:bg-[#921224] transition-colors">
+                    <Link href="/book" className="px-5 py-2.5 bg-[#5A0E24] text-white text-sm font-semibold rounded-xl hover:bg-[#921224] transition-colors">
                       Reserve a Table
                     </Link>
                     <a href="tel:+2341234567890" className="px-5 py-2.5 bg-white text-amber-600 text-sm font-semibold rounded-xl border border-amber-200 hover:bg-amber-50 transition-colors">
@@ -106,7 +106,7 @@ export default function DiningPage() {
           <p className="text-white/80 mb-6 text-sm">
             Planning a special occasion? Our private dining rooms can be reserved for intimate celebrations, business dinners, and unforgettable moments.
           </p>
-          <Link href="/book" className="inline-block px-7 py-3 bg-white text-[#C41230] font-semibold rounded-xl hover:bg-rose-50 transition-colors">
+          <Link href="/book" className="inline-block px-7 py-3 bg-white text-[#5A0E24] font-semibold rounded-xl hover:bg-rose-50 transition-colors">
             Enquire About Private Dining
           </Link>
         </div>

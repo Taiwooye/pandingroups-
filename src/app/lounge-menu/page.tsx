@@ -13,7 +13,7 @@ export default function LoungMenuPage() {
   return (
     <div className="min-h-screen bg-[#494B67] text-white">
       {/* Header */}
-      <div className="bg-[#C41230] px-6 py-8 text-center">
+      <div className="bg-[#5A0E24] px-6 py-8 text-center">
         <div className="w-12 h-12 rounded-xl bg-white/20 flex items-center justify-center mx-auto mb-3">
           <svg viewBox="0 0 24 24" fill="none" className="w-7 h-7 text-white" stroke="currentColor" strokeWidth={2}>
             <path strokeLinecap="round" strokeLinejoin="round" d="M3 21V7a2 2 0 012-2h14a2 2 0 012 2v14M9 21V12h6v9M3 10h18" />
@@ -43,7 +43,7 @@ export default function LoungMenuPage() {
               <div className="space-y-6">
                 {categories.map((category) => (
                   <div key={category}>
-                    <h3 className="text-xs font-bold uppercase tracking-widest text-[#C41230] mb-3 pb-2 border-b border-slate-700">
+                    <h3 className="text-xs font-bold uppercase tracking-widest text-[#5A0E24] mb-3 pb-2 border-b border-slate-700">
                       {category}
                     </h3>
                     <div className="space-y-3">

@@ -128,7 +128,7 @@ export default async function ApartmentDetailPage(props: PageProps<"/apartments/
               </div>
               <Link
                 href={`/book?service=apartment&room=${encodeURIComponent(apt.name)}`}
-                className={`flex items-center justify-center w-full py-3 rounded-xl font-semibold text-sm transition-colors ${apt.available ? "bg-[#C41230] text-white hover:bg-[#9C0E25]" : "bg-slate-200 text-slate-500 pointer-events-none"}`}
+                className={`flex items-center justify-center w-full py-3 rounded-xl font-semibold text-sm transition-colors ${apt.available ? "bg-[#5A0E24] text-white hover:bg-[#921224]" : "bg-slate-200 text-slate-500 pointer-events-none"}`}
               >
                 {apt.available ? "Reserve Apartment" : "Not Available"}
               </Link>

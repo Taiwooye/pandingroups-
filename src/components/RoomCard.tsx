@@ -29,7 +29,7 @@ export default function RoomCard({ room, basePath }: RoomCardProps) {
           </span>
         </div>
         <div className="absolute top-3 right-3">
-          <span className="px-2.5 py-1 rounded-full text-xs font-semibold uppercase tracking-wide bg-[#C41230]/90 text-white capitalize">
+          <span className="px-2.5 py-1 rounded-full text-xs font-semibold uppercase tracking-wide bg-[#5A0E24]/90 text-white capitalize">
             {room.category}
           </span>
         </div>
@@ -74,7 +74,7 @@ export default function RoomCard({ room, basePath }: RoomCardProps) {
           </div>
           <Link
             href={`${basePath}/${room.id}`}
-            className="px-4 py-2 bg-[#C41230] text-white text-sm font-semibold rounded-lg hover:bg-[#921224] transition-colors"
+            className="px-4 py-2 bg-[#5A0E24] text-white text-sm font-semibold rounded-lg hover:bg-[#921224] transition-colors"
           >
             View Details
           </Link>

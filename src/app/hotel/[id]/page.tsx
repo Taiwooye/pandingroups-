@@ -112,7 +112,7 @@ export default async function HotelRoomPage(props: PageProps<"/hotel/[id]">) {
               <h2 className="text-xl font-bold text-slate-800">Guest Policies</h2>
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                 <div className="bg-white rounded-xl p-4 border border-slate-100">
-                  <p className="font-semibold text-[#C41230] text-sm mb-1">Cancellation</p>
+                  <p className="font-semibold text-[#5A0E24] text-sm mb-1">Cancellation</p>
                   <p className="text-xs text-slate-500 leading-relaxed">25% cancellation fee applies. Refund within 72 hours via original payment method.</p>
                 </div>
                 <div className="bg-white rounded-xl p-4 border border-slate-100">
@@ -121,7 +121,7 @@ export default async function HotelRoomPage(props: PageProps<"/hotel/[id]">) {
                 </div>
                 <div className="bg-white rounded-xl p-4 border border-slate-100">
                   <p className="font-semibold text-slate-700 text-sm mb-1">Damage</p>
-                  <p className="text-xs text-slate-500 leading-relaxed">Charges apply for damage to linen, key cards, remotes, and walls. <Link href="/policies" className="text-[#C41230] hover:underline">View full schedule</Link>.</p>
+                  <p className="text-xs text-slate-500 leading-relaxed">Charges apply for damage to linen, key cards, remotes, and walls. <Link href="/policies" className="text-[#5A0E24] hover:underline">View full schedule</Link>.</p>
                 </div>
               </div>
             </div>
@@ -172,7 +172,7 @@ export default async function HotelRoomPage(props: PageProps<"/hotel/[id]">) {
                 href={`/book?service=hotel&room=${encodeURIComponent(room.name)}`}
                 className={`flex items-center justify-center w-full py-3 rounded-xl font-semibold text-sm transition-colors ${
                   room.available
-                    ? "bg-[#C41230] text-white hover:bg-[#9C0E25]"
+                    ? "bg-[#5A0E24] text-white hover:bg-[#921224]"
                     : "bg-slate-200 text-slate-500 cursor-not-allowed pointer-events-none"
                 }`}
               >
