@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import { useState, useCallback, useMemo, Suspense } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
@@ -6,7 +6,7 @@ import Image from "next/image";
 import roomsData from "@/data/hotel-rooms.json";
 import apartmentsData from "@/data/apartments.json";
 
-// â”€â”€ Types â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// Types
 
 type HotelRoom = {
   id: string; name: string; price: number; image: string;
@@ -28,25 +28,25 @@ type FormData = {
   checkIn: string; checkOut: string; guests: string; specialRequests: string;
 };
 
-// â”€â”€ Static data â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// Static data
 
 const hotelRooms = roomsData as HotelRoom[];
 const apartments = apartmentsData as Apartment[];
 
 const SERVICES = [
-  { key: "hotel",      icon: "M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5", label: "Hotel Room",        desc: "Nkrumah, Fela, Zik, Mandela Suite",        from: "From â‚¦23,000/night", color: "bg-[#C41230]" },
-  { key: "apartment",  icon: "M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z",                          label: "Luxury Apartment",  desc: "1-BR, 2-BR, 3-BR & 4-BR units",           from: "From â‚¦100,000/night", color: "bg-amber-600" },
-  { key: "event-hall", icon: "M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z",       label: "Event Hall",        desc: "Nwando's Hall â€” up to 500 guests",          from: "â‚¦400,000/day",      color: "bg-blue-700" },
-  { key: "other",      icon: "M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z", label: "General Enquiry",   desc: "Not sure? We will help you choose",        from: "Contact us",        color: "bg-slate-600" },
+  { key: "hotel",      icon: "M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5", label: "Hotel Room",        desc: "Nkrumah, Fela, Zik, Mandela Suite",   from: "From ₦28,000/night", color: "bg-[#5A0E24]" },
+  { key: "apartment",  icon: "M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z",                          label: "Luxury Apartment",  desc: "1-BR, 2-BR, 3-BR & 4-BR units",      from: "From ₦100,000/night", color: "bg-amber-600" },
+  { key: "event-hall", icon: "M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z",       label: "Event Hall",        desc: "Nwando's Hall — up to 500 guests", from: "₦400,000/day",      color: "bg-blue-700" },
+  { key: "other",      icon: "M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z", label: "General Enquiry",   desc: "Not sure? We will help you choose",  from: "Contact us",           color: "bg-slate-600" },
 ];
 
 const COUNTRY_CODES = [
-  { code: "+234", flag: "ðŸ‡³ðŸ‡¬", name: "Nigeria" },
-  { code: "+1",   flag: "ðŸ‡ºðŸ‡¸", name: "USA" },
-  { code: "+44",  flag: "ðŸ‡¬ðŸ‡§", name: "UK" },
-  { code: "+233", flag: "ðŸ‡¬ðŸ‡­", name: "Ghana" },
-  { code: "+27",  flag: "ðŸ‡¿ðŸ‡¦", name: "South Africa" },
-  { code: "+254", flag: "ðŸ‡°ðŸ‡ª", name: "Kenya" },
+  { code: "+234", flag: "🇳🇬", name: "Nigeria" },
+  { code: "+1",   flag: "🇺🇸", name: "USA" },
+  { code: "+44",  flag: "🇬🇧", name: "UK" },
+  { code: "+233", flag: "🇬🇭", name: "Ghana" },
+  { code: "+27",  flag: "🇿🇦", name: "South Africa" },
+  { code: "+254", flag: "🇰🇪", name: "Kenya" },
 ];
 
 const TITLES = ["Mr.", "Mrs.", "Ms.", "Dr.", "Prof."];
@@ -60,7 +60,7 @@ function nightsBetween(a: string, b: string) {
   return Math.max(0, Math.round((new Date(b).getTime() - new Date(a).getTime()) / 86400000));
 }
 
-// â”€â”€ Sub-components â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// SummaryPanel
 
 function SummaryPanel({ form }: { form: FormData }) {
   const nights = nightsBetween(form.checkIn, form.checkOut);
@@ -77,14 +77,14 @@ function SummaryPanel({ form }: { form: FormData }) {
       <div className="p-5">
         <h3 className="font-bold text-slate-800 text-base">{form.selectedName || "No property selected"}</h3>
         {form.service && (
-          <span className="inline-block mt-1 text-xs font-semibold px-2.5 py-0.5 rounded-full bg-[#C41230]/10 text-[#C41230] capitalize">
+          <span className="inline-block mt-1 text-xs font-semibold px-2.5 py-0.5 rounded-full bg-[#5A0E24]/10 text-[#5A0E24] capitalize">
             {SERVICES.find((s) => s.key === form.service)?.label}
           </span>
         )}
 
         {form.selectedPrice > 0 && (
           <p className="text-xl font-black text-amber-700 mt-3">
-            â‚¦{form.selectedPrice.toLocaleString()}
+            &#8358;{form.selectedPrice.toLocaleString()}
             <span className="text-sm font-normal text-slate-400">/night</span>
           </p>
         )}
@@ -120,7 +120,7 @@ function SummaryPanel({ form }: { form: FormData }) {
           <div className="mt-4 pt-4 border-t border-slate-100">
             <div className="flex justify-between items-center">
               <span className="text-sm font-semibold text-slate-600">Estimated Total</span>
-              <span className="text-lg font-black text-[#C41230]">â‚¦{total.toLocaleString()}</span>
+              <span className="text-lg font-black text-[#5A0E24]">&#8358;{total.toLocaleString()}</span>
             </div>
             <p className="text-xs text-slate-400 mt-1">Deposit required to confirm booking</p>
           </div>
@@ -130,14 +130,14 @@ function SummaryPanel({ form }: { form: FormData }) {
           <svg className="w-4 h-4 text-green-500" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
           </svg>
-          Secure booking Â· Confirmed in 2 hrs
+          Secure booking &middot; Confirmed in 2 hrs
         </div>
       </div>
     </div>
   );
 }
 
-// â”€â”€ Main component â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// Main component
 
 function BookContent() {
   const router = useRouter();
@@ -166,7 +166,6 @@ function BookContent() {
 
   const set = (p: Partial<FormData>) => setForm((f) => ({ ...f, ...p }));
 
-  // Derived
   const serviceProperties = useMemo(() => {
     if (form.service === "hotel") return hotelRooms;
     if (form.service === "apartment") return apartments;
@@ -174,8 +173,6 @@ function BookContent() {
   }, [form.service]);
 
   const canProceedDetails = form.firstName.trim() && form.lastName.trim() && form.email.trim() && form.phone.trim();
-
-  // â”€â”€ Handlers â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
   function selectService(key: string) {
     set({ service: key, selectedId: "", selectedName: "", selectedPrice: 0, selectedImage: "" });
@@ -227,13 +224,12 @@ function BookContent() {
     }
   }, [form, bookingRef, router]);
 
-  // â”€â”€ Step: Services â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+  // Step: Services
 
   if (step === "services") {
     return (
       <div className="min-h-screen bg-slate-50">
-        {/* Hero */}
-        <div className="bg-[#C41230] py-20 text-center px-4">
+        <div className="bg-[#5A0E24] py-20 text-center px-4">
           <p className="text-white/60 text-sm font-semibold uppercase tracking-widest mb-3">PaNDiN Group</p>
           <h1 className="text-3xl md:text-4xl font-black text-white mb-3">Book Your Experience</h1>
           <p className="text-white/70 text-base max-w-md mx-auto">Choose a service below and we will walk you through the rest.</p>
@@ -245,7 +241,7 @@ function BookContent() {
               <button
                 key={s.key}
                 onClick={() => selectService(s.key)}
-                className="bg-white rounded-2xl p-6 border-2 border-slate-100 hover:border-[#C41230] hover:shadow-xl transition-all duration-200 text-left group flex flex-col gap-4"
+                className="bg-white rounded-2xl p-6 border-2 border-slate-100 hover:border-[#5A0E24] hover:shadow-xl transition-all duration-200 text-left group flex flex-col gap-4"
               >
                 <div className={`w-12 h-12 rounded-xl ${s.color} flex items-center justify-center`}>
                   <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" strokeWidth={1.8} viewBox="0 0 24 24">
@@ -253,12 +249,12 @@ function BookContent() {
                   </svg>
                 </div>
                 <div>
-                  <h3 className="font-bold text-slate-800 text-base group-hover:text-[#C41230] transition-colors">{s.label}</h3>
+                  <h3 className="font-bold text-slate-800 text-base group-hover:text-[#5A0E24] transition-colors">{s.label}</h3>
                   <p className="text-slate-500 text-sm mt-1 leading-snug">{s.desc}</p>
                 </div>
                 <div className="flex items-center justify-between mt-auto pt-2 border-t border-slate-100">
                   <span className="text-amber-600 font-semibold text-xs">{s.from}</span>
-                  <svg className="w-4 h-4 text-slate-400 group-hover:text-[#C41230] transition-colors" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24">
+                  <svg className="w-4 h-4 text-slate-400 group-hover:text-[#5A0E24] transition-colors" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
                   </svg>
                 </div>
@@ -270,13 +266,12 @@ function BookContent() {
     );
   }
 
-  // â”€â”€ Step: Properties â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+  // Step: Properties
 
   if (step === "properties") {
     const svc = SERVICES.find((s) => s.key === form.service);
     return (
       <div className="min-h-screen bg-slate-50">
-        {/* Header */}
         <div className="bg-white border-b border-slate-100 px-4 py-4">
           <div className="max-w-6xl mx-auto flex items-center gap-4">
             <button onClick={() => setStep("services")} className="flex items-center gap-1.5 text-sm text-slate-500 hover:text-slate-700">
@@ -312,7 +307,7 @@ function BookContent() {
               const capacity = isHotel ? `Up to ${room.capacity} guests` : `${apt.bedrooms} bed${apt.bedrooms > 1 ? "s" : ""}`;
 
               return (
-                <div key={item.id} className="bg-white rounded-2xl border border-slate-100 shadow-sm overflow-hidden group hover:shadow-xl hover:border-[#C41230]/30 transition-all duration-300 flex flex-col">
+                <div key={item.id} className="bg-white rounded-2xl border border-slate-100 shadow-sm overflow-hidden group hover:shadow-xl hover:border-[#5A0E24]/30 transition-all duration-300 flex flex-col">
                   <div className="relative h-52 overflow-hidden">
                     <Image
                       src={item.image}
@@ -321,7 +316,7 @@ function BookContent() {
                       className="object-cover group-hover:scale-105 transition-transform duration-500"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
-                    <span className="absolute top-3 left-3 bg-[#C41230] text-white text-xs font-bold px-2.5 py-1 rounded-full capitalize">
+                    <span className="absolute top-3 left-3 bg-[#5A0E24] text-white text-xs font-bold px-2.5 py-1 rounded-full capitalize">
                       {badge}
                     </span>
                     <span className="absolute top-3 right-3 bg-green-500 text-white text-xs font-bold px-2.5 py-1 rounded-full">
@@ -345,12 +340,11 @@ function BookContent() {
                           <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4" />
                           </svg>
-                          {(item as HotelRoom).size} mÂ²
+                          {(item as HotelRoom).size} m&sup2;
                         </span>
                       )}
                     </div>
 
-                    {/* Top 3 features */}
                     <div className="flex flex-wrap gap-1.5 mt-3">
                       {item.features.slice(0, 3).map((f) => (
                         <span key={f} className="text-[10px] px-2 py-0.5 bg-slate-100 text-slate-600 rounded-full">{f}</span>
@@ -359,12 +353,12 @@ function BookContent() {
 
                     <div className="flex items-center justify-between mt-auto pt-4 border-t border-slate-100">
                       <div>
-                        <span className="text-xl font-black text-amber-700">â‚¦{item.price.toLocaleString()}</span>
+                        <span className="text-xl font-black text-amber-700">&#8358;{item.price.toLocaleString()}</span>
                         <span className="text-xs text-slate-400 ml-1">/night</span>
                       </div>
                       <button
                         onClick={() => selectProperty(item.id, item.name, item.price, item.image)}
-                        className="px-4 py-2 bg-[#C41230] text-white text-xs font-bold rounded-xl hover:bg-[#921224] transition-colors"
+                        className="px-4 py-2 bg-[#5A0E24] text-white text-xs font-bold rounded-xl hover:bg-[#921224] transition-colors"
                       >
                         Book Now
                       </button>
@@ -379,13 +373,12 @@ function BookContent() {
     );
   }
 
-  // â”€â”€ Step: Details â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+  // Step: Details
 
   if (step === "details") {
     const svc = SERVICES.find((s) => s.key === form.service);
     return (
       <div className="min-h-screen bg-slate-50">
-        {/* Header */}
         <div className="bg-white border-b border-slate-100 px-4 py-4">
           <div className="max-w-6xl mx-auto flex items-center gap-4">
             <button
@@ -399,14 +392,14 @@ function BookContent() {
             </button>
             <div className="h-4 w-px bg-slate-200" />
             <span className="text-sm text-slate-500">
-              {svc?.label}{form.selectedName ? ` Â· ${form.selectedName}` : ""}
+              {svc?.label}{form.selectedName ? ` · ${form.selectedName}` : ""}
             </span>
           </div>
         </div>
 
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-            {/* LEFT â€” Form */}
+            {/* Form */}
             <div className="lg:col-span-2">
               <form onSubmit={handleProceed} className="space-y-8">
 
@@ -417,7 +410,6 @@ function BookContent() {
                     <p className="text-xs text-slate-400 mt-1">We&apos;ll use these to send your booking confirmation.</p>
                   </div>
 
-                  {/* Title + First + Last */}
                   <div className="grid grid-cols-12 gap-3">
                     <div className="col-span-3">
                       <label className="text-xs font-semibold text-slate-500 uppercase tracking-wide block mb-1.5">Title</label>
@@ -426,7 +418,7 @@ function BookContent() {
                         onChange={(e) => set({ title: e.target.value })}
                         className="w-full px-3 py-3 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-amber-300 bg-white text-slate-700"
                       >
-                        <option value="">â€”</option>
+                        <option value="">&mdash;</option>
                         {TITLES.map((t) => <option key={t} value={t}>{t}</option>)}
                       </select>
                     </div>
@@ -450,7 +442,6 @@ function BookContent() {
                     </div>
                   </div>
 
-                  {/* Country code + Phone */}
                   <div className="grid grid-cols-12 gap-3">
                     <div className="col-span-4">
                       <label className="text-xs font-semibold text-slate-500 uppercase tracking-wide block mb-1.5">Country code</label>
@@ -475,7 +466,6 @@ function BookContent() {
                     </div>
                   </div>
 
-                  {/* Email */}
                   <div>
                     <label className="text-xs font-semibold text-slate-500 uppercase tracking-wide block mb-1.5">E-mail address *</label>
                     <input
@@ -528,18 +518,18 @@ function BookContent() {
                 <button
                   type="submit"
                   disabled={!canProceedDetails}
-                  className="w-full py-4 bg-[#C41230] text-white font-bold rounded-2xl hover:bg-[#921224] transition-colors shadow-md text-base disabled:opacity-40 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+                  className="w-full py-4 bg-[#5A0E24] text-white font-bold rounded-2xl hover:bg-[#921224] transition-colors shadow-md text-base disabled:opacity-40 disabled:cursor-not-allowed flex items-center justify-center gap-2"
                 >
                   Proceed to Payment
                   <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
                   </svg>
                 </button>
-                <p className="text-xs text-slate-400 text-center">No charge until payment is confirmed Â· Booking held for 24 hours</p>
+                <p className="text-xs text-slate-400 text-center">No charge until payment is confirmed &middot; Booking held for 24 hours</p>
               </form>
             </div>
 
-            {/* RIGHT â€” Summary */}
+            {/* Summary */}
             <div className="lg:col-span-1">
               <SummaryPanel form={form} />
             </div>
@@ -549,7 +539,7 @@ function BookContent() {
     );
   }
 
-  // â”€â”€ Step: Done â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+  // Step: Done
 
   if (step === "done") {
     return (
@@ -568,11 +558,11 @@ function BookContent() {
     );
   }
 
-  // â”€â”€ Step: Payment â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+  // Step: Payment
 
   return (
     <div className="min-h-screen bg-slate-50">
-      <div className="bg-[#C41230] py-10 text-center px-4">
+      <div className="bg-[#5A0E24] py-10 text-center px-4">
         <p className="text-white/70 text-sm mb-2">Booking Reference</p>
         <h1 className="text-2xl font-black text-white tracking-widest">{bookingRef}</h1>
       </div>
@@ -599,9 +589,9 @@ function BookContent() {
               <p className="text-slate-500 text-sm mt-1">Transfer the deposit to the account below, then click confirm.</p>
             </div>
 
-            <div className="bg-white rounded-2xl border-2 border-[#C41230]/20 p-6 shadow-sm">
+            <div className="bg-white rounded-2xl border-2 border-[#5A0E24]/20 p-6 shadow-sm">
               <h3 className="font-bold text-slate-800 mb-4 flex items-center gap-2">
-                <svg className="w-5 h-5 text-[#C41230]" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+                <svg className="w-5 h-5 text-[#5A0E24]" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" />
                 </svg>
                 Bank Transfer Details
@@ -618,9 +608,9 @@ function BookContent() {
                     <div className="font-bold text-slate-800 text-sm">{item.value}</div>
                   </div>
                 ))}
-                <div className="sm:col-span-2 bg-[#C41230]/5 rounded-xl p-4 border border-[#C41230]/15">
-                  <div className="text-xs font-semibold text-[#C41230] uppercase tracking-wide mb-1">Payment Reference (Required)</div>
-                  <div className="font-bold text-[#C41230] text-xl tracking-widest">{bookingRef}</div>
+                <div className="sm:col-span-2 bg-[#5A0E24]/5 rounded-xl p-4 border border-[#5A0E24]/15">
+                  <div className="text-xs font-semibold text-[#5A0E24] uppercase tracking-wide mb-1">Payment Reference (Required)</div>
+                  <div className="font-bold text-[#5A0E24] text-xl tracking-widest">{bookingRef}</div>
                   <div className="text-xs text-slate-500 mt-1">Include this in your transfer description so we can identify your payment.</div>
                 </div>
               </div>
@@ -630,11 +620,11 @@ function BookContent() {
               <h3 className="font-bold text-slate-800 text-sm">What Happens Next?</h3>
               {[
                 { n: "1", title: "Transfer the deposit", desc: "Send payment to the GTBank account above using your booking reference." },
-                { n: "2", title: "Click confirm below", desc: "After transferring, click the button â€” your receipt will be emailed instantly." },
+                { n: "2", title: "Click confirm below", desc: "After transferring, click the button — your receipt will be emailed instantly." },
                 { n: "3", title: "We verify & confirm", desc: "Our team confirms your payment within 2 hours and sends your booking voucher." },
               ].map((s) => (
                 <div key={s.n} className="flex gap-3">
-                  <div className="w-7 h-7 rounded-full bg-[#C41230] text-white text-xs font-bold flex items-center justify-center shrink-0">{s.n}</div>
+                  <div className="w-7 h-7 rounded-full bg-[#5A0E24] text-white text-xs font-bold flex items-center justify-center shrink-0">{s.n}</div>
                   <div>
                     <p className="font-semibold text-slate-800 text-sm">{s.title}</p>
                     <p className="text-xs text-slate-500 mt-0.5">{s.desc}</p>
@@ -670,11 +660,11 @@ function BookContent() {
                 </div>
                 <div>
                   <p className="font-semibold text-slate-700 mb-1">Refund Policy</p>
-                  <p className="text-slate-500 leading-relaxed">Refunds are returned through the original payment method and may take <strong className="text-slate-700">48–72 hours</strong> to reflect.</p>
+                  <p className="text-slate-500 leading-relaxed">Refunds are returned through the original payment method and may take <strong className="text-slate-700">48&ndash;72 hours</strong> to reflect.</p>
                 </div>
                 <div>
                   <p className="font-semibold text-slate-700 mb-1">Damage Policy</p>
-                  <p className="text-slate-500 leading-relaxed">Charges apply for damages during your stay (e.g. stained linen ₦10,000, lost key card ₦10,000). View the <a href="/policies" className="text-[#C41230] underline hover:no-underline">full damage schedule</a>.</p>
+                  <p className="text-slate-500 leading-relaxed">Charges apply for damages during your stay (e.g. stained linen &#8358;10,000, lost key card &#8358;10,000). View the <a href="/policies" className="text-[#5A0E24] underline hover:no-underline">full damage schedule</a>.</p>
                 </div>
               </div>
             </details>
@@ -686,7 +676,7 @@ function BookContent() {
             <button
               onClick={handleTransferConfirm}
               disabled={step === "sending"}
-              className="w-full py-4 bg-[#C41230] text-white font-bold rounded-2xl hover:bg-[#921224] transition-colors shadow-md text-base disabled:opacity-60 flex items-center justify-center gap-3"
+              className="w-full py-4 bg-[#5A0E24] text-white font-bold rounded-2xl hover:bg-[#921224] transition-colors shadow-md text-base disabled:opacity-60 flex items-center justify-center gap-3"
             >
               {step === "sending" ? (
                 <>
@@ -716,7 +706,7 @@ export default function BookPage() {
   return (
     <Suspense fallback={
       <div className="min-h-screen flex items-center justify-center">
-        <div className="animate-spin w-8 h-8 border-4 border-[#C41230] border-t-transparent rounded-full" />
+        <div className="animate-spin w-8 h-8 border-4 border-[#5A0E24] border-t-transparent rounded-full" />
       </div>
     }>
       <BookContent />
