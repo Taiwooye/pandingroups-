@@ -84,16 +84,8 @@ export default function Navbar() {
             ))}
           </div>
 
-          {/* CTA buttons + Mobile Menu toggle */}
-          <div className="flex items-center gap-2">
-            <a
-              href="https://thatnextstepafrica.org/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hidden sm:inline-flex items-center px-4 py-2 rounded-lg border border-amber-500 text-amber-600 text-sm font-semibold hover:bg-amber-50 transition-colors"
-            >
-              That Next Step Africa
-            </a>
+          {/* CTA + Mobile Menu toggle */}
+          <div className="flex items-center gap-3">
             <Link
               href="/book"
               className="hidden sm:inline-flex items-center px-4 py-2 rounded-lg bg-[#5A0E24] text-white text-sm font-semibold hover:bg-[#921224] transition-colors shadow-sm"
@@ -134,15 +126,7 @@ export default function Navbar() {
                 {link.label}
               </Link>
             ))}
-            <div className="px-4 pt-3 pb-1 space-y-2">
-              <a
-                href="https://thatnextstepafrica.org/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center justify-center w-full px-4 py-2.5 rounded-lg border border-amber-500 text-amber-600 text-sm font-semibold hover:bg-amber-50 transition-colors"
-              >
-                That Next Step Africa
-              </a>
+            <div className="px-4 pt-3 pb-1">
               <Link
                 href="/book"
                 className="flex items-center justify-center w-full px-4 py-2.5 rounded-lg bg-[#5A0E24] text-white text-sm font-semibold hover:bg-[#921224] transition-colors"

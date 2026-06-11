@@ -82,10 +82,18 @@ export default function FoundationPage() {
           <p className="text-white/80 text-lg mb-8">
             Whether you want to donate, volunteer, or learn more about our programs — we would love to hear from you. Together we can create a better future.
           </p>
-          <div className="flex justify-center">
+          <div className="flex flex-col sm:flex-row justify-center gap-4">
             <Link href="/contact" className="px-7 py-3 bg-white text-[#5A0E24] font-semibold rounded-xl hover:bg-amber-50 transition-colors">
               Contact Us
             </Link>
+            <a
+              href="https://thatnextstepafrica.org/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-7 py-3 bg-amber-500 text-white font-semibold rounded-xl hover:bg-amber-400 transition-colors"
+            >
+              That Next Step Africa &rarr;
+            </a>
           </div>
         </div>
       </section>

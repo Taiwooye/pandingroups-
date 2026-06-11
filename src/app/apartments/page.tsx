@@ -132,8 +132,6 @@ export default function ApartmentsPage() {
               { icon: "🎮", title: "Games Room", desc: "Pool, ping-pong & more" },
               { icon: "🏋️", title: "Fitness Center", desc: "Gym — coming soon" },
               { icon: "🏠", title: "Full Kitchen", desc: "Fully equipped kitchen" },
-              { icon: "🛎️", title: "Concierge", desc: "24/7 personal service" },
-              { icon: "🔑", title: "Key-Card Access", desc: "Secure entry system" },
             ].map((f) => (
               <div key={f.title} className="bg-white rounded-2xl p-5 text-center shadow-sm hover:shadow-md transition-shadow">
                 <div className="text-3xl mb-2">{f.icon}</div>
@@ -151,9 +149,9 @@ export default function ApartmentsPage() {
           <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
             {[
               { icon: "🏠", title: "Home Comforts", desc: "Full kitchen, laundry, living areas" },
-              { icon: "🛎️", title: "Hotel Services", desc: "Daily housekeeping & concierge" },
+              { icon: "🛎️", title: "Hotel Services", desc: "Housekeeping every 2 days" },
               { icon: "📅", title: "Flexible Terms", desc: "Daily, weekly, or monthly stays" },
-              { icon: "🔑", title: "Secure & Private", desc: "Key-card access & 24/7 security" },
+              { icon: "🔒", title: "Secure & Private", desc: "24/7 security" },
             ].map((b) => (
               <div key={b.title} className="bg-white rounded-xl p-5 text-center shadow-sm border border-slate-100">
                 <div className="text-3xl mb-2">{b.icon}</div>
