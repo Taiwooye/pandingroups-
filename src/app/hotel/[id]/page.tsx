@@ -169,7 +169,7 @@ export default async function HotelRoomPage(props: PageProps<"/hotel/[id]">) {
               </div>
 
               <Link
-                href={`/book?service=hotel&room=${encodeURIComponent(room.name)}`}
+                href={`/book?service=hotel&id=${room.id}`}
                 className={`flex items-center justify-center w-full py-3 rounded-xl font-semibold text-sm transition-colors ${
                   room.available
                     ? "bg-[#5A0E24] text-white hover:bg-[#921224]"

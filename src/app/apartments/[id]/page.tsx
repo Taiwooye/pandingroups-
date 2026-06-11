@@ -127,7 +127,7 @@ export default async function ApartmentDetailPage(props: PageProps<"/apartments/
                 </div>
               </div>
               <Link
-                href={`/book?service=apartment&room=${encodeURIComponent(apt.name)}`}
+                href={`/book?service=apartment&id=${apt.id}`}
                 className={`flex items-center justify-center w-full py-3 rounded-xl font-semibold text-sm transition-colors ${apt.available ? "bg-[#5A0E24] text-white hover:bg-[#921224]" : "bg-slate-200 text-slate-500 pointer-events-none"}`}
               >
                 {apt.available ? "Reserve Apartment" : "Not Available"}

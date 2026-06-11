@@ -143,26 +143,40 @@ function BookContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const preService = searchParams.get("service") || "";
-  const preRoom = searchParams.get("room") || "";
+  const preId = searchParams.get("id") || "";
 
   const [bookingRef] = useState(generateRef);
   const [sendError, setSendError] = useState("");
+  const [agreedToPolicy, setAgreedToPolicy] = useState(false);
 
-  const [form, setForm] = useState<FormData>({
-    title: "", firstName: "", lastName: "",
-    countryCode: "+234", phone: "", email: "",
-    service: preService,
-    selectedId: "", selectedName: preRoom, selectedPrice: 0, selectedImage: "",
-    checkIn: "", checkOut: "", guests: "", specialRequests: "",
+  const [form, setForm] = useState<FormData>(() => {
+    const preloaded =
+      preService === "hotel" && preId
+        ? hotelRooms.find((r) => r.id === preId)
+        : preService === "apartment" && preId
+        ? apartments.find((a) => a.id === preId)
+        : undefined;
+
+    return {
+      title: "", firstName: "", lastName: "",
+      countryCode: "+234", phone: "", email: "",
+      service: preService,
+      selectedId: preloaded?.id ?? "",
+      selectedName: preloaded?.name ?? "",
+      selectedPrice: preloaded?.price ?? 0,
+      selectedImage: preloaded?.image ?? "",
+      checkIn: "", checkOut: "", guests: "", specialRequests: "",
+    };
   });
 
-  const [step, setStep] = useState<Step>(
-    preService === "hotel" || preService === "apartment"
-      ? "properties"
-      : preService
-      ? "details"
-      : "services"
-  );
+  const hasPreloaded = !!(preId && form.selectedId);
+
+  const [step, setStep] = useState<Step>(() => {
+    if (preService === "hotel" || preService === "apartment") {
+      return preId ? "details" : "properties";
+    }
+    return preService ? "details" : "services";
+  });
 
   const set = (p: Partial<FormData>) => setForm((f) => ({ ...f, ...p }));
 
@@ -172,7 +186,7 @@ function BookContent() {
     return [];
   }, [form.service]);
 
-  const canProceedDetails = form.firstName.trim() && form.lastName.trim() && form.email.trim() && form.phone.trim();
+  const canProceedDetails = !!(form.firstName.trim() && form.lastName.trim() && form.email.trim() && form.phone.trim());
 
   function selectService(key: string) {
     set({ service: key, selectedId: "", selectedName: "", selectedPrice: 0, selectedImage: "" });
@@ -382,7 +396,13 @@ function BookContent() {
         <div className="bg-white border-b border-slate-100 px-4 py-4">
           <div className="max-w-6xl mx-auto flex items-center gap-4">
             <button
-              onClick={() => setStep(form.service === "hotel" || form.service === "apartment" ? "properties" : "services")}
+              onClick={() => {
+                if (hasPreloaded) {
+                  router.back();
+                } else {
+                  setStep(form.service === "hotel" || form.service === "apartment" ? "properties" : "services");
+                }
+              }}
               className="flex items-center gap-1.5 text-sm text-slate-500 hover:text-slate-700"
             >
               <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
@@ -515,9 +535,56 @@ function BookContent() {
                   </div>
                 </div>
 
+                {/* Guest Policies */}
+                <div className="bg-white rounded-2xl border border-slate-100 shadow-sm p-6 space-y-4">
+                  <div className="flex items-center gap-2 mb-1">
+                    <svg className="w-4 h-4 text-slate-400" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                    </svg>
+                    <h2 className="text-lg font-bold text-slate-800">Guest Policies</h2>
+                  </div>
+
+                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                    <div className="bg-slate-50 rounded-xl p-4 border border-slate-100">
+                      <p className="font-semibold text-[#5A0E24] text-sm mb-2">Cancellation</p>
+                      <p className="text-xs text-slate-500 leading-relaxed">Cancellations attract a <strong className="text-slate-700">25% fee</strong> of the total amount paid. Refunds are processed within 72 hours via the original payment method.</p>
+                    </div>
+                    <div className="bg-slate-50 rounded-xl p-4 border border-slate-100">
+                      <p className="font-semibold text-amber-600 text-sm mb-2">Refund Policy</p>
+                      <p className="text-xs text-slate-500 leading-relaxed">Refunds are returned through the original payment method and may take <strong className="text-slate-700">48&ndash;72 hours</strong> to reflect.</p>
+                    </div>
+                    <div className="bg-slate-50 rounded-xl p-4 border border-slate-100">
+                      <p className="font-semibold text-slate-700 text-sm mb-2">Damage Policy</p>
+                      <p className="text-xs text-slate-500 leading-relaxed">Charges apply for damages during your stay (e.g. stained linen &#8358;10,000, lost key card &#8358;10,000). <a href="/policies" className="text-[#5A0E24] underline hover:no-underline">View full schedule</a>.</p>
+                    </div>
+                  </div>
+
+                  {/* Agreement checkbox */}
+                  <label className="flex items-start gap-3 cursor-pointer group mt-2">
+                    <div className="relative mt-0.5 shrink-0">
+                      <input
+                        type="checkbox"
+                        checked={agreedToPolicy}
+                        onChange={(e) => setAgreedToPolicy(e.target.checked)}
+                        className="sr-only peer"
+                      />
+                      <div className="w-5 h-5 rounded border-2 border-slate-300 peer-checked:bg-[#5A0E24] peer-checked:border-[#5A0E24] transition-colors flex items-center justify-center">
+                        {agreedToPolicy && (
+                          <svg className="w-3 h-3 text-white" fill="none" stroke="currentColor" strokeWidth={3} viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                          </svg>
+                        )}
+                      </div>
+                    </div>
+                    <span className="text-sm text-slate-600 leading-snug">
+                      I have read and agree to the <strong className="text-slate-800">Guest Policies</strong> above, including the cancellation, refund, and damage policies.
+                    </span>
+                  </label>
+                </div>
+
                 <button
                   type="submit"
-                  disabled={!canProceedDetails}
+                  disabled={!canProceedDetails || !agreedToPolicy}
                   className="w-full py-4 bg-[#5A0E24] text-white font-bold rounded-2xl hover:bg-[#921224] transition-colors shadow-md text-base disabled:opacity-40 disabled:cursor-not-allowed flex items-center justify-center gap-2"
                 >
                   Proceed to Payment
@@ -639,35 +706,6 @@ function BookContent() {
               </svg>
               <p className="text-amber-700">Booking held for <strong>24 hours</strong>. Not confirmed until payment is received. Call <strong>+234 (0) 705 442 2968</strong> for urgent help.</p>
             </div>
-
-            {/* Policy notice */}
-            <details className="bg-slate-50 rounded-2xl border border-slate-200 text-sm group">
-              <summary className="flex items-center justify-between px-5 py-4 cursor-pointer font-semibold text-slate-700 list-none">
-                <span className="flex items-center gap-2">
-                  <svg className="w-4 h-4 text-slate-400" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                  </svg>
-                  Guest Policies
-                </span>
-                <svg className="w-4 h-4 text-slate-400 transition-transform group-open:rotate-180" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
-                </svg>
-              </summary>
-              <div className="px-5 pb-5 space-y-4 border-t border-slate-200 pt-4">
-                <div>
-                  <p className="font-semibold text-slate-700 mb-1">Cancellation Policy</p>
-                  <p className="text-slate-500 leading-relaxed">Cancellations attract a <strong className="text-slate-700">25% fee</strong> of the total amount paid. Refunds are processed within 72 hours via the original payment method.</p>
-                </div>
-                <div>
-                  <p className="font-semibold text-slate-700 mb-1">Refund Policy</p>
-                  <p className="text-slate-500 leading-relaxed">Refunds are returned through the original payment method and may take <strong className="text-slate-700">48&ndash;72 hours</strong> to reflect.</p>
-                </div>
-                <div>
-                  <p className="font-semibold text-slate-700 mb-1">Damage Policy</p>
-                  <p className="text-slate-500 leading-relaxed">Charges apply for damages during your stay (e.g. stained linen &#8358;10,000, lost key card &#8358;10,000). View the <a href="/policies" className="text-[#5A0E24] underline hover:no-underline">full damage schedule</a>.</p>
-                </div>
-              </div>
-            </details>
 
             {sendError && (
               <p className="text-sm text-red-600 bg-red-50 border border-red-200 rounded-xl px-4 py-3">{sendError}</p>
