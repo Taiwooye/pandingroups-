@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
@@ -10,7 +10,7 @@ const navLinks = [
   { label: "Event Hall", href: "/event-hall" },
   { label: "Lounge & Bar", href: "/lounge-bar" },
   { label: "Recreation", href: "/recreation" },
-  { label: "Foundation", href: "https://thatnextstepafrica.org/", external: true },
+  { label: "Foundation", href: "/foundation" },
   { label: "About", href: "/about" },
   { label: "Contact", href: "/contact" },
 ];
@@ -69,35 +69,31 @@ export default function Navbar() {
 
           {/* Desktop Nav */}
           <div className="hidden lg:flex items-center gap-1">
-            {navLinks.map((link) =>
-              link.external ? (
-                <a
-                  key={link.href}
-                  href={link.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="px-3 py-2 rounded-md text-sm font-medium transition-colors text-slate-600 hover:text-amber-600 hover:bg-amber-50"
-                >
-                  {link.label}
-                </a>
-              ) : (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  className={`px-3 py-2 rounded-md text-sm font-medium transition-colors ${
-                    pathname === link.href || pathname.startsWith(link.href + "/")
-                      ? "text-amber-600 bg-amber-50"
-                      : "text-slate-600 hover:text-amber-600 hover:bg-amber-50"
-                  }`}
-                >
-                  {link.label}
-                </Link>
-              )
-            )}
+            {navLinks.map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                className={`px-3 py-2 rounded-md text-sm font-medium transition-colors ${
+                  pathname === link.href || pathname.startsWith(link.href + "/")
+                    ? "text-amber-600 bg-amber-50"
+                    : "text-slate-600 hover:text-amber-600 hover:bg-amber-50"
+                }`}
+              >
+                {link.label}
+              </Link>
+            ))}
           </div>
 
-          {/* CTA + Mobile Menu */}
-          <div className="flex items-center gap-3">
+          {/* CTA buttons + Mobile Menu toggle */}
+          <div className="flex items-center gap-2">
+            <a
+              href="https://thatnextstepafrica.org/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hidden sm:inline-flex items-center px-4 py-2 rounded-lg border border-amber-500 text-amber-600 text-sm font-semibold hover:bg-amber-50 transition-colors"
+            >
+              That Next Step Africa
+            </a>
             <Link
               href="/book"
               className="hidden sm:inline-flex items-center px-4 py-2 rounded-lg bg-[#5A0E24] text-white text-sm font-semibold hover:bg-[#921224] transition-colors shadow-sm"
@@ -125,32 +121,28 @@ export default function Navbar() {
         {/* Mobile Menu */}
         {isOpen && (
           <div className="lg:hidden border-t border-slate-100 py-3 animate-fade-in">
-            {navLinks.map((link) =>
-              link.external ? (
-                <a
-                  key={link.href}
-                  href={link.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center px-4 py-3 text-sm font-medium rounded-md mx-1 transition-colors text-slate-600 hover:text-amber-600 hover:bg-amber-50"
-                >
-                  {link.label}
-                </a>
-              ) : (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  className={`flex items-center px-4 py-3 text-sm font-medium rounded-md mx-1 transition-colors ${
-                    pathname === link.href || pathname.startsWith(link.href + "/")
-                      ? "text-amber-600 bg-amber-50"
-                      : "text-slate-600 hover:text-amber-600 hover:bg-amber-50"
-                  }`}
-                >
-                  {link.label}
-                </Link>
-              )
-            )}
-            <div className="px-4 pt-3 pb-1">
+            {navLinks.map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                className={`flex items-center px-4 py-3 text-sm font-medium rounded-md mx-1 transition-colors ${
+                  pathname === link.href || pathname.startsWith(link.href + "/")
+                    ? "text-amber-600 bg-amber-50"
+                    : "text-slate-600 hover:text-amber-600 hover:bg-amber-50"
+                }`}
+              >
+                {link.label}
+              </Link>
+            ))}
+            <div className="px-4 pt-3 pb-1 space-y-2">
+              <a
+                href="https://thatnextstepafrica.org/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center justify-center w-full px-4 py-2.5 rounded-lg border border-amber-500 text-amber-600 text-sm font-semibold hover:bg-amber-50 transition-colors"
+              >
+                That Next Step Africa
+              </a>
               <Link
                 href="/book"
                 className="flex items-center justify-center w-full px-4 py-2.5 rounded-lg bg-[#5A0E24] text-white text-sm font-semibold hover:bg-[#921224] transition-colors"
