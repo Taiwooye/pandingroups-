@@ -71,13 +71,14 @@ export default function HotelPage() {
             <span className="text-amber-600 text-sm font-semibold uppercase tracking-wider">Included With Your Stay</span>
             <h2 className="text-2xl font-bold text-slate-800 mt-2">Hotel Facilities</h2>
           </div>
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-5">
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-5">
             {[
               { icon: "🏊", title: "Swimming Pool", desc: "Outdoor pool for all guests" },
               { icon: "🎮", title: "Games Room", desc: "Pool, ping-pong & more" },
               { icon: "🏋️", title: "Fitness Center", desc: "Gym — coming soon" },
-              { icon: "🍽️", title: "DarNis Lounge", desc: "Fine dining on-site" },
-              { icon: "🚗", title: "Free Parking", desc: "Secure ample parking" },
+              { icon: "🏠", title: "Full Kitchen", desc: "Fully equipped kitchen" },
+              { icon: "🛎️", title: "Concierge", desc: "24/7 personal service" },
+              { icon: "🔑", title: "Key-Card Access", desc: "Secure entry system" },
             ].map((f) => (
               <div key={f.title} className="bg-white rounded-2xl p-5 text-center shadow-sm hover:shadow-md transition-shadow">
                 <div className="text-3xl mb-2">{f.icon}</div>
