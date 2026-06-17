@@ -4,7 +4,9 @@
       "Bash(ls -la \"c:\\\\Users\\\\HP 1030 G4\\\\pandingroups-admin\\\\\" 2>/dev/null | head -50)",
       "Read(//c/Users/HP 1030 G4/pandingroups-admin\" 2>/dev/**)",
       "Bash(echo \"NEXT_PUBLIC_API_BASE_URL=https://pandin-group-production.up.railway.app\" > \"c:\\\\Users\\\\HP 1030 G4\\\\pandingroups\\\\.env.local\" && echo \"NEXT_PUBLIC_API_BASE_URL=https://pandin-group-production.up.railway.app\" > \"c:\\\\Users\\\\HP 1030 G4\\\\pandingroups-admin\\\\.env.local\")",
-      "Bash(git commit -m ' *)"
+      "Bash(git commit -m ' *)",
+      "Bash(git commit -m 'Fix Redux store: add placeholder appSlice reducer to satisfy combineReducers *)",
+      "PowerShell(New-Item -ItemType Directory -Force \"c:\\\\Users\\\\HP 1030 G4\\\\pandingroups\\\\public\\\\images\")"
     ],
     "additionalDirectories": [
       "c:\\Users\\HP 1030 G4\\pandingroups-admin"
