@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(ls -la \"c:\\\\Users\\\\HP 1030 G4\\\\pandingroups-admin\\\\\" 2>/dev/null | head -50)",
+      "Read(//c/Users/HP 1030 G4/pandingroups-admin\" 2>/dev/**)",
+      "Bash(echo \"NEXT_PUBLIC_API_BASE_URL=https://pandin-group-production.up.railway.app\" > \"c:\\\\Users\\\\HP 1030 G4\\\\pandingroups\\\\.env.local\" && echo \"NEXT_PUBLIC_API_BASE_URL=https://pandin-group-production.up.railway.app\" > \"c:\\\\Users\\\\HP 1030 G4\\\\pandingroups-admin\\\\.env.local\")",
+      "Bash(git commit -m ' *)"
+    ],
+    "additionalDirectories": [
+      "c:\\Users\\HP 1030 G4\\pandingroups-admin"
+    ]
+  }
+}

@@ -1,6 +1,6 @@
 import { apiClient } from "../apiClient";
 
-const BASE_PATH = "/api/v1/lounge-menu";
+const BASE_PATH = "/api/v1/content";
 
 export async function list(params?: Record<string, unknown>) {
   const { data } = await apiClient.get(BASE_PATH, { params });
