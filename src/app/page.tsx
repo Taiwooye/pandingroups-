@@ -1,7 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
 import ServiceCard from "@/components/ServiceCard";
-import HeroCarousel from "@/components/HeroCarousel";
 import testimonials from "@/data/testimonials.json";
 import rooms from "@/data/hotel-rooms.json";
 
@@ -56,7 +55,44 @@ export default function HomePage() {
   return (
     <div className="flex flex-col">
       {/* Hero */}
-      <HeroCarousel />
+      <section className="relative h-screen min-h-[600px] flex items-center">
+        <Image
+          src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=1600&q=80"
+          alt="PaNDiN Group hotel"
+          fill
+          className="object-cover"
+          priority
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-slate-900/85 via-slate-900/50 to-slate-900/10" />
+
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 w-full">
+          <div className="max-w-2xl">
+            <span className="inline-block px-3 py-1 bg-[#5A0E24]/90 text-white text-sm font-semibold rounded-full mb-5 tracking-wide uppercase">
+              Welcome to PaNDiN Group
+            </span>
+            <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-white leading-tight mb-6">
+              Where Luxury
+              <span className="block text-amber-400">Meets Comfort</span>
+            </h1>
+            <p className="text-lg text-white/80 mb-8 leading-relaxed">
+              Experience an unparalleled level of hospitality in our world-class hotel, serviced apartments, and exclusive event spaces in the heart of Ibadan.
+            </p>
+            <div className="flex flex-wrap gap-4">
+              <Link href="/hotel" className="px-6 py-3 bg-[#5A0E24] text-white font-semibold rounded-xl hover:bg-[#921224] transition-colors shadow-lg">
+                Explore Rooms
+              </Link>
+              <Link href="/book" className="px-6 py-3 bg-white/10 backdrop-blur-sm text-white font-semibold rounded-xl border border-white/30 hover:bg-white/20 transition-colors">
+                Book Now
+              </Link>
+            </div>
+          </div>
+        </div>
+
+        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2">
+          <span className="text-white/50 text-xs uppercase tracking-widest">Scroll</span>
+          <div className="w-0.5 h-8 bg-gradient-to-b from-white/40 to-transparent" />
+        </div>
+      </section>
 
       {/* Stats */}
       <section className="bg-[#5A0E24] py-10">
