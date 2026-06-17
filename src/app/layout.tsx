@@ -2,6 +2,8 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import ClientLayout from "@/components/ClientLayout";
+import { StoreProvider } from "@/store/provider";
+import { QueryProvider } from "@/providers/QueryProvider";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -34,7 +36,11 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${geistSans.variable} ${geistMono.variable} scroll-smooth`}>
       <body className="min-h-screen flex flex-col bg-white text-slate-900 antialiased">
-        <ClientLayout>{children}</ClientLayout>
+        <QueryProvider>
+          <StoreProvider>
+            <ClientLayout>{children}</ClientLayout>
+          </StoreProvider>
+        </QueryProvider>
       </body>
     </html>
   );
