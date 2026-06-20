@@ -1,15 +1,31 @@
-﻿import type { Metadata } from "next";
-import loungeData from "@/data/lounge-bar.json";
-import { LoungeBar } from "@/types";
+import type { Metadata } from "next";
+import * as barsApi from "@/services/endpoints/barsLounge";
+import { ApiBar, ApiBarMenuItem } from "@/types";
 
 export const metadata: Metadata = {
-  title: "DarNis Lounge & Pool Bar â€” Menu",
+  title: "Bar & Lounge Menu – PaNDiN Group",
   description: "Full drinks & bar menu for DarNis Lounge and Pool Side Bar at PaNDiN Group, Ibadan.",
 };
 
-const lounges = loungeData as LoungeBar[];
+export const dynamic = "force-dynamic";
 
-export default function LoungMenuPage() {
+const CATEGORY_LABELS: Record<string, string> = {
+  beers: "Beers",
+  cocktails: "Cocktails",
+  non_alcoholic: "Non-Alcoholic",
+  spirits: "Spirits",
+  wines: "Wines",
+};
+
+export default async function LoungeMenuPage() {
+  let lounges: ApiBar[] = [];
+  try {
+    const result = await barsApi.list();
+    lounges = result.data ?? [];
+  } catch {
+    lounges = [];
+  }
+
   return (
     <div className="min-h-screen bg-[#494B67] text-white">
       {/* Header */}
@@ -25,48 +41,67 @@ export default function LoungMenuPage() {
 
       <div className="px-4 py-6 max-w-lg mx-auto space-y-10">
         {lounges.map((lounge) => {
-          const categories = [...new Set(lounge.menu.map((item) => item.category))];
+          const isOpen = lounge.status.value === "open";
+          const menuCategories = Object.entries(lounge.menu ?? {}).filter(
+            ([, items]) => items && (items as ApiBarMenuItem[]).length > 0
+          );
+
           return (
-            <section key={lounge.id}>
+            <section key={lounge.slug}>
               {/* Lounge header */}
               <div className="mb-5">
                 <div className="flex items-center gap-3 mb-1">
                   <h2 className="text-xl font-bold text-amber-400">{lounge.name}</h2>
-                  <span className={`px-2 py-0.5 rounded-full text-xs font-semibold ${lounge.available ? "bg-green-500/20 text-green-400" : "bg-red-500/20 text-red-400"}`}>
-                    {lounge.available ? "Open" : "Closed"}
+                  <span className={`px-2 py-0.5 rounded-full text-xs font-semibold ${isOpen ? "bg-green-500/20 text-green-400" : "bg-red-500/20 text-red-400"}`}>
+                    {isOpen ? "Open" : "Closed"}
                   </span>
                 </div>
-                <p className="text-slate-400 text-xs">{lounge.openHours}</p>
+                {lounge.description && (
+                  <p className="text-slate-400 text-xs">{lounge.description}</p>
+                )}
               </div>
 
               {/* Menu by category */}
-              <div className="space-y-6">
-                {categories.map((category) => (
-                  <div key={category}>
-                    <h3 className="text-xs font-bold uppercase tracking-widest text-[#5A0E24] mb-3 pb-2 border-b border-slate-700">
-                      {category}
-                    </h3>
-                    <div className="space-y-3">
-                      {lounge.menu
-                        .filter((item) => item.category === category)
-                        .map((item) => (
-                          <div key={item.name} className="flex justify-between items-start gap-4">
+              {menuCategories.length > 0 ? (
+                <div className="space-y-6">
+                  {menuCategories.map(([category, items]) => (
+                    <div key={category}>
+                      <h3 className="text-xs font-bold uppercase tracking-widest text-[#E8A87C] mb-3 pb-2 border-b border-slate-700">
+                        {CATEGORY_LABELS[category] ?? category}
+                      </h3>
+                      <div className="space-y-3">
+                        {(items as ApiBarMenuItem[]).map((item) => (
+                          <div key={item.id} className="flex justify-between items-start gap-4">
                             <div className="flex-1">
-                              <p className="font-semibold text-white text-sm">{item.name}</p>
-                              <p className="text-slate-400 text-xs mt-0.5 leading-relaxed">{item.description}</p>
+                              <p className={`font-semibold text-sm ${item.is_available ? "text-white" : "text-slate-500 line-through"}`}>
+                                {item.name}
+                              </p>
+                              {item.description && (
+                                <p className="text-slate-400 text-xs mt-0.5 leading-relaxed">{item.description}</p>
+                              )}
+                              {!item.is_available && (
+                                <span className="text-xs text-red-400">Unavailable</span>
+                              )}
                             </div>
                             <span className="text-amber-400 font-bold text-sm shrink-0">
-                              â‚¦{item.price.toLocaleString()}
+                              ₦{parseFloat(item.price).toLocaleString()}
                             </span>
                           </div>
                         ))}
+                      </div>
                     </div>
-                  </div>
-                ))}
-              </div>
+                  ))}
+                </div>
+              ) : (
+                <p className="text-slate-500 text-sm italic">Menu coming soon.</p>
+              )}
             </section>
           );
         })}
+
+        {lounges.length === 0 && (
+          <p className="text-center text-slate-400 py-12">Menu not available at this time.</p>
+        )}
       </div>
 
       {/* Footer */}
@@ -75,7 +110,7 @@ export default function LoungMenuPage() {
         <a href="tel:+2347054422968" className="text-amber-400 font-semibold text-sm mt-1 block">
           +234 705 442 2968
         </a>
-        <p className="text-slate-600 text-xs mt-3">Â© PaNDiN Group Â· Ibadan, Nigeria</p>
+        <p className="text-slate-600 text-xs mt-3">© PaNDiN Group · Ibadan, Nigeria</p>
       </div>
     </div>
   );

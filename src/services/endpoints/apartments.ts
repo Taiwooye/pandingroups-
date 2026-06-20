@@ -7,7 +7,7 @@ export async function list(params?: Record<string, unknown>) {
   return data;
 }
 
-export async function getById(id: string) {
-  const { data } = await apiClient.get(`${BASE_PATH}/${id}`);
+export async function getBySlug(slug: string) {
+  const { data } = await apiClient.get(`${BASE_PATH}/${slug}`);
   return data;
 }

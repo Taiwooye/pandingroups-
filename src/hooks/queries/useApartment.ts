@@ -10,10 +10,10 @@ export function useApartmentList(params?: Record<string, unknown>) {
   });
 }
 
-export function useApartment(id: string) {
+export function useApartment(slug: string) {
   return useQuery({
-    queryKey: [...APARTMENTS_KEY, id],
-    queryFn: () => apartmentsApi.getById(id),
-    enabled: !!id,
+    queryKey: [...APARTMENTS_KEY, slug],
+    queryFn: () => apartmentsApi.getBySlug(slug),
+    enabled: !!slug,
   });
 }

@@ -31,7 +31,7 @@ export default function ContactPage() {
       <PageHero
         title="Contact & Reservations"
         subtitle="We&apos;d love to hear from you. Reach out to make a reservation or enquire about our services."
-        image="https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=1600&q=80"
+        image="https://pandin-group-production.up.railway.app/storage/gallery/exterior-2.jpg"
         breadcrumbs={[{ label: "Home", href: "/" }, { label: "Contact" }]}
         height="sm"
       />
@@ -99,8 +99,8 @@ export default function ContactPage() {
               {/* Map placeholder */}
               <div className="relative h-52 rounded-xl overflow-hidden bg-amber-50">
                 <Image
-                  src="https://images.unsplash.com/photo-1557804506-669a67965ba0?w=600&q=80"
-                  alt="Map location"
+                  src="https://pandin-group-production.up.railway.app/storage/gallery/exterior-3.jpg"
+                  alt="PaNDiN Group entrance"
                   fill
                   className="object-cover opacity-80"
                 />

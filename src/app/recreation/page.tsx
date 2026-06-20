@@ -1,46 +1,41 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import PageHero from "@/components/PageHero";
+import * as recreationApi from "@/services/endpoints/recreation";
+import { ApiRecreation } from "@/types";
 
 export const metadata: Metadata = {
   title: "Recreation & Wellness | PaNDiN Group",
   description: "Experience the perfect balance of fitness and relaxation at PaNDiN Recreation & Wellness — swimming, basketball, billiards, table tennis, snooker, and gym facilities.",
 };
 
-const activities = [
-  {
-    icon: "🏊",
-    title: "Swimming Pool & Lessons",
-    desc: "Discover the perfect retreat at PaNDiN. Whether planning a birthday celebration, a family outing, or a peaceful day of leisure, our crystal-clear pools provide the ideal backdrop. Featuring ample lounging space, stunning views, and convenient amenities including changing rooms and showers.",
-    highlights: ["Swimming lessons available", "Pool party packages", "Towel & swimwear rental", "Floating toys & inflatables", "Shower & changing rooms", "Spacious pool area for groups"],
-  },
-  {
-    icon: "🏀",
-    title: "Basketball Clinics & Camps",
-    desc: "Take your game to the next level with our basketball clinics and camps. Suitable for beginners to advanced players, coached by experienced professionals. Ideal for individuals, teams, youth programs, and competitive training.",
-    highlights: ["Clinics & camps", "All skill levels welcome", "Youth programs available", "Team tournaments"],
-  },
-  {
-    icon: "🎱",
-    title: "Billiards, Snooker & Table Tennis",
-    desc: "Challenge yourself or compete with friends in our billiards and snooker area. Fast, fun, and competitive — our table tennis facility is perfect for casual play or structured training. Lessons and tournaments held regularly for all skill levels.",
-    highlights: ["Snooker tables", "Pool/billiard tables", "Table tennis", "Beginner lessons", "Tournaments & competitions"],
-  },
-  {
-    icon: "🏋️",
-    title: "Gym Facilities",
-    desc: "Our modern gym is coming soon — packed with state-of-the-art equipment for cardio, strength training, and functional fitness. Stay tuned for the grand opening and sign up today to be first in the door.",
-    highlights: ["Modern equipment", "Cardio & strength training", "Professional trainers", "Coming Soon"],
-  },
-];
+export const dynamic = "force-dynamic";
 
-export default function RecreationPage() {
+const FALLBACK_HERO = "https://pandin-group-production.up.railway.app/storage/gallery/exterior-1.jpg";
+
+const TYPE_ICONS: Record<string, string> = {
+  pool: "🏊",
+  basketball: "🏀",
+  billiards: "🎱",
+  table_tennis: "🏓",
+  gym: "🏋️",
+};
+
+export default async function RecreationPage() {
+  let activities: ApiRecreation[] = [];
+  try {
+    const result = await recreationApi.list();
+    activities = result.data ?? [];
+  } catch {
+    activities = [];
+  }
+
   return (
     <div>
       <PageHero
         title="Recreation & Wellness"
         subtitle="Experience the perfect balance of fitness and relaxation. From the pool to the court — we offer something for everyone."
-        image="https://images.unsplash.com/photo-1571902943202-507ec2618e8f?w=1600&q=80"
+        image={FALLBACK_HERO}
         breadcrumbs={[{ label: "Home", href: "/" }, { label: "Recreation" }]}
         height="md"
       />
@@ -60,20 +55,28 @@ export default function RecreationPage() {
       <section className="py-12 bg-slate-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {activities.map((a) => (
-              <div key={a.title} className="bg-white rounded-2xl p-8 shadow-sm border border-slate-100">
-                <div className="text-5xl mb-4">{a.icon}</div>
-                <h3 className="text-xl font-bold text-slate-800 mb-2">{a.title}</h3>
-                <p className="text-slate-500 text-sm leading-relaxed mb-5">{a.desc}</p>
-                <div className="flex flex-wrap gap-2">
-                  {a.highlights.map((h) => (
-                    <span key={h} className={`px-3 py-1 text-xs rounded-full font-medium ${h === "Coming Soon" ? "bg-amber-100 text-amber-700" : "bg-amber-50 text-amber-700"}`}>
-                      {h}
-                    </span>
-                  ))}
+            {activities.map((a) => {
+              const isComingSoon = a.status.value === "coming_soon";
+              return (
+                <div key={a.slug} className="bg-white rounded-2xl p-8 shadow-sm border border-slate-100">
+                  <div className="text-5xl mb-4">{TYPE_ICONS[a.type.value] ?? "🎯"}</div>
+                  <div className="flex items-center gap-3 mb-2">
+                    <h3 className="text-xl font-bold text-slate-800">{a.name}</h3>
+                    {isComingSoon && (
+                      <span className="px-2 py-0.5 text-xs rounded-full font-semibold bg-amber-100 text-amber-700">Coming Soon</span>
+                    )}
+                  </div>
+                  <p className="text-slate-500 text-sm leading-relaxed mb-5">{a.description}</p>
+                  <div className="flex flex-wrap gap-2">
+                    {(a.features ?? []).map((h) => (
+                      <span key={h} className="px-3 py-1 text-xs rounded-full font-medium bg-amber-50 text-amber-700">
+                        {h}
+                      </span>
+                    ))}
+                  </div>
                 </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </section>

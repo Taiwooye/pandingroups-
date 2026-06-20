@@ -1,10 +1,11 @@
 "use client";
 
-import { useState, useCallback, useMemo, Suspense } from "react";
+import { useState, useCallback, useMemo, useEffect, Suspense } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import Image from "next/image";
-import roomsData from "@/data/hotel-rooms.json";
-import apartmentsData from "@/data/apartments.json";
+import { useRoomList } from "@/hooks/queries/useRoom";
+import { useApartmentList } from "@/hooks/queries/useApartment";
+import { ApiRoom, ApiApartment } from "@/types";
 
 // Types
 
@@ -28,10 +29,35 @@ type FormData = {
   checkIn: string; checkOut: string; guests: string; specialRequests: string;
 };
 
-// Static data
+const ROOM_FALLBACK = "https://pandin-group-production.up.railway.app/storage/gallery/hotel-1.jpg";
+const APT_FALLBACK = "https://pandin-group-production.up.railway.app/storage/gallery/hotel-3.jpg";
 
-const hotelRooms = roomsData as HotelRoom[];
-const apartments = apartmentsData as Apartment[];
+function toHotelRoom(r: ApiRoom): HotelRoom {
+  return {
+    id: r.slug,
+    name: r.name,
+    price: parseFloat(r.price_per_night),
+    image: r.media[0]?.url ?? r.media[1]?.url ?? ROOM_FALLBACK,
+    category: r.category.label,
+    capacity: r.max_guests,
+    description: r.description,
+    features: r.features ?? [],
+    size: r.size_sqm ?? undefined,
+  };
+}
+
+function toApartment(a: ApiApartment): Apartment {
+  return {
+    id: a.slug,
+    name: a.name,
+    price: parseFloat(a.price_per_night),
+    image: a.media[0]?.url ?? a.media[1]?.url ?? APT_FALLBACK,
+    type: a.category.label,
+    bedrooms: a.bedroom_count ?? 1,
+    description: a.description,
+    features: a.features ?? [],
+  };
+}
 
 const SERVICES = [
   { key: "hotel",      icon: "M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5", label: "Hotel Room",        desc: "Nkrumah, Fela, Zik, Mandela Suite",   from: "From ₦28,000/night", color: "bg-[#5A0E24]" },
@@ -145,31 +171,39 @@ function BookContent() {
   const preService = searchParams.get("service") || "";
   const preId = searchParams.get("id") || "";
 
+  const { data: roomsResult } = useRoomList();
+  const { data: aptsResult } = useApartmentList();
+
+  const hotelRooms = useMemo(() => ((roomsResult?.data ?? []) as ApiRoom[]).map(toHotelRoom), [roomsResult]);
+  const apartments = useMemo(() => ((aptsResult?.data ?? []) as ApiApartment[]).map(toApartment), [aptsResult]);
+
   const [bookingRef] = useState(generateRef);
   const [sendError, setSendError] = useState("");
   const [agreedToPolicy, setAgreedToPolicy] = useState(false);
 
-  const [form, setForm] = useState<FormData>(() => {
-    const preloaded =
-      preService === "hotel" && preId
-        ? hotelRooms.find((r) => r.id === preId)
-        : preService === "apartment" && preId
-        ? apartments.find((a) => a.id === preId)
-        : undefined;
-
-    return {
-      title: "", firstName: "", lastName: "",
-      countryCode: "+234", phone: "", email: "",
-      service: preService,
-      selectedId: preloaded?.id ?? "",
-      selectedName: preloaded?.name ?? "",
-      selectedPrice: preloaded?.price ?? 0,
-      selectedImage: preloaded?.image ?? "",
-      checkIn: "", checkOut: "", guests: "", specialRequests: "",
-    };
+  const [form, setForm] = useState<FormData>({
+    title: "", firstName: "", lastName: "",
+    countryCode: "+234", phone: "", email: "",
+    service: preService,
+    selectedId: "",
+    selectedName: "",
+    selectedPrice: 0,
+    selectedImage: "",
+    checkIn: "", checkOut: "", guests: "", specialRequests: "",
   });
 
-  const hasPreloaded = !!(preId && form.selectedId);
+  // Preload form when API data arrives and a specific item is requested via URL
+  useEffect(() => {
+    if (!preId || form.selectedName) return;
+    let found: HotelRoom | Apartment | undefined;
+    if (preService === "hotel") found = hotelRooms.find((r) => r.id === preId);
+    if (preService === "apartment") found = apartments.find((a) => a.id === preId);
+    if (found) {
+      setForm((f) => ({ ...f, selectedId: found!.id, selectedName: found!.name, selectedPrice: found!.price, selectedImage: found!.image }));
+    }
+  }, [hotelRooms, apartments, preId, preService, form.selectedName]);
+
+  const hasPreloaded = !!(preId && form.selectedName);
 
   const [step, setStep] = useState<Step>(() => {
     if (preService === "hotel" || preService === "apartment") {
@@ -184,7 +218,7 @@ function BookContent() {
     if (form.service === "hotel") return hotelRooms;
     if (form.service === "apartment") return apartments;
     return [];
-  }, [form.service]);
+  }, [form.service, hotelRooms, apartments]);
 
   const canProceedDetails = !!(form.firstName.trim() && form.lastName.trim() && form.email.trim() && form.phone.trim());
 

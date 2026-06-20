@@ -1,8 +1,33 @@
 import Image from "next/image";
 import Link from "next/link";
 import ServiceCard from "@/components/ServiceCard";
-import testimonials from "@/data/testimonials.json";
-import rooms from "@/data/hotel-rooms.json";
+import HeroCarousel from "@/components/HeroCarousel";
+import * as roomsApi from "@/services/endpoints/rooms";
+import * as testimonialsApi from "@/services/endpoints/testimonials";
+import { ApiRoom, ApiTestimonial } from "@/types";
+
+export const dynamic = "force-dynamic";
+
+const HERO_IMAGES = [
+  {
+    src: "https://pandin-group-production.up.railway.app/storage/gallery/exterior-1.jpg",
+    alt: "PaNDiN Group - Exterior view",
+  },
+  {
+    src: "https://pandin-group-production.up.railway.app/storage/gallery/exterior-2.jpg",
+    alt: "PaNDiN Group - Entrance gate",
+  },
+  {
+    src: "https://pandin-group-production.up.railway.app/storage/gallery/exterior-3.jpg",
+    alt: "PaNDiN Group - Entrance reception",
+  },
+  {
+    src: "https://pandin-group-production.up.railway.app/storage/gallery/exterior-4.jpg",
+    alt: "PaNDiN Group - Interior lobby",
+  },
+];
+
+const ROOM_FALLBACK = "https://pandin-group-production.up.railway.app/storage/gallery/hotel-1.jpg";
 
 const stats = [
   { value: "3+", label: "Years of Excellence" },
@@ -49,50 +74,24 @@ const promotions = [
   },
 ];
 
-export default function HomePage() {
-  const featuredRooms = rooms.slice(0, 3);
+export default async function HomePage() {
+  let featuredRooms: ApiRoom[] = [];
+  let liveTestimonials: ApiTestimonial[] = [];
+  try {
+    const [roomsResult, testimonialsResult] = await Promise.allSettled([
+      roomsApi.list(),
+      testimonialsApi.list(),
+    ]);
+    if (roomsResult.status === "fulfilled") featuredRooms = (roomsResult.value.data ?? []).slice(0, 3);
+    if (testimonialsResult.status === "fulfilled") liveTestimonials = testimonialsResult.value.data ?? [];
+  } catch {
+    // keep defaults
+  }
 
   return (
     <div className="flex flex-col">
-      {/* Hero */}
-      <section className="relative h-screen min-h-[600px] flex items-center">
-        <Image
-          src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=1600&q=80"
-          alt="PaNDiN Group hotel"
-          fill
-          className="object-cover"
-          priority
-        />
-        <div className="absolute inset-0 bg-gradient-to-r from-slate-900/85 via-slate-900/50 to-slate-900/10" />
-
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 w-full">
-          <div className="max-w-2xl">
-            <span className="inline-block px-3 py-1 bg-[#5A0E24]/90 text-white text-sm font-semibold rounded-full mb-5 tracking-wide uppercase">
-              Welcome to PaNDiN Group
-            </span>
-            <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-white leading-tight mb-6">
-              Where Luxury
-              <span className="block text-amber-400">Meets Comfort</span>
-            </h1>
-            <p className="text-lg text-white/80 mb-8 leading-relaxed">
-              Experience an unparalleled level of hospitality in our world-class hotel, serviced apartments, and exclusive event spaces in the heart of Ibadan.
-            </p>
-            <div className="flex flex-wrap gap-4">
-              <Link href="/hotel" className="px-6 py-3 bg-[#5A0E24] text-white font-semibold rounded-xl hover:bg-[#921224] transition-colors shadow-lg">
-                Explore Rooms
-              </Link>
-              <Link href="/book" className="px-6 py-3 bg-white/10 backdrop-blur-sm text-white font-semibold rounded-xl border border-white/30 hover:bg-white/20 transition-colors">
-                Book Now
-              </Link>
-            </div>
-          </div>
-        </div>
-
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2">
-          <span className="text-white/50 text-xs uppercase tracking-widest">Scroll</span>
-          <div className="w-0.5 h-8 bg-gradient-to-b from-white/40 to-transparent" />
-        </div>
-      </section>
+      {/* Hero Carousel */}
+      <HeroCarousel images={HERO_IMAGES} />
 
       {/* Stats */}
       <section className="bg-[#5A0E24] py-10">
@@ -120,10 +119,10 @@ export default function HomePage() {
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            <ServiceCard title="Hotel Rooms" description="Luxurious rooms and suites with premium amenities for business and leisure." image="https://images.unsplash.com/photo-1611892440504-42a792e24d32?w=800&q=80" href="/hotel" badge="From ₦28,000/night" />
-            <ServiceCard title="Apartments" description="Fully furnished serviced apartments for short and long-term stays." image="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=800&q=80" href="/apartments" badge="From ₦100,000/night" />
-            <ServiceCard title="Event Hall" description="Spectacular venues for weddings, conferences, and unforgettable events." image="https://images.unsplash.com/photo-1519167758481-83f550bb49b3?w=800&q=80" href="/event-hall" badge="Up to 500 guests" />
-            <ServiceCard title="Lounge & Bar" description="Signature cocktails, fine spirits, and premium ambiance in our exclusive lounges." image="https://images.unsplash.com/photo-1572116469696-31de0f17cc34?w=800&q=80" href="/lounge-bar" badge="Open Nightly" />
+            <ServiceCard title="Hotel Rooms" description="Luxurious rooms and suites with premium amenities for business and leisure." image="https://pandin-group-production.up.railway.app/storage/gallery/hotel-1.jpg" href="/hotel" badge="From ₦28,000/night" />
+            <ServiceCard title="Apartments" description="Fully furnished serviced apartments for short and long-term stays." image="https://pandin-group-production.up.railway.app/storage/gallery/hotel-3.jpg" href="/apartments" badge="From ₦100,000/night" />
+            <ServiceCard title="Event Hall" description="Spectacular venues for weddings, conferences, and unforgettable events." image="https://pandin-group-production.up.railway.app/storage/gallery/exterior-1.jpg" href="/event-hall" badge="Up to 500 guests" />
+            <ServiceCard title="Lounge & Bar" description="Signature cocktails, fine spirits, and premium ambiance in our exclusive lounges." image="https://pandin-group-production.up.railway.app/storage/gallery/exterior-4.jpg" href="/lounge-bar" badge="Open Nightly" />
           </div>
         </div>
       </section>
@@ -145,29 +144,33 @@ export default function HomePage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {featuredRooms.map((room) => (
-              <div key={room.id} className="bg-white rounded-2xl overflow-hidden shadow-sm border border-slate-100 hover:shadow-lg hover:-translate-y-1 transition-all duration-300 group">
-                <div className="relative h-52 overflow-hidden">
-                  <Image src={room.image} alt={room.name} fill className="object-cover group-hover:scale-105 transition-transform duration-500" />
-                  <div className="absolute top-3 right-3">
-                    <span className="px-2.5 py-1 bg-[#5A0E24]/90 text-white text-xs font-semibold rounded-full uppercase">{room.category}</span>
-                  </div>
-                </div>
-                <div className="p-5">
-                  <h3 className="text-lg font-bold text-slate-800 mb-1">{room.name}</h3>
-                  <p className="text-sm text-slate-500 line-clamp-2 mb-4">{room.description}</p>
-                  <div className="flex items-center justify-between">
-                    <div>
-                      <span className="text-xl font-bold text-amber-700">₦{room.price.toLocaleString()}</span>
-                      <span className="text-sm text-slate-400 ml-1">/ night</span>
+            {featuredRooms.map((room) => {
+              const image = room.media[0]?.url ?? room.media[1]?.url ?? ROOM_FALLBACK;
+              const price = parseFloat(room.price_per_night);
+              return (
+                <div key={room.slug} className="bg-white rounded-2xl overflow-hidden shadow-sm border border-slate-100 hover:shadow-lg hover:-translate-y-1 transition-all duration-300 group">
+                  <div className="relative h-52 overflow-hidden">
+                    <Image src={image} alt={room.name} fill className="object-cover group-hover:scale-105 transition-transform duration-500" />
+                    <div className="absolute top-3 right-3">
+                      <span className="px-2.5 py-1 bg-[#5A0E24]/90 text-white text-xs font-semibold rounded-full uppercase">{room.category.label}</span>
                     </div>
-                    <Link href={`/hotel/${room.id}`} className="px-4 py-2 bg-[#5A0E24] text-white text-sm font-semibold rounded-lg hover:bg-[#921224] transition-colors">
-                      View Details
-                    </Link>
+                  </div>
+                  <div className="p-5">
+                    <h3 className="text-lg font-bold text-slate-800 mb-1">{room.name}</h3>
+                    <p className="text-sm text-slate-500 line-clamp-2 mb-4">{room.description}</p>
+                    <div className="flex items-center justify-between">
+                      <div>
+                        <span className="text-xl font-bold text-amber-700">₦{price.toLocaleString()}</span>
+                        <span className="text-sm text-slate-400 ml-1">/ night</span>
+                      </div>
+                      <Link href={`/hotel/${room.slug}`} className="px-4 py-2 bg-[#5A0E24] text-white text-sm font-semibold rounded-lg hover:bg-[#921224] transition-colors">
+                        View Details
+                      </Link>
+                    </div>
                   </div>
                 </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </section>
@@ -234,32 +237,42 @@ export default function HomePage() {
             <h2 className="text-3xl md:text-4xl font-bold text-slate-800 mt-2">What Our Guests Say</h2>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {testimonials.slice(0, 3).map((t) => (
-              <div key={t.id} className="bg-white rounded-2xl p-6 border border-slate-100">
-                <div className="flex gap-1 mb-4">
-                  {Array.from({ length: t.rating }).map((_, i) => (
-                    <svg key={i} className="w-4 h-4 text-amber-400 fill-amber-400" viewBox="0 0 24 24">
-                      <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
-                    </svg>
-                  ))}
-                </div>
-                <p className="text-slate-600 text-sm leading-relaxed mb-5 italic">&ldquo;{t.review}&rdquo;</p>
-                <div className="flex items-center gap-3">
-                  <Image src={t.avatar} alt={t.name} width={40} height={40} className="rounded-full object-cover" />
-                  <div>
-                    <div className="font-semibold text-slate-800 text-sm">{t.name}</div>
-                    <div className="text-xs text-slate-500">{t.role} · {t.date}</div>
+            {liveTestimonials.slice(0, 3).map((t) => {
+              const initials = t.reviewer_name.split(" ").map((n) => n[0]).join("").slice(0, 2).toUpperCase();
+              const formattedDate = new Date(t.review_date).toLocaleDateString("en-GB", { month: "short", year: "numeric" });
+              return (
+                <div key={t.id} className="bg-white rounded-2xl p-6 border border-slate-100">
+                  <div className="flex gap-1 mb-4">
+                    {Array.from({ length: 5 }).map((_, i) => (
+                      <svg key={i} className="w-4 h-4 text-amber-400 fill-amber-400" viewBox="0 0 24 24">
+                        <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                      </svg>
+                    ))}
+                  </div>
+                  <p className="text-slate-600 text-sm leading-relaxed mb-5 italic">&ldquo;{t.review_text}&rdquo;</p>
+                  <div className="flex items-center gap-3">
+                    {t.reviewer_image_url ? (
+                      <Image src={t.reviewer_image_url} alt={t.reviewer_name} width={40} height={40} className="rounded-full object-cover" />
+                    ) : (
+                      <div className="w-10 h-10 rounded-full bg-[#5A0E24] flex items-center justify-center shrink-0">
+                        <span className="text-white text-xs font-bold">{initials}</span>
+                      </div>
+                    )}
+                    <div>
+                      <div className="font-semibold text-slate-800 text-sm">{t.reviewer_name}</div>
+                      <div className="text-xs text-slate-500">{t.reviewer_role} · {formattedDate}</div>
+                    </div>
                   </div>
                 </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </section>
 
       {/* CTA Banner */}
       <section className="relative py-24 overflow-hidden">
-        <Image src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=1600&q=80" alt="Book your stay" fill className="object-cover" />
+        <Image src="https://pandin-group-production.up.railway.app/storage/gallery/exterior-2.jpg" alt="Book your stay" fill className="object-cover" />
         <div className="absolute inset-0 bg-[#921224]/80" />
         <div className="relative max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Ready for an Unforgettable Experience?</h2>

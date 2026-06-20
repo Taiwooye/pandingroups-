@@ -10,10 +10,10 @@ export function useRoomList(params?: Record<string, unknown>) {
   });
 }
 
-export function useRoom(id: string) {
+export function useRoom(slug: string) {
   return useQuery({
-    queryKey: [...ROOMS_KEY, id],
-    queryFn: () => roomsApi.getById(id),
-    enabled: !!id,
+    queryKey: [...ROOMS_KEY, slug],
+    queryFn: () => roomsApi.getBySlug(slug),
+    enabled: !!slug,
   });
 }

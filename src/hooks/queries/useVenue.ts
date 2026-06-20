@@ -10,10 +10,10 @@ export function useVenueList(params?: Record<string, unknown>) {
   });
 }
 
-export function useVenue(id: string) {
+export function useVenue(slug: string) {
   return useQuery({
-    queryKey: [...VENUES_KEY, id],
-    queryFn: () => venuesApi.getById(id),
-    enabled: !!id,
+    queryKey: [...VENUES_KEY, slug],
+    queryFn: () => venuesApi.getBySlug(slug),
+    enabled: !!slug,
   });
 }

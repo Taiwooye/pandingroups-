@@ -3,25 +3,53 @@
 import { useState } from "react";
 import PageHero from "@/components/PageHero";
 import RoomCard from "@/components/RoomCard";
-import roomsData from "@/data/hotel-rooms.json";
-import { Room } from "@/types";
+import { useRoomList } from "@/hooks/queries/useRoom";
+import { ApiRoom, Room } from "@/types";
 
-const rooms = roomsData as Room[];
-const categories = ["All", "Basic", "Standard", "Deluxe", "Suite"] as const;
+const FALLBACK_IMAGE = "https://pandin-group-production.up.railway.app/storage/gallery/hotel-1.jpg";
+
+function toRoom(r: ApiRoom): Room {
+  return {
+    id: r.slug,
+    name: r.name,
+    description: r.description,
+    price: parseFloat(r.price_per_night),
+    priceUnit: "night",
+    image: r.media[0]?.url ?? FALLBACK_IMAGE,
+    gallery: r.media.map((m) => m.url),
+    capacity: r.max_guests,
+    size: r.size_sqm ?? 0,
+    features: r.features ?? [],
+    amenities: r.amenities ?? [],
+    available: r.available_count > 0,
+    category: r.category.value as Room["category"],
+  };
+}
+
+const categories = ["All", "Basic", "Standard", "Standard Plus", "Deluxe", "Deluxe Suite", "Executive Suite"] as const;
 
 export default function HotelPage() {
   const [active, setActive] = useState("All");
+  const { data, isLoading, isError } = useRoomList();
 
-  const filtered = active === "All"
-    ? rooms
-    : rooms.filter((r) => r.category.toLowerCase() === active.toLowerCase());
+  const apiRooms: ApiRoom[] = data?.data ?? [];
+  const rooms: Room[] = apiRooms.map(toRoom);
+  const heroImage =
+    apiRooms.find((r) => r.media[0]?.url)?.media[0]?.url ??
+    apiRooms.find((r) => r.media[1]?.url)?.media[1]?.url ??
+    FALLBACK_IMAGE;
+
+  const filtered =
+    active === "All"
+      ? rooms
+      : rooms.filter((r) => r.category.toLowerCase().replace(/_/g, " ") === active.toLowerCase());
 
   return (
     <div>
       <PageHero
         title="Hotel Rooms & Suites"
         subtitle="Discover our curated collection of luxurious accommodations, each designed to deliver comfort and elegance."
-        image="https://images.unsplash.com/photo-1611892440504-42a792e24d32?w=1600&q=80"
+        image={heroImage}
         breadcrumbs={[{ label: "Home", href: "/" }, { label: "Hotel" }]}
         height="md"
       />
@@ -44,12 +72,24 @@ export default function HotelPage() {
                 {cat}
               </button>
             ))}
-            <span className="ml-auto text-sm text-slate-500">
-              {filtered.length} {filtered.length === 1 ? "room" : "rooms"} found
-            </span>
+            {!isLoading && (
+              <span className="ml-auto text-sm text-slate-500">
+                {filtered.length} {filtered.length === 1 ? "room" : "rooms"} found
+              </span>
+            )}
           </div>
 
-          {filtered.length === 0 ? (
+          {isLoading ? (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {Array.from({ length: 6 }).map((_, i) => (
+                <div key={i} className="bg-slate-100 rounded-2xl h-80 animate-pulse" />
+              ))}
+            </div>
+          ) : isError ? (
+            <div className="text-center py-20 text-slate-400">
+              <p className="font-medium">Failed to load rooms. Please try again.</p>
+            </div>
+          ) : filtered.length === 0 ? (
             <div className="text-center py-20 text-slate-400">
               <div className="text-5xl mb-4">🛏️</div>
               <p className="font-medium">No rooms in this category right now.</p>
