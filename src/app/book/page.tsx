@@ -233,7 +233,13 @@ function BookContent() {
     : null;
   const maxGuests = selectedItem?.maxGuests ?? 10;
 
-  const canProceedDetails = !!(form.firstName.trim() && form.lastName.trim() && form.email.trim() && form.phone.trim());
+  const today = new Date().toISOString().split("T")[0];
+  const canProceedDetails = !!(
+    form.firstName.trim() && form.lastName.trim() &&
+    form.email.trim() && form.phone.trim() &&
+    form.checkIn && form.checkOut && form.checkIn >= today && form.checkOut > form.checkIn &&
+    form.guests
+  );
 
   function selectService(key: string) {
     set({ service: key, selectedId: "", selectedName: "", selectedPrice: 0, selectedImage: "" });
@@ -576,18 +582,22 @@ function BookContent() {
 
                   <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                     <div>
-                      <label className="text-xs font-semibold text-slate-500 uppercase tracking-wide block mb-1.5">Check-in</label>
-                      <input type="date" value={form.checkIn} onChange={(e) => set({ checkIn: e.target.value })}
+                      <label className="text-xs font-semibold text-slate-500 uppercase tracking-wide block mb-1.5">Check-in *</label>
+                      <input
+                        type="date" required value={form.checkIn} min={today}
+                        onChange={(e) => { set({ checkIn: e.target.value, checkOut: form.checkOut && form.checkOut <= e.target.value ? "" : form.checkOut }); }}
                         className="w-full px-4 py-3 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-amber-300" />
                     </div>
                     <div>
-                      <label className="text-xs font-semibold text-slate-500 uppercase tracking-wide block mb-1.5">Check-out</label>
-                      <input type="date" value={form.checkOut} onChange={(e) => set({ checkOut: e.target.value })}
+                      <label className="text-xs font-semibold text-slate-500 uppercase tracking-wide block mb-1.5">Check-out *</label>
+                      <input
+                        type="date" required value={form.checkOut} min={form.checkIn || today}
+                        onChange={(e) => set({ checkOut: e.target.value })}
                         className="w-full px-4 py-3 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-amber-300" />
                     </div>
                     <div>
-                      <label className="text-xs font-semibold text-slate-500 uppercase tracking-wide block mb-1.5">Guests</label>
-                      <select value={form.guests} onChange={(e) => set({ guests: e.target.value })}
+                      <label className="text-xs font-semibold text-slate-500 uppercase tracking-wide block mb-1.5">Guests *</label>
+                      <select required value={form.guests} onChange={(e) => set({ guests: e.target.value })}
                         className="w-full px-4 py-3 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-amber-300 bg-white">
                         <option value="">Select</option>
                         {Array.from({ length: maxGuests }, (_, i) => i + 1).map((n) => (
