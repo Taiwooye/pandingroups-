@@ -180,8 +180,33 @@ function BookContent() {
   const { data: roomsResult } = useRoomList();
   const { data: aptsResult } = useApartmentList();
 
-  const hotelRooms = useMemo(() => ((roomsResult?.data ?? []) as ApiRoom[]).map(toHotelRoom), [roomsResult]);
-  const apartments = useMemo(() => ((aptsResult?.data ?? []) as ApiApartment[]).map(toApartment), [aptsResult]);
+  const hotelRooms = useMemo(() => {
+    const raw = (roomsResult?.data ?? []) as ApiRoom[];
+    const seen = new Map<string, ApiRoom>();
+    const avail = new Map<string, number>();
+    for (const r of raw) {
+      if (!seen.has(r.name)) { seen.set(r.name, r); avail.set(r.name, r.available_count); }
+      else avail.set(r.name, avail.get(r.name)! + r.available_count);
+    }
+    return Array.from(seen.entries())
+      .map(([name, r]) => ({ ...r, available_count: avail.get(name)! }))
+      .filter((r) => r.available_count > 0)
+      .map(toHotelRoom);
+  }, [roomsResult]);
+
+  const apartments = useMemo(() => {
+    const raw = (aptsResult?.data ?? []) as ApiApartment[];
+    const seen = new Map<string, ApiApartment>();
+    const avail = new Map<string, number>();
+    for (const a of raw) {
+      if (!seen.has(a.name)) { seen.set(a.name, a); avail.set(a.name, a.available_count); }
+      else avail.set(a.name, avail.get(a.name)! + a.available_count);
+    }
+    return Array.from(seen.entries())
+      .map(([name, a]) => ({ ...a, available_count: avail.get(name)! }))
+      .filter((a) => a.available_count > 0)
+      .map(toApartment);
+  }, [aptsResult]);
 
   const [bookingRef] = useState(generateRef);
   const [sendError, setSendError] = useState("");
@@ -233,7 +258,8 @@ function BookContent() {
     : null;
   const maxGuests = selectedItem?.maxGuests ?? 10;
 
-  const today = new Date().toISOString().split("T")[0];
+  const _d = new Date();
+  const today = `${_d.getFullYear()}-${String(_d.getMonth() + 1).padStart(2, "0")}-${String(_d.getDate()).padStart(2, "0")}`;
   const canProceedDetails = !!(
     form.firstName.trim() && form.lastName.trim() &&
     form.email.trim() && form.phone.trim() &&

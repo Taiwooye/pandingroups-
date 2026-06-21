@@ -13,7 +13,8 @@ interface BookingSidebarProps {
 }
 
 export default function BookingSidebar({ slug, service, price, maxGuests, isAvailable, benefits }: BookingSidebarProps) {
-  const today = new Date().toISOString().split("T")[0];
+  const d = new Date();
+  const today = `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`;
   const [checkIn, setCheckIn] = useState("");
   const [checkOut, setCheckOut] = useState("");
   const [guests, setGuests] = useState("1");

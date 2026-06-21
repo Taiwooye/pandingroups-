@@ -18,10 +18,25 @@ export default function ApartmentsPage() {
   const [active, setActive] = useState("All");
   const { data, isLoading, isError } = useApartmentList();
 
-  const apartments: ApiApartment[] = data?.data ?? [];
+  const rawApartments: ApiApartment[] = data?.data ?? [];
+
+  // One card per apartment type name; sum availability across all physical units
+  const seenApts = new Map<string, ApiApartment>();
+  const aptAvail = new Map<string, number>();
+  for (const a of rawApartments) {
+    if (!seenApts.has(a.name)) {
+      seenApts.set(a.name, a);
+      aptAvail.set(a.name, a.available_count);
+    } else {
+      aptAvail.set(a.name, aptAvail.get(a.name)! + a.available_count);
+    }
+  }
+  const apartments = Array.from(seenApts.entries())
+    .map(([name, a]) => ({ ...a, available_count: aptAvail.get(name)! }))
+    .filter((a) => a.available_count > 0);
   const heroImage =
-    apartments.find((a) => a.media[0]?.url)?.media[0]?.url ??
-    apartments.find((a) => a.media[1]?.url)?.media[1]?.url ??
+    rawApartments.find((a) => a.media[0]?.url)?.media[0]?.url ??
+    rawApartments.find((a) => a.media[1]?.url)?.media[1]?.url ??
     FALLBACK_IMAGE;
 
   const filtered =

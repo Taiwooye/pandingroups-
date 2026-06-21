@@ -32,11 +32,27 @@ export default function HotelPage() {
   const [active, setActive] = useState("All");
   const { data, isLoading, isError } = useRoomList();
 
-  const apiRooms: ApiRoom[] = data?.data ?? [];
+  const rawRooms: ApiRoom[] = data?.data ?? [];
+
+  // One card per room type name; sum availability across all physical units
+  const seenRooms = new Map<string, ApiRoom>();
+  const roomAvail = new Map<string, number>();
+  for (const r of rawRooms) {
+    if (!seenRooms.has(r.name)) {
+      seenRooms.set(r.name, r);
+      roomAvail.set(r.name, r.available_count);
+    } else {
+      roomAvail.set(r.name, roomAvail.get(r.name)! + r.available_count);
+    }
+  }
+  const apiRooms = Array.from(seenRooms.entries())
+    .map(([name, r]) => ({ ...r, available_count: roomAvail.get(name)! }))
+    .filter((r) => r.available_count > 0);
+
   const rooms: Room[] = apiRooms.map(toRoom);
   const heroImage =
-    apiRooms.find((r) => r.media[0]?.url)?.media[0]?.url ??
-    apiRooms.find((r) => r.media[1]?.url)?.media[1]?.url ??
+    rawRooms.find((r) => r.media[0]?.url)?.media[0]?.url ??
+    rawRooms.find((r) => r.media[1]?.url)?.media[1]?.url ??
     FALLBACK_IMAGE;
 
   const filtered =
