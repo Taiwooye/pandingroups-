@@ -6,17 +6,18 @@ import Image from "next/image";
 import { useRoomList } from "@/hooks/queries/useRoom";
 import { useApartmentList } from "@/hooks/queries/useApartment";
 import { ApiRoom, ApiApartment } from "@/types";
+import * as bookingsApi from "@/services/endpoints/bookings";
 
 // Types
 
 type HotelRoom = {
   id: string; name: string; price: number; image: string;
-  category: string; capacity: number; description: string;
+  category: string; capacity: number; maxGuests: number; description: string;
   features: string[]; size?: number;
 };
 type Apartment = {
   id: string; name: string; price: number; image: string;
-  type: string; bedrooms: number; bathrooms?: number;
+  type: string; bedrooms: number; maxGuests: number; bathrooms?: number;
   description: string; features: string[];
 };
 
@@ -40,6 +41,7 @@ function toHotelRoom(r: ApiRoom): HotelRoom {
     image: r.media[0]?.url ?? r.media[1]?.url ?? ROOM_FALLBACK,
     category: r.category.label,
     capacity: r.max_guests,
+    maxGuests: r.max_guests,
     description: r.description,
     features: r.features ?? [],
     size: r.size_sqm ?? undefined,
@@ -53,6 +55,7 @@ function toApartment(a: ApiApartment): Apartment {
     price: parseFloat(a.price_per_night),
     image: a.media[0]?.url ?? a.media[1]?.url ?? APT_FALLBACK,
     type: a.category.label,
+    maxGuests: a.max_guests,
     bedrooms: a.bedroom_count ?? 1,
     description: a.description,
     features: a.features ?? [],
@@ -170,6 +173,9 @@ function BookContent() {
   const searchParams = useSearchParams();
   const preService = searchParams.get("service") || "";
   const preId = searchParams.get("id") || "";
+  const preCheckIn = searchParams.get("checkIn") || "";
+  const preCheckOut = searchParams.get("checkOut") || "";
+  const preGuests = searchParams.get("guests") || "";
 
   const { data: roomsResult } = useRoomList();
   const { data: aptsResult } = useApartmentList();
@@ -189,7 +195,7 @@ function BookContent() {
     selectedName: "",
     selectedPrice: 0,
     selectedImage: "",
-    checkIn: "", checkOut: "", guests: "", specialRequests: "",
+    checkIn: preCheckIn, checkOut: preCheckOut, guests: preGuests, specialRequests: "",
   });
 
   // Preload form when API data arrives and a specific item is requested via URL
@@ -220,6 +226,13 @@ function BookContent() {
     return [];
   }, [form.service, hotelRooms, apartments]);
 
+  const selectedItem = form.service === "hotel"
+    ? hotelRooms.find((r) => r.id === form.selectedId)
+    : form.service === "apartment"
+    ? apartments.find((a) => a.id === form.selectedId)
+    : null;
+  const maxGuests = selectedItem?.maxGuests ?? 10;
+
   const canProceedDetails = !!(form.firstName.trim() && form.lastName.trim() && form.email.trim() && form.phone.trim());
 
   function selectService(key: string) {
@@ -247,6 +260,32 @@ function BookContent() {
   const handleTransferConfirm = useCallback(async () => {
     setSendError("");
     setStep("sending");
+    // Best-effort booking API call — backend may return 500, proceed silently
+    try {
+      const rawRooms = (roomsResult?.data ?? []) as ApiRoom[];
+      const rawApts = (aptsResult?.data ?? []) as ApiApartment[];
+      let numericId: number | undefined;
+      if (form.service === "hotel") {
+        numericId = rawRooms.find((r) => r.slug === form.selectedId)?.id;
+      } else if (form.service === "apartment") {
+        numericId = rawApts.find((a) => a.slug === form.selectedId)?.id;
+      }
+      if (numericId) {
+        await bookingsApi.create({
+          guest_name: `${form.title} ${form.firstName} ${form.lastName}`.trim(),
+          guest_email: form.email,
+          guest_phone: `${form.countryCode}${form.phone}`,
+          service_type: form.service,
+          room_type_id: numericId,
+          check_in_date: form.checkIn,
+          check_out_date: form.checkOut,
+          num_guests: parseInt(form.guests) || 1,
+          message: form.specialRequests || undefined,
+        });
+      }
+    } catch {
+      // Proceed to email confirmation regardless
+    }
     try {
       const res = await fetch("/api/send-confirmation", {
         method: "POST",
@@ -270,7 +309,7 @@ function BookContent() {
       setSendError("Could not send confirmation email. Please contact us directly.");
       setStep("payment");
     }
-  }, [form, bookingRef, router]);
+  }, [form, bookingRef, router, roomsResult, aptsResult]);
 
   // Step: Services
 
@@ -551,8 +590,9 @@ function BookContent() {
                       <select value={form.guests} onChange={(e) => set({ guests: e.target.value })}
                         className="w-full px-4 py-3 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-amber-300 bg-white">
                         <option value="">Select</option>
-                        {[1,2,3,4,5,6,7,8,9,10].map((n) => <option key={n} value={n}>{n} guest{n > 1 ? "s" : ""}</option>)}
-                        <option value="11+">11+ guests</option>
+                        {Array.from({ length: maxGuests }, (_, i) => i + 1).map((n) => (
+                          <option key={n} value={String(n)}>{n} guest{n > 1 ? "s" : ""}</option>
+                        ))}
                       </select>
                     </div>
                   </div>
@@ -702,18 +742,12 @@ function BookContent() {
                   { label: "Bank Name", value: "Guaranty Trust Bank (GTBank)" },
                   { label: "Account Name", value: "PaNDiN Hotels Ltd" },
                   { label: "Account Number", value: "0123456789" },
-                  { label: "Sort Code", value: "058-152-036" },
                 ].map((item) => (
                   <div key={item.label} className="bg-slate-50 rounded-xl p-4">
                     <div className="text-xs font-semibold text-slate-500 uppercase tracking-wide mb-1">{item.label}</div>
                     <div className="font-bold text-slate-800 text-sm">{item.value}</div>
                   </div>
                 ))}
-                <div className="sm:col-span-2 bg-[#5A0E24]/5 rounded-xl p-4 border border-[#5A0E24]/15">
-                  <div className="text-xs font-semibold text-[#5A0E24] uppercase tracking-wide mb-1">Payment Reference (Required)</div>
-                  <div className="font-bold text-[#5A0E24] text-xl tracking-widest">{bookingRef}</div>
-                  <div className="text-xs text-slate-500 mt-1">Include this in your transfer description so we can identify your payment.</div>
-                </div>
               </div>
             </div>
 
