@@ -5,7 +5,9 @@ import { useRouter, useSearchParams } from "next/navigation";
 import Image from "next/image";
 import { useRoomList } from "@/hooks/queries/useRoom";
 import { useApartmentList } from "@/hooks/queries/useApartment";
-import { ApiRoom, ApiApartment } from "@/types";
+import { useVenueList } from "@/hooks/queries/useVenue";
+import { useBarsLoungeList } from "@/hooks/queries/useBarsLounge";
+import { ApiRoom, ApiApartment, ApiVenue, ApiBar } from "@/types";
 import * as bookingsApi from "@/services/endpoints/bookings";
 
 // Types
@@ -20,6 +22,14 @@ type Apartment = {
   type: string; bedrooms: number; maxGuests: number; bathrooms?: number;
   description: string; features: string[];
 };
+type Venue = {
+  id: string; numericId: number; name: string; price: number; image: string;
+  maxGuests: number; description: string; features: string[]; eventTypes: string[];
+};
+type Bar = {
+  id: string; numericId: number; name: string; image: string;
+  description: string; features: string[];
+};
 
 type Step = "services" | "properties" | "details" | "payment" | "sending" | "done";
 
@@ -28,10 +38,13 @@ type FormData = {
   countryCode: string; phone: string; email: string;
   service: string; selectedId: string; selectedName: string; selectedPrice: number; selectedImage: string;
   checkIn: string; checkOut: string; guests: string; specialRequests: string;
+  eventType: string; reservationTime: string;
 };
 
 const ROOM_FALLBACK = "https://pandin-group-production.up.railway.app/storage/gallery/hotel-1.jpg";
 const APT_FALLBACK = "https://pandin-group-production.up.railway.app/storage/gallery/hotel-3.jpg";
+const VENUE_FALLBACK = "https://pandin-group-production.up.railway.app/storage/gallery/exterior-1.jpg";
+const BAR_FALLBACK = "https://pandin-group-production.up.railway.app/storage/gallery/exterior-4.jpg";
 
 function toHotelRoom(r: ApiRoom): HotelRoom {
   return {
@@ -61,12 +74,34 @@ function toApartment(a: ApiApartment): Apartment {
     features: a.features ?? [],
   };
 }
+function toVenue(v: ApiVenue): Venue {
+  return {
+    id: v.slug, numericId: v.id,
+    name: v.name,
+    price: parseFloat(v.price_per_day),
+    image: v.media[0]?.url ?? v.media[1]?.url ?? VENUE_FALLBACK,
+    maxGuests: v.max_capacity,
+    description: v.description,
+    features: v.features ?? [],
+    eventTypes: v.event_types ?? [],
+  };
+}
+function toBar(b: ApiBar): Bar {
+  return {
+    id: b.slug, numericId: b.id,
+    name: b.name,
+    image: b.media[0]?.url ?? b.media[1]?.url ?? BAR_FALLBACK,
+    description: b.description,
+    features: b.features ?? [],
+  };
+}
 
 const SERVICES = [
-  { key: "hotel",      icon: "M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5", label: "Hotel Room",        desc: "Nkrumah, Fela, Zik, Mandela Suite",   from: "From ₦28,000/night", color: "bg-[#5A0E24]" },
-  { key: "apartment",  icon: "M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z",                          label: "Luxury Apartment",  desc: "1-BR, 2-BR, 3-BR & 4-BR units",      from: "From ₦100,000/night", color: "bg-amber-600" },
-  { key: "event-hall", icon: "M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z",       label: "Event Hall",        desc: "Nwando's Hall — up to 500 guests", from: "₦400,000/day",      color: "bg-blue-700" },
-  { key: "other",      icon: "M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z", label: "General Enquiry",   desc: "Not sure? We will help you choose",  from: "Contact us",           color: "bg-slate-600" },
+  { key: "hotel",      icon: "M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5", label: "Hotel Room",       desc: "Nkrumah, Fela, Zik, Mandela Suite",   from: "From ₦28,000/night",   color: "bg-[#5A0E24]" },
+  { key: "apartment",  icon: "M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z",                          label: "Luxury Apartment", desc: "1-BR, 2-BR, 3-BR & 4-BR units",       from: "From ₦100,000/night",  color: "bg-amber-600" },
+  { key: "event-hall", icon: "M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z", label: "Event Hall", desc: "Nwando's Hall — up to 500 guests", from: "₦400,000/day", color: "bg-blue-700" },
+  { key: "lounge-bar", icon: "M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z", label: "Lounge & Bar", desc: "Reserve a table at PaNDiN Lounge", from: "Reservation free", color: "bg-purple-700" },
+  { key: "other",      icon: "M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z", label: "General Enquiry", desc: "Not sure? We will help you choose", from: "Contact us", color: "bg-slate-600" },
 ];
 
 const COUNTRY_CODES = [
@@ -179,6 +214,8 @@ function BookContent() {
 
   const { data: roomsResult } = useRoomList();
   const { data: aptsResult } = useApartmentList();
+  const { data: venuesResult } = useVenueList();
+  const { data: barsResult } = useBarsLoungeList();
 
   const hotelRooms = useMemo(() => {
     const raw = (roomsResult?.data ?? []) as ApiRoom[];
@@ -208,6 +245,16 @@ function BookContent() {
       .map(toApartment);
   }, [aptsResult]);
 
+  const venues = useMemo(() => {
+    return ((venuesResult?.data ?? []) as ApiVenue[])
+      .filter((v) => v.status.value === "available")
+      .map(toVenue);
+  }, [venuesResult]);
+
+  const bars = useMemo(() => {
+    return ((barsResult?.data ?? []) as ApiBar[]).map(toBar);
+  }, [barsResult]);
+
   const [bookingRef] = useState(generateRef);
   const [sendError, setSendError] = useState("");
   const [agreedToPolicy, setAgreedToPolicy] = useState(false);
@@ -221,23 +268,32 @@ function BookContent() {
     selectedPrice: 0,
     selectedImage: "",
     checkIn: preCheckIn, checkOut: preCheckOut, guests: preGuests, specialRequests: "",
+    eventType: "", reservationTime: "",
   });
 
   // Preload form when API data arrives and a specific item is requested via URL
   useEffect(() => {
     if (!preId || form.selectedName) return;
-    let found: HotelRoom | Apartment | undefined;
-    if (preService === "hotel") found = hotelRooms.find((r) => r.id === preId);
-    if (preService === "apartment") found = apartments.find((a) => a.id === preId);
-    if (found) {
-      setForm((f) => ({ ...f, selectedId: found!.id, selectedName: found!.name, selectedPrice: found!.price, selectedImage: found!.image }));
+    if (preService === "hotel") {
+      const found = hotelRooms.find((r) => r.id === preId);
+      // eslint-disable-next-line react-hooks/set-state-in-effect
+      if (found) setForm((f) => ({ ...f, selectedId: found.id, selectedName: found.name, selectedPrice: found.price, selectedImage: found.image }));
+    } else if (preService === "apartment") {
+      const found = apartments.find((a) => a.id === preId);
+      if (found) setForm((f) => ({ ...f, selectedId: found.id, selectedName: found.name, selectedPrice: found.price, selectedImage: found.image }));
+    } else if (preService === "event-hall") {
+      const found = venues.find((v) => v.id === preId);
+      if (found) setForm((f) => ({ ...f, selectedId: found.id, selectedName: found.name, selectedPrice: found.price, selectedImage: found.image }));
+    } else if (preService === "lounge-bar") {
+      const found = bars.find((b) => b.id === preId);
+      if (found) setForm((f) => ({ ...f, selectedId: found.id, selectedName: found.name, selectedPrice: 0, selectedImage: found.image }));
     }
-  }, [hotelRooms, apartments, preId, preService, form.selectedName]);
+  }, [hotelRooms, apartments, venues, bars, preId, preService, form.selectedName]);
 
   const hasPreloaded = !!(preId && form.selectedName);
 
   const [step, setStep] = useState<Step>(() => {
-    if (preService === "hotel" || preService === "apartment") {
+    if (["hotel", "apartment", "event-hall", "lounge-bar"].includes(preService)) {
       return preId ? "details" : "properties";
     }
     return preService ? "details" : "services";
@@ -248,28 +304,42 @@ function BookContent() {
   const serviceProperties = useMemo(() => {
     if (form.service === "hotel") return hotelRooms;
     if (form.service === "apartment") return apartments;
+    if (form.service === "event-hall") return venues;
+    if (form.service === "lounge-bar") return bars;
     return [];
-  }, [form.service, hotelRooms, apartments]);
+  }, [form.service, hotelRooms, apartments, venues, bars]);
 
   const selectedItem = form.service === "hotel"
     ? hotelRooms.find((r) => r.id === form.selectedId)
     : form.service === "apartment"
     ? apartments.find((a) => a.id === form.selectedId)
+    : form.service === "event-hall"
+    ? venues.find((v) => v.id === form.selectedId)
+    : form.service === "lounge-bar"
+    ? bars.find((b) => b.id === form.selectedId)
     : null;
-  const maxGuests = selectedItem?.maxGuests ?? 10;
+  const maxGuests = (selectedItem as { maxGuests?: number } | null)?.maxGuests ?? 10;
 
   const _d = new Date();
   const today = `${_d.getFullYear()}-${String(_d.getMonth() + 1).padStart(2, "0")}-${String(_d.getDate()).padStart(2, "0")}`;
-  const canProceedDetails = !!(
-    form.firstName.trim() && form.lastName.trim() &&
-    form.email.trim() && form.phone.trim() &&
-    form.checkIn && form.checkOut && form.checkIn >= today && form.checkOut > form.checkIn &&
-    form.guests
-  );
+  const canProceedDetails = (() => {
+    const base = !!(form.firstName.trim() && form.lastName.trim() && form.email.trim() && form.phone.trim());
+    if (!base) return false;
+    if (form.service === "hotel" || form.service === "apartment") {
+      return !!(form.checkIn && form.checkOut && form.checkIn >= today && form.checkOut > form.checkIn && form.guests);
+    }
+    if (form.service === "event-hall") {
+      return !!(form.checkIn && form.checkIn >= today && form.eventType && form.guests);
+    }
+    if (form.service === "lounge-bar") {
+      return !!(form.checkIn && form.checkIn >= today && form.reservationTime && form.guests);
+    }
+    return true;
+  })();
 
   function selectService(key: string) {
     set({ service: key, selectedId: "", selectedName: "", selectedPrice: 0, selectedImage: "" });
-    if (key === "hotel" || key === "apartment") {
+    if (["hotel", "apartment", "event-hall", "lounge-bar"].includes(key)) {
       setStep("properties");
     } else {
       setStep("details");
@@ -292,28 +362,53 @@ function BookContent() {
   const handleTransferConfirm = useCallback(async () => {
     setSendError("");
     setStep("sending");
-    // Best-effort booking API call — backend may return 500, proceed silently
     try {
       const rawRooms = (roomsResult?.data ?? []) as ApiRoom[];
       const rawApts = (aptsResult?.data ?? []) as ApiApartment[];
-      let numericId: number | undefined;
-      if (form.service === "hotel") {
-        numericId = rawRooms.find((r) => r.slug === form.selectedId)?.id;
-      } else if (form.service === "apartment") {
-        numericId = rawApts.find((a) => a.slug === form.selectedId)?.id;
-      }
-      if (numericId) {
-        await bookingsApi.create({
-          guest_name: `${form.title} ${form.firstName} ${form.lastName}`.trim(),
-          guest_email: form.email,
-          guest_phone: `${form.countryCode}${form.phone}`,
-          service_type: form.service,
-          room_type_id: numericId,
-          check_in_date: form.checkIn,
-          check_out_date: form.checkOut,
-          num_guests: parseInt(form.guests) || 1,
-          message: form.specialRequests || undefined,
-        });
+      const rawVenues = (venuesResult?.data ?? []) as ApiVenue[];
+      const rawBars = (barsResult?.data ?? []) as ApiBar[];
+      const guestCommon = {
+        guest_name: `${form.title} ${form.firstName} ${form.lastName}`.trim(),
+        guest_email: form.email,
+        guest_phone: `${form.countryCode}${form.phone}`,
+        num_guests: parseInt(form.guests) || 1,
+        message: form.specialRequests || undefined,
+      };
+      if (form.service === "hotel" || form.service === "apartment") {
+        const numericId = form.service === "hotel"
+          ? rawRooms.find((r) => r.slug === form.selectedId)?.id
+          : rawApts.find((a) => a.slug === form.selectedId)?.id;
+        if (numericId) {
+          await bookingsApi.create({
+            ...guestCommon,
+            service_type: form.service,
+            room_type_id: numericId,
+            check_in_date: form.checkIn,
+            check_out_date: form.checkOut,
+          });
+        }
+      } else if (form.service === "event-hall") {
+        const venue = rawVenues.find((v) => v.slug === form.selectedId);
+        if (venue) {
+          await bookingsApi.create({
+            ...guestCommon,
+            service_type: "event_hall",
+            venue_id: venue.id,
+            event_date: form.checkIn,
+            event_type: form.eventType,
+          });
+        }
+      } else if (form.service === "lounge-bar") {
+        const bar = rawBars.find((b) => b.slug === form.selectedId);
+        if (bar) {
+          await bookingsApi.create({
+            ...guestCommon,
+            service_type: "lounge_bar",
+            bar_venue_id: bar.id,
+            reservation_date: form.checkIn,
+            reservation_time: form.reservationTime,
+          });
+        }
       }
     } catch {
       // Proceed to email confirmation regardless
@@ -341,7 +436,7 @@ function BookContent() {
       setSendError("Could not send confirmation email. Please contact us directly.");
       setStep("payment");
     }
-  }, [form, bookingRef, router, roomsResult, aptsResult]);
+  }, [form, bookingRef, router, roomsResult, aptsResult, venuesResult, barsResult]);
 
   // Step: Services
 
@@ -417,76 +512,131 @@ function BookContent() {
             <p className="text-slate-500 text-sm mt-1">Click a property to view details and proceed to booking.</p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {(serviceProperties as (HotelRoom | Apartment)[]).map((item) => {
-              const room = item as HotelRoom;
-              const apt = item as Apartment;
-              const isHotel = form.service === "hotel";
-              const badge = isHotel ? room.category : apt.type?.replace("-", " ");
-              const capacity = isHotel ? `Up to ${room.capacity} guests` : `${apt.bedrooms} bed${apt.bedrooms > 1 ? "s" : ""}`;
-
-              return (
-                <div key={item.id} className="bg-white rounded-2xl border border-slate-100 shadow-sm overflow-hidden group hover:shadow-xl hover:border-[#5A0E24]/30 transition-all duration-300 flex flex-col">
-                  <div className="relative h-52 overflow-hidden">
-                    <Image
-                      src={item.image}
-                      alt={item.name}
-                      fill
-                      className="object-cover group-hover:scale-105 transition-transform duration-500"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
-                    <span className="absolute top-3 left-3 bg-[#5A0E24] text-white text-xs font-bold px-2.5 py-1 rounded-full capitalize">
-                      {badge}
-                    </span>
-                    <span className="absolute top-3 right-3 bg-green-500 text-white text-xs font-bold px-2.5 py-1 rounded-full">
-                      Available
-                    </span>
+          {form.service === "hotel" || form.service === "apartment" ? (
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              {(serviceProperties as (HotelRoom | Apartment)[]).map((item) => {
+                const room = item as HotelRoom;
+                const apt = item as Apartment;
+                const isHotel = form.service === "hotel";
+                const badge = isHotel ? room.category : apt.type?.replace("-", " ");
+                const capacity = isHotel ? `Up to ${room.capacity} guests` : `${apt.bedrooms} bed${apt.bedrooms > 1 ? "s" : ""}`;
+                return (
+                  <div key={item.id} className="bg-white rounded-2xl border border-slate-100 shadow-sm overflow-hidden group hover:shadow-xl hover:border-[#5A0E24]/30 transition-all duration-300 flex flex-col">
+                    <div className="relative h-52 overflow-hidden">
+                      <Image src={item.image} alt={item.name} fill className="object-cover group-hover:scale-105 transition-transform duration-500" />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
+                      <span className="absolute top-3 left-3 bg-[#5A0E24] text-white text-xs font-bold px-2.5 py-1 rounded-full capitalize">{badge}</span>
+                      <span className="absolute top-3 right-3 bg-green-500 text-white text-xs font-bold px-2.5 py-1 rounded-full">Available</span>
+                    </div>
+                    <div className="p-5 flex flex-col flex-1">
+                      <h3 className="font-bold text-slate-800 text-base">{item.name}</h3>
+                      <p className="text-slate-500 text-xs mt-1.5 leading-relaxed line-clamp-2">{item.description}</p>
+                      <div className="flex items-center gap-3 mt-3 text-xs text-slate-500">
+                        <span className="flex items-center gap-1">
+                          <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z" />
+                          </svg>
+                          {capacity}
+                        </span>
+                        {(item as HotelRoom).size && (
+                          <span className="flex items-center gap-1">
+                            <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4" />
+                            </svg>
+                            {(item as HotelRoom).size} m&sup2;
+                          </span>
+                        )}
+                      </div>
+                      <div className="flex flex-wrap gap-1.5 mt-3">
+                        {item.features.slice(0, 3).map((f) => (
+                          <span key={f} className="text-[10px] px-2 py-0.5 bg-slate-100 text-slate-600 rounded-full">{f}</span>
+                        ))}
+                      </div>
+                      <div className="flex items-center justify-between mt-auto pt-4 border-t border-slate-100">
+                        <div>
+                          <span className="text-xl font-black text-amber-700">&#8358;{item.price.toLocaleString()}</span>
+                          <span className="text-xs text-slate-400 ml-1">/night</span>
+                        </div>
+                        <button onClick={() => selectProperty(item.id, item.name, item.price, item.image)}
+                          className="px-4 py-2 bg-[#5A0E24] text-white text-xs font-bold rounded-xl hover:bg-[#921224] transition-colors">
+                          Book Now
+                        </button>
+                      </div>
+                    </div>
                   </div>
-
+                );
+              })}
+            </div>
+          ) : form.service === "event-hall" ? (
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+              {(serviceProperties as Venue[]).map((venue) => (
+                <div key={venue.id} className="bg-white rounded-2xl border border-slate-100 shadow-sm overflow-hidden group hover:shadow-xl hover:border-blue-500/30 transition-all duration-300 flex flex-col">
+                  <div className="relative h-52 overflow-hidden">
+                    <Image src={venue.image} alt={venue.name} fill className="object-cover group-hover:scale-105 transition-transform duration-500" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
+                    <span className="absolute top-3 left-3 bg-blue-700 text-white text-xs font-bold px-2.5 py-1 rounded-full">Event Hall</span>
+                    <span className="absolute top-3 right-3 bg-green-500 text-white text-xs font-bold px-2.5 py-1 rounded-full">Available</span>
+                  </div>
                   <div className="p-5 flex flex-col flex-1">
-                    <h3 className="font-bold text-slate-800 text-base">{item.name}</h3>
-                    <p className="text-slate-500 text-xs mt-1.5 leading-relaxed line-clamp-2">{item.description}</p>
-
-                    <div className="flex items-center gap-3 mt-3 text-xs text-slate-500">
+                    <h3 className="font-bold text-slate-800 text-base">{venue.name}</h3>
+                    <p className="text-slate-500 text-xs mt-1.5 leading-relaxed line-clamp-2">{venue.description}</p>
+                    <div className="flex items-center gap-4 mt-3 text-xs text-slate-500">
                       <span className="flex items-center gap-1">
                         <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z" />
                         </svg>
-                        {capacity}
+                        Up to {venue.maxGuests} guests
                       </span>
-                      {(item as HotelRoom).size && (
-                        <span className="flex items-center gap-1">
-                          <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4" />
-                          </svg>
-                          {(item as HotelRoom).size} m&sup2;
-                        </span>
-                      )}
                     </div>
-
                     <div className="flex flex-wrap gap-1.5 mt-3">
-                      {item.features.slice(0, 3).map((f) => (
-                        <span key={f} className="text-[10px] px-2 py-0.5 bg-slate-100 text-slate-600 rounded-full">{f}</span>
+                      {venue.eventTypes.slice(0, 3).map((t) => (
+                        <span key={t} className="text-[10px] px-2 py-0.5 bg-blue-50 text-blue-700 rounded-full">{t}</span>
                       ))}
                     </div>
-
                     <div className="flex items-center justify-between mt-auto pt-4 border-t border-slate-100">
                       <div>
-                        <span className="text-xl font-black text-amber-700">&#8358;{item.price.toLocaleString()}</span>
-                        <span className="text-xs text-slate-400 ml-1">/night</span>
+                        <span className="text-xl font-black text-amber-700">&#8358;{venue.price.toLocaleString()}</span>
+                        <span className="text-xs text-slate-400 ml-1">/day</span>
                       </div>
-                      <button
-                        onClick={() => selectProperty(item.id, item.name, item.price, item.image)}
-                        className="px-4 py-2 bg-[#5A0E24] text-white text-xs font-bold rounded-xl hover:bg-[#921224] transition-colors"
-                      >
-                        Book Now
+                      <button onClick={() => selectProperty(venue.id, venue.name, venue.price, venue.image)}
+                        className="px-4 py-2 bg-blue-700 text-white text-xs font-bold rounded-xl hover:bg-blue-800 transition-colors">
+                        Reserve
                       </button>
                     </div>
                   </div>
                 </div>
-              );
-            })}
-          </div>
+              ))}
+            </div>
+          ) : form.service === "lounge-bar" ? (
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+              {(serviceProperties as Bar[]).map((bar) => (
+                <div key={bar.id} className="bg-white rounded-2xl border border-slate-100 shadow-sm overflow-hidden group hover:shadow-xl hover:border-purple-500/30 transition-all duration-300 flex flex-col">
+                  <div className="relative h-52 overflow-hidden">
+                    <Image src={bar.image} alt={bar.name} fill className="object-cover group-hover:scale-105 transition-transform duration-500" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
+                    <span className="absolute top-3 left-3 bg-purple-700 text-white text-xs font-bold px-2.5 py-1 rounded-full">Lounge & Bar</span>
+                    <span className="absolute top-3 right-3 bg-green-500 text-white text-xs font-bold px-2.5 py-1 rounded-full">Open</span>
+                  </div>
+                  <div className="p-5 flex flex-col flex-1">
+                    <h3 className="font-bold text-slate-800 text-base">{bar.name}</h3>
+                    <p className="text-slate-500 text-xs mt-1.5 leading-relaxed line-clamp-2">{bar.description}</p>
+                    <div className="flex flex-wrap gap-1.5 mt-3">
+                      {bar.features.slice(0, 4).map((f) => (
+                        <span key={f} className="text-[10px] px-2 py-0.5 bg-purple-50 text-purple-700 rounded-full">{f}</span>
+                      ))}
+                    </div>
+                    <div className="flex items-center justify-between mt-auto pt-4 border-t border-slate-100">
+                      <span className="text-sm font-semibold text-slate-500">Reservation free</span>
+                      <button onClick={() => selectProperty(bar.id, bar.name, 0, bar.image)}
+                        className="px-4 py-2 bg-purple-700 text-white text-xs font-bold rounded-xl hover:bg-purple-800 transition-colors">
+                        Reserve Table
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          ) : null}
         </div>
       </div>
     );
@@ -505,7 +655,7 @@ function BookContent() {
                 if (hasPreloaded) {
                   router.back();
                 } else {
-                  setStep(form.service === "hotel" || form.service === "apartment" ? "properties" : "services");
+                  setStep(["hotel", "apartment", "event-hall", "lounge-bar"].includes(form.service) ? "properties" : "services");
                 }
               }}
               className="flex items-center gap-1.5 text-sm text-slate-500 hover:text-slate-700"
@@ -602,48 +752,118 @@ function BookContent() {
                   </div>
                 </div>
 
-                {/* Stay details */}
-                <div className="bg-white rounded-2xl border border-slate-100 shadow-sm p-6 space-y-5">
-                  <h2 className="text-lg font-bold text-slate-800">Stay details</h2>
-
-                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                    <div>
-                      <label className="text-xs font-semibold text-slate-500 uppercase tracking-wide block mb-1.5">Check-in *</label>
-                      <input
-                        type="date" required value={form.checkIn} min={today}
-                        onChange={(e) => { set({ checkIn: e.target.value, checkOut: form.checkOut && form.checkOut <= e.target.value ? "" : form.checkOut }); }}
-                        className="w-full px-4 py-3 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-amber-300" />
+                {/* Stay / Event / Reservation details — conditional per service type */}
+                {(form.service === "hotel" || form.service === "apartment") && (
+                  <div className="bg-white rounded-2xl border border-slate-100 shadow-sm p-6 space-y-5">
+                    <h2 className="text-lg font-bold text-slate-800">Stay details</h2>
+                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                      <div>
+                        <label className="text-xs font-semibold text-slate-500 uppercase tracking-wide block mb-1.5">Check-in *</label>
+                        <input type="date" required value={form.checkIn} min={today}
+                          onChange={(e) => { set({ checkIn: e.target.value, checkOut: form.checkOut && form.checkOut <= e.target.value ? "" : form.checkOut }); }}
+                          className="w-full px-4 py-3 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-amber-300" />
+                      </div>
+                      <div>
+                        <label className="text-xs font-semibold text-slate-500 uppercase tracking-wide block mb-1.5">Check-out *</label>
+                        <input type="date" required value={form.checkOut} min={form.checkIn || today}
+                          onChange={(e) => set({ checkOut: e.target.value })}
+                          className="w-full px-4 py-3 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-amber-300" />
+                      </div>
+                      <div>
+                        <label className="text-xs font-semibold text-slate-500 uppercase tracking-wide block mb-1.5">Guests *</label>
+                        <select required value={form.guests} onChange={(e) => set({ guests: e.target.value })}
+                          className="w-full px-4 py-3 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-amber-300 bg-white">
+                          <option value="">Select</option>
+                          {Array.from({ length: maxGuests }, (_, i) => i + 1).map((n) => (
+                            <option key={n} value={String(n)}>{n} guest{n > 1 ? "s" : ""}</option>
+                          ))}
+                        </select>
+                      </div>
                     </div>
                     <div>
-                      <label className="text-xs font-semibold text-slate-500 uppercase tracking-wide block mb-1.5">Check-out *</label>
-                      <input
-                        type="date" required value={form.checkOut} min={form.checkIn || today}
-                        onChange={(e) => set({ checkOut: e.target.value })}
-                        className="w-full px-4 py-3 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-amber-300" />
-                    </div>
-                    <div>
-                      <label className="text-xs font-semibold text-slate-500 uppercase tracking-wide block mb-1.5">Guests *</label>
-                      <select required value={form.guests} onChange={(e) => set({ guests: e.target.value })}
-                        className="w-full px-4 py-3 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-amber-300 bg-white">
-                        <option value="">Select</option>
-                        {Array.from({ length: maxGuests }, (_, i) => i + 1).map((n) => (
-                          <option key={n} value={String(n)}>{n} guest{n > 1 ? "s" : ""}</option>
-                        ))}
-                      </select>
+                      <label className="text-xs font-semibold text-slate-500 uppercase tracking-wide block mb-1.5">Special Requests</label>
+                      <textarea value={form.specialRequests} onChange={(e) => set({ specialRequests: e.target.value })} rows={3}
+                        placeholder="Any special requirements, dietary needs, or requests..."
+                        className="w-full px-4 py-3 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-amber-300 resize-none placeholder-slate-300" />
                     </div>
                   </div>
+                )}
 
-                  <div>
-                    <label className="text-xs font-semibold text-slate-500 uppercase tracking-wide block mb-1.5">Special Requests</label>
-                    <textarea
-                      value={form.specialRequests}
-                      onChange={(e) => set({ specialRequests: e.target.value })}
-                      rows={3}
-                      placeholder="Any special requirements, dietary needs, or requests..."
-                      className="w-full px-4 py-3 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-amber-300 resize-none placeholder-slate-300"
-                    />
+                {form.service === "event-hall" && (
+                  <div className="bg-white rounded-2xl border border-slate-100 shadow-sm p-6 space-y-5">
+                    <h2 className="text-lg font-bold text-slate-800">Event Details</h2>
+                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                      <div>
+                        <label className="text-xs font-semibold text-slate-500 uppercase tracking-wide block mb-1.5">Event Date *</label>
+                        <input type="date" required value={form.checkIn} min={today}
+                          onChange={(e) => set({ checkIn: e.target.value })}
+                          className="w-full px-4 py-3 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-amber-300" />
+                      </div>
+                      <div>
+                        <label className="text-xs font-semibold text-slate-500 uppercase tracking-wide block mb-1.5">Event Type *</label>
+                        <select required value={form.eventType} onChange={(e) => set({ eventType: e.target.value })}
+                          className="w-full px-4 py-3 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-amber-300 bg-white">
+                          <option value="">Select type</option>
+                          {((venues.find((v) => v.id === form.selectedId)?.eventTypes) ?? ["Wedding", "Conference", "Birthday", "Seminar", "Corporate", "Other"]).map((t) => (
+                            <option key={t} value={t}>{t}</option>
+                          ))}
+                        </select>
+                      </div>
+                      <div>
+                        <label className="text-xs font-semibold text-slate-500 uppercase tracking-wide block mb-1.5">Guests *</label>
+                        <select required value={form.guests} onChange={(e) => set({ guests: e.target.value })}
+                          className="w-full px-4 py-3 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-amber-300 bg-white">
+                          <option value="">Select</option>
+                          {Array.from({ length: maxGuests }, (_, i) => i + 1).map((n) => (
+                            <option key={n} value={String(n)}>{n} guest{n > 1 ? "s" : ""}</option>
+                          ))}
+                        </select>
+                      </div>
+                    </div>
+                    <div>
+                      <label className="text-xs font-semibold text-slate-500 uppercase tracking-wide block mb-1.5">Special Requests</label>
+                      <textarea value={form.specialRequests} onChange={(e) => set({ specialRequests: e.target.value })} rows={3}
+                        placeholder="Theme, catering preferences, décor requirements..."
+                        className="w-full px-4 py-3 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-amber-300 resize-none placeholder-slate-300" />
+                    </div>
                   </div>
-                </div>
+                )}
+
+                {form.service === "lounge-bar" && (
+                  <div className="bg-white rounded-2xl border border-slate-100 shadow-sm p-6 space-y-5">
+                    <h2 className="text-lg font-bold text-slate-800">Reservation Details</h2>
+                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                      <div>
+                        <label className="text-xs font-semibold text-slate-500 uppercase tracking-wide block mb-1.5">Reservation Date *</label>
+                        <input type="date" required value={form.checkIn} min={today}
+                          onChange={(e) => set({ checkIn: e.target.value })}
+                          className="w-full px-4 py-3 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-amber-300" />
+                      </div>
+                      <div>
+                        <label className="text-xs font-semibold text-slate-500 uppercase tracking-wide block mb-1.5">Reservation Time *</label>
+                        <input type="time" required value={form.reservationTime}
+                          onChange={(e) => set({ reservationTime: e.target.value })}
+                          className="w-full px-4 py-3 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-amber-300" />
+                      </div>
+                      <div>
+                        <label className="text-xs font-semibold text-slate-500 uppercase tracking-wide block mb-1.5">Guests *</label>
+                        <select required value={form.guests} onChange={(e) => set({ guests: e.target.value })}
+                          className="w-full px-4 py-3 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-amber-300 bg-white">
+                          <option value="">Select</option>
+                          {Array.from({ length: maxGuests }, (_, i) => i + 1).map((n) => (
+                            <option key={n} value={String(n)}>{n} guest{n > 1 ? "s" : ""}</option>
+                          ))}
+                        </select>
+                      </div>
+                    </div>
+                    <div>
+                      <label className="text-xs font-semibold text-slate-500 uppercase tracking-wide block mb-1.5">Special Requests</label>
+                      <textarea value={form.specialRequests} onChange={(e) => set({ specialRequests: e.target.value })} rows={3}
+                        placeholder="Occasion, seating preferences, dietary requirements..."
+                        className="w-full px-4 py-3 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-amber-300 resize-none placeholder-slate-300" />
+                    </div>
+                  </div>
+                )}
 
                 {/* Guest Policies */}
                 <div className="bg-white rounded-2xl border border-slate-100 shadow-sm p-6 space-y-4">
