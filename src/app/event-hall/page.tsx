@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import Link from "next/link";
 import PageHero from "@/components/PageHero";
+import CardCarousel from "@/components/CardCarousel";
 import * as venuesApi from "@/services/endpoints/venues";
 import { ApiVenue } from "@/types";
 
@@ -55,16 +55,18 @@ export default async function EventHallPage() {
                 const isAvailable = hall.status.value === "available";
                 const price = parseFloat(hall.price_per_day);
 
+                const images = hall.media.length > 0 ? hall.media.map((m) => m.url) : [image];
+
                 return (
                   <div key={hall.slug} className="bg-white rounded-2xl overflow-hidden shadow-sm border border-slate-100 hover:shadow-lg transition-shadow group">
                     <div className="relative h-64 overflow-hidden">
-                      <Image src={image} alt={hall.name} fill className="object-cover group-hover:scale-105 transition-transform duration-500" />
-                      <div className="absolute top-3 left-3">
+                      <CardCarousel images={images} alt={hall.name} />
+                      <div className="absolute top-3 left-3 z-10">
                         <span className={`px-2.5 py-1 rounded-full text-xs font-semibold uppercase ${isAvailable ? "bg-green-100 text-green-700" : "bg-red-100 text-red-700"}`}>
                           {isAvailable ? "Available" : "Booked"}
                         </span>
                       </div>
-                      <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-slate-900/60 to-transparent" />
+                      <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-slate-900/60 to-transparent z-10" />
                     </div>
                     <div className="p-6">
                       <h3 className="text-xl font-bold text-slate-800 mb-2">{hall.name}</h3>

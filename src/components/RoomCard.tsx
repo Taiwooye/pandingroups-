@@ -1,6 +1,8 @@
-﻿import Image from "next/image";
+"use client";
+
 import Link from "next/link";
 import { Room } from "@/types";
+import CardCarousel from "./CardCarousel";
 
 interface RoomCardProps {
   room: Room;
@@ -8,27 +10,22 @@ interface RoomCardProps {
 }
 
 export default function RoomCard({ room, basePath }: RoomCardProps) {
+  const images = room.gallery && room.gallery.length > 0 ? room.gallery : [room.image];
+
   return (
     <div className="bg-white rounded-2xl overflow-hidden shadow-sm border border-slate-100 hover:shadow-lg hover:-translate-y-1 transition-all duration-300 group">
       <div className="relative h-56 overflow-hidden">
-        <Image
-          src={room.image}
-          alt={room.name}
-          fill
-          className="object-cover group-hover:scale-105 transition-transform duration-500"
-        />
-        <div className="absolute top-3 left-3">
+        <CardCarousel images={images} alt={room.name} />
+        <div className="absolute top-3 left-3 z-10">
           <span
             className={`px-2.5 py-1 rounded-full text-xs font-semibold uppercase tracking-wide ${
-              room.available
-                ? "bg-green-100 text-green-700"
-                : "bg-red-100 text-red-700"
+              room.available ? "bg-green-100 text-green-700" : "bg-red-100 text-red-700"
             }`}
           >
             {room.available ? "Available" : "Booked"}
           </span>
         </div>
-        <div className="absolute top-3 right-3">
+        <div className="absolute top-3 right-3 z-10">
           <span className="px-2.5 py-1 rounded-full text-xs font-semibold uppercase tracking-wide bg-[#5A0E24]/90 text-white capitalize">
             {room.category}
           </span>
@@ -46,12 +43,14 @@ export default function RoomCard({ room, basePath }: RoomCardProps) {
             </svg>
             {room.capacity} {room.capacity === 1 ? "Guest" : "Guests"}
           </span>
-          <span className="flex items-center gap-1.5">
-            <svg className="w-4 h-4 text-amber-500" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4" />
-            </svg>
-            {room.size} m²
-          </span>
+          {room.size > 0 && (
+            <span className="flex items-center gap-1.5">
+              <svg className="w-4 h-4 text-amber-500" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4" />
+              </svg>
+              {room.size} m²
+            </span>
+          )}
         </div>
 
         <div className="flex flex-wrap gap-1.5 mb-4">
