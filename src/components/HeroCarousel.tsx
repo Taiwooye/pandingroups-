@@ -17,7 +17,7 @@ export default function HeroCarousel({ images }: HeroCarouselProps) {
     if (images.length <= 1) return;
     const id = setInterval(() => {
       setCurrent((prev) => (prev + 1) % images.length);
-    }, 10000);
+    }, 15000);
     return () => clearInterval(id);
   }, [images.length]);
 
@@ -51,8 +51,6 @@ export default function HeroCarousel({ images }: HeroCarouselProps) {
                 next[i] = true;
                 return next;
               });
-              // advance to next if current image errors
-              setCurrent((prev) => (prev + 1) % images.length);
             }}
           />
         </div>
