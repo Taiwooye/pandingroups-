@@ -1,19 +1,35 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import PageHero from "@/components/PageHero";
+import * as foundationApi from "@/services/endpoints/foundation";
+import { ApiFoundationProgram } from "@/types";
+
+export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
   title: "PaNDiN Foundation",
   description: "At PaNDiN Foundation, we are committed to making a difference through impactful community initiatives — education, healthcare, and empowerment.",
 };
 
-export default function FoundationPage() {
+const FALLBACK_IMAGE = "https://pandin-group-production.up.railway.app/storage/gallery/exterior-2.jpg";
+
+export default async function FoundationPage() {
+  let programs: ApiFoundationProgram[] = [];
+  try {
+    const result = await foundationApi.list();
+    programs = (result.data ?? []).sort(
+      (a: ApiFoundationProgram, b: ApiFoundationProgram) => a.sort_order - b.sort_order
+    );
+  } catch {
+    programs = [];
+  }
+
   return (
     <div>
       <PageHero
         title="PaNDiN Foundation"
         subtitle="Committed to making a difference through impactful community initiatives — empowering lives, one step at a time."
-        image="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=1600&q=80"
+        image={FALLBACK_IMAGE}
         breadcrumbs={[{ label: "Home", href: "/" }, { label: "Foundation" }]}
         height="md"
       />
@@ -29,51 +45,39 @@ export default function FoundationPage() {
         </div>
       </section>
 
-      {/* Programs */}
-      <section className="py-16 bg-slate-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <span className="text-amber-600 text-sm font-semibold uppercase tracking-wider">Our Programs</span>
-            <h2 className="text-3xl font-bold text-slate-800 mt-2">What We Do</h2>
+      {/* Programs — live from API */}
+      {programs.length > 0 && (
+        <section className="py-16 bg-slate-50">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-12">
+              <span className="text-amber-600 text-sm font-semibold uppercase tracking-wider">Our Programs</span>
+              <h2 className="text-3xl font-bold text-slate-800 mt-2">What We Do</h2>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              {programs.map((p) => (
+                <div key={p.id} className="bg-white rounded-2xl p-8 shadow-sm hover:shadow-md transition-shadow">
+                  <div className="text-5xl mb-5">{p.icon}</div>
+                  <h3 className="text-xl font-bold text-slate-800 mb-3">{p.title}</h3>
+                  <p className="text-slate-500 text-sm leading-relaxed mb-4">{p.description}</p>
+                  {p.external_url && (
+                    <a
+                      href={p.external_url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1.5 text-amber-600 font-semibold text-sm hover:text-amber-700"
+                    >
+                      Learn more
+                      <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                      </svg>
+                    </a>
+                  )}
+                </div>
+              ))}
+            </div>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {[
-              {
-                icon: "🎓",
-                title: "That Next Step Africa Scholarship",
-                desc: "Empowering young Africans with educational scholarships to pursue their dreams and achieve their God-given potential. We believe talent is universal — opportunity is not.",
-                link: null,
-                linkLabel: null,
-              },
-              {
-                icon: "🍲",
-                title: "Food is Life Program",
-                desc: "Addressing food insecurity in our community by providing meals and nutritional support to those in need. Because everyone deserves to eat well.",
-                link: null,
-                linkLabel: null,
-              },
-              {
-                icon: "❤️",
-                title: "Charitable Programs",
-                desc: "A wide range of community-driven charitable initiatives supporting healthcare, skill development, social empowerment, and upliftment for individuals and families in need.",
-                link: null,
-                linkLabel: null,
-              },
-            ].map((p) => (
-              <div key={p.title} className="bg-white rounded-2xl p-8 shadow-sm">
-                <div className="text-5xl mb-5">{p.icon}</div>
-                <h3 className="text-xl font-bold text-slate-800 mb-3">{p.title}</h3>
-                <p className="text-slate-500 text-sm leading-relaxed mb-4">{p.desc}</p>
-                {p.link && (
-                  <a href={p.link} target="_blank" rel="noopener noreferrer" className="text-amber-600 font-semibold text-sm hover:text-amber-700">
-                    {p.linkLabel}
-                  </a>
-                )}
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+        </section>
+      )}
 
       {/* CTA */}
       <section className="py-16 bg-[#5A0E24]">
@@ -86,14 +90,16 @@ export default function FoundationPage() {
             <Link href="/contact" className="px-7 py-3 bg-white text-[#5A0E24] font-semibold rounded-xl hover:bg-amber-50 transition-colors">
               Contact Us
             </Link>
-            <a
-              href="https://thatnextstepafrica.org/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="px-7 py-3 bg-amber-500 text-white font-semibold rounded-xl hover:bg-amber-400 transition-colors"
-            >
-              That Next Step Africa &rarr;
-            </a>
+            {programs.find((p) => p.external_url) && (
+              <a
+                href={programs.find((p) => p.external_url)!.external_url!}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-7 py-3 bg-amber-500 text-white font-semibold rounded-xl hover:bg-amber-400 transition-colors"
+              >
+                That Next Step Africa &rarr;
+              </a>
+            )}
           </div>
         </div>
       </section>

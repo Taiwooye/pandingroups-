@@ -125,6 +125,15 @@ export interface ApiApartment {
   related?: { id: number; slug: string; name: string; price_per_night: string; category: string; first_media_url: string }[];
 }
 
+export interface ApiFoundationProgram {
+  id: number;
+  title: string;
+  description: string;
+  icon: string;
+  external_url: string | null;
+  sort_order: number;
+}
+
 export interface ApiVenue {
   id: number;
   slug: string;
