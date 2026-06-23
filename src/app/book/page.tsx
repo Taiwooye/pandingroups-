@@ -3,6 +3,7 @@
 import { useState, useCallback, useMemo, useEffect, Suspense } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import Image from "next/image";
+import Link from "next/link";
 import { useRoomList } from "@/hooks/queries/useRoom";
 import { useApartmentList } from "@/hooks/queries/useApartment";
 import { useVenueList } from "@/hooks/queries/useVenue";
@@ -358,7 +359,10 @@ function BookContent() {
     window.scrollTo({ top: 0, behavior: "smooth" });
   }
 
+  const [bookingError, setBookingError] = useState("");
+
   const handleTransferConfirm = useCallback(async () => {
+    setBookingError("");
     setStep("sending");
     try {
       const rawRooms = (roomsResult?.data ?? []) as ApiRoom[];
@@ -408,12 +412,12 @@ function BookContent() {
           });
         }
       }
+      setStep("done");
     } catch {
-      // Booking API failed — still show done so the guest knows to proceed with transfer
+      setBookingError("We could not submit your booking. Please check your connection and try again, or call +234 (0) 705 442 2968.");
+      setStep("payment");
     }
-    setStep("done");
-    setTimeout(() => router.push("/"), 3000);
-  }, [form, router, roomsResult, aptsResult, venuesResult, barsResult]);
+  }, [form, roomsResult, aptsResult, venuesResult, barsResult]);
 
   // Step: Services
 
@@ -913,20 +917,53 @@ function BookContent() {
     );
   }
 
-  // Step: Done
+  // Step: Done (pending verification)
 
   if (step === "done") {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-slate-50 px-4">
-        <div className="text-center max-w-sm">
-          <div className="w-20 h-20 rounded-full bg-green-100 flex items-center justify-center mx-auto mb-6">
-            <svg className="w-10 h-10 text-green-600" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+      <div className="min-h-screen bg-slate-50 flex items-center justify-center px-4 py-16">
+        <div className="bg-white rounded-3xl shadow-lg border border-slate-100 max-w-md w-full p-8 text-center">
+          <div className="w-20 h-20 rounded-full bg-amber-100 flex items-center justify-center mx-auto mb-6">
+            <svg className="w-10 h-10 text-amber-600" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
             </svg>
           </div>
-          <h2 className="text-2xl font-bold text-slate-800 mb-3">Receipt Sent!</h2>
-          <p className="text-slate-500 text-sm">A confirmation receipt has been sent to <strong>{form.email}</strong>. We will verify your payment and confirm within 2 hours.</p>
-          <p className="text-xs text-slate-400 mt-4">Redirecting to home page...</p>
+
+          <h2 className="text-2xl font-bold text-slate-800 mb-2">Booking Submitted</h2>
+          <p className="text-slate-500 text-sm leading-relaxed mb-6">
+            Your booking request has been received. Our team will verify your transfer and confirm within <strong className="text-slate-700">2 hours</strong>. You will be contacted at <strong className="text-slate-700">{form.email}</strong> once confirmed.
+          </p>
+
+          <div className="bg-slate-50 rounded-2xl p-5 mb-6">
+            <p className="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-1">Booking Reference</p>
+            <p className="text-2xl font-black text-[#5A0E24] tracking-widest">{bookingRef}</p>
+            <p className="text-xs text-slate-400 mt-1">Keep this reference for your records</p>
+          </div>
+
+          <div className="space-y-2 text-sm mb-6">
+            {[
+              { label: "Service", value: SERVICES.find((s) => s.key === form.service)?.label ?? form.service },
+              form.selectedName ? { label: "Selection", value: form.selectedName } : null,
+              form.checkIn ? { label: form.service === "lounge-bar" ? "Date" : "Check-in", value: new Date(form.checkIn).toLocaleDateString("en-GB", { day: "numeric", month: "long", year: "numeric" }) } : null,
+              form.checkOut ? { label: "Check-out", value: new Date(form.checkOut).toLocaleDateString("en-GB", { day: "numeric", month: "long", year: "numeric" }) } : null,
+            ].filter(Boolean).map((item) => (
+              <div key={item!.label} className="flex justify-between text-sm border-b border-slate-100 pb-2">
+                <span className="text-slate-400">{item!.label}</span>
+                <span className="font-semibold text-slate-700">{item!.value}</span>
+              </div>
+            ))}
+          </div>
+
+          <div className="flex items-start gap-2.5 p-4 bg-amber-50 border border-amber-100 rounded-xl text-left mb-6">
+            <svg className="w-4 h-4 text-amber-500 shrink-0 mt-0.5" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+            <p className="text-xs text-amber-700">Your booking is <strong>pending</strong> until our team verifies the transfer. For urgent enquiries call <strong>+234 (0) 705 442 2968</strong>.</p>
+          </div>
+
+          <Link href="/" className="block w-full py-3 bg-[#5A0E24] text-white font-bold rounded-2xl hover:bg-[#921224] transition-colors text-sm">
+            Return to Home
+          </Link>
         </div>
       </div>
     );
@@ -1007,6 +1044,10 @@ function BookContent() {
               </svg>
               <p className="text-amber-700">Booking held for <strong>24 hours</strong>. Not confirmed until payment is received. Call <strong>+234 (0) 705 442 2968</strong> for urgent help.</p>
             </div>
+
+            {bookingError && (
+              <p className="text-sm text-red-600 bg-red-50 border border-red-200 rounded-xl px-4 py-3">{bookingError}</p>
+            )}
 
             <button
               onClick={handleTransferConfirm}
