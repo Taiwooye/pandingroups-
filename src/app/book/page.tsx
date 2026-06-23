@@ -256,7 +256,6 @@ function BookContent() {
   }, [barsResult]);
 
   const [bookingRef] = useState(generateRef);
-  const [sendError, setSendError] = useState("");
   const [agreedToPolicy, setAgreedToPolicy] = useState(false);
 
   const [form, setForm] = useState<FormData>({
@@ -360,7 +359,6 @@ function BookContent() {
   }
 
   const handleTransferConfirm = useCallback(async () => {
-    setSendError("");
     setStep("sending");
     try {
       const rawRooms = (roomsResult?.data ?? []) as ApiRoom[];
@@ -411,32 +409,11 @@ function BookContent() {
         }
       }
     } catch {
-      // Proceed to email confirmation regardless
+      // Booking API failed — still show done so the guest knows to proceed with transfer
     }
-    try {
-      const res = await fetch("/api/send-confirmation", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          name: `${form.title} ${form.firstName} ${form.lastName}`.trim(),
-          email: form.email,
-          phone: `${form.countryCode}${form.phone}`,
-          service: form.service,
-          roomSelection: form.selectedName,
-          checkIn: form.checkIn, checkOut: form.checkOut,
-          guests: form.guests, specialRequests: form.specialRequests,
-          bookingRef,
-        }),
-      });
-      const data = await res.json();
-      if (!data.success) throw new Error(data.error || "Failed");
-      setStep("done");
-      setTimeout(() => router.push("/"), 3000);
-    } catch {
-      setSendError("Could not send confirmation email. Please contact us directly.");
-      setStep("payment");
-    }
-  }, [form, bookingRef, router, roomsResult, aptsResult, venuesResult, barsResult]);
+    setStep("done");
+    setTimeout(() => router.push("/"), 3000);
+  }, [form, router, roomsResult, aptsResult, venuesResult, barsResult]);
 
   // Step: Services
 
@@ -995,9 +972,9 @@ function BookContent() {
               </h3>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 {[
-                  { label: "Bank Name", value: "Guaranty Trust Bank (GTBank)" },
-                  { label: "Account Name", value: "PaNDiN Hotels Ltd" },
-                  { label: "Account Number", value: "0123456789" },
+                  { label: "Bank Name", value: "United Bank for Africa (UBA)" },
+                  { label: "Account Name", value: "PANDIN HOTEL & EVENT PLACE" },
+                  { label: "Account Number", value: "1027466817" },
                 ].map((item) => (
                   <div key={item.label} className="bg-slate-50 rounded-xl p-4">
                     <div className="text-xs font-semibold text-slate-500 uppercase tracking-wide mb-1">{item.label}</div>
@@ -1030,10 +1007,6 @@ function BookContent() {
               </svg>
               <p className="text-amber-700">Booking held for <strong>24 hours</strong>. Not confirmed until payment is received. Call <strong>+234 (0) 705 442 2968</strong> for urgent help.</p>
             </div>
-
-            {sendError && (
-              <p className="text-sm text-red-600 bg-red-50 border border-red-200 rounded-xl px-4 py-3">{sendError}</p>
-            )}
 
             <button
               onClick={handleTransferConfirm}
