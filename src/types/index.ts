@@ -176,6 +176,29 @@ export interface ApiBar {
   };
 }
 
+export interface ApiBarMenuItemDetailed {
+  id: number;
+  bar_venue_id: number;
+  name: string;
+  description: string;
+  category: { value: string; label: string };
+  price: string;
+  is_available: boolean;
+  sort_order: number;
+}
+
+export interface ApiBarWithItems {
+  id: number;
+  slug: string;
+  name: string;
+  description: string;
+  status: { value: string; label: string };
+  features: string[];
+  sort_order: number;
+  media: ApiMedia[];
+  menu_items: ApiBarMenuItemDetailed[];
+}
+
 export interface ApiOffering {
   type: string;
   label: string;

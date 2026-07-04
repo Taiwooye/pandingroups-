@@ -5,6 +5,16 @@ import { useState } from "react";
 
 const QR_TARGETS = [
   {
+    label: "DarNis Lounge Menu (scan-to-view, this bar only)",
+    path: "/lounge-bar/darnis-lounge",
+    desc: "Live menu for DarNis Lounge tables",
+  },
+  {
+    label: "Pool Side Bar Menu (scan-to-view, this bar only)",
+    path: "/lounge-bar/pool-side-bar",
+    desc: "Live menu for Pool Side Bar tables",
+  },
+  {
     label: "DarNis Lounge & Pool Bar Menu",
     path: "/lounge-menu",
     desc: "Full drink menu â€” print and place on lounge tables",

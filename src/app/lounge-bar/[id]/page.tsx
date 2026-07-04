@@ -2,48 +2,34 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import * as barsApi from "@/services/endpoints/barsLounge";
-import { ApiBar, ApiBarMenuItem } from "@/types";
+import { BARS_MENU_DATA } from "@/data/barsMenuData";
 
 const FALLBACK_IMAGE = "https://pandin-group-production.up.railway.app/storage/gallery/exterior-4.jpg";
-
-const CATEGORY_LABELS: Record<string, string> = {
-  beers: "Beers",
-  cocktails: "Cocktails",
-  non_alcoholic: "Non-Alcoholic",
-  spirits: "Spirits",
-  wines: "Wines",
-};
 
 export const dynamic = "force-dynamic";
 
 export async function generateMetadata(props: PageProps<"/lounge-bar/[id]">): Promise<Metadata> {
   const { id } = await props.params;
-  try {
-    const result = await barsApi.getBySlug(id);
-    const bar: ApiBar = result.data;
-    return { title: bar.name, description: bar.description };
-  } catch {
-    return {};
-  }
+  const bar = BARS_MENU_DATA.find((b) => b.slug === id);
+  if (!bar) return {};
+  return { title: bar.name, description: bar.description };
 }
 
 export default async function LoungeDetailPage(props: PageProps<"/lounge-bar/[id]">) {
   const { id } = await props.params;
 
-  let lounge: ApiBar;
-  try {
-    const result = await barsApi.getBySlug(id);
-    lounge = result.data;
-    if (!lounge) notFound();
-  } catch {
-    notFound();
-  }
+  const lounge = BARS_MENU_DATA.find((b) => b.slug === id);
+  if (!lounge) notFound();
 
   const heroImage = lounge.media[0]?.url ?? lounge.media[1]?.url ?? FALLBACK_IMAGE;
   const gallery = lounge.media.slice(0, 5).map((m) => m.url);
   const isOpen = lounge.status.value === "open";
-  const menuCategories = Object.entries(lounge.menu ?? {}).filter(([, items]) => items && (items as ApiBarMenuItem[]).length > 0);
+  const categoryOrder = Array.from(new Set(lounge.menu_items.map((i) => i.category.value)));
+  const menuCategories = categoryOrder.map((value) => ({
+    value,
+    label: lounge.menu_items.find((i) => i.category.value === value)!.category.label,
+    items: lounge.menu_items.filter((i) => i.category.value === value).sort((a, b) => a.sort_order - b.sort_order),
+  }));
 
   return (
     <div className="mt-16 md:mt-20">
@@ -90,13 +76,13 @@ export default async function LoungeDetailPage(props: PageProps<"/lounge-bar/[id
             <div>
               <h2 className="text-xl font-bold text-slate-800 mb-6">Our Menu</h2>
               <div className="space-y-8">
-                {menuCategories.map(([category, items]) => (
-                  <div key={category}>
+                {menuCategories.map((cat) => (
+                  <div key={cat.value}>
                     <h3 className="text-base font-bold text-[#5A0E24] mb-4 pb-2 border-b border-rose-100">
-                      {CATEGORY_LABELS[category] ?? category}
+                      {cat.label}
                     </h3>
                     <div className="space-y-4">
-                      {(items as ApiBarMenuItem[]).map((item) => (
+                      {cat.items.map((item) => (
                         <div key={item.id} className="flex items-start justify-between gap-4">
                           <div className="flex-1">
                             <h4 className="font-semibold text-slate-800">{item.name}</h4>
