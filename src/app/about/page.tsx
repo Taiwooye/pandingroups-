@@ -30,7 +30,7 @@ export default function AboutPage() {
       <PageHero
         title="About PaNDiN Group"
         subtitle="A conglomerate of business and philanthropic endeavors of the Olayiwola family — you, but better!"
-        image="https://pandin-group-production.up.railway.app/storage/gallery/exterior-4.jpg"
+        image="/images/gallery/exterior-4.jpg"
         breadcrumbs={[{ label: "Home", href: "/" }, { label: "About Us" }]}
         height="md"
       />
@@ -63,7 +63,7 @@ export default function AboutPage() {
               </div>
             </div>
             <div className="relative h-96 rounded-2xl overflow-hidden shadow-xl">
-              <Image src="https://pandin-group-production.up.railway.app/storage/gallery/hotel-2.jpg" alt="PaNDiN Group hotel interior" fill className="object-cover" />
+              <Image src="/images/gallery/hotel-2.jpg" alt="PaNDiN Group hotel interior" fill className="object-cover" />
             </div>
           </div>
         </div>

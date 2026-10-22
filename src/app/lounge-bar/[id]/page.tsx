@@ -4,7 +4,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { BARS_MENU_DATA } from "@/data/barsMenuData";
 
-const FALLBACK_IMAGE = "https://pandin-group-production.up.railway.app/storage/gallery/exterior-4.jpg";
+const FALLBACK_IMAGE = "/images/gallery/exterior-4.jpg";
 
 export const dynamic = "force-dynamic";
 

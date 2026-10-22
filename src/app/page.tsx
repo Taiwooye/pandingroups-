@@ -10,24 +10,24 @@ export const dynamic = "force-dynamic";
 
 const HERO_IMAGES = [
   {
-    src: "https://pandin-group-production.up.railway.app/storage/gallery/exterior-1.jpg",
+    src: "/images/gallery/exterior-1.jpg",
     alt: "PaNDiN Group - Exterior view",
   },
   {
-    src: "https://pandin-group-production.up.railway.app/storage/gallery/exterior-2.jpg",
+    src: "/images/gallery/exterior-2.jpg",
     alt: "PaNDiN Group - Entrance gate",
   },
   {
-    src: "https://pandin-group-production.up.railway.app/storage/gallery/exterior-3.jpg",
+    src: "/images/gallery/exterior-3.jpg",
     alt: "PaNDiN Group - Entrance reception",
   },
   {
-    src: "https://pandin-group-production.up.railway.app/storage/gallery/exterior-4.jpg",
+    src: "/images/gallery/exterior-4.jpg",
     alt: "PaNDiN Group - Interior lobby",
   },
 ];
 
-const ROOM_FALLBACK = "https://pandin-group-production.up.railway.app/storage/gallery/hotel-1.jpg";
+const ROOM_FALLBACK = "/images/gallery/hotel-1.jpg";
 
 const stats = [
   { value: "3+", label: "Years of Excellence" },
@@ -119,10 +119,10 @@ export default async function HomePage() {
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            <ServiceCard title="Hotel Rooms" description="Luxurious rooms and suites with premium amenities for business and leisure." image="https://pandin-group-production.up.railway.app/storage/gallery/hotel-1.jpg" href="/hotel" badge="From ₦28,000/night" />
-            <ServiceCard title="Apartments" description="Fully furnished serviced apartments for short and long-term stays." image="https://pandin-group-production.up.railway.app/storage/gallery/hotel-3.jpg" href="/apartments" badge="From ₦100,000/night" />
-            <ServiceCard title="Event Hall" description="Spectacular venues for weddings, conferences, and unforgettable events." image="https://pandin-group-production.up.railway.app/storage/gallery/exterior-1.jpg" href="/event-hall" badge="Up to 500 guests" />
-            <ServiceCard title="Lounge & Bar" description="Signature cocktails, fine spirits, and premium ambiance in our exclusive lounges." image="https://pandin-group-production.up.railway.app/storage/gallery/exterior-4.jpg" href="/lounge-bar" badge="Open Nightly" />
+            <ServiceCard title="Hotel Rooms" description="Luxurious rooms and suites with premium amenities for business and leisure." image="/images/gallery/hotel-1.jpg" href="/hotel" badge="From ₦28,000/night" />
+            <ServiceCard title="Apartments" description="Fully furnished serviced apartments for short and long-term stays." image="/images/gallery/hotel-3.jpg" href="/apartments" badge="From ₦100,000/night" />
+            <ServiceCard title="Event Hall" description="Spectacular venues for weddings, conferences, and unforgettable events." image="/images/gallery/exterior-1.jpg" href="/event-hall" badge="Up to 500 guests" />
+            <ServiceCard title="Lounge & Bar" description="Signature cocktails, fine spirits, and premium ambiance in our exclusive lounges." image="/images/gallery/exterior-4.jpg" href="/lounge-bar" badge="Open Nightly" />
           </div>
         </div>
       </section>
@@ -272,7 +272,7 @@ export default async function HomePage() {
 
       {/* CTA Banner */}
       <section className="relative py-24 overflow-hidden">
-        <Image src="https://pandin-group-production.up.railway.app/storage/gallery/exterior-2.jpg" alt="Book your stay" fill className="object-cover" />
+        <Image src="/images/gallery/exterior-2.jpg" alt="Book your stay" fill className="object-cover" />
         <div className="absolute inset-0 bg-[#921224]/80" />
         <div className="relative max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Ready for an Unforgettable Experience?</h2>

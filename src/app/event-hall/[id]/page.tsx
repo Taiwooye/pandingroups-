@@ -5,7 +5,7 @@ import { notFound } from "next/navigation";
 import * as venuesApi from "@/services/endpoints/venues";
 import { ApiVenue } from "@/types";
 
-const FALLBACK_IMAGE = "https://pandin-group-production.up.railway.app/storage/gallery/exterior-1.jpg";
+const FALLBACK_IMAGE = "/images/gallery/exterior-1.jpg";
 
 export const dynamic = "force-dynamic";
 

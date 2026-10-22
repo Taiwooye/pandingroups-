@@ -42,10 +42,10 @@ type FormData = {
   eventType: string; reservationTime: string;
 };
 
-const ROOM_FALLBACK = "https://pandin-group-production.up.railway.app/storage/gallery/hotel-1.jpg";
-const APT_FALLBACK = "https://pandin-group-production.up.railway.app/storage/gallery/hotel-3.jpg";
-const VENUE_FALLBACK = "https://pandin-group-production.up.railway.app/storage/gallery/exterior-1.jpg";
-const BAR_FALLBACK = "https://pandin-group-production.up.railway.app/storage/gallery/exterior-4.jpg";
+const ROOM_FALLBACK = "/images/gallery/hotel-1.jpg";
+const APT_FALLBACK = "/images/gallery/hotel-3.jpg";
+const VENUE_FALLBACK = "/images/gallery/exterior-1.jpg";
+const BAR_FALLBACK = "/images/gallery/exterior-4.jpg";
 
 function toHotelRoom(r: ApiRoom): HotelRoom {
   return {

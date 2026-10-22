@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   description: "Host spectacular weddings, corporate events, and celebrations at PaNDiN Group's world-class event venues.",
 };
 
-const FALLBACK_IMAGE = "https://pandin-group-production.up.railway.app/storage/gallery/exterior-1.jpg";
+const FALLBACK_IMAGE = "/images/gallery/exterior-1.jpg";
 
 export default async function EventHallPage() {
   let halls: ApiVenue[] = [];

@@ -6,7 +6,7 @@ import * as apartmentsApi from "@/services/endpoints/apartments";
 import BookingSidebar from "@/components/BookingSidebar";
 import { ApiApartment } from "@/types";
 
-const FALLBACK_IMAGE = "https://pandin-group-production.up.railway.app/storage/gallery/hotel-3.jpg";
+const FALLBACK_IMAGE = "/images/gallery/hotel-3.jpg";
 
 export const dynamic = "force-dynamic";
 

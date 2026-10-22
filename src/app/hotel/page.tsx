@@ -6,7 +6,7 @@ import RoomCard from "@/components/RoomCard";
 import { useRoomList } from "@/hooks/queries/useRoom";
 import { ApiRoom, Room } from "@/types";
 
-const FALLBACK_IMAGE = "https://pandin-group-production.up.railway.app/storage/gallery/hotel-1.jpg";
+const FALLBACK_IMAGE = "/images/gallery/hotel-1.jpg";
 
 function toRoom(r: ApiRoom): Room {
   return {

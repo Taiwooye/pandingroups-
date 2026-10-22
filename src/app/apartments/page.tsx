@@ -7,7 +7,7 @@ import CardCarousel from "@/components/CardCarousel";
 import { useApartmentList } from "@/hooks/queries/useApartment";
 import { ApiApartment } from "@/types";
 
-const FALLBACK_IMAGE = "https://pandin-group-production.up.railway.app/storage/gallery/hotel-3.jpg";
+const FALLBACK_IMAGE = "/images/gallery/hotel-3.jpg";
 const types = ["All", "1-Bedroom", "2-Bedroom", "3-Bedroom", "4-Bedroom"] as const;
 
 function categoryLabel(apt: ApiApartment): string {

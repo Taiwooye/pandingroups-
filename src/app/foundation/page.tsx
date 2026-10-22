@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   description: "At PaNDiN Foundation, we are committed to making a difference through impactful community initiatives — education, healthcare, and empowerment.",
 };
 
-const FALLBACK_IMAGE = "https://pandin-group-production.up.railway.app/storage/gallery/exterior-2.jpg";
+const FALLBACK_IMAGE = "/images/gallery/exterior-2.jpg";
 
 export default async function FoundationPage() {
   let programs: ApiFoundationProgram[] = [];

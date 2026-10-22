@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 
 export const dynamic = "force-dynamic";
 
-const FALLBACK_HERO = "https://pandin-group-production.up.railway.app/storage/gallery/exterior-1.jpg";
+const FALLBACK_HERO = "/images/gallery/exterior-1.jpg";
 
 const TYPE_ICONS: Record<string, string> = {
   pool: "🏊",

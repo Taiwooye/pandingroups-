@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   description: "Discover the PaNDiN Lounge Collection. Where luxury meets lifestyle.",
 };
 
-const FALLBACK_IMAGE = "https://pandin-group-production.up.railway.app/storage/gallery/exterior-4.jpg";
+const FALLBACK_IMAGE = "/images/gallery/exterior-4.jpg";
 
 function flattenMenu(bar: ApiBar): ApiBarMenuItem[] {
   if (!bar.menu) return [];
