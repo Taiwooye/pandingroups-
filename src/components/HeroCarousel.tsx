@@ -91,8 +91,9 @@ export default function HeroCarousel({ images }: HeroCarouselProps) {
       ))}
 
       {/* Wine gradient overlays */}
-      <div className="absolute inset-0 bg-gradient-to-r from-wine-deep/95 via-wine/70 to-wine-deep/30" />
-      <div className="absolute inset-0 bg-gradient-to-t from-wine-deep via-transparent to-wine-deep/40" />
+      <div className="absolute inset-0 bg-wine-deep/45" />
+      <div className="absolute inset-0 bg-gradient-to-r from-wine-deep/95 via-wine/80 to-wine-deep/55" />
+      <div className="absolute inset-0 bg-gradient-to-t from-wine-deep via-wine-deep/20 to-wine-deep/60" />
 
       {/* Content */}
       <div className="relative z-10 flex-1 flex items-center max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-28 pb-10 w-full">
