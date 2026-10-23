@@ -13,14 +13,12 @@ export default function RoomCard({ room, basePath }: RoomCardProps) {
   const images = room.gallery && room.gallery.length > 0 ? room.gallery : [room.image];
 
   return (
-    <div className="bg-white rounded-2xl overflow-hidden shadow-sm border border-slate-100 hover:shadow-lg hover:-translate-y-1 transition-all duration-300 group">
+    <div className="card-luxe bg-white rounded-2xl overflow-hidden shadow-sm border border-cream-dark group">
       <div className="relative h-56 overflow-hidden">
         <CardCarousel images={images} alt={room.name} />
         <div className="absolute top-3 left-3 z-10">
           <span
-            className={`px-2.5 py-1 rounded-full text-xs font-semibold uppercase tracking-wide ${
-              room.available ? "bg-green-100 text-green-700" : "bg-red-100 text-red-700"
-            }`}
+            className={`px-2.5 py-1 rounded-full text-xs font-semibold uppercase tracking-wide ${ room.available ? "bg-green-100 text-green-700" : "bg-red-100 text-red-700" }`}
           >
             {room.available ? "Available" : "Booked"}
           </span>
@@ -33,19 +31,19 @@ export default function RoomCard({ room, basePath }: RoomCardProps) {
       </div>
 
       <div className="p-5">
-        <h3 className="text-lg font-bold text-slate-800 mb-1">{room.name}</h3>
+        <h3 className="text-lg font-serif font-semibold text-wine mb-1">{room.name}</h3>
         <p className="text-sm text-slate-500 line-clamp-2 mb-4">{room.description}</p>
 
         <div className="flex items-center gap-4 mb-4 text-sm text-slate-600">
           <span className="flex items-center gap-1.5">
-            <svg className="w-4 h-4 text-amber-500" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+            <svg className="w-4 h-4 text-gold" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z" />
             </svg>
             {room.capacity} {room.capacity === 1 ? "Guest" : "Guests"}
           </span>
           {room.size > 0 && (
             <span className="flex items-center gap-1.5">
-              <svg className="w-4 h-4 text-amber-500" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+              <svg className="w-4 h-4 text-gold" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4" />
               </svg>
               {room.size} m²
@@ -55,7 +53,7 @@ export default function RoomCard({ room, basePath }: RoomCardProps) {
 
         <div className="flex flex-wrap gap-1.5 mb-4">
           {room.features.slice(0, 3).map((f) => (
-            <span key={f} className="px-2 py-0.5 bg-amber-50 text-amber-700 text-xs rounded-full font-medium">
+            <span key={f} className="px-2 py-0.5 bg-cream text-gold-dark text-xs rounded-full font-medium">
               {f}
             </span>
           ))}
@@ -66,14 +64,14 @@ export default function RoomCard({ room, basePath }: RoomCardProps) {
           )}
         </div>
 
-        <div className="flex items-center justify-between pt-4 border-t border-slate-100">
+        <div className="flex items-center justify-between pt-4 border-t border-cream-dark">
           <div>
-            <span className="text-2xl font-bold text-amber-700">₦{room.price.toLocaleString()}</span>
+            <span className="text-2xl font-bold text-gold-dark">₦{room.price.toLocaleString()}</span>
             <span className="text-sm text-slate-400 ml-1">/ night</span>
           </div>
           <Link
             href={`${basePath}/${room.id}`}
-            className="px-4 py-2 bg-[#5A0E24] text-white text-sm font-semibold rounded-lg hover:bg-[#921224] transition-colors"
+            className="btn-wine px-4 py-2 text-sm font-semibold rounded-full"
           >
             View Details
           </Link>

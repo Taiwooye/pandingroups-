@@ -39,14 +39,14 @@ export default async function LoungeBarPage() {
       />
 
       {/* Intro */}
-      <section className="py-12 bg-white border-b border-slate-100">
+      <section className="py-12 bg-white border-b border-cream-dark">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <p className="text-slate-600 leading-relaxed text-base">
             Discover a world of relaxation, entertainment, and luxury through The PaNDiN Lounge Collection. Whether you&apos;re seeking a vibrant social atmosphere, a refreshing poolside escape, or an exclusive private setting, PaNDiN offers carefully curated spaces designed to suit every occasion.
           </p>
           <div className="flex flex-wrap justify-center gap-4 mt-6">
             {lounges.map((l) => (
-              <span key={l.slug} className="px-4 py-2 bg-[#5A0E24]/8 text-[#5A0E24] text-sm font-semibold rounded-full border border-[#5A0E24]/20">
+              <span key={l.slug} className="px-4 py-2 bg-[#5A0E24]/8 text-primary text-sm font-semibold rounded-full border border-[#5A0E24]/20">
                 {l.name}
               </span>
             ))}
@@ -65,11 +65,11 @@ export default async function LoungeBarPage() {
               return (
                 <div
                   key={lounge.slug}
-                  className={`flex flex-col ${idx % 2 === 1 ? "lg:flex-row-reverse" : "lg:flex-row"} gap-8 items-center bg-white rounded-3xl overflow-hidden shadow-sm border border-slate-100`}
+                  className={`flex flex-col ${idx % 2 === 1 ? "lg:flex-row-reverse" : "lg:flex-row"} gap-8 items-center bg-white rounded-3xl overflow-hidden shadow-sm border border-cream-dark`}
                 >
                   <div className="relative w-full lg:w-1/2 h-72 lg:h-96 shrink-0 overflow-hidden">
                     <Image src={image} alt={lounge.name} fill className="object-cover hover:scale-105 transition-transform duration-500" />
-                    <div className="absolute inset-0 bg-gradient-to-t from-slate-900/40 to-transparent" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-wine-deep/40 to-transparent" />
                     <div className="absolute top-4 left-4">
                       <span className={`px-2.5 py-1 rounded-full text-xs font-semibold uppercase ${isOpen ? "bg-green-100/90 text-green-700" : "bg-red-100/90 text-red-700"}`}>
                         {isOpen ? "Open" : "Closed"}
@@ -78,30 +78,30 @@ export default async function LoungeBarPage() {
                   </div>
 
                   <div className="flex-1 p-6 lg:p-8">
-                    <h2 className="text-2xl font-bold text-slate-800 mb-2">{lounge.name}</h2>
+                    <h2 className="text-2xl font-serif font-semibold text-wine mb-2">{lounge.name}</h2>
                     <p className="text-slate-500 text-sm mb-5 leading-relaxed">{lounge.description}</p>
 
                     <div className="flex flex-wrap gap-2 mb-6">
                       {(lounge.features ?? []).map((f) => (
-                        <span key={f} className="px-3 py-1 bg-amber-50 text-amber-700 text-xs rounded-full font-medium">{f}</span>
+                        <span key={f} className="px-3 py-1 bg-cream text-gold-dark text-xs rounded-full font-medium">{f}</span>
                       ))}
                     </div>
 
                     {menuHighlights.length > 0 && (
-                      <div className="bg-slate-50 rounded-xl p-4 mb-5">
+                      <div className="bg-cream rounded-xl p-4 mb-5">
                         <h3 className="text-sm font-semibold text-slate-700 mb-3">Menu Highlights</h3>
                         <div className="space-y-2">
                           {menuHighlights.map((item) => (
                             <div key={item.id} className="flex items-center justify-between text-sm">
                               <span className="text-slate-700 font-medium">{item.name}</span>
-                              <span className="text-amber-600 font-bold">&#8358;{parseFloat(item.price).toLocaleString()}</span>
+                              <span className="text-gold-dark font-bold">&#8358;{parseFloat(item.price).toLocaleString()}</span>
                             </div>
                           ))}
                         </div>
                       </div>
                     )}
 
-                    <Link href={`/lounge-bar/${lounge.slug}`} className="inline-flex items-center gap-2 px-5 py-2.5 bg-[#5A0E24] text-white text-sm font-semibold rounded-xl hover:bg-[#921224] transition-colors">
+                    <Link href={`/lounge-bar/${lounge.slug}`} className="btn-wine inline-flex items-center gap-2 px-5 py-2.5 text-sm font-semibold rounded-full">
                       View Full Menu & Details
                       <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
@@ -116,7 +116,7 @@ export default async function LoungeBarPage() {
       </section>
 
       {/* Info section */}
-      <section className="py-14 bg-[#494B67]">
+      <section className="py-14 bg-wine-gradient">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
             {[
@@ -126,7 +126,7 @@ export default async function LoungeBarPage() {
             ].map((item) => (
               <div key={item.title} className="text-white">
                 <div className="text-4xl mb-3">{item.icon}</div>
-                <h3 className="text-lg font-bold mb-2">{item.title}</h3>
+                <h3 className="text-lg font-serif font-semibold mb-2">{item.title}</h3>
                 <p className="text-slate-400 text-sm">{item.desc}</p>
               </div>
             ))}

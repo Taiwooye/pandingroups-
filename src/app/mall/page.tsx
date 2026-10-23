@@ -8,7 +8,7 @@ export const metadata: Metadata = {
 
 export default function MallPage() {
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-br from-slate-900 via-[#1a0510] to-slate-900 relative overflow-hidden mt-16 md:mt-20 px-4">
+    <div className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-br from-wine-deep via-[#1a0510] to-wine-deep relative overflow-hidden mt-16 md:mt-20 px-4">
       {/* Animated background rings */}
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
         <div className="w-[600px] h-[600px] rounded-full border border-white/5 animate-ping" style={{ animationDuration: "4s" }} />
@@ -33,13 +33,13 @@ export default function MallPage() {
           </div>
         </div>
 
-        <span className="inline-block px-4 py-1.5 bg-amber-400/20 text-amber-300 text-xs font-bold uppercase tracking-widest rounded-full mb-5 border border-amber-400/30">
+        <span className="inline-block px-4 py-1.5 bg-amber-400/20 text-gold-light text-xs font-bold uppercase tracking-widest rounded-full mb-5 border border-amber-400/30">
           Coming Soon
         </span>
 
-        <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-white mb-4 leading-tight">
+        <h1 className="text-4xl sm:text-5xl md:text-6xl font-serif font-semibold text-white mb-4 leading-tight">
           PaNDiN
-          <span className="block text-amber-400">Mall & Cinema</span>
+          <span className="block text-gold">Mall & Cinema</span>
         </h1>
 
         <p className="text-slate-300 text-lg leading-relaxed mb-3 max-w-xl mx-auto">
@@ -77,7 +77,7 @@ export default function MallPage() {
 
         <p className="text-slate-500 text-xs mt-8">
           For partnership and leasing enquiries, contact us at{" "}
-          <a href="mailto:pandinhotels@gmail.com" className="text-amber-400 hover:text-amber-300">
+          <a href="mailto:pandinhotels@gmail.com" className="text-gold hover:text-gold-light">
             pandinhotels@gmail.com
           </a>
         </p>

@@ -3,6 +3,7 @@
 import { usePathname } from "next/navigation";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
+import AutoReveal from "./AutoReveal";
 
 const BARE_ROUTES = ["/lounge-menu"];
 const WHATSAPP_NUMBER = "2347054422968";
@@ -17,6 +18,7 @@ export default function ClientLayout({ children }: { children: React.ReactNode }
       {!isBare && <Navbar />}
       <main className={`flex-1 ${!isBare ? "" : ""}`}>{children}</main>
       {!isBare && <Footer />}
+      {!isBare && <AutoReveal />}
 
       {/* WhatsApp floating button */}
       {!isBare && (

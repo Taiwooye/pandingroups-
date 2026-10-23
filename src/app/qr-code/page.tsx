@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import QRCode from "react-qr-code";
 import { useState } from "react";
@@ -38,9 +38,9 @@ export default function QRCodePage() {
   const fullUrl = `${baseUrl}${QR_TARGETS[selected].path}`;
 
   return (
-    <div className="min-h-screen bg-slate-50 pt-24 pb-16 px-4">
+    <div className="min-h-screen bg-cream pt-24 pb-16 px-4">
       <div className="max-w-xl mx-auto">
-        <h1 className="text-2xl font-bold text-slate-800 mb-1">QR Code Generator</h1>
+        <h1 className="text-2xl font-serif font-semibold text-wine mb-1">QR Code Generator</h1>
         <p className="text-slate-500 text-sm mb-8">Generate and print QR codes for PaNDiN Group pages.</p>
 
         {/* Base URL */}
@@ -65,7 +65,7 @@ export default function QRCodePage() {
               onClick={() => setSelected(i)}
               className={`w-full text-left px-4 py-3 rounded-xl border transition-colors ${
                 selected === i
-                  ? "border-[#5A0E24] bg-red-50 text-[#5A0E24]"
+                  ? "border-[#5A0E24] bg-red-50 text-primary"
                   : "border-slate-200 bg-white text-slate-700 hover:border-amber-300"
               }`}
             >
@@ -76,14 +76,14 @@ export default function QRCodePage() {
         </div>
 
         {/* QR Code display */}
-        <div className="bg-white rounded-2xl border border-slate-100 shadow-sm p-8 text-center">
-          <div className="inline-block p-4 bg-white rounded-xl border-2 border-slate-100 mb-5">
+        <div className="bg-white rounded-2xl border border-cream-dark shadow-sm p-8 text-center">
+          <div className="inline-block p-4 bg-white rounded-xl border-2 border-cream-dark mb-5">
             <QRCode value={fullUrl} size={200} />
           </div>
           <p className="text-xs text-slate-400 font-mono break-all mb-4">{fullUrl}</p>
           <button
             onClick={() => window.print()}
-            className="px-6 py-2.5 bg-[#5A0E24] text-white text-sm font-semibold rounded-xl hover:bg-[#921224] transition-colors"
+            className="btn-wine px-6 py-2.5 text-sm font-semibold rounded-full"
           >
             Print QR Code
           </button>

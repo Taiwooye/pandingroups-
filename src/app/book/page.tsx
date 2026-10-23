@@ -10,6 +10,7 @@ import { useVenueList } from "@/hooks/queries/useVenue";
 import { useBarsLoungeList } from "@/hooks/queries/useBarsLounge";
 import { useDamageChargeList, usePolicyList } from "@/hooks/queries/usePolicies";
 import PolicyCards from "@/components/PolicyCards";
+import DatePicker from "@/components/DatePicker";
 import { ApiRoom, ApiApartment, ApiVenue, ApiBar, ApiDamageCharge, ApiPolicy } from "@/types";
 import * as bookingsApi from "@/services/endpoints/bookings";
 
@@ -100,11 +101,11 @@ function toBar(b: ApiBar): Bar {
 }
 
 const SERVICES = [
-  { key: "hotel",      icon: "M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5", label: "Hotel Room",       desc: "Nkrumah, Fela, Zik, Mandela Suite",   from: "From ₦28,000/night",   color: "bg-[#5A0E24]" },
-  { key: "apartment",  icon: "M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z",                          label: "Luxury Apartment", desc: "1-BR, 2-BR, 3-BR & 4-BR units",       from: "From ₦100,000/night",  color: "bg-amber-600" },
-  { key: "event-hall", icon: "M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z", label: "Event Hall", desc: "Nwando's Hall — up to 500 guests", from: "₦400,000/day", color: "bg-blue-700" },
-  { key: "lounge-bar", icon: "M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z", label: "Lounge & Bar", desc: "Reserve a table at PaNDiN Lounge", from: "Reservation free", color: "bg-purple-700" },
-  { key: "other",      icon: "M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z", label: "General Enquiry", desc: "Not sure? We will help you choose", from: "Contact us", color: "bg-slate-600" },
+  { key: "hotel",      icon: "M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5", label: "Hotel Room",       desc: "Nkrumah, Fela, Zik, Mandela Suite",   from: "From ₦28,000/night",   color: "bg-wine-gradient" },
+  { key: "apartment",  icon: "M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z",                          label: "Luxury Apartment", desc: "1-BR, 2-BR, 3-BR & 4-BR units",       from: "From ₦100,000/night",  color: "bg-gold-gradient" },
+  { key: "event-hall", icon: "M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z", label: "Event Hall", desc: "Nwando's Hall — up to 500 guests", from: "₦400,000/day", color: "bg-wine-gradient" },
+  { key: "lounge-bar", icon: "M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z", label: "Lounge & Bar", desc: "Reserve a table at PaNDiN Lounge", from: "Reservation free", color: "bg-gold-gradient" },
+  { key: "other",      icon: "M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z", label: "General Enquiry", desc: "Not sure? We will help you choose", from: "Contact us", color: "bg-gold-gradient" },
 ];
 
 const COUNTRY_CODES = [
@@ -144,19 +145,19 @@ function SummaryPanel({ form }: { form: FormData }) {
       <div className="p-5">
         <h3 className="font-bold text-slate-800 text-base">{form.selectedName || "No property selected"}</h3>
         {form.service && (
-          <span className="inline-block mt-1 text-xs font-semibold px-2.5 py-0.5 rounded-full bg-[#5A0E24]/10 text-[#5A0E24] capitalize">
+          <span className="inline-block mt-1 text-xs font-semibold px-2.5 py-0.5 rounded-full bg-[#5A0E24]/10 text-primary capitalize">
             {SERVICES.find((s) => s.key === form.service)?.label}
           </span>
         )}
 
         {form.selectedPrice > 0 && (
-          <p className="text-xl font-black text-amber-700 mt-3">
+          <p className="text-xl font-black text-gold-dark mt-3">
             &#8358;{form.selectedPrice.toLocaleString()}
             <span className="text-sm font-normal text-slate-400">/night</span>
           </p>
         )}
 
-        <div className="mt-4 space-y-2.5 text-sm border-t border-slate-100 pt-4">
+        <div className="mt-4 space-y-2.5 text-sm border-t border-cream-dark pt-4">
           {form.checkIn && (
             <div className="flex justify-between">
               <span className="text-slate-500">Check-in</span>
@@ -184,10 +185,10 @@ function SummaryPanel({ form }: { form: FormData }) {
         </div>
 
         {total !== null && (
-          <div className="mt-4 pt-4 border-t border-slate-100">
+          <div className="mt-4 pt-4 border-t border-cream-dark">
             <div className="flex justify-between items-center">
               <span className="text-sm font-semibold text-slate-600">Estimated Total</span>
-              <span className="text-lg font-black text-[#5A0E24]">&#8358;{total.toLocaleString()}</span>
+              <span className="text-lg font-black text-primary">&#8358;{total.toLocaleString()}</span>
             </div>
             <p className="text-xs text-slate-400 mt-1">Deposit required to confirm booking</p>
           </div>
@@ -328,6 +329,13 @@ function BookContent() {
 
   const _d = new Date();
   const today = `${_d.getFullYear()}-${String(_d.getMonth() + 1).padStart(2, "0")}-${String(_d.getDate()).padStart(2, "0")}`;
+  const dayAfter = (key: string) => {
+    const [y, m, d] = key.split("-").map(Number);
+    const n = new Date(y, m - 1, d + 1);
+    return `${n.getFullYear()}-${String(n.getMonth() + 1).padStart(2, "0")}-${String(n.getDate()).padStart(2, "0")}`;
+  };
+  const tomorrow = dayAfter(today);
+  const minCheckOut = dayAfter(form.checkIn || today);
   const canProceedDetails = (() => {
     const base = !!(form.firstName.trim() && form.lastName.trim() && form.email.trim() && form.phone.trim());
     if (!base) return false;
@@ -335,7 +343,7 @@ function BookContent() {
       return !!(form.checkIn && form.checkOut && form.checkIn >= today && form.checkOut > form.checkIn && form.guests);
     }
     if (form.service === "event-hall") {
-      return !!(form.checkIn && form.checkIn >= today && form.eventType && form.guests);
+      return !!(form.checkIn && form.checkIn >= tomorrow && form.eventType && form.guests);
     }
     if (form.service === "lounge-bar") {
       return !!(form.checkIn && form.checkIn >= today && form.reservationTime && form.guests);
@@ -429,11 +437,18 @@ function BookContent() {
 
   if (step === "services") {
     return (
-      <div className="min-h-screen bg-slate-50">
-        <div className="bg-[#5A0E24] py-20 text-center px-4">
-          <p className="text-white/60 text-sm font-semibold uppercase tracking-widest mb-3">PaNDiN Group</p>
-          <h1 className="text-3xl md:text-4xl font-black text-white mb-3">Book Your Experience</h1>
-          <p className="text-white/70 text-base max-w-md mx-auto">Choose a service below and we will walk you through the rest.</p>
+      <div className="min-h-screen bg-cream">
+        <div className="relative bg-wine-gradient pt-36 pb-20 md:pt-40 text-center px-4 overflow-hidden">
+          <div className="absolute -top-24 left-1/2 -translate-x-1/2 w-[36rem] h-72 rounded-full bg-gold/15 blur-3xl" />
+          <div className="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-gold/70 to-transparent" />
+          <div className="relative">
+            <p className="hero-enter text-gold-light text-xs font-semibold uppercase tracking-[0.35em] mb-4">PaNDiN Group</p>
+            <h1 className="hero-enter font-serif text-4xl md:text-6xl font-semibold text-white mb-4" style={{ "--enter-delay": "150ms" } as React.CSSProperties}>
+              Book Your <span className="italic text-gold-gradient">Experience</span>
+            </h1>
+            <div className="gold-divider mx-auto mb-5" />
+            <p className="hero-enter text-white/70 text-base max-w-md mx-auto" style={{ "--enter-delay": "300ms" } as React.CSSProperties}>Choose a service below and we will walk you through the rest.</p>
+          </div>
         </div>
 
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-14">
@@ -442,7 +457,7 @@ function BookContent() {
               <button
                 key={s.key}
                 onClick={() => selectService(s.key)}
-                className="bg-white rounded-2xl p-6 border-2 border-slate-100 hover:border-[#5A0E24] hover:shadow-xl transition-all duration-200 text-left group flex flex-col gap-4"
+                className="bg-white rounded-2xl p-6 border-2 border-cream-dark hover:border-[#5A0E24] hover:shadow-xl transition-all duration-200 text-left group flex flex-col gap-4"
               >
                 <div className={`w-12 h-12 rounded-xl ${s.color} flex items-center justify-center`}>
                   <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" strokeWidth={1.8} viewBox="0 0 24 24">
@@ -453,8 +468,8 @@ function BookContent() {
                   <h3 className="font-bold text-slate-800 text-base group-hover:text-[#5A0E24] transition-colors">{s.label}</h3>
                   <p className="text-slate-500 text-sm mt-1 leading-snug">{s.desc}</p>
                 </div>
-                <div className="flex items-center justify-between mt-auto pt-2 border-t border-slate-100">
-                  <span className="text-amber-600 font-semibold text-xs">{s.from}</span>
+                <div className="flex items-center justify-between mt-auto pt-2 border-t border-cream-dark">
+                  <span className="text-gold-dark font-semibold text-xs">{s.from}</span>
                   <svg className="w-4 h-4 text-slate-400 group-hover:text-[#5A0E24] transition-colors" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
                   </svg>
@@ -472,8 +487,8 @@ function BookContent() {
   if (step === "properties") {
     const svc = SERVICES.find((s) => s.key === form.service);
     return (
-      <div className="min-h-screen bg-slate-50">
-        <div className="bg-white border-b border-slate-100 px-4 py-4">
+      <div className="min-h-screen bg-cream">
+        <div className="bg-white border-b border-cream-dark px-4 py-4">
           <div className="max-w-6xl mx-auto flex items-center gap-4">
             <button onClick={() => setStep("services")} className="flex items-center gap-1.5 text-sm text-slate-500 hover:text-slate-700">
               <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
@@ -495,7 +510,7 @@ function BookContent() {
 
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
           <div className="mb-8">
-            <h2 className="text-2xl font-bold text-slate-800">Select your {svc?.label}</h2>
+            <h2 className="text-2xl font-serif font-semibold text-wine">Select your {svc?.label}</h2>
             <p className="text-slate-500 text-sm mt-1">Click a property to view details and proceed to booking.</p>
           </div>
 
@@ -508,7 +523,7 @@ function BookContent() {
                 const badge = isHotel ? room.category : apt.type?.replace("-", " ");
                 const capacity = isHotel ? `Up to ${room.capacity} guests` : `${apt.bedrooms} bed${apt.bedrooms > 1 ? "s" : ""}`;
                 return (
-                  <div key={item.id} className="bg-white rounded-2xl border border-slate-100 shadow-sm overflow-hidden group hover:shadow-xl hover:border-[#5A0E24]/30 transition-all duration-300 flex flex-col">
+                  <div key={item.id} className="card-luxe bg-white rounded-2xl border border-cream-dark shadow-sm overflow-hidden group hover:border-[#5A0E24]/30 flex flex-col">
                     <div className="relative h-52 overflow-hidden">
                       <Image src={item.image} alt={item.name} fill className="object-cover group-hover:scale-105 transition-transform duration-500" />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
@@ -539,13 +554,13 @@ function BookContent() {
                           <span key={f} className="text-[10px] px-2 py-0.5 bg-slate-100 text-slate-600 rounded-full">{f}</span>
                         ))}
                       </div>
-                      <div className="flex items-center justify-between mt-auto pt-4 border-t border-slate-100">
+                      <div className="flex items-center justify-between mt-auto pt-4 border-t border-cream-dark">
                         <div>
-                          <span className="text-xl font-black text-amber-700">&#8358;{item.price.toLocaleString()}</span>
+                          <span className="text-xl font-black text-gold-dark">&#8358;{item.price.toLocaleString()}</span>
                           <span className="text-xs text-slate-400 ml-1">/night</span>
                         </div>
                         <button onClick={() => selectProperty(item.id, item.name, item.price, item.image)}
-                          className="px-4 py-2 bg-[#5A0E24] text-white text-xs font-bold rounded-xl hover:bg-[#921224] transition-colors">
+                          className="btn-wine px-4 py-2 text-xs font-bold rounded-full">
                           Book Now
                         </button>
                       </div>
@@ -557,7 +572,7 @@ function BookContent() {
           ) : form.service === "event-hall" ? (
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
               {(serviceProperties as Venue[]).map((venue) => (
-                <div key={venue.id} className="bg-white rounded-2xl border border-slate-100 shadow-sm overflow-hidden group hover:shadow-xl hover:border-blue-500/30 transition-all duration-300 flex flex-col">
+                <div key={venue.id} className="card-luxe bg-white rounded-2xl border border-cream-dark shadow-sm overflow-hidden group hover:border-blue-500/30 flex flex-col">
                   <div className="relative h-52 overflow-hidden">
                     <Image src={venue.image} alt={venue.name} fill className="object-cover group-hover:scale-105 transition-transform duration-500" />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
@@ -580,9 +595,9 @@ function BookContent() {
                         <span key={t} className="text-[10px] px-2 py-0.5 bg-blue-50 text-blue-700 rounded-full">{t}</span>
                       ))}
                     </div>
-                    <div className="flex items-center justify-between mt-auto pt-4 border-t border-slate-100">
+                    <div className="flex items-center justify-between mt-auto pt-4 border-t border-cream-dark">
                       <div>
-                        <span className="text-xl font-black text-amber-700">&#8358;{venue.price.toLocaleString()}</span>
+                        <span className="text-xl font-black text-gold-dark">&#8358;{venue.price.toLocaleString()}</span>
                         <span className="text-xs text-slate-400 ml-1">/day</span>
                       </div>
                       <button onClick={() => selectProperty(venue.id, venue.name, venue.price, venue.image)}
@@ -597,7 +612,7 @@ function BookContent() {
           ) : form.service === "lounge-bar" ? (
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
               {(serviceProperties as Bar[]).map((bar) => (
-                <div key={bar.id} className="bg-white rounded-2xl border border-slate-100 shadow-sm overflow-hidden group hover:shadow-xl hover:border-purple-500/30 transition-all duration-300 flex flex-col">
+                <div key={bar.id} className="card-luxe bg-white rounded-2xl border border-cream-dark shadow-sm overflow-hidden group hover:border-purple-500/30 flex flex-col">
                   <div className="relative h-52 overflow-hidden">
                     <Image src={bar.image} alt={bar.name} fill className="object-cover group-hover:scale-105 transition-transform duration-500" />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
@@ -612,7 +627,7 @@ function BookContent() {
                         <span key={f} className="text-[10px] px-2 py-0.5 bg-purple-50 text-purple-700 rounded-full">{f}</span>
                       ))}
                     </div>
-                    <div className="flex items-center justify-between mt-auto pt-4 border-t border-slate-100">
+                    <div className="flex items-center justify-between mt-auto pt-4 border-t border-cream-dark">
                       <span className="text-sm font-semibold text-slate-500">Reservation free</span>
                       <button onClick={() => selectProperty(bar.id, bar.name, 0, bar.image)}
                         className="px-4 py-2 bg-purple-700 text-white text-xs font-bold rounded-xl hover:bg-purple-800 transition-colors">
@@ -634,8 +649,8 @@ function BookContent() {
   if (step === "details") {
     const svc = SERVICES.find((s) => s.key === form.service);
     return (
-      <div className="min-h-screen bg-slate-50">
-        <div className="bg-white border-b border-slate-100 px-4 py-4">
+      <div className="min-h-screen bg-cream">
+        <div className="bg-white border-b border-cream-dark px-4 py-4">
           <div className="max-w-6xl mx-auto flex items-center gap-4">
             <button
               onClick={() => {
@@ -666,9 +681,9 @@ function BookContent() {
               <form onSubmit={handleProceed} className="space-y-8">
 
                 {/* Personal details */}
-                <div className="bg-white rounded-2xl border border-slate-100 shadow-sm p-6 space-y-5">
+                <div className="bg-white rounded-2xl border border-cream-dark shadow-sm p-6 space-y-5">
                   <div>
-                    <h2 className="text-lg font-bold text-slate-800">Your personal details</h2>
+                    <h2 className="text-lg font-serif font-semibold text-wine">Your personal details</h2>
                     <p className="text-xs text-slate-400 mt-1">We&apos;ll use these to send your booking confirmation.</p>
                   </div>
 
@@ -678,7 +693,7 @@ function BookContent() {
                       <select
                         value={form.title}
                         onChange={(e) => set({ title: e.target.value })}
-                        className="w-full px-3 py-3 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-amber-300 bg-white text-slate-700"
+                        className="w-full px-3 py-3 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-gold/40 bg-white text-slate-700"
                       >
                         <option value="">&mdash;</option>
                         {TITLES.map((t) => <option key={t} value={t}>{t}</option>)}
@@ -690,7 +705,7 @@ function BookContent() {
                         type="text" required value={form.firstName}
                         onChange={(e) => set({ firstName: e.target.value })}
                         placeholder="e.g. Taiwo"
-                        className="w-full px-4 py-3 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-amber-300 placeholder-slate-300"
+                        className="w-full px-4 py-3 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-gold/40 placeholder-slate-300"
                       />
                     </div>
                     <div className="col-span-12 sm:col-span-5">
@@ -699,7 +714,7 @@ function BookContent() {
                         type="text" required value={form.lastName}
                         onChange={(e) => set({ lastName: e.target.value })}
                         placeholder="e.g. Oyedokun"
-                        className="w-full px-4 py-3 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-amber-300 placeholder-slate-300"
+                        className="w-full px-4 py-3 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-gold/40 placeholder-slate-300"
                       />
                     </div>
                   </div>
@@ -710,7 +725,7 @@ function BookContent() {
                       <select
                         value={form.countryCode}
                         onChange={(e) => set({ countryCode: e.target.value })}
-                        className="w-full px-3 py-3 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-amber-300 bg-white text-slate-700"
+                        className="w-full px-3 py-3 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-gold/40 bg-white text-slate-700"
                       >
                         {COUNTRY_CODES.map((c) => (
                           <option key={c.code} value={c.code}>{c.flag} {c.code}</option>
@@ -723,7 +738,7 @@ function BookContent() {
                         type="tel" required value={form.phone}
                         onChange={(e) => set({ phone: e.target.value })}
                         placeholder="800 000 0000"
-                        className="w-full px-4 py-3 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-amber-300 placeholder-slate-300"
+                        className="w-full px-4 py-3 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-gold/40 placeholder-slate-300"
                       />
                     </div>
                   </div>
@@ -734,32 +749,32 @@ function BookContent() {
                       type="email" required value={form.email}
                       onChange={(e) => set({ email: e.target.value })}
                       placeholder="your@email.com"
-                      className="w-full px-4 py-3 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-amber-300 placeholder-slate-300"
+                      className="w-full px-4 py-3 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-gold/40 placeholder-slate-300"
                     />
                   </div>
                 </div>
 
                 {/* Stay / Event / Reservation details — conditional per service type */}
                 {(form.service === "hotel" || form.service === "apartment") && (
-                  <div className="bg-white rounded-2xl border border-slate-100 shadow-sm p-6 space-y-5">
-                    <h2 className="text-lg font-bold text-slate-800">Stay details</h2>
+                  <div className="bg-white rounded-2xl border border-cream-dark shadow-sm p-6 space-y-5">
+                    <h2 className="text-lg font-serif font-semibold text-wine">Stay details</h2>
                     <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                       <div>
-                        <label className="text-xs font-semibold text-slate-500 uppercase tracking-wide block mb-1.5">Check-in *</label>
-                        <input type="date" required value={form.checkIn} min={today}
-                          onChange={(e) => { set({ checkIn: e.target.value, checkOut: form.checkOut && form.checkOut <= e.target.value ? "" : form.checkOut }); }}
-                          className="w-full px-4 py-3 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-amber-300" />
+                        <span className="text-xs font-semibold text-gold-dark uppercase tracking-wide block mb-1.5">Check-in *</span>
+                        <DatePicker value={form.checkIn} min={today}
+                          onChange={(v) => set({ checkIn: v, checkOut: form.checkOut && v && form.checkOut <= v ? "" : form.checkOut })}
+                          rangeStart={form.checkIn} rangeEnd={form.checkOut} placeholder="Add date" ariaLabel="Check-in date" />
                       </div>
                       <div>
-                        <label className="text-xs font-semibold text-slate-500 uppercase tracking-wide block mb-1.5">Check-out *</label>
-                        <input type="date" required value={form.checkOut} min={form.checkIn || today}
-                          onChange={(e) => set({ checkOut: e.target.value })}
-                          className="w-full px-4 py-3 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-amber-300" />
+                        <span className="text-xs font-semibold text-gold-dark uppercase tracking-wide block mb-1.5">Check-out *</span>
+                        <DatePicker value={form.checkOut} min={minCheckOut}
+                          onChange={(v) => set({ checkOut: v })}
+                          rangeStart={form.checkIn} rangeEnd={form.checkOut} placeholder="Add date" ariaLabel="Check-out date" />
                       </div>
                       <div>
                         <label className="text-xs font-semibold text-slate-500 uppercase tracking-wide block mb-1.5">Guests *</label>
                         <select required value={form.guests} onChange={(e) => set({ guests: e.target.value })}
-                          className="w-full px-4 py-3 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-amber-300 bg-white">
+                          className="w-full px-4 py-3 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-gold/40 bg-white">
                           <option value="">Select</option>
                           {Array.from({ length: maxGuests }, (_, i) => i + 1).map((n) => (
                             <option key={n} value={String(n)}>{n} guest{n > 1 ? "s" : ""}</option>
@@ -771,25 +786,25 @@ function BookContent() {
                       <label className="text-xs font-semibold text-slate-500 uppercase tracking-wide block mb-1.5">Special Requests</label>
                       <textarea value={form.specialRequests} onChange={(e) => set({ specialRequests: e.target.value })} rows={3}
                         placeholder="Any special requirements, dietary needs, or requests..."
-                        className="w-full px-4 py-3 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-amber-300 resize-none placeholder-slate-300" />
+                        className="w-full px-4 py-3 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-gold/40 resize-none placeholder-slate-300" />
                     </div>
                   </div>
                 )}
 
                 {form.service === "event-hall" && (
-                  <div className="bg-white rounded-2xl border border-slate-100 shadow-sm p-6 space-y-5">
-                    <h2 className="text-lg font-bold text-slate-800">Event Details</h2>
+                  <div className="bg-white rounded-2xl border border-cream-dark shadow-sm p-6 space-y-5">
+                    <h2 className="text-lg font-serif font-semibold text-wine">Event Details</h2>
                     <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                       <div>
-                        <label className="text-xs font-semibold text-slate-500 uppercase tracking-wide block mb-1.5">Event Date *</label>
-                        <input type="date" required value={form.checkIn} min={today}
-                          onChange={(e) => set({ checkIn: e.target.value })}
-                          className="w-full px-4 py-3 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-amber-300" />
+                        <span className="text-xs font-semibold text-gold-dark uppercase tracking-wide block mb-1.5">Event Date *</span>
+                        <DatePicker value={form.checkIn} min={tomorrow}
+                          onChange={(v) => set({ checkIn: v })}
+                          placeholder="Select date" ariaLabel="Event date" />
                       </div>
                       <div>
                         <label className="text-xs font-semibold text-slate-500 uppercase tracking-wide block mb-1.5">Event Type *</label>
                         <select required value={form.eventType} onChange={(e) => set({ eventType: e.target.value })}
-                          className="w-full px-4 py-3 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-amber-300 bg-white">
+                          className="w-full px-4 py-3 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-gold/40 bg-white">
                           <option value="">Select type</option>
                           {((venues.find((v) => v.id === form.selectedId)?.eventTypes) ?? ["Wedding", "Conference", "Birthday", "Seminar", "Corporate", "Other"]).map((t) => (
                             <option key={t} value={t}>{t}</option>
@@ -799,7 +814,7 @@ function BookContent() {
                       <div>
                         <label className="text-xs font-semibold text-slate-500 uppercase tracking-wide block mb-1.5">Guests *</label>
                         <select required value={form.guests} onChange={(e) => set({ guests: e.target.value })}
-                          className="w-full px-4 py-3 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-amber-300 bg-white">
+                          className="w-full px-4 py-3 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-gold/40 bg-white">
                           <option value="">Select</option>
                           {Array.from({ length: maxGuests }, (_, i) => i + 1).map((n) => (
                             <option key={n} value={String(n)}>{n} guest{n > 1 ? "s" : ""}</option>
@@ -811,31 +826,31 @@ function BookContent() {
                       <label className="text-xs font-semibold text-slate-500 uppercase tracking-wide block mb-1.5">Special Requests</label>
                       <textarea value={form.specialRequests} onChange={(e) => set({ specialRequests: e.target.value })} rows={3}
                         placeholder="Theme, catering preferences, décor requirements..."
-                        className="w-full px-4 py-3 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-amber-300 resize-none placeholder-slate-300" />
+                        className="w-full px-4 py-3 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-gold/40 resize-none placeholder-slate-300" />
                     </div>
                   </div>
                 )}
 
                 {form.service === "lounge-bar" && (
-                  <div className="bg-white rounded-2xl border border-slate-100 shadow-sm p-6 space-y-5">
-                    <h2 className="text-lg font-bold text-slate-800">Reservation Details</h2>
+                  <div className="bg-white rounded-2xl border border-cream-dark shadow-sm p-6 space-y-5">
+                    <h2 className="text-lg font-serif font-semibold text-wine">Reservation Details</h2>
                     <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                       <div>
-                        <label className="text-xs font-semibold text-slate-500 uppercase tracking-wide block mb-1.5">Reservation Date *</label>
-                        <input type="date" required value={form.checkIn} min={today}
-                          onChange={(e) => set({ checkIn: e.target.value })}
-                          className="w-full px-4 py-3 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-amber-300" />
+                        <span className="text-xs font-semibold text-gold-dark uppercase tracking-wide block mb-1.5">Reservation Date *</span>
+                        <DatePicker value={form.checkIn} min={today}
+                          onChange={(v) => set({ checkIn: v })}
+                          placeholder="Select date" ariaLabel="Reservation date" />
                       </div>
                       <div>
                         <label className="text-xs font-semibold text-slate-500 uppercase tracking-wide block mb-1.5">Reservation Time *</label>
                         <input type="time" required value={form.reservationTime}
                           onChange={(e) => set({ reservationTime: e.target.value })}
-                          className="w-full px-4 py-3 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-amber-300" />
+                          className="w-full px-4 py-3 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-gold/40" />
                       </div>
                       <div>
                         <label className="text-xs font-semibold text-slate-500 uppercase tracking-wide block mb-1.5">Guests *</label>
                         <select required value={form.guests} onChange={(e) => set({ guests: e.target.value })}
-                          className="w-full px-4 py-3 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-amber-300 bg-white">
+                          className="w-full px-4 py-3 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-gold/40 bg-white">
                           <option value="">Select</option>
                           {Array.from({ length: maxGuests }, (_, i) => i + 1).map((n) => (
                             <option key={n} value={String(n)}>{n} guest{n > 1 ? "s" : ""}</option>
@@ -847,18 +862,18 @@ function BookContent() {
                       <label className="text-xs font-semibold text-slate-500 uppercase tracking-wide block mb-1.5">Special Requests</label>
                       <textarea value={form.specialRequests} onChange={(e) => set({ specialRequests: e.target.value })} rows={3}
                         placeholder="Occasion, seating preferences, dietary requirements..."
-                        className="w-full px-4 py-3 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-amber-300 resize-none placeholder-slate-300" />
+                        className="w-full px-4 py-3 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-gold/40 resize-none placeholder-slate-300" />
                     </div>
                   </div>
                 )}
 
                 {/* Guest Policies */}
-                <div className="bg-white rounded-2xl border border-slate-100 shadow-sm p-6 space-y-4">
+                <div className="bg-white rounded-2xl border border-cream-dark shadow-sm p-6 space-y-4">
                   <div className="flex items-center gap-2 mb-1">
                     <svg className="w-4 h-4 text-slate-400" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                     </svg>
-                    <h2 className="text-lg font-bold text-slate-800">Guest Policies</h2>
+                    <h2 className="text-lg font-serif font-semibold text-wine">Guest Policies</h2>
                   </div>
 
                   <PolicyCards policies={policies} damageCharges={damageCharges} cardClassName="bg-slate-50" />
@@ -889,7 +904,7 @@ function BookContent() {
                 <button
                   type="submit"
                   disabled={!canProceedDetails || !agreedToPolicy}
-                  className="w-full py-4 bg-[#5A0E24] text-white font-bold rounded-2xl hover:bg-[#921224] transition-colors shadow-md text-base disabled:opacity-40 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+                  className="btn-wine w-full py-4 font-bold rounded-2xl shadow-md text-base disabled:opacity-40 disabled:cursor-not-allowed flex items-center justify-center gap-2"
                 >
                   Proceed to Payment
                   <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24">
@@ -914,22 +929,22 @@ function BookContent() {
 
   if (step === "done") {
     return (
-      <div className="min-h-screen bg-slate-50 flex items-center justify-center px-4 py-16">
-        <div className="bg-white rounded-3xl shadow-lg border border-slate-100 max-w-md w-full p-8 text-center">
-          <div className="w-20 h-20 rounded-full bg-amber-100 flex items-center justify-center mx-auto mb-6">
-            <svg className="w-10 h-10 text-amber-600" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+      <div className="min-h-screen bg-cream flex items-center justify-center px-4 py-16">
+        <div className="bg-white rounded-3xl shadow-lg border border-cream-dark max-w-md w-full p-8 text-center">
+          <div className="w-20 h-20 rounded-full bg-gold/15 flex items-center justify-center mx-auto mb-6">
+            <svg className="w-10 h-10 text-gold-dark" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
             </svg>
           </div>
 
-          <h2 className="text-2xl font-bold text-slate-800 mb-2">Booking Submitted</h2>
+          <h2 className="text-2xl font-serif font-semibold text-wine mb-2">Booking Submitted</h2>
           <p className="text-slate-500 text-sm leading-relaxed mb-6">
             Your booking request has been received. Our team will verify your transfer and confirm within <strong className="text-slate-700">2 hours</strong>. You will be contacted at <strong className="text-slate-700">{form.email}</strong> once confirmed.
           </p>
 
-          <div className="bg-slate-50 rounded-2xl p-5 mb-6">
+          <div className="bg-cream rounded-2xl p-5 mb-6">
             <p className="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-1">Booking Reference</p>
-            <p className="text-2xl font-black text-[#5A0E24] tracking-widest">{bookingRef}</p>
+            <p className="text-2xl font-black text-primary tracking-widest">{bookingRef}</p>
             <p className="text-xs text-slate-400 mt-1">Keep this reference for your records</p>
           </div>
 
@@ -940,21 +955,21 @@ function BookContent() {
               form.checkIn ? { label: form.service === "lounge-bar" ? "Date" : "Check-in", value: new Date(form.checkIn).toLocaleDateString("en-GB", { day: "numeric", month: "long", year: "numeric" }) } : null,
               form.checkOut ? { label: "Check-out", value: new Date(form.checkOut).toLocaleDateString("en-GB", { day: "numeric", month: "long", year: "numeric" }) } : null,
             ].filter(Boolean).map((item) => (
-              <div key={item!.label} className="flex justify-between text-sm border-b border-slate-100 pb-2">
+              <div key={item!.label} className="flex justify-between text-sm border-b border-cream-dark pb-2">
                 <span className="text-slate-400">{item!.label}</span>
                 <span className="font-semibold text-slate-700">{item!.value}</span>
               </div>
             ))}
           </div>
 
-          <div className="flex items-start gap-2.5 p-4 bg-amber-50 border border-amber-100 rounded-xl text-left mb-6">
-            <svg className="w-4 h-4 text-amber-500 shrink-0 mt-0.5" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+          <div className="flex items-start gap-2.5 p-4 bg-cream border border-gold/30 rounded-xl text-left mb-6">
+            <svg className="w-4 h-4 text-gold shrink-0 mt-0.5" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
             </svg>
-            <p className="text-xs text-amber-700">Your booking is <strong>pending</strong> until our team verifies the transfer. For urgent enquiries call <strong>+234 (0) 705 442 2968</strong>.</p>
+            <p className="text-xs text-gold-dark">Your booking is <strong>pending</strong> until our team verifies the transfer. For urgent enquiries call <strong>+234 (0) 705 442 2968</strong>.</p>
           </div>
 
-          <Link href="/" className="block w-full py-3 bg-[#5A0E24] text-white font-bold rounded-2xl hover:bg-[#921224] transition-colors text-sm">
+          <Link href="/" className="btn-wine block w-full py-3 font-bold rounded-2xl text-sm">
             Return to Home
           </Link>
         </div>
@@ -965,8 +980,8 @@ function BookContent() {
   // Step: Payment
 
   return (
-    <div className="min-h-screen bg-slate-50">
-      <div className="bg-[#5A0E24] py-10 text-center px-4">
+    <div className="min-h-screen bg-cream">
+      <div className="bg-wine-gradient py-10 text-center px-4">
         <p className="text-white/70 text-sm mb-2">Booking Reference</p>
         <h1 className="text-2xl font-black text-white tracking-widest">{bookingRef}</h1>
       </div>
@@ -976,7 +991,7 @@ function BookContent() {
           {/* Summary */}
           <div className="lg:col-span-1 order-2 lg:order-1">
             <SummaryPanel form={form} />
-            <div className="mt-4 bg-white rounded-2xl border border-slate-100 shadow-sm p-5 text-sm space-y-3">
+            <div className="mt-4 bg-white rounded-2xl border border-cream-dark shadow-sm p-5 text-sm space-y-3">
               <h4 className="font-bold text-slate-700 text-xs uppercase tracking-wide">Guest Details</h4>
               <div className="space-y-2 text-sm">
                 <div className="flex justify-between"><span className="text-slate-400">Name</span><span className="font-medium">{form.title} {form.firstName} {form.lastName}</span></div>
@@ -989,13 +1004,13 @@ function BookContent() {
           {/* Payment */}
           <div className="lg:col-span-2 order-1 lg:order-2 space-y-5">
             <div>
-              <h2 className="text-2xl font-bold text-slate-800">Complete Your Payment</h2>
+              <h2 className="text-2xl font-serif font-semibold text-wine">Complete Your Payment</h2>
               <p className="text-slate-500 text-sm mt-1">Transfer the deposit to the account below, then click confirm.</p>
             </div>
 
             <div className="bg-white rounded-2xl border-2 border-[#5A0E24]/20 p-6 shadow-sm">
               <h3 className="font-bold text-slate-800 mb-4 flex items-center gap-2">
-                <svg className="w-5 h-5 text-[#5A0E24]" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+                <svg className="w-5 h-5 text-primary" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" />
                 </svg>
                 Bank Transfer Details
@@ -1006,7 +1021,7 @@ function BookContent() {
                   { label: "Account Name", value: "PANDIN HOTEL & EVENT PLACE" },
                   { label: "Account Number", value: "1027466817" },
                 ].map((item) => (
-                  <div key={item.label} className="bg-slate-50 rounded-xl p-4">
+                  <div key={item.label} className="bg-cream rounded-xl p-4">
                     <div className="text-xs font-semibold text-slate-500 uppercase tracking-wide mb-1">{item.label}</div>
                     <div className="font-bold text-slate-800 text-sm">{item.value}</div>
                   </div>
@@ -1014,7 +1029,7 @@ function BookContent() {
               </div>
             </div>
 
-            <div className="bg-slate-50 rounded-2xl p-5 space-y-4">
+            <div className="bg-cream rounded-2xl p-5 space-y-4">
               <h3 className="font-bold text-slate-800 text-sm">What Happens Next?</h3>
               {[
                 { n: "1", title: "Transfer the deposit", desc: "Send payment to the GTBank account above using your booking reference." },
@@ -1031,11 +1046,11 @@ function BookContent() {
               ))}
             </div>
 
-            <div className="flex items-start gap-3 p-4 bg-amber-50 border border-amber-200 rounded-xl text-sm">
-              <svg className="w-5 h-5 text-amber-500 shrink-0" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+            <div className="flex items-start gap-3 p-4 bg-cream border border-gold/40 rounded-xl text-sm">
+              <svg className="w-5 h-5 text-gold shrink-0" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
               </svg>
-              <p className="text-amber-700">Booking held for <strong>24 hours</strong>. Not confirmed until payment is received. Call <strong>+234 (0) 705 442 2968</strong> for urgent help.</p>
+              <p className="text-gold-dark">Booking held for <strong>24 hours</strong>. Not confirmed until payment is received. Call <strong>+234 (0) 705 442 2968</strong> for urgent help.</p>
             </div>
 
             {bookingError && (
@@ -1045,7 +1060,7 @@ function BookContent() {
             <button
               onClick={handleTransferConfirm}
               disabled={step === "sending"}
-              className="w-full py-4 bg-[#5A0E24] text-white font-bold rounded-2xl hover:bg-[#921224] transition-colors shadow-md text-base disabled:opacity-60 flex items-center justify-center gap-3"
+              className="btn-wine w-full py-4 font-bold rounded-2xl shadow-md text-base disabled:opacity-60 flex items-center justify-center gap-3"
             >
               {step === "sending" ? (
                 <>

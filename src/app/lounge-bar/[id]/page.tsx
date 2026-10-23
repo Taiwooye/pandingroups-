@@ -59,18 +59,20 @@ export default async function LoungeDetailPage(props: PageProps<"/lounge-bar/[id
 
   return (
     <div className="mt-16 md:mt-20">
-      <div className="relative h-72 md:h-96 lg:h-[480px]">
-        <Image src={heroImage} alt={lounge.name} fill className="object-cover" priority />
-        <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 to-slate-900/20" />
-        <div className="absolute bottom-0 left-0 right-0 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-8">
-          <nav className="flex items-center gap-2 mb-3 text-sm">
-            <Link href="/" className="text-amber-300 hover:text-amber-200">Home</Link>
-            <span className="text-white/40">/</span>
-            <Link href="/lounge-bar" className="text-amber-300 hover:text-amber-200">Lounge & Bar</Link>
-            <span className="text-white/40">/</span>
+      <div className="relative h-80 md:h-[28rem] lg:h-[540px] overflow-hidden bg-wine-deep">
+        <Image src={heroImage} alt={lounge.name} fill className="object-cover animate-ken-burns" sizes="100vw" priority />
+        <div className="absolute inset-0 bg-gradient-to-t from-wine-deep via-wine-deep/50 to-wine-deep/20" />
+        <div className="absolute inset-0 bg-gradient-to-r from-wine-deep/70 via-transparent to-transparent" />
+        <div className="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-gold/70 to-transparent" />
+        <div className="absolute bottom-0 left-0 right-0 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-10 md:pb-14">
+          <nav className="hero-enter flex items-center gap-2 mb-4 text-sm">
+            <Link href="/" className="text-gold-light hover:text-white">Home</Link>
+            <span className="text-gold/60">/</span>
+            <Link href="/lounge-bar" className="text-gold-light hover:text-white">Lounge & Bar</Link>
+            <span className="text-gold/60">/</span>
             <span className="text-white/70">{lounge.name}</span>
           </nav>
-          <h1 className="text-3xl md:text-4xl font-bold text-white">{lounge.name}</h1>
+          <h1 className="hero-enter font-serif text-4xl md:text-5xl lg:text-6xl font-semibold text-white leading-tight" style={{ "--enter-delay": "150ms" } as React.CSSProperties}>{lounge.name}</h1>
           <div className="flex items-center gap-4 mt-3">
             <span className={`px-3 py-1 rounded-full text-xs font-semibold ${isOpen ? "bg-green-500/80 text-white" : "bg-red-500/80 text-white"}`}>
               {isOpen ? "Open" : "Closed"}
@@ -82,16 +84,16 @@ export default async function LoungeDetailPage(props: PageProps<"/lounge-bar/[id
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="max-w-3xl space-y-8">
           <div>
-            <h2 className="text-xl font-bold text-slate-800 mb-3">About {lounge.name}</h2>
+            <h2 className="text-xl font-serif font-semibold text-wine mb-3">About {lounge.name}</h2>
             <p className="text-slate-600 leading-relaxed">{lounge.description}</p>
           </div>
 
           {lounge.features?.length > 0 && (
             <div>
-              <h2 className="text-xl font-bold text-slate-800 mb-4">Features & Highlights</h2>
+              <h2 className="text-xl font-serif font-semibold text-wine mb-4">Features & Highlights</h2>
               <div className="flex flex-wrap gap-2">
                 {lounge.features.map((f) => (
-                  <span key={f} className="px-4 py-2 bg-amber-50 text-amber-700 text-sm rounded-full font-medium border border-amber-100">{f}</span>
+                  <span key={f} className="px-4 py-2 bg-cream text-gold-dark text-sm rounded-full font-medium border border-gold/30">{f}</span>
                 ))}
               </div>
             </div>
@@ -100,11 +102,11 @@ export default async function LoungeDetailPage(props: PageProps<"/lounge-bar/[id
           {/* Full Menu */}
           {menuCategories.length > 0 && (
             <div>
-              <h2 className="text-xl font-bold text-slate-800 mb-6">Our Menu</h2>
+              <h2 className="text-xl font-serif font-semibold text-wine mb-6">Our Menu</h2>
               <div className="space-y-8">
                 {menuCategories.map((cat) => (
                   <div key={cat.value}>
-                    <h3 className="text-base font-bold text-[#5A0E24] mb-4 pb-2 border-b border-rose-100">
+                    <h3 className="text-base font-bold text-primary mb-4 pb-2 border-b border-rose-100">
                       {cat.label}
                     </h3>
                     <div className="space-y-4">
@@ -119,7 +121,7 @@ export default async function LoungeDetailPage(props: PageProps<"/lounge-bar/[id
                               <span className="text-xs text-red-500 font-medium">Currently unavailable</span>
                             )}
                           </div>
-                          <span className="text-amber-700 font-bold text-lg shrink-0">₦{parseFloat(item.price).toLocaleString()}</span>
+                          <span className="text-gold-dark font-bold text-lg shrink-0">₦{parseFloat(item.price).toLocaleString()}</span>
                         </div>
                       ))}
                     </div>
@@ -132,7 +134,7 @@ export default async function LoungeDetailPage(props: PageProps<"/lounge-bar/[id
           {/* Gallery */}
           {gallery.length > 1 && (
             <div>
-              <h2 className="text-xl font-bold text-slate-800 mb-4">Gallery</h2>
+              <h2 className="text-xl font-serif font-semibold text-wine mb-4">Gallery</h2>
               <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
                 {gallery.map((img, i) => (
                   <div key={i} className="relative h-40 rounded-xl overflow-hidden">

@@ -1,4 +1,4 @@
-﻿import type { Metadata } from "next";
+import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import PageHero from "@/components/PageHero";
@@ -39,8 +39,8 @@ export default function AboutPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-14 items-center">
             <div>
-              <span className="text-amber-600 text-sm font-semibold uppercase tracking-wider">Our Story</span>
-              <h2 className="text-3xl md:text-4xl font-bold text-slate-800 mt-2 mb-6">Who We Are</h2>
+              <span className="text-gold-dark font-semibold uppercase text-xs tracking-[0.3em]">Our Story</span>
+              <h2 className="text-3xl md:text-4xl font-serif font-semibold text-wine mt-2 mb-6">Who We Are</h2>
               <div className="space-y-4 text-slate-600 leading-relaxed">
                 <p>
                   The PaNDiN Group is a conglomerate of business and philanthropic endeavors of <strong>Paul, Nwando, Darius, and Nissi (PaNDiN) Olayiwola</strong>. Our name is a tribute to the family behind it all.
@@ -51,13 +51,13 @@ export default function AboutPage() {
                 <p>
                   Experience our full-service hotel, short-term stay luxury apartments, lounge, event space, and fitness and swimming facilities. Be part of our community and charitable services, or participate in our sports and wellness activities.
                 </p>
-                <p className="text-[#5A0E24] font-semibold text-lg">Be the best version of yourself with PaNDiN — you, but better!</p>
+                <p className="text-primary font-semibold text-lg">Be the best version of yourself with PaNDiN — you, but better!</p>
               </div>
               <div className="mt-8 flex gap-3 flex-wrap">
-                <Link href="/contact" className="px-6 py-3 bg-[#5A0E24] text-white font-semibold rounded-xl hover:bg-[#921224] transition-colors inline-block">
+                <Link href="/contact" className="btn-wine px-6 py-3 font-semibold rounded-full inline-block">
                   Get in Touch
                 </Link>
-                <Link href="/book" className="px-6 py-3 bg-amber-50 text-amber-700 font-semibold rounded-xl border border-amber-200 hover:bg-amber-100 transition-colors inline-block">
+                <Link href="/book" className="px-6 py-3 bg-cream text-gold-dark font-semibold rounded-xl border border-gold/40 hover:bg-cream-dark transition-colors inline-block">
                   Book Your Stay
                 </Link>
               </div>
@@ -69,17 +69,17 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="py-16 bg-slate-50">
+      <section className="py-16 bg-cream">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <span className="text-amber-600 text-sm font-semibold uppercase tracking-wider">Everything Under One Roof</span>
-            <h2 className="text-3xl font-bold text-slate-800 mt-2">What PaNDiN Group Offers</h2>
+            <span className="text-gold-dark font-semibold uppercase text-xs tracking-[0.3em]">Everything Under One Roof</span>
+            <h2 className="text-3xl font-serif font-semibold text-wine mt-2">What PaNDiN Group Offers</h2>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {offerings.map((o) => (
               <div key={o.title} className="bg-white rounded-2xl p-7 shadow-sm">
                 <div className="text-4xl mb-4">{o.icon}</div>
-                <h3 className="text-lg font-bold text-slate-800 mb-2">{o.title}</h3>
+                <h3 className="text-lg font-serif font-semibold text-wine mb-2">{o.title}</h3>
                 <p className="text-slate-500 text-sm leading-relaxed">{o.desc}</p>
               </div>
             ))}
@@ -90,14 +90,14 @@ export default function AboutPage() {
       <section className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <span className="text-amber-600 text-sm font-semibold uppercase tracking-wider">Our Values</span>
-            <h2 className="text-3xl font-bold text-slate-800 mt-2">What We Stand For</h2>
+            <span className="text-gold-dark font-semibold uppercase text-xs tracking-[0.3em]">Our Values</span>
+            <h2 className="text-3xl font-serif font-semibold text-wine mt-2">What We Stand For</h2>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {values.map((v) => (
-              <div key={v.title} className="bg-slate-50 rounded-2xl p-7 shadow-sm text-center">
+              <div key={v.title} className="bg-cream rounded-2xl p-7 shadow-sm text-center">
                 <div className="text-4xl mb-4">{v.icon}</div>
-                <h3 className="text-xl font-bold text-slate-800 mb-3">{v.title}</h3>
+                <h3 className="text-xl font-serif font-semibold text-wine mb-3">{v.title}</h3>
                 <p className="text-slate-500 text-sm leading-relaxed">{v.desc}</p>
               </div>
             ))}
@@ -105,10 +105,10 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="py-16 bg-[#5A0E24]">
+      <section className="py-16 bg-wine-gradient">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <span className="text-amber-300 text-sm font-semibold uppercase tracking-wider">Limited Time Offers</span>
-          <h2 className="text-3xl font-bold text-white mt-2 mb-8">Special Promotions</h2>
+          <span className="text-gold-light text-sm font-semibold uppercase tracking-wider">Limited Time Offers</span>
+          <h2 className="text-3xl font-serif font-semibold text-white mt-2 mb-8">Special Promotions</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
             {[
               { icon: "🍽️", title: "Dine Free", desc: "Book 2 nights hotel or apartment and get 2 free dinner or breakfast meals" },
@@ -123,7 +123,7 @@ export default function AboutPage() {
             ))}
           </div>
           <div className="mt-8">
-            <Link href="/book" className="inline-block px-7 py-3 bg-white text-[#5A0E24] font-semibold rounded-xl hover:bg-amber-50 transition-colors">
+            <Link href="/book" className="inline-block px-7 py-3 bg-white text-primary font-semibold rounded-xl hover:bg-cream transition-colors">
               Book Now
             </Link>
           </div>

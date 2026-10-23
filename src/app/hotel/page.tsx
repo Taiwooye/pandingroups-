@@ -73,7 +73,7 @@ export default function HotelPage() {
       <section className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Filter bar */}
-          <div className="flex flex-wrap items-center gap-3 mb-10 p-4 bg-slate-50 rounded-xl">
+          <div className="flex flex-wrap items-center gap-3 mb-10 p-4 bg-cream rounded-xl">
             <span className="text-sm font-semibold text-slate-600 mr-2">Filter by:</span>
             {categories.map((cat) => (
               <button
@@ -81,8 +81,8 @@ export default function HotelPage() {
                 onClick={() => setActive(cat)}
                 className={`px-4 py-1.5 rounded-full text-sm font-medium transition-colors ${
                   active === cat
-                    ? "bg-[#5A0E24] text-white"
-                    : "bg-white text-slate-600 border border-slate-200 hover:border-amber-300 hover:text-amber-600"
+                    ? "bg-wine-gradient text-white shadow-md"
+                    : "bg-white text-slate-600 border border-slate-200 hover:border-amber-300 hover:text-primary"
                 }`}
               >
                 {cat}
@@ -121,11 +121,11 @@ export default function HotelPage() {
       </section>
 
       {/* Facilities */}
-      <section className="py-14 bg-slate-50">
+      <section className="py-14 bg-cream">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-10">
-            <span className="text-amber-600 text-sm font-semibold uppercase tracking-wider">Included With Your Stay</span>
-            <h2 className="text-2xl font-bold text-slate-800 mt-2">Hotel Facilities</h2>
+            <span className="text-gold-dark font-semibold uppercase text-xs tracking-[0.3em]">Included With Your Stay</span>
+            <h2 className="text-2xl font-serif font-semibold text-wine mt-2">Hotel Facilities</h2>
           </div>
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-5">
             {[
@@ -136,7 +136,7 @@ export default function HotelPage() {
               { icon: "🛎️", title: "Concierge", desc: "24/7 personal service" },
               { icon: "🔑", title: "Key-Card Access", desc: "Secure entry system" },
             ].map((f) => (
-              <div key={f.title} className="bg-white rounded-2xl p-5 text-center shadow-sm hover:shadow-md transition-shadow">
+              <div key={f.title} className="card-luxe bg-white rounded-2xl p-5 text-center shadow-sm">
                 <div className="text-3xl mb-2">{f.icon}</div>
                 <div className="font-bold text-slate-800 text-sm mb-0.5">{f.title}</div>
                 <div className="text-xs text-slate-500">{f.desc}</div>
@@ -150,8 +150,8 @@ export default function HotelPage() {
       <section className="py-14 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-10">
-            <span className="text-amber-600 text-sm font-semibold uppercase tracking-wider">Who We Welcome</span>
-            <h2 className="text-2xl font-bold text-slate-800 mt-2">Our Rooms Are Perfect For</h2>
+            <span className="text-gold-dark font-semibold uppercase text-xs tracking-[0.3em]">Who We Welcome</span>
+            <h2 className="text-2xl font-serif font-semibold text-wine mt-2">Our Rooms Are Perfect For</h2>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
             {[
@@ -164,7 +164,7 @@ export default function HotelPage() {
               { icon: "🌍", title: "Travelers with Children", desc: "A safe, spacious environment that provides the perfect setting for family bonding." },
               { icon: "🌿", title: "Wellness Seekers", desc: "Tranquil atmosphere, pool access, and modern comforts to help you recharge." },
             ].map((item) => (
-              <div key={item.title} className="flex gap-4 p-5 bg-slate-50 rounded-2xl hover:bg-amber-50 transition-colors">
+              <div key={item.title} className="flex gap-4 p-5 bg-cream rounded-2xl hover:bg-cream transition-colors">
                 <span className="text-2xl shrink-0">{item.icon}</span>
                 <div>
                   <h3 className="font-bold text-slate-800 text-sm mb-1">{item.title}</h3>
@@ -177,12 +177,12 @@ export default function HotelPage() {
       </section>
 
       {/* CTA Banner */}
-      <section className="py-14 bg-[#5A0E24]">
+      <section className="py-14 bg-wine-gradient">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-2xl font-bold text-white mb-3">Book Your Stay Today</h2>
+          <h2 className="text-2xl font-serif font-semibold text-white mb-3">Book Your Stay Today</h2>
           <p className="text-red-100 mb-6">Experience a blend of luxury and comfort that will make your visit truly memorable.</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href="/book?service=hotel" className="px-6 py-3 bg-white text-[#5A0E24] font-semibold rounded-xl hover:bg-red-50 transition-colors">
+            <a href="/book?service=hotel" className="px-6 py-3 bg-white text-primary font-semibold rounded-xl hover:bg-red-50 transition-colors">
               Book Now
             </a>
             <a href="/contact" className="px-6 py-3 bg-transparent text-white font-semibold rounded-xl border border-white/40 hover:bg-white/10 transition-colors">

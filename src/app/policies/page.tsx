@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import PageHero from "@/components/PageHero";
 import * as policiesApi from "@/services/endpoints/policies";
 import { ApiDamageCharge, ApiPolicy } from "@/types";
 
@@ -13,7 +14,7 @@ export const dynamic = "force-dynamic";
 const POLICY_STYLES: Record<string, { iconBg: string; iconColor: string; dot: string; iconPath: string }> = {
   damage: {
     iconBg: "bg-red-50",
-    iconColor: "text-[#5A0E24]",
+    iconColor: "text-primary",
     dot: "bg-[#5A0E24]",
     iconPath: "M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z",
   },
@@ -24,9 +25,9 @@ const POLICY_STYLES: Record<string, { iconBg: string; iconColor: string; dot: st
     iconPath: "M3 10h10a8 8 0 018 8v2M3 10l6 6m-6-6l6-6",
   },
   cancellation: {
-    iconBg: "bg-amber-50",
-    iconColor: "text-amber-600",
-    dot: "bg-amber-500",
+    iconBg: "bg-cream",
+    iconColor: "text-gold-dark",
+    dot: "bg-gold",
     iconPath: "M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z",
   },
 };
@@ -62,21 +63,14 @@ export default async function PoliciesPage() {
   }
 
   return (
-    <div className="mt-16 md:mt-20">
-      {/* Hero */}
-      <div className="bg-[#5A0E24] py-14">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <nav className="flex items-center gap-2 mb-4 text-sm">
-            <Link href="/" className="text-red-200 hover:text-white">Home</Link>
-            <span className="text-red-300">/</span>
-            <span className="text-white">Policies</span>
-          </nav>
-          <h1 className="text-3xl md:text-4xl font-bold text-white">Guest Policies</h1>
-          <p className="text-red-100 mt-3 max-w-xl">
-            To ensure comfort for all guests and maintain our facilities to the highest standard, please review the policies below before your stay.
-          </p>
-        </div>
-      </div>
+    <div className="bg-cream">
+      <PageHero
+        title="Guest Policies"
+        subtitle="To ensure comfort for all guests and maintain our facilities to the highest standard, please review the policies below before your stay."
+        image="/images/gallery/exterior-3.jpg"
+        breadcrumbs={[{ label: "Home", href: "/" }, { label: "Policies" }]}
+        height="sm"
+      />
 
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-14 space-y-12">
 
@@ -91,16 +85,16 @@ export default async function PoliciesPage() {
                     <path strokeLinecap="round" strokeLinejoin="round" d={style.iconPath} />
                   </svg>
                 </div>
-                <h2 className="text-xl font-bold text-slate-800">{policy.title}</h2>
+                <h2 className="text-xl font-serif font-semibold text-wine">{policy.title}</h2>
               </div>
 
               {isDamage ? (
                 <>
                   <p className="text-slate-500 text-sm mb-5">{policy.content}</p>
                   {damageCharges.length > 0 && (
-                    <div className="bg-white rounded-2xl border border-slate-100 shadow-sm overflow-hidden">
+                    <div className="bg-white rounded-2xl border border-cream-dark shadow-sm overflow-hidden">
                       <table className="w-full text-sm">
-                        <thead className="bg-slate-50 border-b border-slate-100">
+                        <thead className="bg-cream border-b border-cream-dark">
                           <tr>
                             <th className="text-left px-5 py-3 text-xs font-semibold text-slate-500 uppercase tracking-wide">Item</th>
                             <th className="text-right px-5 py-3 text-xs font-semibold text-slate-500 uppercase tracking-wide">Charge</th>
@@ -110,7 +104,7 @@ export default async function PoliciesPage() {
                           {damageCharges.map((row) => (
                             <tr key={row.id} className="hover:bg-slate-50">
                               <td className="px-5 py-3.5 text-slate-700">{row.item}</td>
-                              <td className="px-5 py-3.5 text-right font-bold text-[#5A0E24]">
+                              <td className="px-5 py-3.5 text-right font-bold text-primary">
                                 ₦{parseFloat(row.charge).toLocaleString()}
                               </td>
                             </tr>
@@ -121,7 +115,7 @@ export default async function PoliciesPage() {
                   )}
                 </>
               ) : (
-                <div className="bg-white rounded-2xl border border-slate-100 shadow-sm p-6 space-y-4">
+                <div className="bg-white rounded-2xl border border-cream-dark shadow-sm p-6 space-y-4">
                   {toSentences(policy.content).map((sentence, i) => (
                     <div key={i} className="flex items-start gap-3">
                       <div className={`w-2 h-2 rounded-full ${style.dot} mt-2 shrink-0`} />
@@ -141,13 +135,13 @@ export default async function PoliciesPage() {
         )}
 
         {/* Contact strip */}
-        <div className="bg-slate-50 rounded-2xl p-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div className="bg-cream rounded-2xl p-6 flex flex-col sm:flex-row items-center justify-between gap-4">
           <div>
             <p className="font-semibold text-slate-800">Questions about our policies?</p>
             <p className="text-sm text-slate-500 mt-0.5">Our team is available 24/7 to help.</p>
           </div>
           <div className="flex gap-3 shrink-0">
-            <a href="tel:+2347054422968" className="px-5 py-2.5 bg-[#5A0E24] text-white text-sm font-semibold rounded-xl hover:bg-[#921224] transition-colors">
+            <a href="tel:+2347054422968" className="btn-wine px-5 py-2.5 text-sm font-semibold rounded-full">
               Call Us
             </a>
             <Link href="/contact" className="px-5 py-2.5 bg-white text-slate-700 text-sm font-semibold rounded-xl border border-slate-200 hover:bg-slate-50 transition-colors">

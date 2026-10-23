@@ -23,9 +23,7 @@ export default function CardCarousel({ images, alt }: CardCarouselProps) {
       {images.map((src, i) => (
         <div
           key={i}
-          className={`absolute inset-0 transition-opacity duration-700 ${
-            i === current ? "opacity-100 z-[1]" : "opacity-0 z-0"
-          }`}
+          className={`absolute inset-0 transition-opacity duration-700 ${ i === current ? "opacity-100 z-[1]" : "opacity-0 z-0" }`}
         >
           <Image
             src={src}

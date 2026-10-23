@@ -3,8 +3,8 @@ import { ApiDamageCharge, ApiPolicy } from "@/types";
 
 // Card order and title colour per policy type
 const POLICY_CARDS: { type: string; titleColor: string }[] = [
-  { type: "cancellation", titleColor: "text-[#5A0E24]" },
-  { type: "refund", titleColor: "text-amber-600" },
+  { type: "cancellation", titleColor: "text-primary" },
+  { type: "refund", titleColor: "text-gold-dark" },
   { type: "damage", titleColor: "text-slate-700" },
 ];
 
@@ -25,7 +25,7 @@ export default function PolicyCards({ policies, damageCharges, cardClassName = "
     return (
       <p className="text-xs text-slate-500 leading-relaxed">
         Please review our{" "}
-        <Link href="/policies" className="text-[#5A0E24] underline hover:no-underline">
+        <Link href="/policies" className="text-primary underline hover:no-underline">
           Guest Policies
         </Link>{" "}
         for cancellation, refund, and damage terms.
@@ -42,13 +42,13 @@ export default function PolicyCards({ policies, damageCharges, cardClassName = "
   return (
     <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
       {cards.map(({ type, titleColor, policy }) => (
-        <div key={type} className={`${cardClassName} rounded-xl p-4 border border-slate-100`}>
+        <div key={type} className={`${cardClassName} rounded-xl p-4 border border-cream-dark`}>
           <p className={`font-semibold ${titleColor} text-sm mb-2`}>{policy!.title}</p>
           <p className="text-xs text-slate-500 leading-relaxed">
             {type === "damage" ? (
               <>
                 Charges apply for damages during your stay{damageExamples && ` (e.g. ${damageExamples})`}.{" "}
-                <Link href="/policies" className="text-[#5A0E24] underline hover:no-underline">
+                <Link href="/policies" className="text-primary underline hover:no-underline">
                   View full schedule
                 </Link>
                 .

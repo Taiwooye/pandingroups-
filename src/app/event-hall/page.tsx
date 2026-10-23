@@ -39,7 +39,7 @@ export default async function EventHallPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between mb-8">
             <div>
-              <h2 className="text-2xl font-bold text-slate-800">Available Venues</h2>
+              <h2 className="text-2xl font-serif font-semibold text-wine">Available Venues</h2>
               <p className="text-slate-500 text-sm mt-1">{availableCount} of {halls.length} venues currently available</p>
             </div>
           </div>
@@ -58,7 +58,7 @@ export default async function EventHallPage() {
                 const images = hall.media.length > 0 ? hall.media.map((m) => m.url) : [image];
 
                 return (
-                  <div key={hall.slug} className="bg-white rounded-2xl overflow-hidden shadow-sm border border-slate-100 hover:shadow-lg transition-shadow group">
+                  <div key={hall.slug} className="card-luxe bg-white rounded-2xl overflow-hidden shadow-sm border border-cream-dark group">
                     <div className="relative h-64 overflow-hidden">
                       <CardCarousel images={images} alt={hall.name} />
                       <div className="absolute top-3 left-3 z-10">
@@ -66,39 +66,39 @@ export default async function EventHallPage() {
                           {isAvailable ? "Available" : "Booked"}
                         </span>
                       </div>
-                      <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-slate-900/60 to-transparent z-10" />
+                      <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-wine-deep/60 to-transparent z-10" />
                     </div>
                     <div className="p-6">
-                      <h3 className="text-xl font-bold text-slate-800 mb-2">{hall.name}</h3>
+                      <h3 className="text-xl font-serif font-semibold text-wine mb-2">{hall.name}</h3>
                       <p className="text-sm text-slate-500 mb-5 leading-relaxed">{hall.description}</p>
 
                       <div className="grid grid-cols-3 gap-3 mb-5">
-                        <div className="bg-amber-50 rounded-lg p-3 text-center">
-                          <div className="text-lg font-bold text-amber-700">{hall.max_capacity}</div>
+                        <div className="bg-cream rounded-lg p-3 text-center">
+                          <div className="text-lg font-bold text-gold-dark">{hall.max_capacity}</div>
                           <div className="text-xs text-slate-500">Max Guests</div>
                         </div>
-                        <div className="bg-amber-50 rounded-lg p-3 text-center">
-                          <div className="text-lg font-bold text-amber-700">{hall.floor_space_sqm}m&sup2;</div>
+                        <div className="bg-cream rounded-lg p-3 text-center">
+                          <div className="text-lg font-bold text-gold-dark">{hall.floor_space_sqm}m&sup2;</div>
                           <div className="text-xs text-slate-500">Floor Space</div>
                         </div>
-                        <div className="bg-amber-50 rounded-lg p-3 text-center">
-                          <div className="text-lg font-bold text-amber-700">&#8358;{(price / 1000).toFixed(0)}k</div>
+                        <div className="bg-cream rounded-lg p-3 text-center">
+                          <div className="text-lg font-bold text-gold-dark">&#8358;{(price / 1000).toFixed(0)}k</div>
                           <div className="text-xs text-slate-500">Per Day</div>
                         </div>
                       </div>
 
                       <div className="flex flex-wrap gap-1.5 mb-5">
                         {(hall.event_types ?? []).map((s) => (
-                          <span key={s} className="px-2.5 py-1 bg-amber-50 text-amber-700 text-xs rounded-full font-medium">{s}</span>
+                          <span key={s} className="px-2.5 py-1 bg-cream text-gold-dark text-xs rounded-full font-medium">{s}</span>
                         ))}
                       </div>
 
-                      <div className="flex items-center justify-between pt-4 border-t border-slate-100">
+                      <div className="flex items-center justify-between pt-4 border-t border-cream-dark">
                         <div>
-                          <span className="text-2xl font-bold text-amber-700">&#8358;{price.toLocaleString()}</span>
+                          <span className="text-2xl font-bold text-gold-dark">&#8358;{price.toLocaleString()}</span>
                           <span className="text-sm text-slate-400 ml-1">/ day</span>
                         </div>
-                        <Link href={`/event-hall/${hall.slug}`} className="px-5 py-2 bg-[#5A0E24] text-white text-sm font-semibold rounded-lg hover:bg-[#921224] transition-colors">
+                        <Link href={`/event-hall/${hall.slug}`} className="btn-wine px-5 py-2 text-sm font-semibold rounded-full">
                           View Details
                         </Link>
                       </div>
@@ -112,10 +112,10 @@ export default async function EventHallPage() {
       </section>
 
       {/* Why Choose Us */}
-      <section className="py-14 bg-slate-50">
+      <section className="py-14 bg-cream">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-10">
-            <h2 className="text-2xl font-bold text-slate-800">Why Host Your Event With Us</h2>
+            <h2 className="text-2xl font-serif font-semibold text-wine">Why Host Your Event With Us</h2>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {[
