@@ -5,6 +5,19 @@ import Image from "next/image";
 import PageHero from "@/components/PageHero";
 import * as bookingsApi from "@/services/endpoints/bookings";
 
+// YYYY-MM-DD in the visitor's local time zone, as used by <input type="date">
+function toDateInput(d: Date): string {
+  const y = d.getFullYear();
+  const m = String(d.getMonth() + 1).padStart(2, "0");
+  const day = String(d.getDate()).padStart(2, "0");
+  return `${y}-${m}-${day}`;
+}
+
+function addDays(date: string, days: number): string {
+  const [y, m, d] = date.split("-").map(Number);
+  return toDateInput(new Date(y, m - 1, d + days));
+}
+
 const SERVICE_LABELS: Record<string, string> = {
   hotel: "Hotel Room",
   apartment: "Apartment",
@@ -30,12 +43,31 @@ export default function ContactPage() {
   const [submitError, setSubmitError] = useState("");
   const [bookingRef, setBookingRef] = useState("");
 
+  const today = toDateInput(new Date());
+  const minCheckOut = addDays(form.checkIn || today, 1);
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
-    setForm({ ...form, [e.target.name]: e.target.value });
+    const { name, value } = e.target;
+    const next = { ...form, [name]: value };
+    // Clear check-out if the new check-in is on or after it
+    if (name === "checkIn" && next.checkOut && value && next.checkOut <= value) next.checkOut = "";
+    setForm(next);
+  };
+
+  const validateDates = (): string => {
+    if (form.checkIn && form.checkIn < today) return "Check-in date cannot be in the past.";
+    if (form.checkOut && !form.checkIn) return "Please select a check-in date.";
+    if (form.checkOut && form.checkOut <= form.checkIn) return "Check-out date must be after the check-in date.";
+    return "";
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    const dateError = validateDates();
+    if (dateError) {
+      setSubmitError(dateError);
+      return;
+    }
     setSubmitError("");
     setSending(true);
 
@@ -250,6 +282,7 @@ export default function ContactPage() {
                         type="date"
                         name="checkIn"
                         value={form.checkIn}
+                        min={today}
                         onChange={handleChange}
                         className="w-full px-4 py-3 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-amber-300"
                       />
@@ -260,6 +293,7 @@ export default function ContactPage() {
                         type="date"
                         name="checkOut"
                         value={form.checkOut}
+                        min={minCheckOut}
                         onChange={handleChange}
                         className="w-full px-4 py-3 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-amber-300"
                       />
