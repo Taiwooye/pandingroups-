@@ -1,8 +1,18 @@
-﻿"use client";
+"use client";
 
 import { useState } from "react";
 import Image from "next/image";
 import PageHero from "@/components/PageHero";
+import * as bookingsApi from "@/services/endpoints/bookings";
+
+const SERVICE_LABELS: Record<string, string> = {
+  hotel: "Hotel Room",
+  apartment: "Apartment",
+  "event-hall": "Event Hall",
+  "lounge-bar": "Lounge & Bar",
+  dining: "Dining",
+  other: "General Enquiry",
+};
 
 export default function ContactPage() {
   const [form, setForm] = useState({
@@ -16,14 +26,44 @@ export default function ContactPage() {
     message: "",
   });
   const [submitted, setSubmitted] = useState(false);
+  const [sending, setSending] = useState(false);
+  const [submitError, setSubmitError] = useState("");
+  const [bookingRef, setBookingRef] = useState("");
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setSubmitted(true);
+    setSubmitError("");
+    setSending(true);
+
+    // General enquiries only store name, email, phone and message,
+    // so the reservation details are included in the message for staff.
+    const details = [
+      form.service && `Service: ${SERVICE_LABELS[form.service] ?? form.service}`,
+      form.checkIn && `Check-in: ${form.checkIn}`,
+      form.checkOut && `Check-out: ${form.checkOut}`,
+      form.guests && `Guests: ${form.guests}`,
+    ].filter(Boolean);
+    const message = [details.join("\n"), form.message.trim()].filter(Boolean).join("\n\n");
+
+    try {
+      const result = await bookingsApi.create({
+        service_type: "general",
+        guest_name: form.name.trim(),
+        guest_email: form.email.trim(),
+        guest_phone: form.phone.trim() || undefined,
+        message: message || undefined,
+      });
+      setBookingRef(result?.data?.booking_ref ?? "");
+      setSubmitted(true);
+    } catch {
+      setSubmitError("We could not send your enquiry. Please check your connection and try again, or call +234 (0) 705 442 2968.");
+    } finally {
+      setSending(false);
+    }
   };
 
   return (
@@ -132,6 +172,11 @@ export default function ContactPage() {
                     <p className="text-slate-500 max-w-sm mx-auto">
                       Thank you for reaching out. Our team will contact you within 2 hours to confirm your booking or answer your enquiry.
                     </p>
+                    {bookingRef && (
+                      <p className="text-sm text-slate-500 mt-4">
+                        Your reference: <span className="font-bold text-slate-800">{bookingRef}</span>
+                      </p>
+                    )}
                   </div>
                 </div>
               ) : (
@@ -246,13 +291,18 @@ export default function ContactPage() {
                     />
                   </div>
 
+                  {submitError && (
+                    <p className="text-sm text-red-600 bg-red-50 border border-red-100 rounded-xl px-4 py-3">{submitError}</p>
+                  )}
+
                   <button
                     type="submit"
-                    className="w-full py-3.5 bg-[#5A0E24] text-white font-semibold rounded-xl hover:bg-[#921224] transition-colors shadow-md"
+                    disabled={sending}
+                    className="w-full py-3.5 bg-[#5A0E24] text-white font-semibold rounded-xl hover:bg-[#921224] transition-colors shadow-md disabled:opacity-60 disabled:cursor-not-allowed"
                   >
-                    Send Enquiry
+                    {sending ? "Sending..." : "Send Enquiry"}
                   </button>
-                  <p className="text-xs text-slate-400 text-center">We respond within 2 hours during business hours (8 AM Ã¢â‚¬â€œ 10 PM)</p>
+                  <p className="text-xs text-slate-400 text-center">We respond within 2 hours during business hours (8 AM – 10 PM)</p>
                 </form>
               )}
             </div>
