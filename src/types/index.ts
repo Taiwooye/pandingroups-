@@ -199,11 +199,45 @@ export interface ApiBarWithItems {
   menu_items: ApiBarMenuItemDetailed[];
 }
 
+export interface ApiGalleryItem {
+  id: number;
+  url: string;
+  file_name: string;
+  mime_type: string;
+  type: { value: string; label: string };
+  alt_text: string | null;
+  category: { value: string; label: string };
+  sort_order: number;
+}
+
+export interface ApiPolicy {
+  id: number;
+  type: string;
+  title: string;
+  content: string;
+}
+
+export interface ApiDamageCharge {
+  id: number;
+  item: string;
+  charge: string;
+  sort_order: number;
+}
+
 export interface ApiOffering {
   type: string;
   label: string;
   description: string;
   meta: Record<string, unknown>;
+}
+
+export interface ApiPromotion {
+  id: number;
+  title: string;
+  description: string;
+  badge: string | null;
+  icon: string | null;
+  sort_order: number;
 }
 
 export interface ApiTestimonial {

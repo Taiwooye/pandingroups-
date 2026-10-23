@@ -8,7 +8,9 @@ import { useRoomList } from "@/hooks/queries/useRoom";
 import { useApartmentList } from "@/hooks/queries/useApartment";
 import { useVenueList } from "@/hooks/queries/useVenue";
 import { useBarsLoungeList } from "@/hooks/queries/useBarsLounge";
-import { ApiRoom, ApiApartment, ApiVenue, ApiBar } from "@/types";
+import { useDamageChargeList, usePolicyList } from "@/hooks/queries/usePolicies";
+import PolicyCards from "@/components/PolicyCards";
+import { ApiRoom, ApiApartment, ApiVenue, ApiBar, ApiDamageCharge, ApiPolicy } from "@/types";
 import * as bookingsApi from "@/services/endpoints/bookings";
 
 // Types
@@ -217,6 +219,10 @@ function BookContent() {
   const { data: aptsResult } = useApartmentList();
   const { data: venuesResult } = useVenueList();
   const { data: barsResult } = useBarsLoungeList();
+  const { data: policiesResult } = usePolicyList();
+  const { data: damageChargesResult } = useDamageChargeList();
+  const policies: ApiPolicy[] = policiesResult?.data ?? [];
+  const damageCharges: ApiDamageCharge[] = damageChargesResult?.data ?? [];
 
   const hotelRooms = useMemo(() => {
     const raw = (roomsResult?.data ?? []) as ApiRoom[];
@@ -855,20 +861,7 @@ function BookContent() {
                     <h2 className="text-lg font-bold text-slate-800">Guest Policies</h2>
                   </div>
 
-                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                    <div className="bg-slate-50 rounded-xl p-4 border border-slate-100">
-                      <p className="font-semibold text-[#5A0E24] text-sm mb-2">Cancellation</p>
-                      <p className="text-xs text-slate-500 leading-relaxed">Cancellations attract a <strong className="text-slate-700">25% fee</strong> of the total amount paid. Refunds are processed within 72 hours via the original payment method.</p>
-                    </div>
-                    <div className="bg-slate-50 rounded-xl p-4 border border-slate-100">
-                      <p className="font-semibold text-amber-600 text-sm mb-2">Refund Policy</p>
-                      <p className="text-xs text-slate-500 leading-relaxed">Refunds are returned through the original payment method and may take <strong className="text-slate-700">48&ndash;72 hours</strong> to reflect.</p>
-                    </div>
-                    <div className="bg-slate-50 rounded-xl p-4 border border-slate-100">
-                      <p className="font-semibold text-slate-700 text-sm mb-2">Damage Policy</p>
-                      <p className="text-xs text-slate-500 leading-relaxed">Charges apply for damages during your stay (e.g. stained linen &#8358;10,000, lost key card &#8358;10,000). <a href="/policies" className="text-[#5A0E24] underline hover:no-underline">View full schedule</a>.</p>
-                    </div>
-                  </div>
+                  <PolicyCards policies={policies} damageCharges={damageCharges} cardClassName="bg-slate-50" />
 
                   {/* Agreement checkbox */}
                   <label className="flex items-start gap-3 cursor-pointer group mt-2">

@@ -4,7 +4,9 @@ import ServiceCard from "@/components/ServiceCard";
 import HeroCarousel from "@/components/HeroCarousel";
 import * as roomsApi from "@/services/endpoints/rooms";
 import * as testimonialsApi from "@/services/endpoints/testimonials";
-import { ApiRoom, ApiTestimonial } from "@/types";
+import * as galleryApi from "@/services/endpoints/gallery";
+import * as promotionsApi from "@/services/endpoints/promotions";
+import { ApiGalleryItem, ApiPromotion, ApiRoom, ApiTestimonial } from "@/types";
 
 export const dynamic = "force-dynamic";
 
@@ -47,43 +49,40 @@ const amenities = [
   { icon: "📶", title: "High-Speed Wi-Fi", desc: "Complimentary Wi-Fi throughout" },
 ];
 
-const promotions = [
-  {
-    icon: "🍽️",
-    title: "Dine on Us",
-    desc: "Book 2 nights in a hotel room or apartment and receive 2 complimentary dinner or breakfast meals.",
-    badge: "Hotel & Apartment",
-    color: "bg-amber-50 border-amber-200",
-    badgeColor: "bg-amber-100 text-amber-700",
-  },
-  {
-    icon: "🏋️",
-    title: "Free Gym Week",
-    desc: "Book a 5–7 day apartment stay and receive 1 free week of gym use when our gym opens.",
-    badge: "Apartments Only",
-    color: "bg-blue-50 border-blue-200",
-    badgeColor: "bg-blue-100 text-blue-700",
-  },
-  {
-    icon: "🎁",
-    title: "10% Online Discount",
-    desc: "Get 10% off any hotel stay or event booking made online before July 2026. Book early, save more.",
-    badge: "Limited Time",
-    color: "bg-[#5A0E24]/5 border-[#5A0E24]/20",
-    badgeColor: "bg-[#5A0E24]/10 text-[#5A0E24]",
-  },
+// Card colours, cycled across promotions in display order
+const PROMOTION_STYLES = [
+  { color: "bg-amber-50 border-amber-200", badgeColor: "bg-amber-100 text-amber-700" },
+  { color: "bg-blue-50 border-blue-200", badgeColor: "bg-blue-100 text-blue-700" },
+  { color: "bg-[#5A0E24]/5 border-[#5A0E24]/20", badgeColor: "bg-[#5A0E24]/10 text-[#5A0E24]" },
 ];
 
 export default async function HomePage() {
   let featuredRooms: ApiRoom[] = [];
   let liveTestimonials: ApiTestimonial[] = [];
+  let heroImages = HERO_IMAGES;
+  let promotions: ApiPromotion[] = [];
   try {
-    const [roomsResult, testimonialsResult] = await Promise.allSettled([
+    const [roomsResult, testimonialsResult, galleryResult, promotionsResult] = await Promise.allSettled([
       roomsApi.list(),
       testimonialsApi.list(),
+      galleryApi.list({ category: "exterior" }),
+      promotionsApi.list(),
     ]);
+    if (promotionsResult.status === "fulfilled") {
+      promotions = (promotionsResult.value.data ?? []).sort(
+        (a: ApiPromotion, b: ApiPromotion) => a.sort_order - b.sort_order
+      );
+    }
     if (roomsResult.status === "fulfilled") featuredRooms = (roomsResult.value.data ?? []).slice(0, 3);
     if (testimonialsResult.status === "fulfilled") liveTestimonials = testimonialsResult.value.data ?? [];
+    if (galleryResult.status === "fulfilled") {
+      const items: ApiGalleryItem[] = (galleryResult.value.data ?? []).filter(
+        (g: ApiGalleryItem) => g.type.value === "image"
+      );
+      if (items.length > 0) {
+        heroImages = items.map((g) => ({ src: g.url, alt: g.alt_text ?? "PaNDiN Group" }));
+      }
+    }
   } catch {
     // keep defaults
   }
@@ -91,7 +90,7 @@ export default async function HomePage() {
   return (
     <div className="flex flex-col">
       {/* Hero Carousel */}
-      <HeroCarousel images={HERO_IMAGES} />
+      <HeroCarousel images={heroImages} />
 
       {/* Stats */}
       <section className="bg-[#5A0E24] py-10">
@@ -198,6 +197,7 @@ export default async function HomePage() {
       </section>
 
       {/* Special Promotions */}
+      {promotions.length > 0 && (
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
@@ -208,14 +208,19 @@ export default async function HomePage() {
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {promotions.map((p) => (
-              <div key={p.title} className={`rounded-2xl border p-6 ${p.color}`}>
-                <div className="text-4xl mb-4">{p.icon}</div>
-                <span className={`inline-block px-3 py-1 text-xs font-semibold rounded-full mb-3 ${p.badgeColor}`}>{p.badge}</span>
-                <h3 className="text-lg font-bold text-slate-800 mb-2">{p.title}</h3>
-                <p className="text-sm text-slate-600 leading-relaxed">{p.desc}</p>
-              </div>
-            ))}
+            {promotions.map((p, i) => {
+              const style = PROMOTION_STYLES[i % PROMOTION_STYLES.length];
+              return (
+                <div key={p.id} className={`rounded-2xl border p-6 ${style.color}`}>
+                  {p.icon && <div className="text-4xl mb-4">{p.icon}</div>}
+                  {p.badge && (
+                    <span className={`inline-block px-3 py-1 text-xs font-semibold rounded-full mb-3 ${style.badgeColor}`}>{p.badge}</span>
+                  )}
+                  <h3 className="text-lg font-bold text-slate-800 mb-2">{p.title}</h3>
+                  <p className="text-sm text-slate-600 leading-relaxed">{p.description}</p>
+                </div>
+              );
+            })}
           </div>
           <div className="text-center mt-8">
             <Link href="/book" className="inline-flex items-center gap-2 px-8 py-3.5 bg-[#5A0E24] text-white font-semibold rounded-xl hover:bg-[#921224] transition-colors shadow-md">
@@ -224,10 +229,10 @@ export default async function HomePage() {
                 <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
               </svg>
             </Link>
-            <p className="text-xs text-slate-400 mt-3">10% online discount valid for bookings made before July 2026</p>
           </div>
         </div>
       </section>
+      )}
 
       {/* Testimonials */}
       <section className="py-20 bg-slate-50">

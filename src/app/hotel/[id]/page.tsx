@@ -3,8 +3,10 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import * as roomsApi from "@/services/endpoints/rooms";
-import { ApiRoom } from "@/types";
+import * as policiesApi from "@/services/endpoints/policies";
+import { ApiDamageCharge, ApiPolicy, ApiRoom } from "@/types";
 import BookingSidebar from "@/components/BookingSidebar";
+import PolicyCards from "@/components/PolicyCards";
 
 const FALLBACK_IMAGE = "/images/gallery/hotel-1.jpg";
 
@@ -32,6 +34,15 @@ export default async function HotelRoomPage(props: PageProps<"/hotel/[id]">) {
   } catch {
     notFound();
   }
+
+  let policies: ApiPolicy[] = [];
+  let damageCharges: ApiDamageCharge[] = [];
+  const [policiesResult, chargesResult] = await Promise.allSettled([
+    policiesApi.list(),
+    policiesApi.listDamageCharges(),
+  ]);
+  if (policiesResult.status === "fulfilled") policies = policiesResult.value.data ?? [];
+  if (chargesResult.status === "fulfilled") damageCharges = chargesResult.value.data ?? [];
 
   const heroImage = room.media[0]?.url ?? room.media[1]?.url ?? FALLBACK_IMAGE;
   const gallery = room.media.slice(0, 5).map((m) => m.url);
@@ -141,20 +152,7 @@ export default async function HotelRoomPage(props: PageProps<"/hotel/[id]">) {
             {/* Policies */}
             <div className="bg-slate-50 rounded-2xl p-6 space-y-4">
               <h2 className="text-xl font-bold text-slate-800">Guest Policies</h2>
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                <div className="bg-white rounded-xl p-4 border border-slate-100">
-                  <p className="font-semibold text-[#5A0E24] text-sm mb-1">Cancellation</p>
-                  <p className="text-xs text-slate-500 leading-relaxed">25% cancellation fee applies. Refund within 72 hours via original payment method.</p>
-                </div>
-                <div className="bg-white rounded-xl p-4 border border-slate-100">
-                  <p className="font-semibold text-amber-600 text-sm mb-1">Refund</p>
-                  <p className="text-xs text-slate-500 leading-relaxed">Processed via original payment method. Allow 48–72 hours to reflect.</p>
-                </div>
-                <div className="bg-white rounded-xl p-4 border border-slate-100">
-                  <p className="font-semibold text-slate-700 text-sm mb-1">Damage</p>
-                  <p className="text-xs text-slate-500 leading-relaxed">Charges apply for damage to linen, key cards, remotes, and walls. <Link href="/policies" className="text-[#5A0E24] hover:underline">View full schedule</Link>.</p>
-                </div>
-              </div>
+              <PolicyCards policies={policies} damageCharges={damageCharges} />
             </div>
 
             {/* Gallery */}

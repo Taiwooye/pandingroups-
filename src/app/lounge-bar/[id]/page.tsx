@@ -2,34 +2,60 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { BARS_MENU_DATA } from "@/data/barsMenuData";
+import * as barsLoungeApi from "@/services/endpoints/barsLounge";
+import { ApiBar, ApiBarMenuItem } from "@/types";
 
 const FALLBACK_IMAGE = "/images/gallery/exterior-4.jpg";
+
+// Display order and labels for menu categories (API groups them alphabetically)
+const CATEGORY_LABELS: Record<string, string> = {
+  cocktails: "Cocktails",
+  wines: "Wines",
+  beers: "Beers",
+  spirits: "Spirits",
+  non_alcoholic: "Non-Alcoholic",
+};
 
 export const dynamic = "force-dynamic";
 
 export async function generateMetadata(props: PageProps<"/lounge-bar/[id]">): Promise<Metadata> {
   const { id } = await props.params;
-  const bar = BARS_MENU_DATA.find((b) => b.slug === id);
-  if (!bar) return {};
-  return { title: bar.name, description: bar.description };
+  try {
+    const result = await barsLoungeApi.getBySlug(id);
+    const bar: ApiBar = result.data;
+    return { title: bar.name, description: bar.description };
+  } catch {
+    return {};
+  }
 }
 
 export default async function LoungeDetailPage(props: PageProps<"/lounge-bar/[id]">) {
   const { id } = await props.params;
 
-  const lounge = BARS_MENU_DATA.find((b) => b.slug === id);
-  if (!lounge) notFound();
+  let lounge: ApiBar;
+  try {
+    const result = await barsLoungeApi.getBySlug(id);
+    lounge = result.data;
+    if (!lounge) notFound();
+  } catch {
+    notFound();
+  }
 
   const heroImage = lounge.media[0]?.url ?? lounge.media[1]?.url ?? FALLBACK_IMAGE;
   const gallery = lounge.media.slice(0, 5).map((m) => m.url);
   const isOpen = lounge.status.value === "open";
-  const categoryOrder = Array.from(new Set(lounge.menu_items.map((i) => i.category.value)));
-  const menuCategories = categoryOrder.map((value) => ({
-    value,
-    label: lounge.menu_items.find((i) => i.category.value === value)!.category.label,
-    items: lounge.menu_items.filter((i) => i.category.value === value).sort((a, b) => a.sort_order - b.sort_order),
-  }));
+  const menu: Record<string, ApiBarMenuItem[] | undefined> = lounge.menu ?? {};
+  const categoryOrder = [
+    ...Object.keys(CATEGORY_LABELS),
+    ...Object.keys(menu).filter((value) => !(value in CATEGORY_LABELS)),
+  ];
+  const menuCategories = categoryOrder
+    .filter((value) => (menu[value]?.length ?? 0) > 0)
+    .map((value) => ({
+      value,
+      label: CATEGORY_LABELS[value] ?? value.replace(/_/g, " ").replace(/\b\w/g, (c) => c.toUpperCase()),
+      items: menu[value]!,
+    }));
 
   return (
     <div className="mt-16 md:mt-20">
