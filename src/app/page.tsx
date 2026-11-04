@@ -5,6 +5,7 @@ import HeroCarousel from "@/components/HeroCarousel";
 import Reveal from "@/components/Reveal";
 import CountUp from "@/components/CountUp";
 import SectionHeading from "@/components/SectionHeading";
+import ComingSoonOverlay from "@/components/ComingSoonOverlay";
 import * as roomsApi from "@/services/endpoints/rooms";
 import * as testimonialsApi from "@/services/endpoints/testimonials";
 import * as galleryApi from "@/services/endpoints/gallery";
@@ -92,6 +93,8 @@ export default async function HomePage() {
 
   return (
     <div className="flex flex-col">
+      <ComingSoonOverlay />
+
       {/* Hero Carousel */}
       <HeroCarousel images={heroImages} />
 
