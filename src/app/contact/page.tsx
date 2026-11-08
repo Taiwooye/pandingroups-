@@ -5,6 +5,7 @@ import Image from "next/image";
 import PageHero from "@/components/PageHero";
 import DatePicker from "@/components/DatePicker";
 import * as bookingsApi from "@/services/endpoints/bookings";
+import ComingSoonOverlay, { COMING_SOON } from "@/components/ComingSoonOverlay";
 
 // YYYY-MM-DD in the visitor's local time zone
 function toDateInput(d: Date): string {
@@ -65,8 +66,14 @@ export default function ContactPage() {
     return "";
   };
 
+  const [showComingSoon, setShowComingSoon] = useState(false);
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (COMING_SOON) {
+      setShowComingSoon(true);
+      return;
+    }
     const dateError = validateDates();
     if (dateError) {
       setSubmitError(dateError);
@@ -104,6 +111,7 @@ export default function ContactPage() {
 
   return (
     <div>
+      {showComingSoon && <ComingSoonOverlay />}
       <PageHero
         title="Contact & Reservations"
         subtitle="We&apos;d love to hear from you. Reach out to make a reservation or enquire about our services."

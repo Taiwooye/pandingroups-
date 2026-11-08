@@ -1,4 +1,5 @@
 import { apiClient } from "../apiClient";
+import { COMING_SOON } from "@/components/ComingSoonOverlay";
 
 const BASE_PATH = "/api/v1/bookings";
 
@@ -13,6 +14,7 @@ export async function getById(id: string) {
 }
 
 export async function create(payload: unknown) {
+  if (COMING_SOON) throw new Error("Bookings are disabled until launch");
   const { data } = await apiClient.post(BASE_PATH, payload);
   return data;
 }

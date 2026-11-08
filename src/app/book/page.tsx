@@ -13,6 +13,7 @@ import PolicyCards from "@/components/PolicyCards";
 import DatePicker from "@/components/DatePicker";
 import { ApiRoom, ApiApartment, ApiVenue, ApiBar, ApiDamageCharge, ApiPolicy } from "@/types";
 import * as bookingsApi from "@/services/endpoints/bookings";
+import ComingSoonOverlay, { COMING_SOON } from "@/components/ComingSoonOverlay";
 
 // Types
 
@@ -374,8 +375,13 @@ function BookContent() {
   }
 
   const [bookingError, setBookingError] = useState("");
+  const [showComingSoon, setShowComingSoon] = useState(false);
 
   const handleTransferConfirm = useCallback(async () => {
+    if (COMING_SOON) {
+      setShowComingSoon(true);
+      return;
+    }
     setBookingError("");
     setStep("sending");
     try {
@@ -981,6 +987,7 @@ function BookContent() {
 
   return (
     <div className="min-h-screen bg-cream">
+      {showComingSoon && <ComingSoonOverlay />}
       <div className="bg-wine-gradient py-10 text-center px-4">
         <p className="text-white/70 text-sm mb-2">Booking Reference</p>
         <h1 className="text-2xl font-black text-white tracking-widest">{bookingRef}</h1>

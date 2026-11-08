@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono, Playfair_Display } from "next/font/google";
 import "./globals.css";
 import ClientLayout from "@/components/ClientLayout";
+import ComingSoonOverlay, { COMING_SOON } from "@/components/ComingSoonOverlay";
 import { StoreProvider } from "@/store/provider";
 import { QueryProvider } from "@/providers/QueryProvider";
 
@@ -47,6 +48,7 @@ export default function RootLayout({
             <ClientLayout>{children}</ClientLayout>
           </StoreProvider>
         </QueryProvider>
+        {COMING_SOON && <ComingSoonOverlay />}
       </body>
     </html>
   );

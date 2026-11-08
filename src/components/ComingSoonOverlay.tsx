@@ -2,6 +2,9 @@
 
 import { useEffect } from "react";
 
+// Site-wide launch gate. Set to false to open the site and re-enable bookings.
+export const COMING_SOON = true;
+
 // Full-screen "Coming Soon" overlay. Intentionally has no close control.
 export default function ComingSoonOverlay() {
   useEffect(() => {
