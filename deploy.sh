@@ -22,8 +22,9 @@ ssh "$SERVER" "set -e
   cd $APP_DIR
   npm ci --no-audit --no-fund
   npm run build
-  pm2 restart $APP_NAME
-  pm2 save"
+  # Fail fast if the PM2 daemon is unresponsive instead of hanging forever
+  timeout 60 pm2 restart $APP_NAME || { echo 'pm2 restart timed out or failed — PM2 daemon may be stuck' >&2; exit 1; }
+  timeout 30 pm2 save || { echo 'pm2 save timed out or failed' >&2; exit 1; }"
 
 echo "==> Checking site"
 for _ in {1..15}; do
